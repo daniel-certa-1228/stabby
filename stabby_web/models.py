@@ -236,7 +236,7 @@ class SteelManufacturer(models.Model):
 class BladeMaterial(models.Model):
     blade_material_id = models.IntegerField(primary_key=True, null=False)
     steel_type = models.ForeignKey(SteelType, on_delete=models.SET_NULL, null=True)
-    steel_manufacturer_id = models.ForeignKey(
+    steel_manufacturer = models.ForeignKey(
         SteelManufacturer, on_delete=models.SET_NULL, null=True
     )
     name = models.CharField(max_length=100)
@@ -351,6 +351,9 @@ class WorkLog(models.Model):
     sharpener = models.ForeignKey(Sharpener, on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(null=False)
     description = models.TextField(null=True, blank=True)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "work log"
