@@ -292,6 +292,9 @@ class Knife(models.Model):
     def __str__(self):
         return super().__name__()
 
+    def number_of_blades(self):
+        return self.blades.count()
+
 
 class Blade(models.Model):
     blade_id = models.AutoField(primary_key=True, db_column="blade_id")
