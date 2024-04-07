@@ -1,12 +1,12 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class UnitOfMeasure(models.Model):
-    uom_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    uom_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
@@ -20,8 +20,8 @@ class UnitOfMeasure(models.Model):
 
 
 class Country(models.Model):
-    country_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    country_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     code = models.CharField(max_length=3, null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -36,8 +36,8 @@ class Country(models.Model):
 
 
 class BladeShape(models.Model):
-    blade_shape_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    blade_shape_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -52,8 +52,8 @@ class BladeShape(models.Model):
 
 
 class SteelType(models.Model):
-    steel_type_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    steel_type_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -68,8 +68,8 @@ class SteelType(models.Model):
 
 
 class Vendor(models.Model):
-    vendor_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    vendor_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -84,8 +84,8 @@ class Vendor(models.Model):
 
 
 class KnifeType(models.Model):
-    knife_type_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    knife_type_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -100,8 +100,8 @@ class KnifeType(models.Model):
 
 
 class LockType(models.Model):
-    lock_type_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    lock_type_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -116,8 +116,8 @@ class LockType(models.Model):
 
 
 class DeploymentType(models.Model):
-    deployment_type_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    deployment_type_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -132,8 +132,8 @@ class DeploymentType(models.Model):
 
 
 class HandleMaterial(models.Model):
-    handle_material_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    handle_material_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -148,8 +148,8 @@ class HandleMaterial(models.Model):
 
 
 class CuttingAgent(models.Model):
-    cutting_agent_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    cutting_agent_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
@@ -163,8 +163,8 @@ class CuttingAgent(models.Model):
 
 
 class Lubricant(models.Model):
-    lubricant_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    lubricant_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
@@ -178,8 +178,8 @@ class Lubricant(models.Model):
 
 
 class BondingAgent(models.Model):
-    bonding_agent_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    name = models.CharField(max_length=50)
+    bonding_agent_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
     is_friable = models.BooleanField(default=False, null=False)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -194,7 +194,7 @@ class BondingAgent(models.Model):
 
 
 class Brand(models.Model):
-    brand_id = models.IntegerField(primary_key=True, unique=True, null=False)
+    brand_id = models.IntegerField(primary_key=True, null=False)
     parent_brand_id = models.ForeignKey(
         "self",
         on_delete=models.SET_NULL,
@@ -202,7 +202,7 @@ class Brand(models.Model):
         null=True,
         related_name="child_brands",
     )
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -217,17 +217,9 @@ class Brand(models.Model):
 
 
 class SteelManufacturer(models.Model):
-    steel_manufacturer_id = models.IntegerField(
-        primary_key=True, unique=True, null=False
-    )
-    country_id = models.IntegerField(
-        Country,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        db_column="country_id",
-    )
-    name = models.CharField(max_length=50)
+    steel_manufacturer_id = models.IntegerField(primary_key=True, null=False)
+    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -242,22 +234,12 @@ class SteelManufacturer(models.Model):
 
 
 class BladeMaterial(models.Model):
-    blade_material_id = models.IntegerField(primary_key=True, unique=True, null=False)
-    steel_type_id = models.IntegerField(
-        SteelType,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        db_column="steel_type_id",
+    blade_material_id = models.IntegerField(primary_key=True, null=False)
+    steel_type = models.ForeignKey(SteelType, on_delete=models.SET_NULL, null=True)
+    steel_manufacturer_id = models.ForeignKey(
+        SteelManufacturer, on_delete=models.SET_NULL, null=True
     )
-    steel_manufacturer_id = models.IntegerField(
-        SteelManufacturer,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        db_column="steel_manufacturer_id",
-    )
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -269,3 +251,110 @@ class BladeMaterial(models.Model):
 
     def __str__(self):
         return super().__name__()
+
+
+class Knife(models.Model):
+    knife_id = models.AutoField(primary_key=True, db_column="knife_id")
+    name = models.CharField(max_length=255)
+    notes = models.TextField(null=True, blank=True)
+    brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
+    brand_notes = models.TextField(null=True, blank=True)
+    year_of_manufacture = models.CharField(max_length=100, null=True, blank=True)
+    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
+    year_of_purchase = models.CharField(max_length=50, null=True, blank=True)
+    purchased_new = models.BooleanField(default=True, null=False)
+    knife_type = models.ForeignKey(KnifeType, on_delete=models.SET_NULL, null=True)
+    knife_type_notes = models.TextField(null=True, blank=True)
+    blade_material = models.ForeignKey(
+        BladeMaterial, on_delete=models.SET_NULL, null=True
+    )
+    blade_material_notes = models.TextField(null=True, blank=True)
+    handle_material = models.ForeignKey(
+        HandleMaterial, on_delete=models.SET_NULL, null=True
+    )
+    handle_material_notes = models.TextField(null=True, blank=True)
+    lock_type = models.ForeignKey(LockType, on_delete=models.SET_NULL, null=True)
+    lock_type_notes = models.TextField(null=True, blank=True)
+    deployment_type = models.ForeignKey(
+        DeploymentType, on_delete=models.SET_NULL, null=True
+    )
+    needs_work = models.BooleanField(default=False, null=False)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "knife"
+        verbose_name_plural = "knives"
+
+    def __str__(self):
+        return super().__name__()
+
+
+class Blade(models.Model):
+    blade_id = models.AutoField(primary_key=True, db_column="blade_id")
+    knife = models.ForeignKey(Knife, on_delete=models.DO_NOTHING)
+    length = models.DecimalField(null=True, blank=True)
+    length_cutting_edge = models.DecimalField(null=True, blank=True)
+    uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
+    blade_shape = models.ForeignKey(BladeShape, on_delete=models.SET_NULL, null=True)
+    blade_shape_notes = models.TextField(null=True, blank=True)
+    has_half_stop = models.BooleanField(default=False, null=False)
+    is_main = models.BooleanField(default=True, null=False)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "blade"
+        verbose_name_plural = "blades"
+
+    def __str__(self):
+        return f"Blade - {self.knife.name}"
+
+
+class Sharpener(models.Model):
+    sharpener_id = models.AutoField(primary_key=True, db_column="sharpener_id")
+    name = models.CharField(max_length=255)
+    notes = models.TextField(null=True, blank=True)
+    brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
+    brand_notes = models.TextField(null=True, blank=True)
+    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+    cutting_agent = models.ForeignKey(
+        CuttingAgent, on_delete=models.SET_NULL, null=True
+    )
+    bonding_agent = models.ForeignKey(
+        BondingAgent, on_delete=models.SET_NULL, null=True
+    )
+    lubricant = models.ForeignKey(Lubricant, on_delete=models.SET_NULL, null=True)
+    length = models.DecimalField(null=True, blank=True)
+    width = models.DecimalField(null=True, blank=True)
+    uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "sharpener"
+        verbose_name_plural = "sharpeners"
+
+    def __str__(self):
+        return super().__name__()
+
+
+class WorkLog(models.Model):
+    work_log_id = models.AutoField(primary_key=True, db_column="work_log_id")
+    knife = models.ForeignKey(Knife, on_delete=models.SET_NULL, null=True)
+    sharpener = models.ForeignKey(Sharpener, on_delete=models.SET_NULL, null=True)
+    date = models.DateTimeField(null=False)
+    description = models.TextField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = "work log"
+        verbose_name_plural = "work logs"
+
+    def __str__(self):
+        return super().__description__()
