@@ -259,6 +259,8 @@ class Knife(models.Model):
     notes = models.TextField(null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
     brand_notes = models.TextField(null=True, blank=True)
+    closed_length = models.DecimalField(null=True, blank=True)
+    uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     year_of_manufacture = models.CharField(max_length=100, null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
