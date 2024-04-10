@@ -1,19 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 
-
-class UnitOfMeasure(models.Model):
-    uom_id = models.IntegerField(primary_key=True, null=False)
+# Models with no foreign keys are in alphabetical order
+class BladeShape(models.Model):
+    blade_shape_id = models.IntegerField(primary_key=True, null=False)
     name = models.CharField(max_length=100)
+    notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "unit of measure"
-        verbose_name_plural = "units of measure"
+        verbose_name = "blade shape"
+        verbose_name_plural = "blade shapes"
+
+    def __str__(self):
+        return super().__name__()
+
+
+class BondingAgent(models.Model):
+    bonding_agent_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
+    is_friable = models.BooleanField(default=False, null=False)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "bonding agent"
+        verbose_name_plural = "bonding agents"
 
     def __str__(self):
         return super().__name__()
@@ -35,81 +51,16 @@ class Country(models.Model):
         return super().__name__()
 
 
-class BladeShape(models.Model):
-    blade_shape_id = models.IntegerField(primary_key=True, null=False)
+class CuttingAgent(models.Model):
+    cutting_agent_id = models.IntegerField(primary_key=True, null=False)
     name = models.CharField(max_length=100)
-    notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "blade shape"
-        verbose_name_plural = "blade shapes"
-
-    def __str__(self):
-        return super().__name__()
-
-
-class SteelType(models.Model):
-    steel_type_id = models.IntegerField(primary_key=True, null=False)
-    name = models.CharField(max_length=100)
-    notes = models.TextField(null=True, blank=True)
-    is_active = models.BooleanField(default=True, null=False)
-    create_date = models.DateTimeField(auto_now_add=True)
-    edit_date = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "steel type"
-        verbose_name_plural = "steel types"
-
-    def __str__(self):
-        return super().__name__()
-
-
-class Vendor(models.Model):
-    vendor_id = models.IntegerField(primary_key=True, null=False)
-    name = models.CharField(max_length=100)
-    notes = models.TextField(null=True, blank=True)
-    is_active = models.BooleanField(default=True, null=False)
-    create_date = models.DateTimeField(auto_now_add=True)
-    edit_date = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "vendor"
-        verbose_name_plural = "vendors"
-
-    def __str__(self):
-        return super().__name__()
-
-
-class KnifeType(models.Model):
-    knife_type_id = models.IntegerField(primary_key=True, null=False)
-    name = models.CharField(max_length=100)
-    notes = models.TextField(null=True, blank=True)
-    is_active = models.BooleanField(default=True, null=False)
-    create_date = models.DateTimeField(auto_now_add=True)
-    edit_date = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "knife type"
-        verbose_name_plural = "knife types"
-
-    def __str__(self):
-        return super().__name__()
-
-
-class LockType(models.Model):
-    lock_type_id = models.IntegerField(primary_key=True, null=False)
-    name = models.CharField(max_length=100)
-    notes = models.TextField(null=True, blank=True)
-    is_active = models.BooleanField(default=True, null=False)
-    create_date = models.DateTimeField(auto_now_add=True)
-    edit_date = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "lock type"
-        verbose_name_plural = "lock types"
+        verbose_name = "cutting agent"
+        verbose_name_plural = "cutting agents"
 
     def __str__(self):
         return super().__name__()
@@ -147,16 +98,33 @@ class HandleMaterial(models.Model):
         return super().__name__()
 
 
-class CuttingAgent(models.Model):
-    cutting_agent_id = models.IntegerField(primary_key=True, null=False)
+class KnifeType(models.Model):
+    knife_type_id = models.IntegerField(primary_key=True, null=False)
     name = models.CharField(max_length=100)
+    notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "cutting agent"
-        verbose_name_plural = "cutting agents"
+        verbose_name = "knife type"
+        verbose_name_plural = "knife types"
+
+    def __str__(self):
+        return super().__name__()
+
+
+class LockType(models.Model):
+    lock_type_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
+    notes = models.TextField(null=True, blank=True)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "lock type"
+        verbose_name_plural = "lock types"
 
     def __str__(self):
         return super().__name__()
@@ -177,22 +145,54 @@ class Lubricant(models.Model):
         return super().__name__()
 
 
-class BondingAgent(models.Model):
-    bonding_agent_id = models.IntegerField(primary_key=True, null=False)
+class SteelType(models.Model):
+    steel_type_id = models.IntegerField(primary_key=True, null=False)
     name = models.CharField(max_length=100)
-    is_friable = models.BooleanField(default=False, null=False)
+    notes = models.TextField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "bonding agent"
-        verbose_name_plural = "bonding agents"
+        verbose_name = "steel type"
+        verbose_name_plural = "steel types"
 
     def __str__(self):
         return super().__name__()
 
 
+class UnitOfMeasure(models.Model):
+    uom_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "unit of measure"
+        verbose_name_plural = "units of measure"
+
+    def __str__(self):
+        return super().__name__()
+
+
+class Vendor(models.Model):
+    vendor_id = models.IntegerField(primary_key=True, null=False)
+    name = models.CharField(max_length=100)
+    notes = models.TextField(null=True, blank=True)
+    is_active = models.BooleanField(default=True, null=False)
+    create_date = models.DateTimeField(auto_now_add=True)
+    edit_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "vendor"
+        verbose_name_plural = "vendors"
+
+    def __str__(self):
+        return super().__name__()
+
+
+# Models with foreign keys are in creation order
 class Brand(models.Model):
     brand_id = models.IntegerField(primary_key=True, null=False)
     parent_brand_id = models.ForeignKey(
