@@ -192,7 +192,7 @@ class Vendor(models.Model):
         return super().__name__()
 
 
-# Models with foreign keys are in creation order
+# Models with foreign keys are in necessary creation order
 class Brand(models.Model):
     brand_id = models.IntegerField(primary_key=True, null=False)
     parent_brand_id = models.ForeignKey(
