@@ -259,7 +259,9 @@ class Knife(models.Model):
     notes = models.TextField(null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
     brand_notes = models.TextField(null=True, blank=True)
-    closed_length = models.DecimalField(null=True, blank=True)
+    closed_length = models.DecimalField(
+        null=True, blank=True, decimal_places=2, max_digits=8
+    )
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     year_of_manufacture = models.CharField(max_length=100, null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
@@ -301,8 +303,10 @@ class Knife(models.Model):
 class Blade(models.Model):
     blade_id = models.AutoField(primary_key=True, db_column="blade_id")
     knife = models.ForeignKey(Knife, on_delete=models.DO_NOTHING)
-    length = models.DecimalField(null=True, blank=True)
-    length_cutting_edge = models.DecimalField(null=True, blank=True)
+    length = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
+    length_cutting_edge = models.DecimalField(
+        null=True, blank=True, decimal_places=2, max_digits=8
+    )
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     blade_shape = models.ForeignKey(BladeShape, on_delete=models.SET_NULL, null=True)
     blade_shape_notes = models.TextField(null=True, blank=True)
@@ -334,8 +338,8 @@ class Sharpener(models.Model):
         BondingAgent, on_delete=models.SET_NULL, null=True
     )
     lubricant = models.ForeignKey(Lubricant, on_delete=models.SET_NULL, null=True)
-    length = models.DecimalField(null=True, blank=True)
-    width = models.DecimalField(null=True, blank=True)
+    length = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
+    width = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
