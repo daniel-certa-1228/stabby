@@ -157,3 +157,11 @@ INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(14, 'Smokey Mountain Knife
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(15, 'Swiss Army Flagship - London');
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(16, 'Swiss Knife Shop');
 
+
+-- STEEL MANUFACTURER
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(1, 'Bohler', 1);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(2, 'Carpenter', 15);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(3, 'Crucible', 15);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(4, 'Hitachi ', 9);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(5, 'Sandvik', 12);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(6, 'Uddeholm', 12);
