@@ -1,6 +1,18 @@
--- UOM
-INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(1, 'in');
-INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(2, 'cm');
+-- BLADE SHAPE
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	1, 'Cleaver');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	2, 'Clip Point');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	3, 'Drop Point');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	4, 'Hawkbill');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	5, 'Leaf');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	6, 'Pen');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	7, 'Recurve');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	8, 'Reverse Tanto');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	9, 'Sheepsfoot');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	10, 'Spear Point');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	11, 'Tanto');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	12, 'Turkish Clip');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	13, 'Upswept');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	14, 'Wharncliff');
 
 -- COUNTRY
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(1, 'Austria', 'AUT');
@@ -18,6 +30,14 @@ INSERT INTO stabby_web_country(country_id, name, code) VALUES(12, 'Sweden', 'SWE
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(13, 'Switzerland', 'CHE');
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(14, 'Taiwan', 'TWN');
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(15, 'U.S.A.', 'USA');
+
+-- DEPLOYMENT TYPE
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(1, 'Flipper');
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(2, 'Nail Nick');
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(3, 'Pinch');
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(4, 'Slide');
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(5, 'Thumb Hole');
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(6, 'Thumb Stud');
 
 -- HANDLE MATERIAL
 INSERT INTO stabby_web_handlematerial(handle_material_id, name) VALUES(1, 'Aluminum');
@@ -57,3 +77,56 @@ INSERT INTO stabby_web_handlematerial(handle_material_id, name) VALUES(34, 'Tita
 INSERT INTO stabby_web_handlematerial(handle_material_id, name) VALUES(35, 'Walnut');
 INSERT INTO stabby_web_handlematerial(handle_material_id, name) VALUES(36, 'Wood');
 INSERT INTO stabby_web_handlematerial(handle_material_id, name) VALUES(37, 'Zytel');
+
+-- KNIFE TYPE
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(1, 'Castration Knife');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(2, 'Congress');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(3, 'Copperhead');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(4, 'Copperlock');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(5, 'Doctor''s Knife');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(6, 'Elephant Toe');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(7, 'Gunstock');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(8, 'Jack');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(9, 'Large Stockman');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(10, 'MIL-K-818');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(11, 'Muskrat');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(12, 'Neck Knife');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(13, 'Peanut');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(14, 'Peasant Knife');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(15, 'Pen');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(16, 'Razor');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(17, 'Scout Knife');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(18, 'Sowbelly');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(19, 'Stockman');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(20, 'Swayback');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(21, 'Swiss Army Knife');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(22, 'Toothpick');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(23, 'Trapper');
+INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(24, 'Whittler');
+
+-- STEEL TYPE
+INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(1, 'Stainless');
+INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(2, 'Carbon');
+
+-- UOM
+INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(1, 'in');
+INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(2, 'cm');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
