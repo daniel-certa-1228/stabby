@@ -14,6 +14,11 @@ INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	12, 'Turkish Cli
 INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	13, 'Upswept');
 INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	14, 'Wharncliff');
 
+-- BONDING AGENT
+INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable) VALUES(1, 'Ceramic (Friable)', 1);
+INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable) VALUES(2, 'Ceramic (Non-Friable)', 0);
+INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable) VALUES(3, 'Steel Plate', 0);
+
 -- COUNTRY
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(1, 'Austria', 'AUT');
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(2, 'China', 'CHN');
@@ -30,6 +35,11 @@ INSERT INTO stabby_web_country(country_id, name, code) VALUES(12, 'Sweden', 'SWE
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(13, 'Switzerland', 'CHE');
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(14, 'Taiwan', 'TWN');
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(15, 'U.S.A.', 'USA');
+
+-- CUTTING AGENT
+INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name) VALUES(	1, 'Alumina Oxide');
+INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name) VALUES(	2, 'Diamond');
+INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name) VALUES(	3, 'Silicon Carbide');
 
 -- DEPLOYMENT TYPE
 INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(1, 'Flipper');
@@ -115,9 +125,19 @@ INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(7, 'Locking Ring');
 INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(8, 'Ratchet Lock');
 INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(9, 'Slip Joint');
 
+-- LUBRICANT
+INSERT INTO stabby_web_lubricant(lubricant_id, name) VALUES(1, 'None');
+INSERT INTO stabby_web_lubricant(lubricant_id, name) VALUES(2, 'Oil');
+INSERT INTO stabby_web_lubricant(lubricant_id, name) VALUES(3, 'Water');
+
 -- STEEL TYPE
 INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(1, 'Stainless');
 INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(2, 'Carbon');
+
+
+-- UOM
+INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(1, 'in');
+INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(2, 'cm');
 
 -- VENDOR
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(1, 'Baryonyx Knife Company');
@@ -136,26 +156,4 @@ INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(13, 'Shadow Hills Cutlery'
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(14, 'Smokey Mountain Knife Works');
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(15, 'Swiss Army Flagship - London');
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(16, 'Swiss Knife Shop');
-
--- UOM
-INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(1, 'in');
-INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(2, 'cm');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
