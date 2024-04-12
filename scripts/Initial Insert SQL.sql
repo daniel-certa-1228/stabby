@@ -1,3 +1,5 @@
+BEGIN TRANSACTION;
+
 -- BLADE SHAPE
 INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	1, 'Cleaver');
 INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	2, 'Clip Point');
@@ -158,6 +160,9 @@ INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(14, 'Smokey Mountain Knife
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(15, 'Swiss Army Flagship - London');
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(16, 'Swiss Knife Shop');
 
+COMMIT;
+
+BEGIN TRANSACTION;
 
 -- STEEL MANUFACTURER
 INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(1, 'Bohler', 1);
@@ -166,3 +171,5 @@ INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id
 INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(4, 'Hitachi ', 9);
 INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(5, 'Sandvik', 13);
 INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(6, 'Uddeholm', 13);
+
+COMMIT;
