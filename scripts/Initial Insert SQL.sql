@@ -104,9 +104,38 @@ INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(22, 'Toothpick');
 INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(23, 'Trapper');
 INSERT INTO stabby_web_knifetype(knife_type_id, name) VALUES(24, 'Whittler');
 
+-- LOCK TYPE
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(1, 'Button Lock');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(2, 'Detent');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(3, 'Frame Lock');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(4, 'Friction');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(5, 'Liner Lock');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(6, 'Lockback');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(7, 'Locking Ring');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(8, 'Ratchet Lock');
+INSERT INTO stabby_web_locktype(lock_type_id, name) VALUES(9, 'Slip Joint');
+
 -- STEEL TYPE
 INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(1, 'Stainless');
 INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(2, 'Carbon');
+
+-- VENDOR
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(1, 'Baryonyx Knife Company');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(2, 'BladeHQ');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(3, 'C. Risner Cutlery');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(4, 'Chicago Knife Works');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(5, 'Collector Knives');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(6, 'Deadwood Knives');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(7, 'Direct From Manufacturer');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(8, 'DLT');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(9, 'Ebay');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(10, 'Knifecenter');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(11, 'Knives Plus');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(12, 'Red Hill Cutlery');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(13, 'Shadow Hills Cutlery');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(14, 'Smokey Mountain Knife Works');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(15, 'Swiss Army Flagship - London');
+INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(16, 'Swiss Knife Shop');
 
 -- UOM
 INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(1, 'in');
