@@ -31,10 +31,11 @@ INSERT INTO stabby_web_country(country_id, name, code) VALUES(8, 'Italy', 'ITA')
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(9, 'Japan', 'JPN');
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(10, 'New Zealand', 'NZL');
 INSERT INTO stabby_web_country(country_id, name, code) VALUES(11, 'Portugal', 'PRT');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(12, 'Sweden', 'SWE');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(13, 'Switzerland', 'CHE');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(14, 'Taiwan', 'TWN');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(15, 'U.S.A.', 'USA');
+INSERT INTO stabby_web_country(country_id, name, code) VALUES(12, 'South Africa', 'ZAF');
+INSERT INTO stabby_web_country(country_id, name, code) VALUES(13, 'Sweden', 'SWE');
+INSERT INTO stabby_web_country(country_id, name, code) VALUES(14, 'Switzerland', 'CHE');
+INSERT INTO stabby_web_country(country_id, name, code) VALUES(15, 'Taiwan', 'TWN');
+INSERT INTO stabby_web_country(country_id, name, code) VALUES(16, 'U.S.A.', 'USA');
 
 -- CUTTING AGENT
 INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name) VALUES(	1, 'Alumina Oxide');
@@ -160,8 +161,8 @@ INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(16, 'Swiss Knife Shop');
 
 -- STEEL MANUFACTURER
 INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(1, 'Bohler', 1);
-INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(2, 'Carpenter', 15);
-INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(3, 'Crucible', 15);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(2, 'Carpenter', 16);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(3, 'Crucible', 16);
 INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(4, 'Hitachi ', 9);
-INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(5, 'Sandvik', 12);
-INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(6, 'Uddeholm', 12);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(5, 'Sandvik', 13);
+INSERT INTO stabby_web_steelmanufacturer(steel_manufacturer_id, name, country_id) VALUES(6, 'Uddeholm', 13);
