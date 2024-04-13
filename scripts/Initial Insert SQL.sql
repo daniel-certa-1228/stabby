@@ -165,6 +165,57 @@ COMMIT;
 
 BEGIN TRANSACTION;
 
+-- BLADE MATERIAL
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	1, 2, null, '1065');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	2, 2, null, '1075');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	3, 2, null, '1085');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	4, 2, null, '1095');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	5, 2, null, '1095 Cro Van');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	6, 1, 4, '12C27');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	7, 1, 4, '14C28N');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	8, 1, 3, '154CM');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	9, 1, null, '3Cr13MoV');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	10, 1, null, '420');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	11, 1, null, '420HC');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	12, 1, null, '425M');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	13,	1, null, '440A');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	14,	1, null, '440B');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	15,	1, null, '440C');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	16,	1, null, '5Cr15MoV');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	17,	1, null, '7Cr17MoV');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	18,	1, null, '8Cr13MoV');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	19,	1, null, '9Cr18MoV');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	20,	1, 5, 'AEB-L');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	21,	1, null, 'AUS-10');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	22,	1, null, 'AUS-6');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	23,	1, null, 'AUS-8');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	24,	2, 4, 'Blue Paper Steel (Blue Super)');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	25,	2, null, 'C67');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	26,	2, null, 'Case Chrome Vanadium');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	27,	1, null, 'Case Tru Sharp Surgical Steel');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	28,	null, null, 'Ceramic');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	29,	1, null, '	CPM MagnaCut');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	30,	2, 3, 'CPM-3V');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	31,	2, 3, 'CPM-M4');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	32,	1, 3, 'CPM-S30V');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	33,	1, 3, 'CPM-S35VN');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	34,	2, 3, 'CruWear');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	35,	1, 2, 'CTS-BD1N');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	36,	1, 2, 'CTS-XHP');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	37,	2, null, 'D2');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	38,	1, 5, 'Elmax');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	39,	2, 1, 'K390');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	40,	1, 1, 'M390');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	41,	2, 2, 'Maxamet');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	42,	1, 1, 'N690');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	43,	2, null, 'T10');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	44,	2, null, 'Unknown Carbon Steel');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	45,	1, null, 'Unknown Stainless Steel');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	46,	1, null, 'VG-10');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	47,	2, 4, 'White Paper Steel (White #1)');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	48,	2, null, 'XC75');
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(	49,	2, null, 'XC90');
+
 -- BRAND
 
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(1, 'Antonini Knives');
