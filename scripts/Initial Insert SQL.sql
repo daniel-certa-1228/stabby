@@ -1,20 +1,20 @@
 BEGIN TRANSACTION;
 
 -- BLADE SHAPE
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	1, 'Cleaver');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	2, 'Clip Point');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	3, 'Drop Point');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	4, 'Hawkbill');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	5, 'Leaf');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	6, 'Pen');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	7, 'Recurve');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	8, 'Reverse Tanto');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	9, 'Sheepsfoot');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	10, 'Spear Point');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	11, 'Tanto');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	12, 'Turkish Clip');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	13, 'Upswept');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(	14, 'Wharncliff');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(1, 'Cleaver');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(2, 'Clip Point');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(3, 'Drop Point');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(4, 'Hawkbill');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(5, 'Leaf');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(6, 'Pen');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(7, 'Recurve');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(8, 'Reverse Tanto');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(9, 'Sheepsfoot');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(10, 'Spear Point');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(11, 'Tanto');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(12, 'Turkish Clip');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(13, 'Upswept');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(14, 'Wharncliff');
 
 -- BONDING AGENT
 INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable) VALUES(1, 'Ceramic (Friable)', 1);
