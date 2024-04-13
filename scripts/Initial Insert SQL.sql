@@ -216,7 +216,7 @@ INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id) VALUES(46, 'Old Ti
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(47, 'Ontario Knife Company');
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(48, 'Opinel');
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(49, 'Parker Cut Co.');
-INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id) VALUES(50, 'Pierre Cardin',	5);
+INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id) VALUES(50, 'Pierre Cardin', 5);
 INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id) VALUES(51, 'Queen	', 7);
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(52, 'Queen (U.S.A.)');
 INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id) VALUES(53, 'Queen City',	7);
@@ -230,7 +230,7 @@ INSERT INTO stabby_web_brand(brand_id, name) VALUES(60, 'Stephenson');
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(61, 'Svord');
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(62, 'Swiza');
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(63, 'Syracuse Knife Company');
-INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id) VALUES(64, 'Ulster',	3);
+INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id) VALUES(64, 'Ulster', 3);
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(65, 'Ultratech');
 INSERT INTO stabby_web_brand(brand_id, name, ) VALUES(66, 'Uncle Henry', 8);
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(67, 'Unknown');
