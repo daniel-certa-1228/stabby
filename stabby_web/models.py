@@ -195,7 +195,7 @@ class Vendor(models.Model):
 # Models with foreign keys are in necessary creation order
 class Brand(models.Model):
     brand_id = models.IntegerField(primary_key=True, null=False)
-    parent_brand_id = models.ForeignKey(
+    parent_brand = models.ForeignKey(
         "self",
         on_delete=models.SET_NULL,
         blank=True,
