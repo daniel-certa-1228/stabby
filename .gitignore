@@ -4,6 +4,7 @@
 *.pyc
 __pycache__
 stabby.sqlite3
+stabby.sqlite3-journal
 media
 
 # Backup files # 
