@@ -133,31 +133,31 @@ INSERT INTO stabby_web_lubricant(lubricant_id, name, is_active, create_date, edi
 INSERT INTO stabby_web_lubricant(lubricant_id, name, is_active, create_date, edit_date) VALUES(3, 'Water', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- STEEL TYPE
-INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(1, 'Stainless');
-INSERT INTO stabby_web_steeltype(steel_type_id, name) VALUES(2, 'Carbon');
+INSERT INTO stabby_web_steeltype(steel_type_id, name, is_active, create_date, edit_date) VALUES(1, 'Stainless', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_steeltype(steel_type_id, name, is_active, create_date, edit_date) VALUES(2, 'Carbon', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 
 -- UOM
-INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(1, 'in');
-INSERT INTO stabby_web_unitofmeasure(uom_id, name)VALUES(2, 'cm');
+INSERT INTO stabby_web_unitofmeasure(uom_id, name, is_active, create_date, edit_date)VALUES(1, 'in', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_unitofmeasure(uom_id, name, is_active, create_date, edit_date)VALUES(2, 'cm', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- VENDOR
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(1, 'Baryonyx Knife Company');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(2, 'BladeHQ');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(3, 'C. Risner Cutlery');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(4, 'Chicago Knife Works');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(5, 'Collector Knives');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(6, 'Deadwood Knives');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(7, 'Direct From Manufacturer');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(8, 'DLT');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(9, 'Ebay');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(10, 'Knifecenter');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(11, 'Knives Plus');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(12, 'Red Hill Cutlery');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(13, 'Shadow Hills Cutlery');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(14, 'Smokey Mountain Knife Works');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(15, 'Swiss Army Flagship - London');
-INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(16, 'Swiss Knife Shop');
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(1, 'Baryonyx Knife Company', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(2, 'BladeHQ', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(3, 'C. Risner Cutlery', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(4, 'Chicago Knife Works', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(5, 'Collector Knives', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(6, 'Deadwood Knives', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(7, 'Direct From Manufacturer', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(8, 'DLT', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(9, 'Ebay', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(10, 'Knifecenter', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(11, 'Knives Plus', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(12, 'Red Hill Cutlery', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(13, 'Shadow Hills Cutlery', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(14, 'Smokey Mountain Knife Works', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(15, 'Swiss Army Flagship - London', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_vendor(vendor_id, name, is_active, create_date, edit_date) VALUES(16, 'Swiss Knife Shop', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- BRAND
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(1, 'Antonini Knives');
