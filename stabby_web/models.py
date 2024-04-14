@@ -16,7 +16,7 @@ class BladeShape(models.Model):
         verbose_name_plural = "blade shapes"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class BondingAgent(models.Model):
@@ -32,7 +32,7 @@ class BondingAgent(models.Model):
         verbose_name_plural = "bonding agents"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class Country(models.Model):
@@ -48,7 +48,7 @@ class Country(models.Model):
         verbose_name_plural = "countries"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class CuttingAgent(models.Model):
@@ -63,7 +63,7 @@ class CuttingAgent(models.Model):
         verbose_name_plural = "cutting agents"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class DeploymentType(models.Model):
@@ -79,7 +79,7 @@ class DeploymentType(models.Model):
         verbose_name_plural = "deployment types"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class HandleMaterial(models.Model):
@@ -95,7 +95,7 @@ class HandleMaterial(models.Model):
         verbose_name_plural = "handle materials"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class KnifeType(models.Model):
@@ -111,7 +111,7 @@ class KnifeType(models.Model):
         verbose_name_plural = "knife types"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class LockType(models.Model):
@@ -127,7 +127,7 @@ class LockType(models.Model):
         verbose_name_plural = "lock types"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class Lubricant(models.Model):
@@ -142,7 +142,7 @@ class Lubricant(models.Model):
         verbose_name_plural = "lubricants"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class SteelType(models.Model):
@@ -158,7 +158,7 @@ class SteelType(models.Model):
         verbose_name_plural = "steel types"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class UnitOfMeasure(models.Model):
@@ -173,7 +173,7 @@ class UnitOfMeasure(models.Model):
         verbose_name_plural = "units of measure"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class Vendor(models.Model):
@@ -189,7 +189,7 @@ class Vendor(models.Model):
         verbose_name_plural = "vendors"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 # Models with foreign keys are in necessary creation order
@@ -213,7 +213,7 @@ class Brand(models.Model):
         verbose_name_plural = "brands"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class SteelManufacturer(models.Model):
@@ -230,7 +230,7 @@ class SteelManufacturer(models.Model):
         verbose_name_plural = "steel manufacturers"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class BladeMaterial(models.Model):
@@ -250,7 +250,7 @@ class BladeMaterial(models.Model):
         verbose_name_plural = "blade materials"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class Knife(models.Model):
@@ -294,7 +294,7 @@ class Knife(models.Model):
         verbose_name_plural = "knives"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
     def number_of_blades(self):
         return self.blades.count()
@@ -351,7 +351,7 @@ class Sharpener(models.Model):
         verbose_name_plural = "sharpeners"
 
     def __str__(self):
-        return super().__name__()
+        return self.name
 
 
 class WorkLog(models.Model):
@@ -369,4 +369,4 @@ class WorkLog(models.Model):
         verbose_name_plural = "work logs"
 
     def __str__(self):
-        return super().__description__()
+        return self.description
