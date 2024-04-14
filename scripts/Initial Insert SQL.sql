@@ -1,56 +1,54 @@
-BEGIN TRANSACTION;
-
 -- BLADE SHAPE
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(1, 'Cleaver');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(2, 'Clip Point');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(3, 'Drop Point');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(4, 'Hawkbill');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(5, 'Leaf');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(6, 'Pen');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(7, 'Recurve');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(8, 'Reverse Tanto');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(9, 'Sheepsfoot');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(10, 'Spear Point');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(11, 'Tanto');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(12, 'Turkish Clip');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(13, 'Upswept');
-INSERT INTO stabby_web_bladeshape(blade_shape_id, name) VALUES(14, 'Wharncliff');
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(1, 'Cleaver', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(2, 'Clip Point', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(3, 'Drop Point', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(4, 'Hawkbill', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(5, 'Leaf', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(6, 'Pen', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(7, 'Recurve', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(8, 'Reverse Tanto', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(9, 'Sheepsfoot', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(10, 'Spear Point', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(11, 'Tanto', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(12, 'Turkish Clip', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(13, 'Upswept', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladeshape(blade_shape_id, name, is_active, create_date, edit_date) VALUES(14, 'Wharncliff', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- BONDING AGENT
-INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable) VALUES(1, 'Ceramic (Friable)', 1);
-INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable) VALUES(2, 'Ceramic (Non-Friable)', 0);
-INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable) VALUES(3, 'Steel Plate', 0);
+INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable, is_active, create_date, edit_date) VALUES(1, 'Ceramic (Friable)', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable, is_active, create_date, edit_date) VALUES(2, 'Ceramic (Non-Friable)', 0, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bondingagent(bonding_agent_id, name, is_friable, is_active, create_date, edit_date) VALUES(3, 'Steel Plate', 0, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- COUNTRY
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(1, 'Austria', 'AUT');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(2, 'China', 'CHN');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(3, 'Czech Republic', 'CZE');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(4, 'England', 'GBR');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(5, 'France', 'FRA');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(6, 'Germany', 'DEU');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(7, 'Hong Kong', 'HKG');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(8, 'Italy', 'ITA');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(9, 'Japan', 'JPN');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(10, 'New Zealand', 'NZL');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(11, 'Portugal', 'PRT');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(12, 'South Africa', 'ZAF');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(13, 'Sweden', 'SWE');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(14, 'Switzerland', 'CHE');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(15, 'Taiwan', 'TWN');
-INSERT INTO stabby_web_country(country_id, name, code) VALUES(16, 'U.S.A.', 'USA');
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(1, 'Austria', 'AUT', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(2, 'China', 'CHN', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(3, 'Czech Republic', 'CZE', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(4, 'England', 'GBR', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(5, 'France', 'FRA', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(6, 'Germany', 'DEU', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(7, 'Hong Kong', 'HKG', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(8, 'Italy', 'ITA', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(9, 'Japan', 'JPN', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(10, 'New Zealand', 'NZL', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(11, 'Portugal', 'PRT', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(12, 'South Africa', 'ZAF', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(13, 'Sweden', 'SWE', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(14, 'Switzerland', 'CHE', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(15, 'Taiwan', 'TWN', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_country(country_id, name, code, is_active, create_date, edit_date) VALUES(16, 'U.S.A.', 'USA', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- CUTTING AGENT
-INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name) VALUES(1, 'Alumina Oxide');
-INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name) VALUES(2, 'Diamond');
-INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name) VALUES(3, 'Silicon Carbide');
+INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name, is_active, create_date, edit_date) VALUES(1, 'Alumina Oxide', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name, is_active, create_date, edit_date) VALUES(2, 'Diamond', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_cuttingagent(cutting_agent_id, name, is_active, create_date, edit_date) VALUES(3, 'Silicon Carbide', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- DEPLOYMENT TYPE
-INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(1, 'Flipper');
-INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(2, 'Nail Nick');
-INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(3, 'Pinch');
-INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(4, 'Slide');
-INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(5, 'Thumb Hole');
-INSERT INTO stabby_web_deploymenttype(deployment_type_id, name) VALUES(6, 'Thumb Stud');
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name, is_active, create_date, edit_date) VALUES(1, 'Flipper', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name, is_active, create_date, edit_date) VALUES(2, 'Nail Nick', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name, is_active, create_date, edit_date) VALUES(3, 'Pinch', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name, is_active, create_date, edit_date) VALUES(4, 'Slide', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name, is_active, create_date, edit_date) VALUES(5, 'Thumb Hole', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_deploymenttype(deployment_type_id, name, is_active, create_date, edit_date) VALUES(6, 'Thumb Stud', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- HANDLE MATERIAL
 INSERT INTO stabby_web_handlematerial(handle_material_id, name) VALUES(1, 'Aluminum');
@@ -160,10 +158,6 @@ INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(13, 'Shadow Hills Cutlery'
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(14, 'Smokey Mountain Knife Works');
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(15, 'Swiss Army Flagship - London');
 INSERT INTO stabby_web_vendor(vendor_id, name) VALUES(16, 'Swiss Knife Shop');
-
-COMMIT;
-
-BEGIN TRANSACTION;
 
 -- BRAND
 INSERT INTO stabby_web_brand(brand_id, name) VALUES(1, 'Antonini Knives');
@@ -298,5 +292,3 @@ INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_man
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(47, 2, 4, 'White Paper Steel (White #1)');
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(48, 2, null, 'XC75');
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name) VALUES(49, 2, null, 'XC90');
-
-COMMIT;
