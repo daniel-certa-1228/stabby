@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from stabby_web import views
 
+app_name = "stabby_web"
 urlpatterns = [
     path("", views.index),
     path("admin/", admin.site.urls),
