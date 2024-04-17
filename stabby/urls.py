@@ -21,6 +21,7 @@ from stabby_web import views
 
 app_name = "stabby_web"
 urlpatterns = [
-    path("", views.index),
+    path("", views.index, name="knives"),
+    path("sharpeners/", views.sharpeners, name="sharpeners"),
     path("admin/", admin.site.urls),
 ]
