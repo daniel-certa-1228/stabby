@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, render
+from .models import ViewKnifeGrid
 from . import enums
 
 
 def index(request):
-    context = {"active": enums.Module.Knives.value}
+    queryset = ViewKnifeGrid.objects.filter(is_active=1).order_by("brand", "knife")
+
+    context = {"active": enums.Module.Knives.value, "knives": queryset}
 
     return render(request, "stabby_web/index.html", context)
 

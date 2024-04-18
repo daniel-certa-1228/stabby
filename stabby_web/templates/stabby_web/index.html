@@ -4,4 +4,11 @@
 {% block main%}
     <h1>Knives</h1>
     <h2 class="text-danger">Bootstrap Working</h2>
+    <br>
+    <h3>Test of passing QuerySet:</h3>
+    <ul>
+        {% for obj in knives %}
+            <li>{{ obj.knife }}, {{ obj.brand }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
