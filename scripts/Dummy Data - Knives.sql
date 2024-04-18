@@ -1,3 +1,4 @@
+-- CHAT GPT Generated Dummy Data
 INSERT INTO stabby_web_knife (name, notes, brand_id, brand_notes, closed_length, uom_id, year_of_manufacture, country_id, vendor_id, year_of_purchase, purchased_new, knife_type_id, knife_type_notes, blade_material_id, blade_material_notes, handle_material_id, handle_material_notes, lock_type_id, lock_type_notes, deployment_type_id, needs_work, is_active, create_date, edit_date, user_id)
 VALUES
 ('Knife1 Longer Name', 'Random notes for knife 1', 45, 'Brand notes for knife 1', 3.85, 1, '2022', 7, 12, '2023', 1, 8, 'Knife type notes for knife 1', 23, 'Blade material notes for knife 1', 19, 'Handle material notes for knife 1', 2, 'Lock type notes for knife 1', 4, 1, 1, DATETIME('now'), DATETIME('now'), 2),
