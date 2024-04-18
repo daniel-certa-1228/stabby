@@ -387,6 +387,7 @@ class ViewKnifeGrid(models.Model):
     vendor = models.CharField(max_length=255, null=True)
     needs_work = models.BooleanField(null=False)
     is_active = models.BooleanField(null=False)
+    user_id = models.BigIntegerField(null=False)
 
     class Meta:
         db_table = "view_knife_grid"
