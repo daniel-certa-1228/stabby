@@ -1,5 +1,7 @@
+DROP VIEW IF EXISTS view_knife_grid;
+
 CREATE VIEW IF NOT EXISTS view_knife_grid AS
-	SELECT 
+	SELECT
 		k.knife_id,
 		k.name AS knife,
 		kt.name AS knife_type,
@@ -12,7 +14,8 @@ CREATE VIEW IF NOT EXISTS view_knife_grid AS
 		c.name AS country,
 		v.name  AS vendor,
 		k.needs_work,
-		k.is_active
+		k.is_active,
+		k.user_id
 	FROM stabby_web_knife k
 	LEFT JOIN stabby_web_brand b on b.brand_id = k.brand_id 
 	LEFT JOIN stabby_web_bladematerial bm on bm.blade_material_id = k.blade_material_id
@@ -35,5 +38,6 @@ CREATE VIEW IF NOT EXISTS view_knife_grid AS
 		c.name,
 		v.name,
 		k.needs_work,
-		k.is_active
+		k.is_active,
+		k.user_id
 

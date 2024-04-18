@@ -8,7 +8,7 @@
     <h3>Test of passing QuerySet:</h3>
     <ul>
         {% for obj in knives %}
-            <li>{{ obj.knife }}, {{ obj.brand }}</li>
+            <li>{{ obj.knife }}, {{ obj.brand }}, User ID: {{obj.user_id}}</li>
         {% endfor %}
     </ul>
 {% endblock %}
