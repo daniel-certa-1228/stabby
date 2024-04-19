@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>stabby.tech</title>
     <link href="{% static "stabby_web/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "stabby_web/css/styles.css" %}" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark">
@@ -27,6 +28,8 @@
       {% block main %}
       {% endblock %}
     </main>
+    <script src="{% static "stabby_web/js/ag-grid-community.min.js" %}"></script>
     <script src="{% static "stabby_web/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "stabby_web/js/load-knife-grid.js" %}"></script>
   </body>
 </html>

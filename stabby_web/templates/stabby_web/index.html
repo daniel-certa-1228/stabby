@@ -1,14 +1,19 @@
 
 {% extends "stabby_web/_base.html" %}
+{% comment %} {% load static %} {% endcomment %}
 
 {% block main%}
-    <h1>Knives</h1>
-    <h2 class="text-danger">Bootstrap Working</h2>
+<div class="center pt-4 pb-4">
+    <div id="grid" class="ag-theme-alpine" style="width: 95%; height: 600px; display: inline-block"></div>
+</div>
+    {% comment %} <h1>Knives</h1> {% endcomment %}
+    {% comment %} <h2 class="text-danger">Bootstrap Working</h2>
     <br>
     <h3>Test of passing QuerySet:</h3>
     <ul>
         {% for obj in knives %}
             <li>{{ obj.knife }}, {{ obj.brand }}, User ID: {{obj.user_id}}</li>
         {% endfor %}
-    </ul>
+    </ul> {% endcomment %}
+    
 {% endblock %}
