@@ -1,6 +1,7 @@
 from django.http import JsonResponse
-from django.shortcuts import get_list_or_404, render
+from django.shortcuts import render
 from .models import ViewKnifeGrid
+from .services import DbService
 from . import enums
 
 
@@ -19,8 +20,6 @@ def sharpeners(request):
 
 
 def get_knife_grid(request):
-    queryset = ViewKnifeGrid.objects.filter(is_active=1).order_by("brand", "knife")
+    data = DbService.get_knife_grid()
 
-    return_data = list(queryset.values())
-
-    return JsonResponse(return_data, safe=False)
+    return JsonResponse(data, safe=False)
