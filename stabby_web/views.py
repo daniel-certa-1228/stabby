@@ -1,15 +1,12 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from .models import ViewKnifeGrid
 from .services import DbService
 from . import enums
 
 
 # MVT Requests
 def index(request):
-    queryset = ViewKnifeGrid.objects.filter(is_active=1).order_by("brand", "knife")
-
-    context = {"active": enums.Module.Knives.value, "knives": queryset}
+    context = {"active": enums.Module.Knives.value}
 
     return render(request, "stabby_web/index.html", context)
 
