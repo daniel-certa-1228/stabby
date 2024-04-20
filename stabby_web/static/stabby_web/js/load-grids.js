@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `${baseUrl}get_knife_grid`, true);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
                 gridOptions.api.setRowData(responseData);
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `${baseUrl}get_sharpener_grid`, true);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
                 gridOptions.api.setRowData(responseData);
