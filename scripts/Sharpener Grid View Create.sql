@@ -6,7 +6,7 @@ CREATE VIEW IF NOT EXISTS view_sharpener_grid AS
 		sh.name AS sharpener,
 		br.name AS brand,
 		ca.name AS cutting_agent,
-		ba.name AS bonding_agent_id,
+		ba.name AS bonding_agent,
 		CAST(
 		(CASE 
 			WHEN 
@@ -39,10 +39,14 @@ CREATE VIEW IF NOT EXISTS view_sharpener_grid AS
 				' ' || uom.name
 			ELSE ''
 		END) AS TEXT) as "width",
-		ba.is_friable
+		c.name AS country,
+		ba.is_friable,
+		sh.is_active,
+		sh.user_id
 	FROM stabby_web_sharpener sh
 	LEFT JOIN stabby_web_brand br on br.brand_id = sh.brand_id
 	LEFT JOIN stabby_web_cuttingagent ca on ca.cutting_agent_id = sh.cutting_agent_id 
 	LEFT JOIN stabby_web_bondingagent ba on ba.bonding_agent_id = sh.bonding_agent_id
 	LEFT JOIN stabby_web_lubricant lu on lu.lubricant_id = sh.lubricant_id
 	LEFT JOIN stabby_web_unitofmeasure uom on uom.uom_id = sh.uom_id
+	LEFT JOIN stabby_web_country c on c.country_id = sh.country_id
