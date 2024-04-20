@@ -24,5 +24,8 @@ urlpatterns = [
     path("", views.index, name="knives"),
     path("sharpeners/", views.sharpeners, name="sharpeners"),
     path("api/get_knife_grid/", views.get_knife_grid, name="get_knife_grid"),
+    path(
+        "api/get_sharpener_grid/", views.get_sharpener_grid, name="get_sharpener_grid"
+    ),
     path("admin/", admin.site.urls),
 ]

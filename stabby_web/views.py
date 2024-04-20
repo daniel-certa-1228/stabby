@@ -22,3 +22,9 @@ def get_knife_grid(request):
     data = DbService.get_knife_grid()
 
     return JsonResponse(data, safe=False)
+
+
+def get_sharpener_grid(request):
+    data = DbService.get_sharpener_grid()
+
+    return JsonResponse(data, safe=False)
