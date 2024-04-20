@@ -2,7 +2,10 @@
 {% extends "stabby_web/_base.html" %}
 
 {% block main%}
-    <div class="center pt-4 pb-4">
-        <div id="grid" class="ag-theme-alpine" style="width: 95%; height: 550px; display: inline-block"></div>
+    <div class="d-flex flex-row justify-content-between">
+        <h2 class="inline-block">Sharpeners</h2>
+        <button type="button" class="btn btn-primary btn-sm align-self-center">New</button>
     </div>
+
+    <div id="grid" class="ag-theme-alpine mt-2"></div>
 {% endblock %}
