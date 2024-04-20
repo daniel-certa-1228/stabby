@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         };
 
-        new agGrid.Grid(gridDiv, gridOptions);
+        const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `${baseUrl}get_knife_grid`, true);
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
-                gridOptions.api.setRowData(responseData);
+                gridApi.setGridOption('rowData', responseData);
             }
         };
         xhr.send();
@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         };
 
-        new agGrid.Grid(gridDiv, gridOptions);
+        const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `${baseUrl}get_sharpener_grid`, true);
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
-                gridOptions.api.setRowData(responseData);
+                gridApi.setGridOption('rowData', responseData);
             }
         };
         xhr.send();
