@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const baseUrl = "http://127.0.0.1:8000/";
+
     if (window.location.pathname === '/') {
         const gridDiv = document.querySelector('#grid');
 
@@ -26,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
         new agGrid.Grid(gridDiv, gridOptions);
 
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://127.0.0.1:8000/api/get_knife_grid/', true);
+        xhr.open('GET', `${baseUrl}api/get_knife_grid`, true);
+        debugger;
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);

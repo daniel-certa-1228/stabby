@@ -5,6 +5,7 @@ from .services import DbService
 from . import enums
 
 
+# MVT Requests
 def index(request):
     queryset = ViewKnifeGrid.objects.filter(is_active=1).order_by("brand", "knife")
 
@@ -19,6 +20,7 @@ def sharpeners(request):
     return render(request, "stabby_web/sharpeners.html", context)
 
 
+# JSON Requests
 def get_knife_grid(request):
     data = DbService.get_knife_grid()
 
