@@ -1,0 +1,24 @@
+{
+  "name": "stabby",
+  "version": "1.0.0",
+  "description": "CRUD App for Knife Collectors",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --watch --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-certa-1228/stabby.git"
+  },
+  "author": "Dan Certa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daniel-certa-1228/stabby/issues"
+  },
+  "homepage": "https://github.com/daniel-certa-1228/stabby#readme",
+  "devDependencies": {
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
