@@ -7,6 +7,25 @@
         <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</button>
     </div>
 
-    {{ knife.name}} - {{ knife.brand }}
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                  Details
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3 text-right">col1</dt>
+                        <dd class="col-sm-9 text-left">col2</dd>
+                    </dl>
+                </div>
+                {% comment %} <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{ knife.name}} - {{ knife.brand }}</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul> {% endcomment %}
+              </div>
+        </div>
+    </div>
 
 {% endblock %}
