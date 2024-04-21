@@ -11,7 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 cellStyle: {textAlign: 'left'}
               },
             columnDefs: [
-                { headerName: 'Id', field: 'knife_id', width: 70, pinned: 'left', cellStyle: {textAlign: 'center'} },
+                { 
+                    headerName: '', 
+                    width: 70, 
+                    pinned: 'left', 
+                    cellStyle: {textAlign: 'center'}, 
+                    cellRenderer: (params) => {
+                        return `<button onclick="redirectToKnifeDetailPage(${params.data.knife_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-magnifying-glass"></i></button>`;
+                    }, 
+                },
                 { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
                 { headerName: 'Knife', field: 'knife', width: 350, pinned: 'left' }, 
                 { headerName: '# of Blades', field: 'num_of_blades', width: 120, cellStyle: {textAlign: 'right'} },
@@ -36,6 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         xhr.send();
+
+        redirectToKnifeDetailPage = (knife_id) => {
+            console.log('knife_id: ' + knife_id)
+            // window.location.href = "{% url 'detail_page' %}?id=" + selectedRowId; 
+        }
     }
     // sharpener grid
     if (window.location.pathname === '/sharpeners/') {
@@ -47,7 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 cellStyle: {textAlign: 'left'}
               },
             columnDefs: [
-                { headerName: 'Id', field: 'sharpener_id', width: 70, pinned: 'left', cellStyle: {textAlign: 'center'} },
+                { 
+                    headerName: '', 
+                    width: 70, 
+                    pinned: 'left', 
+                    cellStyle: {textAlign: 'center'}, 
+                    cellRenderer: (params) => {
+                        return `<button onclick="redirectToSharpenerDetailPage(${params.data.sharpener_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-magnifying-glass"></i></button>`;
+                    }, 
+                },
                 { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
                 { headerName: 'Sharpener', field: 'sharpener', width: 350, pinned: 'left' }, 
                 { headerName: 'Cutting Agent', field: 'cutting_agent', width: 160 },
@@ -70,5 +91,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         xhr.send();
+
+        redirectToSharpenerDetailPage = (sharpener_id) => {
+            console.log('sharpener_id: ' + sharpener_id)
+            // window.location.href = "{% url 'detail_page' %}?id=" + selectedRowId; 
+        }
     }
 });
