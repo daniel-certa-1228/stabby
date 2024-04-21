@@ -11,10 +11,26 @@ def index(request):
     return render(request, "stabby_web/index.html", context)
 
 
+def knife_detail(request, knife_id):
+    knife = DbService.get_knife_detail(knife_id)
+
+    context = {"active": enums.Module.Knives.value, "knife": knife}
+
+    return render(request, "stabby_web/knife-detail.html", context)
+
+
 def sharpeners(request):
     context = {"active": enums.Module.Sharpeners.value}
 
     return render(request, "stabby_web/sharpeners.html", context)
+
+
+def sharpener_detail(request, sharpener_id):
+    sharpener = DbService.get_sharpener_detail(sharpener_id)
+
+    context = {"active": enums.Module.Sharpeners.value, "sharpener": sharpener}
+
+    return render(request, "stabby_web/sharpener-detail.html", context)
 
 
 # JSON Requests
@@ -28,10 +44,3 @@ def get_sharpener_grid(request):
     data = DbService.get_sharpener_grid()
 
     return JsonResponse(data, safe=False)
-
-
-# # FOR TESTING
-# def get_knife_detail(request, knife_id):
-#     data = DbService.get_knife_detail(knife_id)
-
-#     return JsonResponse(data, safe=False)

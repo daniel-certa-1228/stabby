@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.send();
 
         redirectToKnifeDetailPage = (knife_id) => {
-            console.log('knife_id: ' + knife_id)
-            // window.location.href = "{% url 'detail_page' %}?id=" + selectedRowId; 
+            window.location.href = "knives/detail/" + knife_id; 
         }
     }
     // sharpener grid
@@ -93,8 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.send();
 
         redirectToSharpenerDetailPage = (sharpener_id) => {
-            console.log('sharpener_id: ' + sharpener_id)
-            // window.location.href = "{% url 'detail_page' %}?id=" + selectedRowId; 
+            window.location.href = "detail/" + sharpener_id; 
         }
     }
 });

@@ -23,14 +23,15 @@ app_name = "stabby_web"
 urlpatterns = [
     path("", views.index, name="knives"),
     path("sharpeners/", views.sharpeners, name="sharpeners"),
+    path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
+    path(
+        "sharpeners/detail/<int:sharpener_id>/",
+        views.sharpener_detail,
+        name="sharpener_detail",
+    ),
     path("api/get_knife_grid/", views.get_knife_grid, name="get_knife_grid"),
     path(
         "api/get_sharpener_grid/", views.get_sharpener_grid, name="get_sharpener_grid"
     ),
-    # path(
-    #     "api/get_knife_detail/<int:knife_id>",
-    #     views.get_knife_detail,
-    #     name="get_knife_detail",
-    # ),
     path("admin/", admin.site.urls),
 ]
