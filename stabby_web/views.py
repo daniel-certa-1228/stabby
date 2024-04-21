@@ -28,3 +28,10 @@ def get_sharpener_grid(request):
     data = DbService.get_sharpener_grid()
 
     return JsonResponse(data, safe=False)
+
+
+# # FOR TESTING
+# def get_knife_detail(request, knife_id):
+#     data = DbService.get_knife_detail(knife_id)
+
+#     return JsonResponse(data, safe=False)
