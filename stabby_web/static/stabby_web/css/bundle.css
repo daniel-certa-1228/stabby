@@ -1,0 +1,15 @@
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/styles/styles.css ***!
+  \****************************************************************************/
+.center {
+    text-align: center;
+}
+
+.new-btn {
+    padding-right: 13px;
+}
+
+#grid {
+    height: 600px;
+}
+
