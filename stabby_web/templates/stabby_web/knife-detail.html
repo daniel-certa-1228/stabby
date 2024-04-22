@@ -3,7 +3,7 @@
 {% block main%}
 
     <div class="d-flex flex-row justify-content-between">
-        <h2 class="inline-block">Knife - Detail</h2>
+        <h3 class="inline-block">Knife - Details</h3>
         <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</button>
     </div>
 
@@ -15,10 +15,30 @@
                 </div>
                 <div class="card-body">
                     <dl class="row">
-                        <dt class="col-sm-3 text-right">Brand</dt>
-                        <dd class="col-sm-9 text-left">{{ knife.brand }}</dd>
-                        <dt class="col-sm-3 text-right">Knife</dt>
-                        <dd class="col-sm-9 text-left">{{ knife.name }}</dd>
+                        <dt class="col-sm-4 text-end">Brand:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.brand }}</dd>
+                        <dt class="col-sm-4 text-end">Knife:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.name }}</dd>
+                        <dt class="col-sm-4 text-end">Knife Type:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.knife_type }}</dd>
+                        <dt class="col-sm-4 text-end">Lock Type:</dt>
+                        <dd class="col-sm-8 text-left">{% if knfife.lock_type %}{{ knife.lock_type }}{% else %}<span class="text-body-tertiary">n/a{% endif %}</dd>
+                        <dt class="col-sm-4 text-end">Deployment Type:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.deployment_type }}</dd>
+                        <dt class="col-sm-4 text-end">Blade Material:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.blade_material }}</dd>
+                        <dt class="col-sm-4 text-end">Handle Material:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.handle_material }}</dd>
+                        <dt class="col-sm-4 text-end">Country:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.country }}</dd>
+                        <dt class="col-sm-4 text-end">Year Manufactured:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.year_of_manufacture }}</dd>
+                        <dt class="col-sm-4 text-end">Vendor:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.vendor }}</dd>
+                        <dt class="col-sm-4 text-end">Year Purchased:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.year_of_purchase }}</dd>
+                        <dt class="col-sm-4 text-end">Notes:</dt>
+                        <dd class="col-sm-8 text-left">{{ knife.notes }}</dd>
                     </dl>
                 </div>
                 {% comment %} <ul class="list-group list-group-flush">
