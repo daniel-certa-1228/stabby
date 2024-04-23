@@ -22,13 +22,27 @@
                         <dt class="col-sm-4 text-end">Knife Type:</dt>
                         <dd class="col-sm-8 text-left">{{ knife.knife_type }}</dd>
                         <dt class="col-sm-4 text-end">Lock Type:</dt>
-                        <dd class="col-sm-8 text-left">{% if knfife.lock_type %}{{ knife.lock_type }}{% else %}<span class="text-body-tertiary">n/a{% endif %}</dd>
+                        <dd class="col-sm-8 text-left">
+                            {% if knfife.lock_type %}
+                                {{ knife.lock_type }}
+                            {% else %}
+                                <span class="text-body-tertiary">n/a
+                            {% endif %}
+                        </dd>
                         <dt class="col-sm-4 text-end">Deployment Type:</dt>
                         <dd class="col-sm-8 text-left">{{ knife.deployment_type }}</dd>
                         <dt class="col-sm-4 text-end">Blade Material:</dt>
                         <dd class="col-sm-8 text-left">{{ knife.blade_material }}</dd>
                         <dt class="col-sm-4 text-end">Handle Material:</dt>
                         <dd class="col-sm-8 text-left">{{ knife.handle_material }}</dd>
+                        <dt class="col-sm-4 text-end">Closed Length:</dt>
+                        <dd class="col-sm-8 text-left">
+                            {% if knife.closed_length %}
+                                {{ knife.closed_length }}&nbsp;{% if knife.uom %}{{ knife.uom }}{% endif %}
+                            {% else %}
+                                <span class="text-body-tertiary">n/a
+                            {% endif %}
+                        </dd>
                         <dt class="col-sm-4 text-end">Country:</dt>
                         <dd class="col-sm-8 text-left">{{ knife.country }}</dd>
                         <dt class="col-sm-4 text-end">Year Manufactured:</dt>
@@ -41,12 +55,17 @@
                         <dd class="col-sm-8 text-left">{{ knife.notes }}</dd>
                     </dl>
                 </div>
-                {% comment %} <ul class="list-group list-group-flush">
-                  <li class="list-group-item">{{ knife.name}} - {{ knife.brand }}</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul> {% endcomment %}
-              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                  Blade(s)
+                </div>
+                <div class="card-body">
+                    card body
+                </div>
+            </div>
         </div>
     </div>
 
