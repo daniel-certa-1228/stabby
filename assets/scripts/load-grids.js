@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const baseUrl = "http://127.0.0.1:8000/api/";
+    const location = removeIdFromUrl(window.location.pathname);
+    // debugger;
     // knife grid
-    if (window.location.pathname === '/') {
+    if (location[0] === '/') {
         const gridDiv = document.querySelector('#grid');
 
         const gridOptions = {
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     // sharpener grid
-    if (window.location.pathname === '/sharpeners/') {
+    if (location[0] === '/sharpeners/') {
         const gridDiv = document.querySelector('#grid');
 
         const gridOptions = {
@@ -95,4 +97,33 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = "detail/" + sharpener_id; 
         }
     }
+    // knife detail
+    if (location[0] === '/knives/detail/') {
+        const rawId = parseInt(location[1]);
+        const knife_id = !isNaN(rawId) ? rawId : -1;
+
+        debugger;
+    }
+    // sharpener detail
+    if (location[0] === '/sharpeners/detail/') {
+        const rawId = parseInt(location[1]);
+        const sharpener_id = !isNaN(rawId) ? rawId : -1;
+
+        debugger;
+    }
 });
+
+removeIdFromUrl = (url) => {
+    const regex = /(\d+)\/$/;
+
+    const match = url.match(regex);
+
+    if (match) {
+        const extractedNumber = match[1];
+        const modifiedString = url.replace(regex, '');
+
+        return [modifiedString, extractedNumber];
+    } else {
+        return [url, null];
+    }
+}
