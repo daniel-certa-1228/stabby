@@ -289,15 +289,15 @@ class Knife(models.Model):
     edit_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def number_of_blades(self):
+        return self.blade_set.count()
+
     class Meta:
         verbose_name = "knife"
         verbose_name_plural = "knives"
 
     def __str__(self):
         return self.name
-
-    def number_of_blades(self):
-        return self.blades.count()
 
 
 class Blade(models.Model):

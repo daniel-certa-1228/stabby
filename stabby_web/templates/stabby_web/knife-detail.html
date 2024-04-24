@@ -33,22 +33,6 @@
                                 <span class="text-body-tertiary">n/a
                             {% endif %}
                         </dd>
-                        <dt class="col-sm-4 text-end">Lock Type:</dt>
-                        <dd class="col-sm-8 text-start">
-                            {% if knife.lock_type %}
-                                {{ knife.lock_type }}
-                            {% else %}
-                                <span class="text-body-tertiary">n/a
-                            {% endif %}
-                        </dd>
-                        <dt class="col-sm-4 text-end">Deployment Type:</dt>
-                        <dd class="col-sm-8 text-start">
-                            {% if knife.deployment_type %}
-                                {{ knife.deployment_type }}
-                            {% else %}
-                                <span class="text-body-tertiary">n/a
-                            {% endif %}
-                        </dd>
                         <dt class="col-sm-4 text-end">Blade Material:</dt>
                         <dd class="col-sm-8 text-start">
                             {% if knife.blade_material %}
@@ -61,6 +45,24 @@
                         <dd class="col-sm-8 text-start">
                             {% if knife.handle_material %}
                                 {{ knife.handle_material }}
+                            {% else %}
+                                <span class="text-body-tertiary">n/a
+                            {% endif %}
+                        </dd>
+                        <dt class="col-sm-4 text-end">Lock Type:</dt>
+                        <dd class="col-sm-8 text-start">
+                            {% if knife.lock_type %}
+                                {{ knife.lock_type }}
+                            {% else %}
+                                <span class="text-body-tertiary">n/a
+                            {% endif %}
+                        </dd>
+                        <dt class="col-sm-4 text-end"># of Blades:</dt>
+                        <dd class="col-sm-8 text-start">{{ number_of_blades }}</dd>
+                        <dt class="col-sm-4 text-end">Deployment Type:</dt>
+                        <dd class="col-sm-8 text-start">
+                            {% if knife.deployment_type %}
+                                {{ knife.deployment_type }}
                             {% else %}
                                 <span class="text-body-tertiary">n/a
                             {% endif %}
@@ -119,14 +121,36 @@
         </div>
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                   Blade(s)
+                  <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</button>
                 </div>
                 <div class="card-body p-0">
                     <div id="blade_grid" class="ag-theme-alpine"></div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header d-flex justify-content-between">
+                  Photo(s)
+                  <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</button>
+                </div>
+                <div class="card-body">
+                    <h2>This will be photos.</h2>
+                </div>
+            </div>
         </div>
     </div>
-
+    <div class="row mt-4 mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                  Work Log
+                  <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</button>
+                </div>
+                <div class="card-body">
+                    <h2>This will be Work Logs.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

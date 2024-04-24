@@ -14,7 +14,13 @@ def index(request):
 def knife_detail(request, knife_id):
     knife = DbService.get_knife_detail(knife_id)
 
-    context = {"active": enums.Module.Knives.value, "knife": knife}
+    number_of_blades = knife.number_of_blades()
+
+    context = {
+        "active": enums.Module.Knives.value,
+        "knife": knife,
+        "number_of_blades": number_of_blades,
+    }
 
     return render(request, "stabby_web/knife-detail.html", context)
 
