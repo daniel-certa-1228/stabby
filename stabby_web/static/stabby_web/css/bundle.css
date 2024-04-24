@@ -17,7 +17,15 @@
     height: 200px;
 }
 
+#wl_grid {
+    height: 300px;
+}
+
 /* specifically targets small grids in cards */
 #blade_grid.ag-theme-alpine .ag-root-wrapper {
+    border: none;
+}
+
+#wl_grid.ag-theme-alpine .ag-root-wrapper {
     border: none;
 }

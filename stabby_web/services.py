@@ -4,6 +4,7 @@ from .models import (
     ViewSharpenerGrid,
     Knife,
     ViewBladeGrid,
+    WorkLog,
 )
 
 
@@ -35,6 +36,14 @@ class DbService:
     def get_sharpener_grid(self):
         queryset = ViewSharpenerGrid.objects.filter(is_active=1).order_by(
             "brand", "sharpener", "cutting_agent"
+        )
+
+        return list(queryset.values())
+
+    @classmethod
+    def get_work_log_grid(self, knife_id):
+        queryset = WorkLog.objects.filter(is_active=1, knife_id=knife_id).order_by(
+            "-date"
         )
 
         return list(queryset.values())

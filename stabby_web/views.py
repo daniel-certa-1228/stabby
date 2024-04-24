@@ -56,3 +56,9 @@ def get_sharpener_grid(request):
     data = DbService.get_sharpener_grid()
 
     return JsonResponse(data, safe=False)
+
+
+def get_work_log_grid(request, knife_id):
+    data = DbService.get_work_log_grid(knife_id)
+
+    return JsonResponse(data, safe=False)
