@@ -1,5 +1,4 @@
 from .models import (
-    Blade,
     Sharpener,
     ViewKnifeGrid,
     ViewSharpenerGrid,
