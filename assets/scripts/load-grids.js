@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gridDiv = document.querySelector('#blade_grid');
 
         const gridOptions = {
+            headerHeight: 35,
             defaultColDef: {
                 cellStyle: {textAlign: 'left'}
               },
