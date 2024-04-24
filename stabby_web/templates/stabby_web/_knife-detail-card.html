@@ -1,0 +1,109 @@
+<div class="card">
+    <div class="card-header">
+      Details
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-4 text-end">Brand:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.brand %}
+                    {{ knife.brand }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Knife:</dt>
+            <dd class="col-sm-8 text-start">{{ knife.name }}</dd>
+            <dt class="col-sm-4 text-end">Knife Type:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.knife_type %}
+                    {{ knife.knife_type }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Blade Material:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.blade_material %}
+                    {{ knife.blade_material }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Handle Material:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.handle_material %}
+                    {{ knife.handle_material }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Lock Type:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.lock_type %}
+                    {{ knife.lock_type }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end"># of Blades:</dt>
+            <dd class="col-sm-8 text-start">{{ number_of_blades }}</dd>
+            <dt class="col-sm-4 text-end">Deployment Type:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.deployment_type %}
+                    {{ knife.deployment_type }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Closed Length:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.closed_length %}
+                    {{ knife.closed_length }}&nbsp;{% if knife.uom %}{{ knife.uom }}{% endif %}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Country:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.country %}
+                    {{ knife.country }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Year Manufactured:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.year_of_manufacture %}
+                    {{ knife.year_of_manufacture }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Vendor:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.vendor %}
+                    {{ knife.vendor }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Year Purchased:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.year_of_purchase %}
+                    {{ knife.year_of_purchase }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+            <dt class="col-sm-4 text-end">Notes:</dt>
+            <dd class="col-sm-8 text-start">
+                {% if knife.notes %}
+                    {{ knife.notes }}
+                {% else %}
+                    <span class="text-body-tertiary">n/a
+                {% endif %}
+            </dd>
+        </dl>
+    </div>
+</div>
