@@ -100,19 +100,47 @@ document.addEventListener('DOMContentLoaded', function() {
     if (location[0] === '/knives/detail/') {
         const rawId = parseInt(location[1]);
         const knife_id = !isNaN(rawId) ? rawId : -1;
-        
+
+        const gridDiv = document.querySelector('#blade_grid');
+
+        const gridOptions = {
+            defaultColDef: {
+                cellStyle: {textAlign: 'left'}
+              },
+            columnDefs: [
+                { 
+                    headerName: '', 
+                    width: 70, 
+                    cellStyle: {textAlign: 'center'}, 
+                    cellRenderer: (params) => {
+                        return `<button onclick="redirectToBladeEditPage(${params.data.blade_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
+                    }, 
+                },
+                { headerName: 'Shape', field: 'blade_shape', width: 150},
+                { headerName: 'Length', field: 'length', width: 100 },
+                { headerName: 'Edge Length', field: 'length_cutting_edge', width: 120 },
+                { headerName: 'Half-Stop', field: 'has_half_stop', width: 100},
+                { headerName: 'Main', field: 'is_main_blade', width: 100},
+            ]
+        };
+
+        const gridApi = agGrid.createGrid(gridDiv, gridOptions);
+
         let xhr = new XMLHttpRequest();
-
         xhr.open('GET', `${baseUrl}get_blade_grid/${knife_id}`, true);
-
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
                 debugger;
-                // gridApi.setGridOption('rowData', responseData);
+                gridApi.setGridOption('rowData', responseData);
             }
         };
         xhr.send();
+
+        redirectToBladeEditPage = (blade_id) => {
+            // window.location.href = "detail/" + sharpener_id; 
+            console.log(blade_id)
+        }
     }
     // sharpener detail
     if (location[0] === '/sharpeners/detail/') {

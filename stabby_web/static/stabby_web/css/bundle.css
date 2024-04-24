@@ -13,3 +13,11 @@
     height: 600px;
 }
 
+#blade_grid {
+    height: 200px;
+}
+
+/* specifically targets small grids in cards */
+#blade_grid.ag-theme-alpine .ag-root-wrapper {
+    border: none;
+}
