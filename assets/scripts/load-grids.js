@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const baseUrl = "http://127.0.0.1:8000/api/";
     const location = removeIdFromUrl(window.location.pathname);
-    // debugger;
     // knife grid
     if (location[0] === '/') {
         const gridDiv = document.querySelector('#grid');
@@ -101,8 +100,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (location[0] === '/knives/detail/') {
         const rawId = parseInt(location[1]);
         const knife_id = !isNaN(rawId) ? rawId : -1;
+        
+        let xhr = new XMLHttpRequest();
 
-        debugger;
+        xhr.open('GET', `${baseUrl}get_blade_grid/${knife_id}`, true);
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var responseData = JSON.parse(xhr.responseText);
+                debugger;
+                // gridApi.setGridOption('rowData', responseData);
+            }
+        };
+        xhr.send();
     }
     // sharpener detail
     if (location[0] === '/sharpeners/detail/') {

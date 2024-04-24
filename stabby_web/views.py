@@ -34,6 +34,12 @@ def sharpener_detail(request, sharpener_id):
 
 
 # JSON Requests
+def get_blade_grid(request, knife_id):
+    data = DbService.get_blade_grid(knife_id)
+
+    return JsonResponse(data, safe=False)
+
+
 def get_knife_grid(request):
     data = DbService.get_knife_grid()
 

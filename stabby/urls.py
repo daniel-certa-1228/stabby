@@ -29,6 +29,11 @@ urlpatterns = [
         views.sharpener_detail,
         name="sharpener_detail",
     ),
+    path(
+        "api/get_blade_grid/<int:knife_id>/",
+        views.get_blade_grid,
+        name="get_blade_grid",
+    ),
     path("api/get_knife_grid/", views.get_knife_grid, name="get_knife_grid"),
     path(
         "api/get_sharpener_grid/", views.get_sharpener_grid, name="get_sharpener_grid"
