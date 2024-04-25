@@ -141,24 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // work log grid
         const gridDiv_wl = document.querySelector('#wl_grid');
 
-        const gridOptions_wl = {
-            headerHeight: 35,
-            defaultColDef: {
-                cellStyle: {textAlign: 'left'}
-              },
-            columnDefs: [
-                { 
-                    headerName: '', 
-                    width: 70, 
-                    cellStyle: {textAlign: 'center'}, 
-                    cellRenderer: (params) => {
-                        return `<button onclick="redirectToWorkLogEditPage(${params.data.work_log_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
-                    }, 
-                },
-                { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
-                { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true }
-            ]
-        };
+        const gridOptions_wl = returnWorkLogGridOptions();
 
         const gridApi_wl = agGrid.createGrid(gridDiv_wl, gridOptions_wl);
 
@@ -181,21 +164,40 @@ document.addEventListener('DOMContentLoaded', function() {
             // window.location.href = "detail/" + sharpener_id; 
             console.log(blade_id)
         }
-
-        redirectToWorkLogEditPage = (work_log_id) => {
-            // window.location.href = "detail/" + sharpener_id; 
-            console.log(work_log_id)
-        }
-
     }
     // sharpener detail
     if (location[0] === '/sharpeners/detail/') {
         const rawId = parseInt(location[1]);
         const sharpener_id = !isNaN(rawId) ? rawId : -1;
 
-        debugger;
+        // work log grid
+        const gridDiv_wl = document.querySelector('#wl_grid');
+
+        const gridOptions_wl = returnWorkLogGridOptions();
+
+        const gridApi_wl = agGrid.createGrid(gridDiv_wl, gridOptions_wl);
+
+        let xhr_wl = new XMLHttpRequest();
+        xhr_wl.open('GET', `${baseUrl}get_work_log_grid/${sharpener_id}`, true);
+        xhr_wl.onreadystatechange = () => {
+            if (xhr_wl.readyState === 4 && xhr_wl.status === 200) {
+                var responseData = JSON.parse(xhr_wl.responseText);
+
+                responseData.forEach(d => {
+                    d.date = d.date ? new Date(d.date) : null;
+                });
+
+                gridApi_wl.setGridOption('rowData', responseData);
+            }
+        };
+        xhr_wl.send();
     }
 });
+
+redirectToWorkLogEditPage = (work_log_id) => {
+    // window.location.href = "detail/" + sharpener_id; 
+    console.log(work_log_id)
+}
 
 removeIdFromUrl = (url) => {
     const regex = /(\d+)\/$/;
@@ -210,4 +212,25 @@ removeIdFromUrl = (url) => {
     } else {
         return [url, null];
     }
+}
+
+returnWorkLogGridOptions = () => {
+    return {
+        headerHeight: 35,
+        defaultColDef: {
+            cellStyle: {textAlign: 'left'}
+          },
+        columnDefs: [
+            { 
+                headerName: '', 
+                width: 70, 
+                cellStyle: {textAlign: 'center'}, 
+                cellRenderer: (params) => {
+                    return `<button onclick="redirectToWorkLogEditPage(${params.data.work_log_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
+                }, 
+            },
+            { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
+            { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true }
+        ]
+    };
 }
