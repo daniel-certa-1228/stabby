@@ -39,9 +39,14 @@ urlpatterns = [
         "api/get_sharpener_grid/", views.get_sharpener_grid, name="get_sharpener_grid"
     ),
     path(
-        "api/get_work_log_grid/<int:knife_id>/",
-        views.get_work_log_grid,
-        name="get_work_log_grid",
+        "api/get_knife_work_log_grid/<int:knife_id>/",
+        views.get_knife_work_log_grid,
+        name="get_knife_work_log_grid",
+    ),
+    path(
+        "api/get_sharpener_work_log_grid/<int:sharpener_id>/",
+        views.get_sharpener_work_log_grid,
+        name="get_sharpener_work_log_grid",
     ),
     path("admin/", admin.site.urls),
 ]
