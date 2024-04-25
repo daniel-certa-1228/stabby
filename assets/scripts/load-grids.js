@@ -176,13 +176,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const gridOptions_wl = returnWorkLogGridOptions();
 
         const gridApi_wl = agGrid.createGrid(gridDiv_wl, gridOptions_wl);
-debugger;
+
         let xhr_wl = new XMLHttpRequest();
         xhr_wl.open('GET', `${baseUrl}get_sharpener_work_log_grid/${sharpener_id}`, true);
         xhr_wl.onreadystatechange = () => {
             if (xhr_wl.readyState === 4 && xhr_wl.status === 200) {
                 var responseData = JSON.parse(xhr_wl.responseText);
-                debugger;
+  
                 responseData.forEach(d => {
                     d.date = d.date ? new Date(d.date) : null;
                 });
