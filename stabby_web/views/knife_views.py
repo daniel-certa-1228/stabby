@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from ..services import DbService
+from ..services import KnifeService
 from django.shortcuts import render
 from ..enums import Module
 
@@ -12,7 +12,7 @@ def index(request):
 
 
 def knife_detail(request, knife_id):
-    knife = DbService.get_knife_detail(knife_id)
+    knife = KnifeService.get_knife_detail(knife_id)
 
     number_of_blades = knife.number_of_blades()
 
@@ -27,6 +27,6 @@ def knife_detail(request, knife_id):
 
 # JSON VIEWS
 def get_knife_grid(request):
-    data = DbService.get_knife_grid()
+    data = KnifeService.get_knife_grid()
 
     return JsonResponse(data, safe=False)

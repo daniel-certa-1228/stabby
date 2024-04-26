@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from ..services import DbService
+from ..services import SharpenerService
 from django.shortcuts import render
 from ..enums import Module
 
@@ -12,7 +12,7 @@ def sharpeners(request):
 
 
 def sharpener_detail(request, sharpener_id):
-    sharpener = DbService.get_sharpener_detail(sharpener_id)
+    sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
     context = {"active": Module.Sharpeners.value, "sharpener": sharpener}
 
@@ -21,6 +21,6 @@ def sharpener_detail(request, sharpener_id):
 
 # JSON VIEWS
 def get_sharpener_grid(request):
-    data = DbService.get_sharpener_grid()
+    data = SharpenerService.get_sharpener_grid()
 
     return JsonResponse(data, safe=False)
