@@ -15,3 +15,7 @@ class KnifeService:
         queryset = ViewKnifeGrid.objects.filter(is_active=1).order_by("brand", "knife")
 
         return list(queryset.values())
+
+    @classmethod
+    def save_knife(self, knife):
+        return Knife.save()

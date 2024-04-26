@@ -24,6 +24,8 @@ urlpatterns = [
     path("", views.index, name="knives"),
     path("sharpeners/", views.sharpeners, name="sharpeners"),
     path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
+    path("knives/add", views.knife_create, name="knife_create"),
+    path("knives/edit/<int:knife_id>/", views.knife_update, name="knife_update"),
     path(
         "sharpeners/detail/<int:sharpener_id>/",
         views.sharpener_detail,

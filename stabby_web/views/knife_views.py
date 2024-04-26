@@ -1,7 +1,8 @@
 from django.http import JsonResponse
-from ..services import KnifeService
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from ..enums import Module, FormType
+from ..forms import KnifeForm
+from ..services import KnifeService
 
 
 # MVT VIEWS
@@ -11,16 +12,42 @@ def index(request):
     return render(request, "stabby_web/index.html", context)
 
 
-# def knife_create(request):
-#     context = {"form_type": FormType.Add}
+def knife_create(request):
+    if request.method == "POST":
+        form = KnifeForm(request.Post)
+        if form.is_valid():
+            knife = form.save(commit=False)
+            KnifeService.save_knife(knife)
+            return redirect("knife-detail", pk=knife.pk)
 
-#     return render(request, "stabby_web/knife-add-edit.html", context)
+    else:
+        form = KnifeForm()
+        context = {
+            "form": form,
+            "form_type": FormType.Add.value,
+            "active": Module.Knives.value,
+        }
+        return render(request, "stabby_web/knife-add-edit.html", context)
 
 
-# def knife_update(request, knife_id):
-#     context = {"form_type": FormType.Edit}
+def knife_update(request, knife_id):
+    knife = KnifeService.get_knife_detail(knife_id)
 
-#     return render(request, "stabby_web/knife-add-edit.html", context)
+    if request.method == "POST":
+        form = KnifeForm(request.Post)
+        if form.is_valid():
+            knife = form.save(commit=False)
+            KnifeService.save_knife(knife)
+            return redirect("knife-detail", pk=knife.pk)
+    else:
+        form = KnifeForm(instance=knife)
+        context = {
+            "form": form,
+            "form_type": FormType.Edit.value,
+            "active": Module.Knives.value,
+        }
+
+    return render(request, "stabby_web/knife-add-edit.html", context)
 
 
 def knife_detail(request, knife_id):
