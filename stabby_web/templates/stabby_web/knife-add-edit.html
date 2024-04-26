@@ -1,0 +1,11 @@
+{% extends "stabby_web/_base.html" %}
+
+{% block main%}
+
+    <div class="d-flex flex-row justify-content-between">
+        <h3 class="inline-block">Knife - {% if form_type == 'add' %}Add{% else %}Edit{% endif %}</h3>
+        {% comment %} <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</button> {% endcomment %}
+    </div>
+
+    <h1>This will be Knife Add/Edit</h1>
+{% endblock %}
