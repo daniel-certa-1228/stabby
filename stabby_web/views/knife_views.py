@@ -11,13 +11,13 @@ def index(request):
     return render(request, "stabby_web/index.html", context)
 
 
-# def add_knife(request):
+# def knife_create(request):
 #     context = {"form_type": FormType.Add}
 
 #     return render(request, "stabby_web/knife-add-edit.html", context)
 
 
-# def edit_knife(request, knife_id):
+# def knife_update(request, knife_id):
 #     context = {"form_type": FormType.Edit}
 
 #     return render(request, "stabby_web/knife-add-edit.html", context)
