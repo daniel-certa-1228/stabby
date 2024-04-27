@@ -1,6 +1,7 @@
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex justify-content-between">
       Details
+      <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_update' knife_id=knife.knife_id %}"><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</a>
     </div>
     <div class="card-body">
         <dl class="row">
@@ -104,6 +105,10 @@
                     <span class="text-body-tertiary">n/a
                 {% endif %}
             </dd>
+            <dt class="col-sm-4 text-end">Purchased New:</dt>
+            <dd class="col-sm-8 text-start">{% if knife.purchased_new == True %}<i class="fa-solid fa-circle-check text-success"></i>{% else %}<i class="fa-solid fa-circle-xmark text-body-tertiary"></i>{% endif %}</dd>
+            <dt class="col-sm-4 text-end">Needs Work:</dt>
+            <dd class="col-sm-8 text-start">{% if knife.needs_work == True %}<i class="fa-solid fa-circle-check text-success"></i>{% else %}<i class="fa-solid fa-circle-xmark text-body-tertiary"></i>{% endif %}</dd>
         </dl>
     </div>
 </div>
