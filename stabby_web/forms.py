@@ -64,6 +64,7 @@ class KnifeForm(forms.ModelForm):
         self.fields["knife_type_notes"].label = "Knife Type Notes"
         self.fields["lock_type"].label = "Lock Type"
         self.fields["lock_type"].empty_label = "Select Lock Type"
+        self.fields["lock_type_notes"].label = "Lock Type Notes"
         self.fields["name"].label = "Knife"
         self.fields["needs_work"].label = "Needs Work"
         self.fields["notes"].label = "General Notes"
