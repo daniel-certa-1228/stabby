@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from ..models import (
     ViewKnifeGrid,
     Knife,
@@ -8,7 +9,7 @@ class KnifeService:
 
     @classmethod
     def get_knife_detail(self, knife_id):
-        return Knife.objects.get(knife_id=knife_id)
+        return get_object_or_404(Knife, knife_id=knife_id)
 
     @classmethod
     def get_knife_grid(self):
@@ -18,4 +19,4 @@ class KnifeService:
 
     @classmethod
     def save_knife(self, knife):
-        return Knife.save()
+        return knife.save()

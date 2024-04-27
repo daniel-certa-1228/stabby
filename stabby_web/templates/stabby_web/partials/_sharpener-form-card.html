@@ -1,0 +1,68 @@
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+      Sharpener - {% if form_type == 'add' %}Add{% else %}Edit{% endif %}
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_brand" class="form-label">{{ form.brand.label }}</label>
+                        {{ form.brand }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_name" class="form-label">{{ form.name.label }}</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="id_length" class="form-label">{{ form.length.label }}</label>
+                            {{ form.length }}
+                        </div>
+                        <div class="col-6">
+                            <label for="id_width" class="form-label">{{ form.width.label }}</label>
+                            {{ form.width }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_uom" class="form-label">{{ form.uom.label }}</label>
+                        {{ form.uom }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_country" class="form-label">{{ form.country.label }}</label>
+                        {{ form.country }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_cutting_agent" class="form-label">{{ form.cutting_agent.label }}</label>
+                        {{ form.cutting_agent }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_bonding_agent" class="form-label">{{ form.bonding_agent.label }}</label>
+                        {{ form.bonding_agent }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_lubricant" class="form-label">{{ form.lubricant.label }}</label>
+                        {{ form.lubricant }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_year_of_purchase" class="form-label">{{ form.year_of_purchase.label }}</label>
+                        {{ form.year_of_purchase }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id_notes" class="form-label">{{ form.notes.label }}</label>
+                        {{ form.notes }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_brand_notes" class="form-label">{{ form.brand_notes.label }}</label>
+                        {{ form.brand_notes }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div> 

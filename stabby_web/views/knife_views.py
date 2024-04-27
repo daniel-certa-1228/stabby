@@ -1,9 +1,9 @@
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from ..enums import Module, FormType
-from ..forms import KnifeForm
-from ..services import KnifeService
+from stabby_web.enums import Module, FormType
+from stabby_web.forms import KnifeForm
+from stabby_web.services import KnifeService
 
 
 # MVT VIEWS
@@ -63,6 +63,7 @@ def knife_update(request, knife_id):
             "form": form,
             "form_type": FormType.Edit.value,
             "active": Module.Knives.value,
+            "knife_id": knife_id,
         }
 
     return render(request, "stabby_web/knife-add-edit.html", context)

@@ -17,3 +17,7 @@ class SharpenerService:
         )
 
         return list(queryset.values())
+
+    @classmethod
+    def save_sharpener(self, sharpener):
+        return sharpener.save()

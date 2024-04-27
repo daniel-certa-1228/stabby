@@ -6,7 +6,7 @@
         <h3 class="inline-block">Knife - {% if form_type == 'add' %}Add{% else %}Edit{% endif %}</h3>
         <span>
             <button type="button" class="btn btn-primary btn-sm align-self-center new-btn me-2"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
-            <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Cancel</button>
+            <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if form_type == 'add' %}{% url 'knives' %}{% else %}{% url 'knife_detail' knife_id=knife_id %}{% endif %}"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Cancel</a>
         </span>
     </div>
     <div class="row mt-2">
