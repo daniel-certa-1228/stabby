@@ -29,10 +29,13 @@ class KnifeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Add Bootstrap class to form fields
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control form-control-sm mb-2"
+            if isinstance(field.widget, forms.CheckboxInput):
+                field.widget.attrs["class"] = "form-check-input"
+            else:
+                field.widget.attrs["class"] = "form-control form-control-sm mb-2"
 
             if isinstance(field.widget, forms.Textarea):
-                field.widget.attrs["rows"] = 4
+                field.widget.attrs["rows"] = 3
 
         self.fields["blade_material"].queryset = DropdownService.get_blade_materials()
         self.fields["brand"].queryset = DropdownService.get_brands()
@@ -44,28 +47,32 @@ class KnifeForm(forms.ModelForm):
         self.fields["uom"].queryset = DropdownService.get_units_of_measure()
         self.fields["vendor"].queryset = DropdownService.get_vendors()
 
-        self.fields["name"].label = "Knife"
-        self.fields["brand"].empty_label = "Select Brand"
-
-        self.fields["knife_type"].label = "Knife Type"
-        self.fields["knife_type"].empty_label = "Select Knife Type"
-
         self.fields["blade_material"].label = "Blade Material"
+        self.fields["blade_material_notes"].label = "Blade Material Notes"
         self.fields["blade_material"].empty_label = "Select Blade Material"
-
-        self.fields["handle_material"].label = "Handle Material"
-        self.fields["handle_material"].empty_label = "Select Handle Material"
-
-        self.fields["lock_type"].label = "Lock Type"
-        self.fields["lock_type"].empty_label = "Select Lock Type"
-
+        self.fields["brand"].empty_label = "Select Brand"
+        self.fields["brand_notes"].label = "Brand Notes"
+        self.fields["closed_length"].label = "Closed Length"
+        self.fields["country"].empty_label = "Select Country"
         self.fields["deployment_type"].label = "Deployment Type"
         self.fields["deployment_type"].empty_label = "Select Deployment Type"
-
-        self.fields["closed_length"].label = "Closed Length"
-
+        self.fields["handle_material"].label = "Handle Material"
+        self.fields["handle_material"].empty_label = "Select Handle Material"
+        self.fields["handle_material_notes"].label = "Handle Material Notes"
+        self.fields["knife_type"].label = "Knife Type"
+        self.fields["knife_type"].empty_label = "Select Knife Type"
+        self.fields["knife_type_notes"].label = "Knife Type Notes"
+        self.fields["lock_type"].label = "Lock Type"
+        self.fields["lock_type"].empty_label = "Select Lock Type"
+        self.fields["name"].label = "Knife"
+        self.fields["needs_work"].label = "Needs Work"
+        self.fields["notes"].label = "General Notes"
+        self.fields["purchased_new"].label = "Purchased New"
         self.fields["uom"].label = "UOM"
         self.fields["uom"].empty_label = "Select UOM"
+        self.fields["year_of_manufacture"].label = "Year Manufactured"
+        self.fields["vendor"].empty_label = "Select Vendor"
+        self.fields["year_of_purchase"].label = "Year Purchased"
 
 
 class SharpenerForm(forms.ModelForm):

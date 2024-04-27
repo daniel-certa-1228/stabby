@@ -18,6 +18,7 @@ def knife_create(request):
         form = KnifeForm(request.Post)
         if form.is_valid():
             knife = form.save(commit=False)
+            knife.user = request.user
             KnifeService.save_knife(knife)
             messages.success(request, "Knife Successfully Created!")
             return redirect("knife-detail", pk=knife.pk)
@@ -39,7 +40,6 @@ def knife_update(request, knife_id):
         form = KnifeForm(request.Post)
         if form.is_valid():
             knife = form.save(commit=False)
-            knife.user = request.user
             KnifeService.save_knife(knife)
             messages.success(request, "Knife Successfully Updated!")
             return redirect("knife-detail", pk=knife.pk)
