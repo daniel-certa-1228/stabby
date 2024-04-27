@@ -13,6 +13,20 @@ def index(request):
     return render(request, "stabby_web/index.html", context)
 
 
+def knife_detail(request, knife_id):
+    knife = KnifeService.get_knife_detail(knife_id)
+
+    number_of_blades = knife.number_of_blades()
+
+    context = {
+        "active": Module.Knives.value,
+        "knife": knife,
+        "number_of_blades": number_of_blades,
+    }
+
+    return render(request, "stabby_web/knife-detail.html", context)
+
+
 def knife_create(request):
     if request.method == "POST":
         form = KnifeForm(request.Post)
@@ -52,20 +66,6 @@ def knife_update(request, knife_id):
         }
 
     return render(request, "stabby_web/knife-add-edit.html", context)
-
-
-def knife_detail(request, knife_id):
-    knife = KnifeService.get_knife_detail(knife_id)
-
-    number_of_blades = knife.number_of_blades()
-
-    context = {
-        "active": Module.Knives.value,
-        "knife": knife,
-        "number_of_blades": number_of_blades,
-    }
-
-    return render(request, "stabby_web/knife-detail.html", context)
 
 
 # JSON VIEWS
