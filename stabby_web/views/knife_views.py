@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from ..enums import Module, FormType
@@ -18,6 +19,7 @@ def knife_create(request):
         if form.is_valid():
             knife = form.save(commit=False)
             KnifeService.save_knife(knife)
+            messages.success(request, "Knife Successfully Created!")
             return redirect("knife-detail", pk=knife.pk)
 
     else:
@@ -38,6 +40,7 @@ def knife_update(request, knife_id):
         if form.is_valid():
             knife = form.save(commit=False)
             KnifeService.save_knife(knife)
+            messages.success(request, "Knife Successfully Updated!")
             return redirect("knife-detail", pk=knife.pk)
     else:
         form = KnifeForm(instance=knife)
