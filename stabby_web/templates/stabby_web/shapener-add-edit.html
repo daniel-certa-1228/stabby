@@ -1,0 +1,125 @@
+{% extends "stabby_web/_base.html" %}
+
+{% block main%}
+
+    <div class="d-flex flex-row justify-content-between">
+        <h3 class="inline-block">Sharpener - {% if form_type == 'add' %}Add{% else %}Edit{% endif %}</h3>
+        <span>
+            <button type="button" class="btn btn-primary btn-sm align-self-center new-btn me-2"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
+            <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Cancel</button>
+        </span>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                  Sharpener - {% if form_type == 'add' %}Add{% else %}Edit{% endif %}
+                </div>
+                {% comment %} <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="id_brand" class="form-label">{{ form.brand.label }}</label>
+                                    {{ form.brand }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_name" class="form-label">{{ form.name.label }}</label>
+                                    {{ form.name }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_knife_type" class="form-label">{{ form.knife_type.label }}</label>
+                                    {{ form.knife_type }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_blade_material" class="form-label">{{ form.blade_material.label }}</label>
+                                    {{ form.blade_material }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_handle_material" class="form-label">{{ form.handle_material.label }}</label>
+                                    {{ form.handle_material }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_lock_type" class="form-label">{{ form.lock_type.label }}</label>
+                                    {{ form.lock_type }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="id_deployment_type" class="form-label">{{ form.deployment_type.label }}</label>
+                                    {{ form.deployment_type }}
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                        <label for="id_closed_length" class="form-label">{{ form.closed_length.label }}</label>
+                                        {{ form.closed_length }}
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="id_uom" class="form-label">{{ form.uom.label }}</label>
+                                        {{ form.uom }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_country" class="form-label">{{ form.country.label }}</label>
+                                    {{ form.country }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_year_of_manufacture" class="form-label">{{ form.year_of_manufacture.label }}</label>
+                                    {{ form.year_of_manufacture }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_vendor" class="form-label">{{ form.vendor.label }}</label>
+                                    {{ form.vendor }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_year_of_purchase" class="form-label">{{ form.year_of_purchase.label }}</label>
+                                    {{ form.year_of_purchase }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="id_notes" class="form-label">{{ form.notes.label }}</label>
+                                    {{ form.notes }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_brand_notes" class="form-label">{{ form.brand_notes.label }}</label>
+                                    {{ form.brand_notes }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_knife_type_notes" class="form-label">{{ form.knife_type_notes.label }}</label>
+                                    {{ form.knife_type_notes }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_blade_material_notes" class="form-label">{{ form.blade_material_notes.label }}</label>
+                                    {{ form.blade_material_notes }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="id_handle_material_notes" class="form-label">{{ form.handle_material_notes.label }}</label>
+                                    {{ form.handle_material_notes }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_lock_type_notes" class="form-label">{{ form.lock_type_notes.label }}</label>
+                                    {{ form.lock_type_notes }}
+                                </div>
+                                <div class="form-group row form-check form-switch">
+                                    <div class="col-6">
+                                        {{ form.purchased_new }}
+                                        <label for="id_purchased_new" class="form-label">{{ form.purchased_new.label }}</label>
+                                    </div>
+                                    <div class="col-6">
+                                        {{ form.needs_work }}
+                                        <label for="id_needs_work" class="form-label">{{ form.needs_work.label }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+
+{% endblock %}
