@@ -1,5 +1,6 @@
 from django import forms
 from .models import Blade, Knife, Sharpener, WorkLog
+from .services import DropdownService
 
 
 class BladeForm(forms.ModelForm):
@@ -8,12 +9,63 @@ class BladeForm(forms.ModelForm):
         model = Blade
         exclude = ["create_date", "edit_date", "is_active"]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Add Bootstrap class to form fields
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "form-control form-control-sm"
+
+        self.fields["blade_shape"].queryset = DropdownService.get_blade_shapes()
+        self.fields["uom"].queryset = DropdownService.get_units_of_measure()
+
 
 class KnifeForm(forms.ModelForm):
 
     class Meta:
         model = Knife
         exclude = ["create_date", "edit_date", "is_active", "user"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Add Bootstrap class to form fields
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "form-control form-control-sm mb-2"
+
+            if isinstance(field.widget, forms.Textarea):
+                field.widget.attrs["rows"] = 4
+
+        self.fields["blade_material"].queryset = DropdownService.get_blade_materials()
+        self.fields["brand"].queryset = DropdownService.get_brands()
+        self.fields["country"].queryset = DropdownService.get_countries()
+        self.fields["deployment_type"].queryset = DropdownService.get_deployment_types()
+        self.fields["handle_material"].queryset = DropdownService.get_handle_materials()
+        self.fields["knife_type"].queryset = DropdownService.get_knife_types()
+        self.fields["lock_type"].queryset = DropdownService.get_lock_types()
+        self.fields["uom"].queryset = DropdownService.get_units_of_measure()
+        self.fields["vendor"].queryset = DropdownService.get_vendors()
+
+        self.fields["name"].label = "Knife"
+        self.fields["brand"].empty_label = "Select Brand"
+
+        self.fields["knife_type"].label = "Knife Type"
+        self.fields["knife_type"].empty_label = "Select Knife Type"
+
+        self.fields["blade_material"].label = "Blade Material"
+        self.fields["blade_material"].empty_label = "Select Blade Material"
+
+        self.fields["handle_material"].label = "Handle Material"
+        self.fields["handle_material"].empty_label = "Select Handle Material"
+
+        self.fields["lock_type"].label = "Lock Type"
+        self.fields["lock_type"].empty_label = "Select Lock Type"
+
+        self.fields["deployment_type"].label = "Deployment Type"
+        self.fields["deployment_type"].empty_label = "Select Deployment Type"
+
+        self.fields["closed_length"].label = "Closed Length"
+
+        self.fields["uom"].label = "UOM"
+        self.fields["uom"].empty_label = "Select UOM"
 
 
 class SharpenerForm(forms.ModelForm):
@@ -22,9 +74,28 @@ class SharpenerForm(forms.ModelForm):
         model = Sharpener
         exclude = ["create_date", "edit_date", "is_active", "user"]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Add Bootstrap class to form fields
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "form-control form-control-sm mb-2"
+
+        self.fields["bonding_agent"].queryset = DropdownService.get_bonding_agents()
+        self.fields["brand"].queryset = DropdownService.get_brands()
+        self.fields["country"].queryset = DropdownService.get_countries()
+        self.fields["cutting_agent"].queryset = DropdownService.get_cutting_agents()
+        self.fields["lubricant"].queryset = DropdownService.get_lubricants()
+        self.fields["uom"].queryset = DropdownService.get_units_of_measure()
+
 
 class WorkLogForm(forms.ModelForm):
 
     class Meta:
         model = WorkLog
         exclude = ["create_date", "edit_date", "is_active"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Add Bootstrap class to form fields
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "form-control form-control-sm mb-2"
