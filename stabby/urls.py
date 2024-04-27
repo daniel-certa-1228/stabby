@@ -22,10 +22,16 @@ from stabby_web import views
 app_name = "stabby_web"
 urlpatterns = [
     path("", views.index, name="knives"),
-    path("sharpeners/", views.sharpeners, name="sharpeners"),
     path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
     path("knives/add", views.knife_create, name="knife_create"),
     path("knives/edit/<int:knife_id>/", views.knife_update, name="knife_update"),
+    path("blades/add/<int:knife_id>/", views.blade_create, name="blade_create"),
+    path(
+        "blades/edit/<int:knife_id>/<int:blade_id>/",
+        views.blade_update,
+        name="blade_update",
+    ),
+    path("sharpeners/", views.sharpeners, name="sharpeners"),
     path("sharpeners/add", views.sharpener_create, name="sharpener_create"),
     path(
         "sharpeners/edit/<int:sharpener_id>/",

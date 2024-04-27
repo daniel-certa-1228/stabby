@@ -1,5 +1,63 @@
 from django.http import JsonResponse
-from ..services import BladeService
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from stabby_web.enums import FormType, Module
+from stabby_web.forms import BladeForm
+from stabby_web.services import BladeService
+from stabby_web.services.knife_service import KnifeService
+
+
+# MVT VIEWS
+
+
+def blade_create(request, knife_id):
+    knife = KnifeService.get_knife_detail(knife_id)
+
+    if request.method == "POST":
+        form = BladeForm(request.Post)
+        if form.is_valid():
+            blade = form.save(commit=False)
+            blade.user = request.user
+            BladeService.save_blade(blade)
+            messages.success(request, "Blade Successfully Created!")
+            return redirect("knife-detail", pk=blade.knife_id)
+
+    else:
+        form = BladeForm(initial={"knife_id": knife_id})
+
+        number_of_blades = knife.number_of_blades()
+
+        context = {
+            "form": form,
+            "form_type": FormType.Add.value,
+            "active": Module.Knives.value,
+            "knife": knife,
+            "number_of_blades": number_of_blades,
+        }
+        return render(request, "stabby_web/blade-add-edit.html", context)
+
+
+def blade_update(request, knife_id, blade_id):
+    knife = KnifeService.get_knife_detail(knife_id)
+    blade = BladeService.get_blade_detail(blade_id)
+
+    if request.method == "POST":
+        form = BladeForm(request.Post)
+        if form.is_valid():
+            blade = form.save(commit=False)
+            BladeService.save_blade(blade)
+            messages.success(request, "Blade Successfully Updated!")
+            return redirect("knife-detail", pk=blade.knife_id)
+    else:
+        form = BladeForm(instance=blade)
+        context = {
+            "form": form,
+            "form_type": FormType.Edit.value,
+            "active": Module.Knives.value,
+            "knife": knife,
+        }
+
+    return render(request, "stabby_web/knife-add-edit.html", context)
 
 
 # JSON VIEWS
