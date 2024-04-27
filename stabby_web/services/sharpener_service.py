@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from ..models import (
     Sharpener,
     ViewSharpenerGrid,
@@ -8,7 +9,7 @@ class SharpenerService:
 
     @classmethod
     def get_sharpener_detail(self, sharpener_id):
-        return Sharpener.objects.get(sharpener_id=sharpener_id)
+        return get_object_or_404(Sharpener, sharpener_id=sharpener_id)
 
     @classmethod
     def get_sharpener_grid(self):
