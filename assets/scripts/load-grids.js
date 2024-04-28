@@ -161,8 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr_wl.send();
 
         redirectToBladeEditPage = (blade_id) => {
-            debugger;
-            window.location.href = `${baseUrl}blades/edit/${knife_id}/${blade_id}`; 
+            window.location.href = `${baseUrl}/knives/edit/${knife_id}/blades/edit/${blade_id}`; 
         
         }
     }

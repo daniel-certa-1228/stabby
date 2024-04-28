@@ -25,9 +25,13 @@ urlpatterns = [
     path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
     path("knives/add", views.knife_create, name="knife_create"),
     path("knives/edit/<int:knife_id>/", views.knife_update, name="knife_update"),
-    path("blades/add/<int:knife_id>/", views.blade_create, name="blade_create"),
     path(
-        "blades/edit/<int:knife_id>/<int:blade_id>/",
+        "knives/edit/<int:knife_id>/blades/add/",
+        views.blade_create,
+        name="blade_create",
+    ),
+    path(
+        "knives/edit/<int:knife_id>/blades/edit/<int:blade_id>/",
         views.blade_update,
         name="blade_update",
     ),
