@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const baseUrl = "http://127.0.0.1:8000/api/";
+    const baseUrl = "http://127.0.0.1:8000/";
     const location = removeIdFromUrl(window.location.pathname);
     // knife grid
     if (location[0] === '/') {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `${baseUrl}get_knife_grid`, true);
+        xhr.open('GET', `${baseUrl}api/get_knife_grid`, true);
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `${baseUrl}get_sharpener_grid`, true);
+        xhr.open('GET', `${baseUrl}api/get_sharpener_grid`, true);
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `${baseUrl}get_blade_grid/${knife_id}`, true);
+        xhr.open('GET', `${baseUrl}api/get_blade_grid/${knife_id}`, true);
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var responseData = JSON.parse(xhr.responseText);
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gridApi_wl = agGrid.createGrid(gridDiv_wl, gridOptions_wl);
 
         let xhr_wl = new XMLHttpRequest();
-        xhr_wl.open('GET', `${baseUrl}get_knife_work_log_grid/${knife_id}`, true);
+        xhr_wl.open('GET', `${baseUrl}api/get_knife_work_log_grid/${knife_id}`, true);
         xhr_wl.onreadystatechange = () => {
             if (xhr_wl.readyState === 4 && xhr_wl.status === 200) {
                 var responseData = JSON.parse(xhr_wl.responseText);
@@ -161,8 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr_wl.send();
 
         redirectToBladeEditPage = (blade_id) => {
-            // window.location.href = "detail/" + sharpener_id; 
-            console.log(blade_id)
+            debugger;
+            window.location.href = `${baseUrl}blades/edit/${knife_id}/${blade_id}`; 
+        
         }
     }
     // sharpener detail
@@ -178,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gridApi_wl = agGrid.createGrid(gridDiv_wl, gridOptions_wl);
 
         let xhr_wl = new XMLHttpRequest();
-        xhr_wl.open('GET', `${baseUrl}get_sharpener_work_log_grid/${sharpener_id}`, true);
+        xhr_wl.open('GET', `${baseUrl}api/get_sharpener_work_log_grid/${sharpener_id}`, true);
         xhr_wl.onreadystatechange = () => {
             if (xhr_wl.readyState === 4 && xhr_wl.status === 200) {
                 var responseData = JSON.parse(xhr_wl.responseText);

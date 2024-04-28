@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+      Blade
+      <span>
+        <button type="button" class="btn btn-primary btn-sm align-self-center new-btn me-2"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
+        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_detail' knife_id=knife.knife_id %}"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Cancel</a>
+        </span>
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="id_length" class="form-label">{{ form.length.label }}</label>
+                            {{ form.length }}
+                        </div>
+                        <div class="col-4">
+                            <label for="id_length_cutting_edge" class="form-label">{{ form.length_cutting_edge.label }}</label>
+                            {{ form.length_cutting_edge }}
+                        </div>
+                        <div class="col-4">
+                            <label for="id_uom" class="form-label">{{ form.uom.label }}</label>
+                            {{ form.uom }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_blade_shape" class="form-label">{{ form.blade_shape.label }}</label>
+                        {{ form.blade_shape }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_blade_shape_notes" class="form-label">{{ form.blade_shape_notes.label }}</label>
+                        {{ form.blade_shape_notes }}
+                    </div>
+                    <div class="form-group row form-check form-switch mt-3">
+                        <div class="col-sm-6">
+                            {{ form.has_half_stop }}
+                            <label for="id_has_half_stop" class="form-label">{{ form.has_half_stop.label }}</label>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form.is_main_blade }}
+                            <label for="id_is_main_blade" class="form-label">{{ form.is_main_blade.label }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

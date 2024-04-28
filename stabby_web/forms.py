@@ -13,10 +13,25 @@ class BladeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Add Bootstrap class to form fields
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control form-control-sm"
+            if isinstance(field.widget, forms.CheckboxInput):
+                field.widget.attrs["class"] = "form-check-input"
+            else:
+                field.widget.attrs["class"] = "form-control form-control-sm mb-2"
+
+            if isinstance(field.widget, forms.Textarea):
+                field.widget.attrs["rows"] = 3
 
         self.fields["blade_shape"].queryset = DropdownService.get_blade_shapes()
         self.fields["uom"].queryset = DropdownService.get_units_of_measure()
+
+        self.fields["blade_shape"].label = "Blade Shape"
+        self.fields["blade_shape_notes"].label = "Blade Shape Notes"
+        self.fields["is_main_blade"].label = "Is Main Blade"
+        self.fields["blade_shape"].label = "Blade Shape"
+        self.fields["blade_shape"].empty_label = "Select Blade Shape"
+        self.fields["length_cutting_edge"].label = "Cutting Edge Length"
+        self.fields["uom"].label = "UOM"
+        self.fields["uom"].empty_label = "Select UOM"
 
 
 class KnifeForm(forms.ModelForm):

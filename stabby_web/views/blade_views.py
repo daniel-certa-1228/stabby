@@ -23,7 +23,7 @@ def blade_create(request, knife_id):
             return redirect("knife-detail", pk=blade.knife_id)
 
     else:
-        form = BladeForm(initial={"knife_id": knife_id})
+        form = BladeForm(initial={"knife": knife, "uom": knife.uom})
 
         number_of_blades = knife.number_of_blades()
 
@@ -40,6 +40,7 @@ def blade_create(request, knife_id):
 def blade_update(request, knife_id, blade_id):
     knife = KnifeService.get_knife_detail(knife_id)
     blade = BladeService.get_blade_detail(blade_id)
+    # is_main_cache = blade.is_main_blade
 
     if request.method == "POST":
         form = BladeForm(request.Post)
@@ -50,14 +51,18 @@ def blade_update(request, knife_id, blade_id):
             return redirect("knife-detail", pk=blade.knife_id)
     else:
         form = BladeForm(instance=blade)
+
+        number_of_blades = knife.number_of_blades()
+
         context = {
             "form": form,
             "form_type": FormType.Edit.value,
             "active": Module.Knives.value,
             "knife": knife,
+            "number_of_blades": number_of_blades,
         }
 
-    return render(request, "stabby_web/knife-add-edit.html", context)
+    return render(request, "stabby_web/blade-add-edit.html", context)
 
 
 # JSON VIEWS
