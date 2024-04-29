@@ -26,14 +26,34 @@ urlpatterns = [
     path("knives/add", views.knife_create, name="knife_create"),
     path("knives/edit/<int:knife_id>/", views.knife_update, name="knife_update"),
     path(
-        "knives/edit/<int:knife_id>/blades/add/",
+        "knives/detail/<int:knife_id>/blades/add/",
         views.blade_create,
         name="blade_create",
     ),
     path(
-        "knives/edit/<int:knife_id>/blades/edit/<int:blade_id>/",
+        "knives/detail/<int:knife_id>/blades/edit/<int:blade_id>/",
         views.blade_update,
         name="blade_update",
+    ),
+    path(
+        "knives/detail/<int:related_entity_id>/work-logs/add",
+        views.work_log_create,
+        name="work_log_create",
+    ),
+    path(
+        "knives/detail/<int:related_entity_id>/work-logs/edit/<int:work_log_id>/",
+        views.work_log_update,
+        name="work_log_update",
+    ),
+    path(
+        "sharpeners/detail/<int:related_entity_id>/work-logs/add",
+        views.work_log_create,
+        name="work_log_create_sh",
+    ),
+    path(
+        "sharpeners/detail/<int:related_entity_id>/work-logs/edit/<int:work_log_id>/",
+        views.work_log_update,
+        name="work_log_update_sh",
     ),
     path("sharpeners/", views.sharpeners, name="sharpeners"),
     path("sharpeners/add", views.sharpener_create, name="sharpener_create"),

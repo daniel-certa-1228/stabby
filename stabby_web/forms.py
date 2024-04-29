@@ -140,3 +140,13 @@ class WorkLogForm(forms.ModelForm):
         # Add Bootstrap class to form fields
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "form-control form-control-sm mb-2"
+
+            if isinstance(field.widget, forms.Textarea):
+                field.widget.attrs["rows"] = 4
+
+    date = forms.DateTimeField(
+        label="Date",
+        required=True,
+        widget=forms.DateTimeInput(format="%Y-%m-%d", attrs={"type": "date"}),
+        input_formats=["%Y-%m-%d"],
+    )

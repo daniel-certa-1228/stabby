@@ -1,7 +1,9 @@
-<div class="card">
+<div class="card" id="work_log_card">
   <div class="card-header d-flex justify-content-between">
     Work Log
-    <button type="button" class="btn btn-light btn-sm align-self-center new-btn"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</button>
+    {% if not form %}
+      <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'work_log_create' related_entity_id=knife.knife_id %}{% else %}{% url 'work_log_create_sh' related_entity_id=sharpener.sharpener_id %}{% endif %}"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</a>
+    {% endif %}
   </div>
   <div class="card-body p-0">
       <div id="wl_grid" class="ag-theme-alpine"></div>

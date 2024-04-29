@@ -7,4 +7,9 @@ from .sharpener_views import (
     sharpener_update,
 )
 from .blade_views import get_blade_grid, blade_create, blade_update
-from .work_log_views import get_knife_work_log_grid, get_sharpener_work_log_grid
+from .work_log_views import (
+    get_knife_work_log_grid,
+    get_sharpener_work_log_grid,
+    work_log_create,
+    work_log_update,
+)

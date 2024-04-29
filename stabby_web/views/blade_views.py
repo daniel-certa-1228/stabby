@@ -17,7 +17,6 @@ def blade_create(request, knife_id):
         form = BladeForm(request.Post)
         if form.is_valid():
             blade = form.save(commit=False)
-            blade.user = request.user
             BladeService.save_blade(blade)
             messages.success(request, "Blade Successfully Created!")
             return redirect("knife-detail", pk=blade.knife_id)
