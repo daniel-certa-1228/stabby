@@ -16,11 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from stabby_web import views
 
 app_name = "stabby_web"
 urlpatterns = [
+    path("accounts/login/", views.login_view, name="login"),
+    path("accounts/logout", views.logout_view, name="logout"),
     path("", views.index, name="knives"),
     path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
     path("knives/add", views.knife_create, name="knife_create"),

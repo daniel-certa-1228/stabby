@@ -5,8 +5,10 @@ from django.shortcuts import redirect, render
 from stabby_web.forms import WorkLogForm
 from stabby_web.services import WorkLogService, KnifeService, SharpenerService
 from stabby_web.enums import FormType, Module
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def work_log_create(request, related_entity_id):
     related_entity = None
     redirect_url = None
@@ -49,6 +51,7 @@ def work_log_create(request, related_entity_id):
         return render(request, "stabby_web/work-log-add-edit.html", context)
 
 
+@login_required
 def work_log_update(request, work_log_id, related_entity_id):
     wl = WorkLogService.get_work_log_detail(work_log_id)
 
@@ -86,12 +89,14 @@ def work_log_update(request, work_log_id, related_entity_id):
 
 
 # JSON VIEWS
+@login_required
 def get_knife_work_log_grid(request, knife_id):
     data = WorkLogService.get_knife_work_log_grid(knife_id)
 
     return JsonResponse(data, safe=False)
 
 
+@login_required
 def get_sharpener_work_log_grid(request, sharpener_id):
     data = WorkLogService.get_sharpener_work_log_grid(sharpener_id)
 

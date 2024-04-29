@@ -5,11 +5,13 @@ from stabby_web.enums import FormType, Module
 from stabby_web.forms import BladeForm
 from stabby_web.services import BladeService
 from stabby_web.services.knife_service import KnifeService
+from django.contrib.auth.decorators import login_required
 
 
 # MVT VIEWS
 
 
+@login_required
 def blade_create(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
@@ -36,6 +38,7 @@ def blade_create(request, knife_id):
         return render(request, "stabby_web/blade-add-edit.html", context)
 
 
+@login_required
 def blade_update(request, knife_id, blade_id):
     knife = KnifeService.get_knife_detail(knife_id)
     blade = BladeService.get_blade_detail(blade_id)
@@ -65,6 +68,7 @@ def blade_update(request, knife_id, blade_id):
 
 
 # JSON VIEWS
+@login_required
 def get_blade_grid(request, knife_id):
     data = BladeService.get_blade_grid(knife_id)
 

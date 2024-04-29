@@ -1,3 +1,4 @@
+from .authentication_views import login_view, logout_view
 from .knife_views import get_knife_grid, index, knife_create, knife_detail, knife_update
 from .sharpener_views import (
     get_sharpener_grid,
