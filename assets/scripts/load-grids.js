@@ -267,7 +267,7 @@ removeEmbeddedIdFromUrl = (url) => {
     const match = url.match(regex)
 
     if (match) {
-        return match[0].replace('/', '').replace('/', '');
+        return match[0].replaceAll('/', '');
     } else {
         return null;
     }
