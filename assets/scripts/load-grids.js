@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // work log grid
             const gridDiv_wl = document.querySelector('#wl_grid');
 
-            const gridOptions_wl = returnWorkLogGridOptions(false);
+            const gridOptions_wl = returnWorkLogGridOptions(false, null, null, location[1]);
 
             const gridApi_wl = agGrid.createGrid(gridDiv_wl, gridOptions_wl);
 
@@ -273,7 +273,7 @@ removeEmbeddedIdFromUrl = (url) => {
     }
 }
 
-returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id) => {
+returnWorkLogGridOptions = (with_buttons, is_knife_wl = null, entity_id = null, work_log_id = null) => {
     if (with_buttons) {
         return {
             headerHeight: 35,
@@ -299,6 +299,11 @@ returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id) => {
             defaultColDef: {
                 cellStyle: {textAlign: 'left'}
               },
+              getRowClass: params => {
+                if (params.data.work_log_id == work_log_id) {
+                    return 'bg-primary-subtle';
+                }
+            },
             columnDefs: [
                 { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
                 { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true }
