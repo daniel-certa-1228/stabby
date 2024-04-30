@@ -38,7 +38,7 @@ class KnifeForm(forms.ModelForm):
 
     class Meta:
         model = Knife
-        exclude = ["create_date", "edit_date", "is_active", "user"]
+        exclude = ["create_date", "edit_date", "is_active"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -95,7 +95,7 @@ class SharpenerForm(forms.ModelForm):
 
     class Meta:
         model = Sharpener
-        exclude = ["create_date", "edit_date", "is_active", "user"]
+        exclude = ["create_date", "edit_date", "is_active"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

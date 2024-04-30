@@ -33,7 +33,7 @@ def knife_detail(request, knife_id):
 @login_required
 def knife_create(request):
     if request.method == "POST":
-        form = KnifeForm(request.Post)
+        form = KnifeForm(request.POST)
         if form.is_valid():
             knife = form.save(commit=False)
             knife.user = request.user
@@ -56,12 +56,15 @@ def knife_update(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
     if request.method == "POST":
-        form = KnifeForm(request.Post)
+        form = KnifeForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             knife = form.save(commit=False)
             KnifeService.save_knife(knife)
             messages.success(request, "Knife Successfully Updated!")
             return redirect("knife-detail", pk=knife.pk)
+        else:
+            print("Error")
     else:
         form = KnifeForm(instance=knife)
         context = {

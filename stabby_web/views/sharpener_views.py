@@ -27,7 +27,7 @@ def sharpener_detail(request, sharpener_id):
 @login_required
 def sharpener_create(request):
     if request.method == "POST":
-        form = SharpenerForm(request.Post)
+        form = SharpenerForm(request.POST)
         if form.is_valid():
             sharpener = form.save(commit=False)
             sharpener.user = request.user
@@ -50,7 +50,7 @@ def sharpener_update(request, sharpener_id):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
     if request.method == "POST":
-        form = SharpenerForm(request.Post)
+        form = SharpenerForm(request.POST)
         if form.is_valid():
             sharpener = form.save(commit=False)
             SharpenerService.save_sharpener(sharpener)

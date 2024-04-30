@@ -16,7 +16,7 @@ def blade_create(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
     if request.method == "POST":
-        form = BladeForm(request.Post)
+        form = BladeForm(request.POST)
         if form.is_valid():
             blade = form.save(commit=False)
             BladeService.save_blade(blade)
@@ -45,7 +45,7 @@ def blade_update(request, knife_id, blade_id):
     # is_main_cache = blade.is_main_blade
 
     if request.method == "POST":
-        form = BladeForm(request.Post)
+        form = BladeForm(request.POST)
         if form.is_valid():
             blade = form.save(commit=False)
             BladeService.save_blade(blade)

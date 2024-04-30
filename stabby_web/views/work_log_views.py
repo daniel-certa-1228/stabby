@@ -21,7 +21,7 @@ def work_log_create(request, related_entity_id):
         redirect_url = "sharpener-detail"
 
     if request.method == "POST":
-        form = WorkLogForm(request.Post)
+        form = WorkLogForm(request.POST)
         if form.is_valid():
             wl = form.save(commit=False)
             WorkLogService.save_work_log(wl)
@@ -68,7 +68,7 @@ def work_log_update(request, work_log_id, related_entity_id):
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
 
     if request.method == "POST":
-        form = WorkLogForm(request.Post)
+        form = WorkLogForm(request.POST)
         if form.is_valid():
             wl = form.save(commit=False)
             WorkLogService.save_work_log(wl)
