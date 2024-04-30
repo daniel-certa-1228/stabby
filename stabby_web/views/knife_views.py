@@ -4,15 +4,18 @@ from django.shortcuts import redirect, render
 from stabby_web.enums import Module, FormType
 from stabby_web.forms import KnifeForm
 from stabby_web.services import KnifeService
+from django.contrib.auth.decorators import login_required
 
 
 # MVT VIEWS
+@login_required
 def index(request):
     context = {"active": Module.Knives.value}
 
     return render(request, "stabby_web/index.html", context)
 
 
+@login_required
 def knife_detail(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
@@ -27,6 +30,7 @@ def knife_detail(request, knife_id):
     return render(request, "stabby_web/knife-detail.html", context)
 
 
+@login_required
 def knife_create(request):
     if request.method == "POST":
         form = KnifeForm(request.Post)
@@ -47,6 +51,7 @@ def knife_create(request):
         return render(request, "stabby_web/knife-add-edit.html", context)
 
 
+@login_required
 def knife_update(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
@@ -70,6 +75,7 @@ def knife_update(request, knife_id):
 
 
 # JSON VIEWS
+@login_required
 def get_knife_grid(request):
     data = KnifeService.get_knife_grid()
 

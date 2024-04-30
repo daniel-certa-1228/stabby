@@ -1,0 +1,28 @@
+{% extends "stabby_web/_base.html" %}
+
+{% block main%}
+
+    <div class="d-flex justify-content-center mt-4">
+        <h1 class="d-inline-block">stabby.tech</h1>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <div class="card col-2 p-3 bg-body-tertiary"> 
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_brand" class="form-label">{{ form.username.label_tag }}</label><br>
+                    {{ form.username }}
+                </div>
+                <div class="form-group mt-3">
+                    <label for="id_brand" class="form-label">{{ form.password.label_tag }}</label><br>
+                    {{ form.password }}
+                </div>
+                <div class="d-grid gap-2">
+                    <input type="submit" value="login" class='btn btn-sm btn-primary mt-4'>
+                </div>
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
