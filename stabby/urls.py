@@ -21,7 +21,6 @@ from stabby_web import views
 
 app_name = "stabby_web"
 urlpatterns = [
-    path("accounts/", include("django.contrib.auth.urls")),
     path("", views.index, name="knives"),
     path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
     path("knives/add", views.knife_create, name="knife_create"),
@@ -87,5 +86,6 @@ urlpatterns = [
         views.get_sharpener_work_log_grid,
         name="get_sharpener_work_log_grid",
     ),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("admin/", admin.site.urls),
 ]

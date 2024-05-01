@@ -43,11 +43,13 @@ def knife_create(request):
 
     else:
         form = KnifeForm()
+
         context = {
             "form": form,
             "form_type": FormType.Add.value,
             "active": Module.Knives.value,
         }
+
         return render(request, "stabby_web/knife-add-edit.html", context)
 
 
@@ -57,16 +59,21 @@ def knife_update(request, knife_id):
 
     if request.method == "POST":
         form = KnifeForm(request.POST)
-        print(form.errors)
+
         if form.is_valid():
-            knife = form.save(commit=False)
-            KnifeService.save_knife(knife)
+            KnifeService.save_knife(
+                KnifeService.map_knife_form_data(request, form, knife)
+            )
+
             messages.success(request, "Knife Successfully Updated!")
-            return redirect("knife-detail", pk=knife.pk)
+
         else:
-            print("Error")
+            messages.error(request, "Knife Update Failed.")
+
+        return redirect("knife_detail", knife_id=knife.knife_id)
     else:
         form = KnifeForm(instance=knife)
+
         context = {
             "form": form,
             "form_type": FormType.Edit.value,
@@ -74,7 +81,7 @@ def knife_update(request, knife_id):
             "knife_id": knife_id,
         }
 
-    return render(request, "stabby_web/knife-add-edit.html", context)
+        return render(request, "stabby_web/knife-add-edit.html", context)
 
 
 # JSON VIEWS
