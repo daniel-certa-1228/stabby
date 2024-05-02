@@ -34,15 +34,20 @@ def knife_detail(request, knife_id):
 def knife_create(request):
     if request.method == "POST":
         form = KnifeForm(request.POST)
+
         if form.is_valid():
-            knife = form.save(commit=False)
-            knife.user = request.user
+            knife = KnifeService.map_knife_form_data(request, form)
+
             KnifeService.save_knife(knife)
+
             messages.success(request, "Knife Successfully Created!")
-            return redirect("knife-detail", pk=knife.pk)
+
+            return redirect("knife_detail", knife_id=knife.knife_id)
+        else:
+            messages.error(request, "Knife Create Failed.")
 
     else:
-        form = KnifeForm()
+        form = KnifeForm(initial={"uom": 1})
 
         context = {
             "form": form,
