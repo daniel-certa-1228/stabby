@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from stabby_web.enums import Module, FormType
+from stabby_web.enums import Module, FormType, UnitsOfMeasure
 from stabby_web.forms import KnifeForm
 from stabby_web.services import KnifeService
 from django.contrib.auth.decorators import login_required
@@ -47,7 +47,9 @@ def knife_create(request):
             messages.error(request, "Knife Create Failed.")
 
     else:
-        form = KnifeForm(initial={"uom": 1})
+        form = KnifeForm(
+            initial={"uom": UnitsOfMeasure.inches.value, "purchased_new": True}
+        )
 
         context = {
             "form": form,

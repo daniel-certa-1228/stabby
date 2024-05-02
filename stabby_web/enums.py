@@ -10,3 +10,8 @@ class Module(Enum):
 class FormType(Enum):
     Add = "add"
     Edit = "edit"
+
+
+class UnitsOfMeasure(Enum):
+    inches = 1
+    centimeters = 2
