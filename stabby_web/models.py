@@ -264,24 +264,30 @@ class Knife(models.Model):
     )
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     year_of_manufacture = models.CharField(max_length=100, null=True, blank=True)
-    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
-    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
+    country = models.ForeignKey(
+        Country, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, blank=True)
     year_of_purchase = models.CharField(max_length=50, null=True, blank=True)
     purchased_new = models.BooleanField(default=True, null=False)
-    knife_type = models.ForeignKey(KnifeType, on_delete=models.SET_NULL, null=True)
+    knife_type = models.ForeignKey(
+        KnifeType, on_delete=models.SET_NULL, null=True, blank=True
+    )
     knife_type_notes = models.TextField(null=True, blank=True)
     blade_material = models.ForeignKey(
-        BladeMaterial, on_delete=models.SET_NULL, null=True
+        BladeMaterial, on_delete=models.SET_NULL, null=True, blank=True
     )
     blade_material_notes = models.TextField(null=True, blank=True)
     handle_material = models.ForeignKey(
-        HandleMaterial, on_delete=models.SET_NULL, null=True
+        HandleMaterial, on_delete=models.SET_NULL, null=True, blank=True
     )
     handle_material_notes = models.TextField(null=True, blank=True)
-    lock_type = models.ForeignKey(LockType, on_delete=models.SET_NULL, null=True)
+    lock_type = models.ForeignKey(
+        LockType, on_delete=models.SET_NULL, null=True, blank=True
+    )
     lock_type_notes = models.TextField(null=True, blank=True)
     deployment_type = models.ForeignKey(
-        DeploymentType, on_delete=models.SET_NULL, null=True
+        DeploymentType, on_delete=models.SET_NULL, null=True, blank=True
     )
     needs_work = models.BooleanField(default=False, null=False)
     is_active = models.BooleanField(default=True, null=False)
@@ -308,7 +314,9 @@ class Blade(models.Model):
         null=True, blank=True, decimal_places=2, max_digits=8
     )
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
-    blade_shape = models.ForeignKey(BladeShape, on_delete=models.SET_NULL, null=True)
+    blade_shape = models.ForeignKey(
+        BladeShape, on_delete=models.SET_NULL, null=True, blank=True
+    )
     blade_shape_notes = models.TextField(null=True, blank=True)
     has_half_stop = models.BooleanField(default=False, null=False)
     is_main_blade = models.BooleanField(default=True, null=False)
@@ -330,14 +338,18 @@ class Sharpener(models.Model):
     notes = models.TextField(null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
     brand_notes = models.TextField(null=True, blank=True)
-    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+    country = models.ForeignKey(
+        Country, on_delete=models.SET_NULL, null=True, blank=True
+    )
     cutting_agent = models.ForeignKey(
-        CuttingAgent, on_delete=models.SET_NULL, null=True
+        CuttingAgent, on_delete=models.SET_NULL, null=True, blank=True
     )
     bonding_agent = models.ForeignKey(
-        BondingAgent, on_delete=models.SET_NULL, null=True
+        BondingAgent, on_delete=models.SET_NULL, null=True, blank=True
     )
-    lubricant = models.ForeignKey(Lubricant, on_delete=models.SET_NULL, null=True)
+    lubricant = models.ForeignKey(
+        Lubricant, on_delete=models.SET_NULL, null=True, blank=True
+    )
     length = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
     width = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
