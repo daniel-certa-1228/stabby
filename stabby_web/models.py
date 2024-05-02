@@ -319,7 +319,7 @@ class Blade(models.Model):
     )
     blade_shape_notes = models.TextField(null=True, blank=True)
     has_half_stop = models.BooleanField(default=False, null=False)
-    is_main_blade = models.BooleanField(default=True, null=False)
+    is_main_blade = models.BooleanField(default=False, null=False)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
