@@ -35,8 +35,6 @@ class DropdownService:
     def get_brands(self):
         return Brand.objects.filter(is_active=1).order_by("name")
 
-        return list(queryset.values())
-
     @classmethod
     def get_countries(self):
         return Country.objects.filter(is_active=1).order_by("name")
