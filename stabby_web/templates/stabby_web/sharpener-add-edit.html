@@ -5,7 +5,7 @@
     <div class="d-flex flex-row justify-content-between">
         <h5 class="inline-block mb-0">Sharpeners / {% if form_type == 'add' %}Add{% else %}Edit{% endif %}</h5>
         <span>
-            <button type="button" class="btn btn-primary btn-sm align-self-center new-btn me-2"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
+            <button type="submit" form="sharpener-form" class="btn btn-primary btn-sm align-self-center new-btn me-2"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
             <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if form_type == 'add' %}{% url 'sharpeners' %}{% else %}{% url 'sharpener_detail' sharpener_id=sharpener_id %}{% endif %}"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Cancel</a>
         </span>
     </div>
