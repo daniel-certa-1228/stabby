@@ -7,7 +7,7 @@ class BladeForm(forms.ModelForm):
 
     class Meta:
         model = Blade
-        exclude = ["create_date", "edit_date", "is_active"]
+        exclude = ["create_date", "edit_date", "is_active", "knife"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

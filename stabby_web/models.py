@@ -260,7 +260,7 @@ class Knife(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING)
     brand_notes = models.TextField(null=True, blank=True)
     closed_length = models.DecimalField(
-        null=True, blank=True, decimal_places=2, max_digits=8
+        null=True, blank=True, decimal_places=4, max_digits=8
     )
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     year_of_manufacture = models.CharField(max_length=100, null=True, blank=True)
@@ -296,7 +296,7 @@ class Knife(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def number_of_blades(self):
-        return self.blade_set.count()
+        return self.blade_set.filter(is_active=1).count()
 
     class Meta:
         verbose_name = "knife"
@@ -309,9 +309,9 @@ class Knife(models.Model):
 class Blade(models.Model):
     blade_id = models.AutoField(primary_key=True, db_column="blade_id")
     knife = models.ForeignKey(Knife, on_delete=models.DO_NOTHING)
-    length = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
+    length = models.DecimalField(null=True, blank=True, decimal_places=4, max_digits=8)
     length_cutting_edge = models.DecimalField(
-        null=True, blank=True, decimal_places=2, max_digits=8
+        null=True, blank=True, decimal_places=4, max_digits=8
     )
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     blade_shape = models.ForeignKey(
@@ -330,6 +330,14 @@ class Blade(models.Model):
 
     def __str__(self):
         return f"Blade - {self.knife.name}"
+
+    def save(self, *args, **kwargs):
+        if self.is_main_blade:
+            Blade.objects.filter(knife_id=self.knife_id).exclude(
+                blade_id=self.blade_id
+            ).update(is_main_blade=False)
+
+        super().save(*args, **kwargs)
 
 
 class Sharpener(models.Model):
@@ -350,8 +358,8 @@ class Sharpener(models.Model):
     lubricant = models.ForeignKey(
         Lubricant, on_delete=models.SET_NULL, null=True, blank=True
     )
-    length = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
-    width = models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
+    length = models.DecimalField(null=True, blank=True, decimal_places=4, max_digits=8)
+    width = models.DecimalField(null=True, blank=True, decimal_places=4, max_digits=8)
     uom = models.ForeignKey(UnitOfMeasure, on_delete=models.SET_NULL, null=True)
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)

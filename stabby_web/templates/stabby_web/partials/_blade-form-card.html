@@ -2,12 +2,12 @@
     <div class="card-header d-flex justify-content-between">
       Blade
       <span>
-        <button type="button" class="btn btn-primary btn-sm align-self-center new-btn me-2"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
+        <button type="submit" class="btn btn-primary btn-sm align-self-center new-btn me-2" form="blade-form"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
         <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_detail' knife_id=knife.knife_id %}"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Cancel</a>
         </span>
     </div>
     <div class="card-body">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" id="blade-form">
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-12">

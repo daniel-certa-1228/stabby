@@ -17,11 +17,15 @@ def blade_create(request, knife_id):
 
     if request.method == "POST":
         form = BladeForm(request.POST)
+
         if form.is_valid():
-            blade = form.save(commit=False)
+            blade = BladeService.map_blade_form_to_data(request, form, knife)
+
             BladeService.save_blade(blade)
+
             messages.success(request, "Blade Successfully Created!")
-            return redirect("knife-detail", pk=blade.knife_id)
+
+            return redirect("knife_detail", knife_id=blade.knife_id)
 
     else:
         form = BladeForm(initial={"knife": knife, "uom": knife.uom})
@@ -42,15 +46,18 @@ def blade_create(request, knife_id):
 def blade_update(request, knife_id, blade_id):
     knife = KnifeService.get_knife_detail(knife_id)
     blade = BladeService.get_blade_detail(blade_id)
-    # is_main_cache = blade.is_main_blade
 
     if request.method == "POST":
         form = BladeForm(request.POST)
+
         if form.is_valid():
-            blade = form.save(commit=False)
-            BladeService.save_blade(blade)
+            BladeService.save_blade(
+                BladeService.map_blade_form_to_data(request, form, knife, blade)
+            )
+
             messages.success(request, "Blade Successfully Updated!")
-            return redirect("knife-detail", pk=blade.knife_id)
+
+            return redirect("knife_detail", knife_id=blade.knife_id)
     else:
         form = BladeForm(instance=blade)
 
