@@ -72,6 +72,17 @@ def work_log_create(request, related_entity_id):
 
 
 @login_required
+def work_log_delete(request, work_log_id):
+    work_log = WorkLogService.get_work_log_detail(work_log_id)
+
+    WorkLogService.save_work_log(WorkLogService.delete_work_log(work_log))
+
+    messages.success(request, "Work Log Deleted!")
+
+    return JsonResponse(True, safe=False)
+
+
+@login_required
 def work_log_update(request, work_log_id, related_entity_id):
     work_log = WorkLogService.get_work_log_detail(work_log_id)
 

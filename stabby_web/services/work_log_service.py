@@ -8,6 +8,12 @@ from ..models import (
 class WorkLogService:
 
     @classmethod
+    def delete_work_log(self, work_log):
+        work_log.is_active = False
+
+        return work_log
+
+    @classmethod
     def get_work_log_detail(self, work_log_id):
         return get_object_or_404(WorkLog, work_log_id=work_log_id)
 

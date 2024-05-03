@@ -68,6 +68,11 @@ urlpatterns = [
         name="sharpener_detail",
     ),
     path(
+        "api/delete_work_log/<int:work_log_id>/",
+        views.work_log_delete,
+        name="work_log_delete",
+    ),
+    path(
         "api/get_blade_grid/<int:knife_id>/",
         views.get_blade_grid,
         name="get_blade_grid",

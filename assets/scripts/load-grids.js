@@ -1,6 +1,120 @@
 document.addEventListener('DOMContentLoaded', function() {
     const baseUrl = "http://127.0.0.1:8000/";
+
+    deleteWorkLog = (work_log_id, entity_id, is_knife_wl) => {
+        if (window.confirm("Are you sure you want to delete this Work Log?")) {
+            const url = `${baseUrl}api/delete_work_log/${work_log_id}/`
+    
+            let xhr_wl = new XMLHttpRequest();
+            xhr_wl.open('GET', url, true);
+            xhr_wl.onreadystatechange = () => {
+                 if (xhr_wl.readyState === 4 && xhr_wl.status === 200) {
+                     var responseData = JSON.parse(xhr_wl.responseText);
+                     if (responseData) {
+                         if (is_knife_wl) {
+                             window.location.href = `${baseUrl}/knives/detail/${entity_id}#work_log_card`; 
+                         } else {
+                             window.location.href = `${baseUrl}/sharpeners/detail/${entity_id}#work_log_card`;
+                         }
+                     }
+                 }
+            };
+            xhr_wl.send();
+        }
+    }
+
+    redirectToKnifeDetailPage = (knife_id) => {
+        window.location.href = `knives/detail/${knife_id}`; 
+    }
+    
+    redirectToSharpenerDetailPage = (sharpener_id) => {
+        window.location.href = `detail/${sharpener_id}`; 
+    }
+
+    redirectToWorkLogEditPage = (work_log_id, entity_id, is_knife_wl) => {
+        if (is_knife_wl) {
+            window.location.href = `/knives/detail/${entity_id}/work-logs/edit/${work_log_id}`; 
+        } else {
+            window.location.href = `/sharpeners/detail/${entity_id}/work-logs/edit/${work_log_id}`; 
+        }
+    }
+
+    removeEmbeddedIdFromUrl = (url) => {
+        const regex = /\/(\d+)\//;
+    
+        const match = url.match(regex)
+    
+        if (match) {
+            return match[0].replaceAll('/', '');
+        } else {
+            return null;
+        }
+    }
+
+    removeIdFromUrl = (url) => {
+        const regex = /(\d+)\/$/;
+    
+        const match = url.match(regex);
+    
+        if (match) {
+            const extractedNumber = match[1];
+            const modifiedString = url.replace(regex, '');
+    
+            return [modifiedString, extractedNumber];
+        } else {
+            return [url, null];
+        }
+    }
+    
+    returnWorkLogGridOptions = (with_buttons, is_knife_wl = null, entity_id = null, work_log_id = null) => {
+        if (with_buttons) {
+            return {
+                headerHeight: 35,
+                defaultColDef: {
+                    cellStyle: {textAlign: 'left'}
+                  },
+                columnDefs: [
+                    { 
+                        headerName: '', 
+                        width: 70, 
+                        cellStyle: {textAlign: 'center'}, 
+                        cellRenderer: (params) => {
+                            return `<button onclick="redirectToWorkLogEditPage(${params.data.work_log_id}, ${entity_id}, ${is_knife_wl})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
+                        }, 
+                    },
+                    { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
+                    { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true },
+                    { 
+                        headerName: '', 
+                        width: 70, 
+                        cellStyle: {textAlign: 'center'}, 
+                        cellRenderer: (params) => {
+                            return `<button onclick="deleteWorkLog(${params.data.work_log_id}, ${entity_id}, ${is_knife_wl})" class="btn btn-sm btn-light"><i class="fa-solid fa-trash"></i></button>`;
+                        }, 
+                    },
+                ]
+            };
+        } else {
+            return {
+                headerHeight: 35,
+                defaultColDef: {
+                    cellStyle: {textAlign: 'left'}
+                  },
+                  getRowClass: params => {
+                    if (params.data.work_log_id == work_log_id) {
+                        return 'bg-primary-subtle';
+                    }
+                },
+                columnDefs: [
+                    { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
+                    { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true }
+                ]
+            };
+        }
+    }
+    
     const location = removeIdFromUrl(window.location.pathname);
+
     // knife grid
     if (location[0] === '/') {
         const gridDiv = document.querySelector('#grid');
@@ -45,10 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         xhr.send();
-
-        redirectToKnifeDetailPage = (knife_id) => {
-            window.location.href = "knives/detail/" + knife_id; 
-        }
     }
     // sharpener grid
     if (location[0] === '/sharpeners/') {
@@ -91,10 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         xhr.send();
-
-        redirectToSharpenerDetailPage = (sharpener_id) => {
-            window.location.href = "detail/" + sharpener_id; 
-        }
     }
     // knife detail
     if (location[0] === '/knives/detail/') {
@@ -165,7 +271,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         redirectToBladeEditPage = (blade_id) => {
             window.location.href = `${baseUrl}/knives/detail/${knife_id}/blades/edit/${blade_id}`; 
-        
         }
     }
     // sharpener detail
@@ -237,78 +342,3 @@ document.addEventListener('DOMContentLoaded', function() {
         } 
     }   
 });
-
-redirectToWorkLogEditPage = (work_log_id, entity_id, is_knife_wl) => {
-    if (is_knife_wl) {
-        window.location.href = `/knives/detail/${entity_id}/work-logs/edit/${work_log_id}`; 
-    } else {
-        window.location.href = `/sharpeners/detail/${entity_id}/work-logs/edit/${work_log_id}`; 
-    }
-}
-
-removeIdFromUrl = (url) => {
-    const regex = /(\d+)\/$/;
-
-    const match = url.match(regex);
-
-    if (match) {
-        const extractedNumber = match[1];
-        const modifiedString = url.replace(regex, '');
-
-        return [modifiedString, extractedNumber];
-    } else {
-        return [url, null];
-    }
-}
-
-removeEmbeddedIdFromUrl = (url) => {
-    const regex = /\/(\d+)\//;
-
-    const match = url.match(regex)
-
-    if (match) {
-        return match[0].replaceAll('/', '');
-    } else {
-        return null;
-    }
-}
-
-returnWorkLogGridOptions = (with_buttons, is_knife_wl = null, entity_id = null, work_log_id = null) => {
-    if (with_buttons) {
-        return {
-            headerHeight: 35,
-            defaultColDef: {
-                cellStyle: {textAlign: 'left'}
-              },
-            columnDefs: [
-                { 
-                    headerName: '', 
-                    width: 70, 
-                    cellStyle: {textAlign: 'center'}, 
-                    cellRenderer: (params) => {
-                        return `<button onclick="redirectToWorkLogEditPage(${params.data.work_log_id}, ${entity_id}, ${is_knife_wl})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
-                    }, 
-                },
-                { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
-                { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true }
-            ]
-        };
-    } else {
-        return {
-            headerHeight: 35,
-            defaultColDef: {
-                cellStyle: {textAlign: 'left'}
-              },
-              getRowClass: params => {
-                if (params.data.work_log_id == work_log_id) {
-                    return 'bg-primary-subtle';
-                }
-            },
-            columnDefs: [
-                { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
-                { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true }
-            ]
-        };
-    }
-  
-}
