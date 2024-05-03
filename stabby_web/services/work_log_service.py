@@ -14,10 +14,6 @@ class WorkLogService:
         return work_log
 
     @classmethod
-    def get_work_log_detail(self, work_log_id):
-        return get_object_or_404(WorkLog, work_log_id=work_log_id)
-
-    @classmethod
     def get_sharpener_work_log_grid(self, sharpener):
         queryset = WorkLog.objects.filter(is_active=1, sharpener=sharpener).order_by(
             "-date"
@@ -34,8 +30,8 @@ class WorkLogService:
         return list(queryset.values())
 
     @classmethod
-    def save_work_log(self, work_log):
-        return work_log.save()
+    def get_work_log_detail(self, work_log_id):
+        return get_object_or_404(WorkLog, work_log_id=work_log_id)
 
     @classmethod
     def map_work_log_form_to_data(
@@ -52,6 +48,10 @@ class WorkLogService:
         work_log.description = form.cleaned_data["description"]
 
         return work_log
+
+    @classmethod
+    def save_work_log(self, work_log):
+        return work_log.save()
 
     @classmethod
     def show_work_log_card(self, knife_id=None, sharpener_id=None):
