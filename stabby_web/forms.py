@@ -133,7 +133,7 @@ class WorkLogForm(forms.ModelForm):
 
     class Meta:
         model = WorkLog
-        exclude = ["create_date", "edit_date", "is_active"]
+        exclude = ["create_date", "edit_date", "is_active", "knife", "sharpener"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

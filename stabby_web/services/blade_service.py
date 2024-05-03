@@ -21,10 +21,6 @@ class BladeService:
         return list(queryset.values())
 
     @classmethod
-    def save_blade(self, blade):
-        return blade.save()
-
-    @classmethod
     def map_blade_form_to_data(self, request, form, knife=None, blade=None):
         if blade == None:
             blade = Blade()
@@ -42,3 +38,7 @@ class BladeService:
         blade.is_main_blade = form.cleaned_data["is_main_blade"]
 
         return blade
+
+    @classmethod
+    def save_blade(self, blade):
+        return blade.save()

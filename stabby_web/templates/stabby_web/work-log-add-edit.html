@@ -10,7 +10,9 @@
             {% include 'stabby_web/partials/_work-log-form-card.html' %}
         </div>
         <div class="col-12 mt-3">
-            {% include 'stabby_web/partials/_work-log-card.html' %}
+            {% if show_existing == True %}
+                {% include 'stabby_web/partials/_work-log-card.html' %}
+            {% endif %}
         </div>
     </div>
 

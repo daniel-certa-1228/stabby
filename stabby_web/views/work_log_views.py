@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from stabby_web.forms import WorkLogForm
+from stabby_web.models import Knife
 from stabby_web.services import WorkLogService, KnifeService, SharpenerService
 from stabby_web.enums import FormType, Module
 from django.contrib.auth.decorators import login_required
@@ -15,27 +16,45 @@ def work_log_create(request, related_entity_id):
 
     if "knives" in request.path:
         related_entity = KnifeService.get_knife_detail(related_entity_id)
-        redirect_url = "knife-detail"
+        redirect_url = "knife_detail"
     else:
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
-        redirect_url = "sharpener-detail"
+        redirect_url = "sharpener_detail"
 
     if request.method == "POST":
         form = WorkLogForm(request.POST)
-        if form.is_valid():
-            wl = form.save(commit=False)
-            WorkLogService.save_work_log(wl)
-            messages.success(request, "Work Log Successfully Created!")
-            return redirect(redirect_url, pk=related_entity_id) + "#work_log_card"
 
+        if form.is_valid():
+            work_log = None
+
+            if type(related_entity) is Knife:
+                work_log = WorkLogService.map_work_log_form_to_data(
+                    form, related_entity
+                )
+            else:
+                work_log = WorkLogService.map_work_log_form_to_data(
+                    form, None, related_entity
+                )
+
+            WorkLogService.save_work_log(work_log)
+
+            messages.success(request, "Work Log Successfully Created!")
+
+            if type(related_entity) is Knife:
+                return redirect(redirect_url, knife_id=related_entity_id)
+            else:
+                return redirect(redirect_url, sharpener_id=related_entity_id)
     else:
         initial = None
         module = None
+        show_existing = True
 
-        if "knives" in request.path:
+        if type(related_entity) is Knife:
+            show_existing = WorkLogService.show_work_log_card(related_entity_id)
             initial = {"knife": related_entity, "date": datetime.datetime.now()}
             module = Module.Knives.value
         else:
+            show_existing = WorkLogService.show_work_log_card(None, related_entity_id)
             initial = {"sharpener": related_entity, "date": datetime.datetime.now()}
             module = Module.Sharpeners.value
 
@@ -44,39 +63,54 @@ def work_log_create(request, related_entity_id):
         context = {
             "form": form,
             "form_type": FormType.Add.value,
+            "active": module,
             "related_entity": related_entity,
             "related_entity_id": related_entity_id,
-            "active": module,
+            "show_existing": show_existing,
         }
         return render(request, "stabby_web/work-log-add-edit.html", context)
 
 
 @login_required
 def work_log_update(request, work_log_id, related_entity_id):
-    wl = WorkLogService.get_work_log_detail(work_log_id)
+    work_log = WorkLogService.get_work_log_detail(work_log_id)
 
     related_entity = None
     redirect_url = None
 
     if "knives" in request.path:
         related_entity = KnifeService.get_knife_detail(related_entity_id)
-        redirect_url = "knife-detail"
+        redirect_url = "knife_detail"
         module = Module.Knives.value
     else:
-        redirect_url = "sharpener-detail"
+        redirect_url = "sharpener_detail"
         module = Module.Sharpeners.value
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
 
     if request.method == "POST":
         form = WorkLogForm(request.POST)
+
         if form.is_valid():
-            wl = form.save(commit=False)
-            WorkLogService.save_work_log(wl)
+            if type(related_entity) is Knife:
+                work_log = WorkLogService.map_work_log_form_to_data(
+                    form, related_entity, None, work_log
+                )
+            else:
+                work_log = WorkLogService.map_work_log_form_to_data(
+                    form, None, related_entity, work_log
+                )
+
+            WorkLogService.save_work_log(work_log)
+
             messages.success(request, "Work Log Successfully Created!")
-            return redirect(redirect_url, pk=related_entity_id) + "#work_log_card"
+
+            if type(related_entity) is Knife:
+                return redirect(redirect_url, knife_id=related_entity_id)
+            else:
+                return redirect(redirect_url, sharpener_id=related_entity_id)
 
     else:
-        form = WorkLogForm(instance=wl)
+        form = WorkLogForm(instance=work_log)
 
         context = {
             "form": form,
@@ -84,7 +118,9 @@ def work_log_update(request, work_log_id, related_entity_id):
             "active": module,
             "related_entity": related_entity,
             "related_entity_id": related_entity_id,
+            "show_existing": True,
         }
+
         return render(request, "stabby_web/work-log-add-edit.html", context)
 
 
