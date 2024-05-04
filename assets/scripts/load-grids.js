@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    redirectToBladeEditPage = (blade_id, knife_id) => {
+        window.location.href = `${baseUrl}/knives/detail/${knife_id}/blades/edit/${blade_id}`; 
+    }
+
     redirectToKnifeDetailPage = (knife_id) => {
         window.location.href = `knives/detail/${knife_id}`; 
     }
@@ -221,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     width: 70, 
                     cellStyle: {textAlign: 'center'}, 
                     cellRenderer: (params) => {
-                        return `<button onclick="redirectToBladeEditPage(${params.data.blade_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
+                        return `<button onclick="redirectToBladeEditPage(${params.data.blade_id}, ${knife_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
                     }, 
                 },
                 { headerName: 'Shape', field: 'blade_shape', width: 150},
@@ -268,10 +272,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         xhr_wl.send();
-
-        redirectToBladeEditPage = (blade_id) => {
-            window.location.href = `${baseUrl}/knives/detail/${knife_id}/blades/edit/${blade_id}`; 
-        }
     }
     // sharpener detail
     if (location[0] === '/sharpeners/detail/') {
