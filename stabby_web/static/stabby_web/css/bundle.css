@@ -29,3 +29,7 @@
 #wl_grid.ag-theme-alpine .ag-root-wrapper {
     border: none;
 }
+
+#toast-container > div {
+    opacity: 1;
+}
