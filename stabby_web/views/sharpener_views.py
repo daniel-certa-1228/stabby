@@ -9,22 +9,6 @@ from django.contrib.auth.decorators import login_required
 
 # MVT VIEWS
 @login_required
-def sharpeners(request):
-    context = {"active": Module.Sharpeners.value}
-
-    return render(request, "stabby_web/sharpeners.html", context)
-
-
-@login_required
-def sharpener_detail(request, sharpener_id):
-    sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
-
-    context = {"active": Module.Sharpeners.value, "sharpener": sharpener}
-
-    return render(request, "stabby_web/sharpener-detail.html", context)
-
-
-@login_required
 def sharpener_create(request):
     if request.method == "POST":
         form = SharpenerForm(request.POST)
@@ -48,6 +32,15 @@ def sharpener_create(request):
         }
 
         return render(request, "stabby_web/sharpener-add-edit.html", context)
+
+
+@login_required
+def sharpener_detail(request, sharpener_id):
+    sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
+
+    context = {"active": Module.Sharpeners.value, "sharpener": sharpener}
+
+    return render(request, "stabby_web/sharpener-detail.html", context)
 
 
 @login_required
@@ -80,9 +73,27 @@ def sharpener_update(request, sharpener_id):
         return render(request, "stabby_web/sharpener-add-edit.html", context)
 
 
+@login_required
+def sharpeners(request):
+    context = {"active": Module.Sharpeners.value}
+
+    return render(request, "stabby_web/sharpeners.html", context)
+
+
 # JSON VIEWS
 @login_required
 def get_sharpener_grid(request):
     data = SharpenerService.get_sharpener_grid()
 
     return JsonResponse(data, safe=False)
+
+
+@login_required
+def sharpener_delete(request, sharpener_id):
+    sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
+
+    SharpenerService.save_sharpener(SharpenerService.delete_sharpener(sharpener))
+
+    messages.success(request, "Sharpener Deleted")
+
+    return JsonResponse(True, safe=False)

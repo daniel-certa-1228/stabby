@@ -73,6 +73,16 @@ urlpatterns = [
         name="blade_delete",
     ),
     path(
+        "api/delete_knife/<int:knife_id>/",
+        views.knife_delete,
+        name="knife_delete",
+    ),
+    path(
+        "api/delete_sharpener/<int:sharpener_id>/",
+        views.sharpener_delete,
+        name="sharpener_delete",
+    ),
+    path(
         "api/delete_work_log/<int:work_log_id>/",
         views.work_log_delete,
         name="work_log_delete",

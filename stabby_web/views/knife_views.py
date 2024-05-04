@@ -16,21 +16,6 @@ def index(request):
 
 
 @login_required
-def knife_detail(request, knife_id):
-    knife = KnifeService.get_knife_detail(knife_id)
-
-    number_of_blades = knife.number_of_blades()
-
-    context = {
-        "active": Module.Knives.value,
-        "knife": knife,
-        "number_of_blades": number_of_blades,
-    }
-
-    return render(request, "stabby_web/knife-detail.html", context)
-
-
-@login_required
 def knife_create(request):
     if request.method == "POST":
         form = KnifeForm(request.POST)
@@ -58,6 +43,21 @@ def knife_create(request):
         }
 
         return render(request, "stabby_web/knife-add-edit.html", context)
+
+
+@login_required
+def knife_detail(request, knife_id):
+    knife = KnifeService.get_knife_detail(knife_id)
+
+    number_of_blades = knife.number_of_blades()
+
+    context = {
+        "active": Module.Knives.value,
+        "knife": knife,
+        "number_of_blades": number_of_blades,
+    }
+
+    return render(request, "stabby_web/knife-detail.html", context)
 
 
 @login_required
@@ -97,3 +97,14 @@ def get_knife_grid(request):
     data = KnifeService.get_knife_grid()
 
     return JsonResponse(data, safe=False)
+
+
+@login_required
+def knife_delete(request, knife_id):
+    knife = KnifeService.get_knife_detail(knife_id)
+
+    KnifeService.save_knife(KnifeService.delete_knife(knife))
+
+    messages.success(request, "Knife Deleted")
+
+    return JsonResponse(True, safe=False)

@@ -9,6 +9,12 @@ from ..models import (
 class KnifeService:
 
     @classmethod
+    def delete_knife(self, knife):
+        knife.is_active = False
+
+        return knife
+
+    @classmethod
     def get_knife_detail(self, knife_id):
         return get_object_or_404(Knife, knife_id=knife_id)
 

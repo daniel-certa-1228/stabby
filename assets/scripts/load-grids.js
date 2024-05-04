@@ -19,6 +19,42 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    deleteKnife = (knife_id) => {
+        if (window.confirm("Are you sure you want to delete this Knife?")) {
+            const url = `${baseUrl}api/delete_knife/${knife_id}/`
+
+            let xhr_wl = new XMLHttpRequest();
+            xhr_wl.open('GET', url, true);
+            xhr_wl.onreadystatechange = () => {
+                if (xhr_wl.readyState === 4 && xhr_wl.status === 200) {
+                    var responseData = JSON.parse(xhr_wl.responseText);
+                    if (responseData) {
+                        window.location.href = `${baseUrl}`;
+                    }
+                }
+            };
+            xhr_wl.send();
+        }
+    }
+
+    deleteSharpener = (sharpener_id) => {
+        if (window.confirm("Are you sure you want to delete this Sharpener?")) {
+            const url = `${baseUrl}api/delete_sharpener/${sharpener_id}/`
+
+            let xhr_wl = new XMLHttpRequest();
+            xhr_wl.open('GET', url, true);
+            xhr_wl.onreadystatechange = () => {
+                if (xhr_wl.readyState === 4 && xhr_wl.status === 200) {
+                    var responseData = JSON.parse(xhr_wl.responseText);
+                    if (responseData) {
+                        window.location.href = `${baseUrl}/sharpeners`;
+                    }
+                }
+            };
+            xhr_wl.send();
+        }
+    }
+
     deleteWorkLog = (work_log_id, entity_id, is_knife_wl) => {
         if (window.confirm("Are you sure you want to delete this Work Log?")) {
             const url = `${baseUrl}api/delete_work_log/${work_log_id}/`

@@ -9,6 +9,12 @@ from ..models import (
 class SharpenerService:
 
     @classmethod
+    def delete_sharpener(self, sharpener):
+        sharpener.is_active = False
+
+        return sharpener
+
+    @classmethod
     def get_sharpener_detail(self, sharpener_id):
         return get_object_or_404(Sharpener, sharpener_id=sharpener_id)
 
@@ -19,10 +25,6 @@ class SharpenerService:
         )
 
         return list(queryset.values())
-
-    @classmethod
-    def save_sharpener(self, sharpener):
-        return sharpener.save()
 
     @classmethod
     def map_sharpener_form_data(self, request, form, sharpener=None):
@@ -45,3 +47,7 @@ class SharpenerService:
         sharpener.uom = form.cleaned_data["uom"]
 
         return sharpener
+
+    @classmethod
+    def save_sharpener(self, sharpener):
+        return sharpener.save()
