@@ -9,6 +9,12 @@ from ..models import (
 class BladeService:
 
     @classmethod
+    def delete_blade(self, blade):
+        blade.is_active = False
+
+        return blade
+
+    @classmethod
     def get_blade_detail(self, blade_id):
         return get_object_or_404(Blade, blade_id=blade_id)
 

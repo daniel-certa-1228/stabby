@@ -9,8 +9,6 @@ from django.contrib.auth.decorators import login_required
 
 
 # MVT VIEWS
-
-
 @login_required
 def blade_create(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
@@ -75,6 +73,17 @@ def blade_update(request, knife_id, blade_id):
 
 
 # JSON VIEWS
+@login_required
+def blade_delete(request, blade_id):
+    blade = BladeService.get_blade_detail(blade_id)
+
+    BladeService.save_blade(BladeService.delete_blade(blade))
+
+    messages.success(request, "Blade Deleted")
+
+    return JsonResponse(True, safe=False)
+
+
 @login_required
 def get_blade_grid(request, knife_id):
     data = BladeService.get_blade_grid(knife_id)
