@@ -38,7 +38,7 @@ def work_log_create(request, related_entity_id):
 
             WorkLogService.save_work_log(work_log)
 
-            messages.success(request, "Work Log Successfully Created!")
+            messages.success(request, "Work Log Created!")
 
             if type(related_entity) is Knife:
                 return redirect(redirect_url, knife_id=related_entity_id)
@@ -102,7 +102,7 @@ def work_log_update(request, work_log_id, related_entity_id):
 
             WorkLogService.save_work_log(work_log)
 
-            messages.success(request, "Work Log Successfully Updated!")
+            messages.success(request, "Work Log Updated!")
 
             if type(related_entity) is Knife:
                 return redirect(redirect_url, knife_id=related_entity_id)

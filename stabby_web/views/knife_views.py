@@ -40,7 +40,7 @@ def knife_create(request):
 
             KnifeService.save_knife(knife)
 
-            messages.success(request, "Knife Successfully Created!")
+            messages.success(request, "Knife Created!")
 
             return redirect("knife_detail", knife_id=knife.knife_id)
         else:
@@ -72,7 +72,7 @@ def knife_update(request, knife_id):
                 KnifeService.map_knife_form_data(request, form, knife)
             )
 
-            messages.success(request, "Knife Successfully Updated!")
+            messages.success(request, "Knife Updated!")
 
         else:
             messages.error(request, "Knife Update Failed.")

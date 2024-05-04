@@ -23,7 +23,7 @@ def blade_create(request, knife_id):
 
             BladeService.save_blade(blade)
 
-            messages.success(request, "Blade Successfully Created!")
+            messages.success(request, "Blade Created!")
 
             return redirect("knife_detail", knife_id=blade.knife_id)
 
@@ -55,7 +55,7 @@ def blade_update(request, knife_id, blade_id):
                 BladeService.map_blade_form_to_data(request, form, knife, blade)
             )
 
-            messages.success(request, "Blade Successfully Updated!")
+            messages.success(request, "Blade Updated!")
 
             return redirect("knife_detail", knife_id=blade.knife_id)
     else:

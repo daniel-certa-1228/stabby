@@ -34,7 +34,7 @@ def sharpener_create(request):
 
             SharpenerService.save_sharpener(sharpener)
 
-            messages.success(request, "Sharpener Successfully Created!")
+            messages.success(request, "Sharpener Created!")
 
             return redirect("sharpener_detail", sharpener_id=sharpener.sharpener_id)
 
@@ -61,7 +61,7 @@ def sharpener_update(request, sharpener_id):
                 SharpenerService.map_sharpener_form_data(request, form, sharpener)
             )
 
-            messages.success(request, "Sharpener Successfully Updated!")
+            messages.success(request, "Sharpener Updated!")
 
         else:
             messages.error(request, "Sharpener Update Failed.")
