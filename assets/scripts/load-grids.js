@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 document.addEventListener('DOMContentLoaded', function () {
     const baseUrl = "http://127.0.0.1:8000/";
 
