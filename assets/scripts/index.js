@@ -1,2 +1,4 @@
+import '@popperjs/core'
+import 'bootstrap'
 import './load-grids';
-import '../styles/styles.css';
+import '../styles/styles.scss'
