@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -9,6 +10,16 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                    presets: ['@babel/preset-env']
+                    }
+                }
+            },
             {
                 test: /\.css$/,
                 include: path.resolve(__dirname, 'assets/styles'),
