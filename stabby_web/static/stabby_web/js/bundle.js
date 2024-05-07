@@ -643,7 +643,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var _load_grids__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load-grids */ \"./assets/scripts/load-grids.js\");\n/* harmony import */ var _load_grids__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_load_grids__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/styles.scss */ \"./assets/styles/styles.scss\");\n\n\n\n\n\n//# sourceURL=webpack://stabby/./assets/scripts/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var _load_grids__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load-grids */ \"./assets/scripts/load-grids.js\");\n/* harmony import */ var _load_grids__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_load_grids__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/styles.scss */ \"./assets/styles/styles.scss\");\n/* eslint-disable no-unused-vars */\n\n\n\n\n\n//# sourceURL=webpack://stabby/./assets/scripts/index.js?");
 
 /***/ }),
 

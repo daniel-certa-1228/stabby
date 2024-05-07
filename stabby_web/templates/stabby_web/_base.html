@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>stabby.tech</title>
-    {% comment %} <link href="{% static "stabby_web/css/bootstrap.min.css" %}" rel="stylesheet"> {% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% static 'stabby_web/css/toastr.min.css' %}" media="all">
     <link href="{% static "stabby_web/css/bundle.css" %}" rel="stylesheet">
   </head>
   <body>
@@ -38,13 +36,10 @@
       {% endblock %}
     </main>
     <script src="https://kit.fontawesome.com/351ee93ed8.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'stabby_web/js/toastr.min.js' %}"></script>  
     <script src="{% static "stabby_web/js/ag-grid-community.min.js" %}"></script>
-    {% comment %} <script src="{% static "stabby_web/js/bootstrap.min.js" %}"></script> {% endcomment %}
     <script src="{% static "stabby_web/js/bundle.js" %}"></script>
 
-    {% if messages %}
+    {% comment %} {% if messages %}
       {% for message in messages %}
           {% if message.tags == 'success'%}
               <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}', 'Success')</script>
@@ -56,6 +51,6 @@
               <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}', 'Error')</script>
           {% endif %}
       {% endfor %}
-    {% endif %}
+    {% endif %} {% endcomment %}
   </body>
 </html>
