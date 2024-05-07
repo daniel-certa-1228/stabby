@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -137,3 +138,11 @@ STATIC_ROOT = BASE_DIR / "assets"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/"
+
+MESSAGE_TAGS = {
+    messages.DEBUG: "Info",
+    messages.INFO: "Info",
+    messages.SUCCESS: "Success",
+    messages.WARNING: "Warning",
+    messages.ERROR: "Error",
+}
