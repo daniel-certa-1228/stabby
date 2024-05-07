@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>stabby.tech</title>
-    <link href="{% static "stabby_web/css/bootstrap.min.css" %}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'stabby_web/css/toastr.min.css' %}" media="all">
     <link href="{% static "stabby_web/css/bundle.css" %}" rel="stylesheet">
   </head>
   <body>
@@ -38,24 +36,32 @@
       {% endblock %}
     </main>
     <script src="https://kit.fontawesome.com/351ee93ed8.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'stabby_web/js/toastr.min.js' %}"></script>  
     <script src="{% static "stabby_web/js/ag-grid-community.min.js" %}"></script>
-    <script src="{% static "stabby_web/js/bootstrap.min.js" %}"></script>
     <script src="{% static "stabby_web/js/bundle.js" %}"></script>
-
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var toasts = document.querySelectorAll('.toast');
+        toasts.forEach(function(toast) {
+          var bootstrapToast = new bootstrap.Toast(toast);
+          bootstrapToast.show();
+        });
+      });
+    </script>
     {% if messages %}
-      {% for message in messages %}
-          {% if message.tags == 'success'%}
-              <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}', 'Success')</script>
-          {% elif message.tags == 'info' %}
-              <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-          {% elif message.tags == 'warning' %}
-              <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-          {% elif message.tags == 'error' %}
-              <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}', 'Error')</script>
-          {% endif %}
-      {% endfor %}
+          {% for message in messages %}
+          <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div id="liveToast" class="toast" data-bs-delay="2000" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header {% if message.tags == 'Success' %}bg-success{% elif message.tags == 'Error' %}bg-danger{% endif %} text-white">
+                {% if message.tags == 'Success' %}<i class="fa-solid fa-check"></i>{% elif message.tags == 'Error' %}<i class="fa-solid fa-x"></i>{% endif %}&nbsp;&nbsp;
+                <strong class="me-auto">{{ message.tags }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                <strong>{{ message }}</strong>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
     {% endif %}
   </body>
 </html>
