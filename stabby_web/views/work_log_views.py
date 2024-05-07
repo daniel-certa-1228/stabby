@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from stabby_web.forms import WorkLogForm
 from stabby_web.models import Knife
 from stabby_web.services import WorkLogService, KnifeService, SharpenerService
-from stabby_web.enums import FormType, Module
+from stabby_web.enums import FormTypes, Modules
 from django.contrib.auth.decorators import login_required
 
 
@@ -52,17 +52,17 @@ def work_log_create(request, related_entity_id):
         if type(related_entity) is Knife:
             show_existing = WorkLogService.show_work_log_card(related_entity_id)
             initial = {"knife": related_entity, "date": datetime.datetime.now()}
-            module = Module.Knives.value
+            module = Modules.Knives.value
         else:
             show_existing = WorkLogService.show_work_log_card(None, related_entity_id)
             initial = {"sharpener": related_entity, "date": datetime.datetime.now()}
-            module = Module.Sharpeners.value
+            module = Modules.Sharpeners.value
 
         form = WorkLogForm(initial)
 
         context = {
             "form": form,
-            "form_type": FormType.Add.value,
+            "form_type": FormTypes.Add.value,
             "active": module,
             "related_entity": related_entity,
             "related_entity_id": related_entity_id,
@@ -81,10 +81,10 @@ def work_log_update(request, work_log_id, related_entity_id):
     if "knives" in request.path:
         related_entity = KnifeService.get_knife_detail(related_entity_id)
         redirect_url = "knife_detail"
-        module = Module.Knives.value
+        module = Modules.Knives.value
     else:
         redirect_url = "sharpener_detail"
-        module = Module.Sharpeners.value
+        module = Modules.Sharpeners.value
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
 
     if request.method == "POST":
@@ -114,7 +114,7 @@ def work_log_update(request, work_log_id, related_entity_id):
 
         context = {
             "form": form,
-            "form_type": FormType.Edit.value,
+            "form_type": FormTypes.Edit.value,
             "active": module,
             "related_entity": related_entity,
             "related_entity_id": related_entity_id,

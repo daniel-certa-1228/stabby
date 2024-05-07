@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from stabby_web.enums import Module, FormType, UnitsOfMeasure
+from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure
 from stabby_web.forms import KnifeForm
 from stabby_web.services import KnifeService
 from django.contrib.auth.decorators import login_required
@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 # MVT VIEWS
 @login_required
 def index(request):
-    context = {"active": Module.Knives.value}
+    context = {"active": Modules.Knives.value}
 
     return render(request, "stabby_web/index.html", context)
 
@@ -38,8 +38,8 @@ def knife_create(request):
 
         context = {
             "form": form,
-            "form_type": FormType.Add.value,
-            "active": Module.Knives.value,
+            "form_type": FormTypes.Add.value,
+            "active": Modules.Knives.value,
         }
 
         return render(request, "stabby_web/knife-add-edit.html", context)
@@ -52,7 +52,7 @@ def knife_detail(request, knife_id):
     number_of_blades = knife.number_of_blades()
 
     context = {
-        "active": Module.Knives.value,
+        "active": Modules.Knives.value,
         "knife": knife,
         "number_of_blades": number_of_blades,
     }
@@ -83,8 +83,8 @@ def knife_update(request, knife_id):
 
         context = {
             "form": form,
-            "form_type": FormType.Edit.value,
-            "active": Module.Knives.value,
+            "form_type": FormTypes.Edit.value,
+            "active": Modules.Knives.value,
             "knife_id": knife_id,
         }
 

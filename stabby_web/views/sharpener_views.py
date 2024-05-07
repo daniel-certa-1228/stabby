@@ -3,7 +3,7 @@ from django.contrib import messages
 from stabby_web.forms import SharpenerForm
 from stabby_web.services import SharpenerService
 from django.shortcuts import render, redirect
-from stabby_web.enums import FormType, Module, UnitsOfMeasure
+from stabby_web.enums import FormTypes, Modules, UnitsOfMeasure
 from django.contrib.auth.decorators import login_required
 
 
@@ -27,8 +27,8 @@ def sharpener_create(request):
 
         context = {
             "form": form,
-            "form_type": FormType.Add.value,
-            "active": Module.Sharpeners.value,
+            "form_type": FormTypes.Add.value,
+            "active": Modules.Sharpeners.value,
         }
 
         return render(request, "stabby_web/sharpener-add-edit.html", context)
@@ -38,7 +38,7 @@ def sharpener_create(request):
 def sharpener_detail(request, sharpener_id):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
-    context = {"active": Module.Sharpeners.value, "sharpener": sharpener}
+    context = {"active": Modules.Sharpeners.value, "sharpener": sharpener}
 
     return render(request, "stabby_web/sharpener-detail.html", context)
 
@@ -65,8 +65,8 @@ def sharpener_update(request, sharpener_id):
 
         context = {
             "form": form,
-            "form_type": FormType.Edit.value,
-            "active": Module.Sharpeners.value,
+            "form_type": FormTypes.Edit.value,
+            "active": Modules.Sharpeners.value,
             "sharpener_id": sharpener_id,
         }
 
@@ -75,7 +75,7 @@ def sharpener_update(request, sharpener_id):
 
 @login_required
 def sharpeners(request):
-    context = {"active": Module.Sharpeners.value}
+    context = {"active": Modules.Sharpeners.value}
 
     return render(request, "stabby_web/sharpeners.html", context)
 

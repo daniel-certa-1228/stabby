@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.contrib import messages
 from django.shortcuts import redirect, render
-from stabby_web.enums import FormType, Module
+from stabby_web.enums import FormTypes, Modules
 from stabby_web.forms import BladeForm
 from stabby_web.services import BladeService
 from stabby_web.services.knife_service import KnifeService
@@ -32,8 +32,8 @@ def blade_create(request, knife_id):
 
         context = {
             "form": form,
-            "form_type": FormType.Add.value,
-            "active": Module.Knives.value,
+            "form_type": FormTypes.Add.value,
+            "active": Modules.Knives.value,
             "knife": knife,
             "number_of_blades": number_of_blades,
         }
@@ -63,8 +63,8 @@ def blade_update(request, knife_id, blade_id):
 
         context = {
             "form": form,
-            "form_type": FormType.Edit.value,
-            "active": Module.Knives.value,
+            "form_type": FormTypes.Edit.value,
+            "active": Modules.Knives.value,
             "knife": knife,
             "number_of_blades": number_of_blades,
         }
