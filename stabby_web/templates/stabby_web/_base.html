@@ -38,15 +38,7 @@
     <script src="https://kit.fontawesome.com/351ee93ed8.js" crossorigin="anonymous"></script>
     <script src="{% static "stabby_web/js/ag-grid-community.min.js" %}"></script>
     <script src="{% static "stabby_web/js/bundle.js" %}"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var toasts = document.querySelectorAll('.toast');
-        toasts.forEach(function(toast) {
-          var bootstrapToast = new bootstrap.Toast(toast);
-          bootstrapToast.show();
-        });
-      });
-    </script>
+
     {% if messages %}
           {% for message in messages %}
           <div class="toast-container position-fixed top-0 end-0 p-3">
@@ -63,5 +55,6 @@
           </div>
         {% endfor %}
     {% endif %}
+    
   </body>
 </html>
