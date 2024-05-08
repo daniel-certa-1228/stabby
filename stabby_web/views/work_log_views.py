@@ -108,8 +108,8 @@ def work_log_update(request, work_log_id, related_entity_id):
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
         variable_dto = TemplateVariableDTO(
             ViewTypes.SharpenerWorkLogAddEdit.value,
-            related_entity_id,
             None,
+            related_entity_id,
             None,
             work_log_id,
         )
