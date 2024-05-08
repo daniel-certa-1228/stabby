@@ -2,10 +2,11 @@ import datetime
 from django.http import JsonResponse
 from django.contrib import messages
 from django.shortcuts import redirect, render
+from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import WorkLogForm
 from stabby_web.models import Knife
 from stabby_web.services import WorkLogService, KnifeService, SharpenerService
-from stabby_web.enums import FormTypes, Modules
+from stabby_web.enums import FormTypes, Modules, ViewTypes
 from django.contrib.auth.decorators import login_required
 
 
@@ -48,15 +49,26 @@ def work_log_create(request, related_entity_id):
         initial = None
         module = None
         show_existing = True
+        variable_dto = None
 
         if type(related_entity) is Knife:
             show_existing = WorkLogService.show_work_log_card(related_entity_id)
             initial = {"knife": related_entity, "date": datetime.datetime.now()}
             module = Modules.Knives.value
+            variable_dto = TemplateVariableDTO(
+                ViewTypes.KnifeWorkLogAddEdit.value, related_entity_id, None, None, None
+            )
         else:
             show_existing = WorkLogService.show_work_log_card(None, related_entity_id)
             initial = {"sharpener": related_entity, "date": datetime.datetime.now()}
             module = Modules.Sharpeners.value
+            variable_dto = TemplateVariableDTO(
+                ViewTypes.SharpenerWorkLogAddEdit.value,
+                None,
+                related_entity_id,
+                None,
+                None,
+            )
 
         form = WorkLogForm(initial)
 
@@ -67,6 +79,7 @@ def work_log_create(request, related_entity_id):
             "related_entity": related_entity,
             "related_entity_id": related_entity_id,
             "show_existing": show_existing,
+            "template_variables": variable_dto.to_dict(),
         }
         return render(request, "stabby_web/work-log-add-edit.html", context)
 
@@ -82,10 +95,24 @@ def work_log_update(request, work_log_id, related_entity_id):
         related_entity = KnifeService.get_knife_detail(related_entity_id)
         redirect_url = "knife_detail"
         module = Modules.Knives.value
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.KnifeWorkLogAddEdit.value,
+            related_entity_id,
+            None,
+            None,
+            work_log_id,
+        )
     else:
         redirect_url = "sharpener_detail"
         module = Modules.Sharpeners.value
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.SharpenerWorkLogAddEdit.value,
+            related_entity_id,
+            None,
+            None,
+            work_log_id,
+        )
 
     if request.method == "POST":
         form = WorkLogForm(request.POST)
@@ -119,6 +146,7 @@ def work_log_update(request, work_log_id, related_entity_id):
             "related_entity": related_entity,
             "related_entity_id": related_entity_id,
             "show_existing": True,
+            "template_variables": variable_dto.to_dict(),
         }
 
         return render(request, "stabby_web/work-log-add-edit.html", context)

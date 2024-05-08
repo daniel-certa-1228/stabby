@@ -1,7 +1,8 @@
 from django.http import JsonResponse
 from django.contrib import messages
 from django.shortcuts import redirect, render
-from stabby_web.enums import FormTypes, Modules
+from stabby_web.dtos import TemplateVariableDTO
+from stabby_web.enums import FormTypes, Modules, ViewTypes
 from stabby_web.forms import BladeForm
 from stabby_web.services import BladeService
 from stabby_web.services.knife_service import KnifeService
@@ -30,12 +31,17 @@ def blade_create(request, knife_id):
 
         number_of_blades = knife.number_of_blades()
 
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.BladeAddEdit.value, knife_id, None, None, None
+        )
+
         context = {
             "form": form,
             "form_type": FormTypes.Add.value,
             "active": Modules.Knives.value,
             "knife": knife,
             "number_of_blades": number_of_blades,
+            "template_variables": variable_dto.to_dict(),
         }
         return render(request, "stabby_web/blade-add-edit.html", context)
 
@@ -61,12 +67,17 @@ def blade_update(request, knife_id, blade_id):
 
         number_of_blades = knife.number_of_blades()
 
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.BladeAddEdit.value, knife_id, None, blade_id, None
+        )
+
         context = {
             "form": form,
             "form_type": FormTypes.Edit.value,
             "active": Modules.Knives.value,
             "knife": knife,
             "number_of_blades": number_of_blades,
+            "template_variables": variable_dto.to_dict(),
         }
 
     return render(request, "stabby_web/blade-add-edit.html", context)

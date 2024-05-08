@@ -1,7 +1,9 @@
+import json
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure
+from stabby_web.dtos import TemplateVariableDTO
+from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure, ViewTypes
 from stabby_web.forms import KnifeForm
 from stabby_web.services import KnifeService
 from django.contrib.auth.decorators import login_required
@@ -10,7 +12,14 @@ from django.contrib.auth.decorators import login_required
 # MVT VIEWS
 @login_required
 def index(request):
-    context = {"active": Modules.Knives.value}
+    variable_dto = TemplateVariableDTO(
+        ViewTypes.KnifeGrid.value, None, None, None, None
+    )
+
+    context = {
+        "active": Modules.Knives.value,
+        "template_variables": variable_dto.to_dict(),
+    }
 
     return render(request, "stabby_web/index.html", context)
 
@@ -36,10 +45,15 @@ def knife_create(request):
             initial={"uom": UnitsOfMeasure.inches.value, "purchased_new": True}
         )
 
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.KnifeAddEdit.value, None, None, None, None
+        )
+
         context = {
             "form": form,
             "form_type": FormTypes.Add.value,
             "active": Modules.Knives.value,
+            "template_variables": variable_dto.to_dict(),
         }
 
         return render(request, "stabby_web/knife-add-edit.html", context)
@@ -51,10 +65,15 @@ def knife_detail(request, knife_id):
 
     number_of_blades = knife.number_of_blades()
 
+    variable_dto = TemplateVariableDTO(
+        ViewTypes.KnifeDetail.value, knife_id, None, None, None
+    )
+
     context = {
         "active": Modules.Knives.value,
         "knife": knife,
         "number_of_blades": number_of_blades,
+        "template_variables": variable_dto.to_dict(),
     }
 
     return render(request, "stabby_web/knife-detail.html", context)
@@ -81,11 +100,16 @@ def knife_update(request, knife_id):
     else:
         form = KnifeForm(instance=knife)
 
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.KnifeAddEdit.value, knife_id, None, None, None
+        )
+
         context = {
             "form": form,
             "form_type": FormTypes.Edit.value,
             "active": Modules.Knives.value,
             "knife_id": knife_id,
+            "template_variables": variable_dto.to_dict(),
         }
 
         return render(request, "stabby_web/knife-add-edit.html", context)

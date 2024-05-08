@@ -55,6 +55,6 @@
           </div>
         {% endfor %}
     {% endif %}
-    
+    {{ template_variables|json_script:"template-variables" }}
   </body>
 </html>
