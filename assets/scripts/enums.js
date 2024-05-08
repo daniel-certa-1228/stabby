@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const ViewTypes = Object.freeze({
     KnifeGrid: 1,
@@ -10,6 +10,6 @@ const ViewTypes = Object.freeze({
     BladeAddEdit: 7,
     KnifeWorkLogAddEdit: 8,
     SharpenerWorkLogAddEdit: 9
-})
+});
 
 export { ViewTypes };

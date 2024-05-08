@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-import { bootstrap } from './index'
+import { bootstrap } from './index';
 
 document.addEventListener('DOMContentLoaded', function() {
     const toasts = document.querySelectorAll('.toast');

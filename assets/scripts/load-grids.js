@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     deleteBlade = (blade_id, knife_id) => {
         if (window.confirm("Are you sure you want to delete this Blade?")) {
-            const url = `${baseUrl}api/delete_blade/${blade_id}/`
+            const url = `${baseUrl}api/delete_blade/${blade_id}/`;
 
             let xhr_wl = new XMLHttpRequest();
             xhr_wl.open('GET', url, true);
@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             xhr_wl.send();
         }
-    }
+    };
 
     deleteKnife = (knife_id) => {
         if (window.confirm("Are you sure you want to delete this Knife?")) {
-            const url = `${baseUrl}api/delete_knife/${knife_id}/`
+            const url = `${baseUrl}api/delete_knife/${knife_id}/`;
 
             let xhr_wl = new XMLHttpRequest();
             xhr_wl.open('GET', url, true);
@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             xhr_wl.send();
         }
-    }
+    };
 
     deleteSharpener = (sharpener_id) => {
         if (window.confirm("Are you sure you want to delete this Sharpener?")) {
-            const url = `${baseUrl}api/delete_sharpener/${sharpener_id}/`
+            const url = `${baseUrl}api/delete_sharpener/${sharpener_id}/`;
 
             let xhr_wl = new XMLHttpRequest();
             xhr_wl.open('GET', url, true);
@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             xhr_wl.send();
         }
-    }
+    };
 
     deleteWorkLog = (work_log_id, entity_id, is_knife_wl) => {
         if (window.confirm("Are you sure you want to delete this Work Log?")) {
-            const url = `${baseUrl}api/delete_work_log/${work_log_id}/`
+            const url = `${baseUrl}api/delete_work_log/${work_log_id}/`;
 
             let xhr_wl = new XMLHttpRequest();
             xhr_wl.open('GET', url, true);
@@ -76,19 +76,19 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             xhr_wl.send();
         }
-    }
+    };
 
     redirectToBladeEditPage = (blade_id, knife_id) => {
         window.location.href = `${baseUrl}/knives/detail/${knife_id}/blades/edit/${blade_id}`;
-    }
+    };
 
     redirectToKnifeDetailPage = (knife_id) => {
         window.location.href = `knives/detail/${knife_id}`;
-    }
+    };
 
     redirectToSharpenerDetailPage = (sharpener_id) => {
         window.location.href = `detail/${sharpener_id}`;
-    }
+    };
 
     redirectToWorkLogEditPage = (work_log_id, entity_id, is_knife_wl) => {
         if (is_knife_wl) {
@@ -96,19 +96,19 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             window.location.href = `/sharpeners/detail/${entity_id}/work-logs/edit/${work_log_id}`;
         }
-    }
+    };
 
     removeEmbeddedIdFromUrl = (url) => {
         const regex = /\/(\d+)\//;
 
-        const match = url.match(regex)
+        const match = url.match(regex);
 
         if (match) {
             return match[0].replaceAll('/', '');
         } else {
             return null;
         }
-    }
+    };
 
     removeIdFromUrl = (url) => {
         const regex = /(\d+)\/$/;
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             return [url, null];
         }
-    }
+    };
 
     returnWorkLogGridOptions = (with_buttons, is_knife_wl = null, entity_id = null, work_log_id = null) => {
         if (with_buttons) {
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 ]
             };
         }
-    }
+    };
 
     const location = removeIdFromUrl(window.location.pathname);
 

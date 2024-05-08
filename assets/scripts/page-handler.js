@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-import { enums } from './index'
+import { enums } from './index';
 
 document.addEventListener('DOMContentLoaded', function() {
     var variables = JSON.parse(document.getElementById('template-variables').textContent);
