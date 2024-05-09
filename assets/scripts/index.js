@@ -5,6 +5,7 @@ import * as bootstrap from 'bootstrap';
 // import * as ajax_handler from './ajax-handler';
 // import * as grid_loader from './grid_loader';
 // import './page-handler';
+import './click-handler';
 import './load-grids';
 import './toast-handler';
 import '../styles/styles.scss';

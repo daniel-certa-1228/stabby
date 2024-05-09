@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     pinned: 'left',
                     cellStyle: { textAlign: 'center' },
                     cellRenderer: (params) => {
-                        return `<button onclick="redirectToKnifeDetailPage(${params.data.knife_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-magnifying-glass"></i></button>`;
+                        return `<button class="btn btn-sm btn-light knife-detail-btn" value="${params.data.knife_id}"><i class="fa-solid fa-magnifying-glass"></i></button>`;
                     },
                 },
                 { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
