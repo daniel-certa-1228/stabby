@@ -16,4 +16,9 @@ const loadWorkLogGrid = () => {
     console.log('Work Log Grid logic here');
 };
 
-export { loadBladeGrid, loadKnifeGrid, loadSharpenerGrid, loadWorkLogGrid };
+export { 
+    loadBladeGrid, 
+    loadKnifeGrid, 
+    loadSharpenerGrid, 
+    loadWorkLogGrid 
+};

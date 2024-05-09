@@ -1,7 +1,9 @@
 import '@popperjs/core';
 import * as bootstrap from 'bootstrap';
-// import { baseUrl } from './constants'
+import { baseUrl } from './constants';
 // import * as enums from './enums';
+import * as redirect_handler from './redirect-handler';
+// import * as delete_handler from './delete-handler';
 // import * as ajax_handler from './ajax-handler';
 // import * as grid_loader from './grid_loader';
 // import './page-handler';
@@ -11,7 +13,9 @@ import './toast-handler';
 import '../styles/styles.scss';
 
 export { bootstrap };
+export { redirect_handler };
+// export { delete_handler };
 // export { ajax_handler };
 // export { grid_loader };
-// export { baseUrl }
+export { baseUrl };
 // export { enums };
