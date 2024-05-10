@@ -1,19 +1,13 @@
 'use strict';
 
-const deleteBlade = (url) => {
-    console.log('deleteBlade', url);
-};
-
-const deleteKnife = (url) => {
-    console.log('deleteKnife', url);
-};
-
-const deleteSharpener = (url) => {
-    console.log('deleteSharpener', url);
-};
-
-const deleteWorkLog = (url) => {
-    console.log('deleteWorkLog', url);
+const deleteEntity = async (url) => {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error deleting:', error);
+    }
 };
 
 const getKnifeGrid = () => {
@@ -32,11 +26,8 @@ const getWorkLogGrid = () => {
     console.log('getSharpenerGrid');
 };
 
-export { 
-    deleteBlade, 
-    deleteKnife, 
-    deleteSharpener, 
-    deleteWorkLog, 
+export {  
+    deleteEntity, 
     getBladeGrid, 
     getKnifeGrid, 
     getSharpenerGrid, 
