@@ -36,7 +36,7 @@ const deleteKnife = (knife_id) => {
                 }
             }
         };
-        // xhr_wl.send();
+        xhr_wl.send();
     }
 };
 
@@ -55,7 +55,7 @@ const deleteSharpener = (sharpener_id) => {
                 }
             }
         };
-        // xhr_wl.send();
+        xhr_wl.send();
     }
 };
 
