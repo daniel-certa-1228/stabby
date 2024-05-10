@@ -1,35 +1,57 @@
 'use strict';
 
 const deleteEntity = async (url) => {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error deleting:', error);
-    }
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error deleting:', error);
+  }
 };
 
-const getKnifeGrid = () => {
-    console.log('getKnifeGrid');
+const getKnifeGrid = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching knife grid data:', error);
+  }
 };
 
-const getSharpenerGrid = () => {
-    console.log('getSharpenerGrid');
+const getSharpenerGrid = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching sharpener grid data:', error);
+  }
 };
 
-const getBladeGrid = () => {
-    console.log('getSharpenerGrid');
+const getBladeGrid = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching blade grid data:', error);
+  }
 };
 
 const getWorkLogGrid = () => {
-    console.log('getSharpenerGrid');
+  console.log('getSharpenerGrid');
 };
 
-export {  
-    deleteEntity, 
-    getBladeGrid, 
-    getKnifeGrid, 
-    getSharpenerGrid, 
-    getWorkLogGrid 
+export {
+  deleteEntity,
+  getBladeGrid,
+  getKnifeGrid,
+  getSharpenerGrid,
+  getWorkLogGrid
 };

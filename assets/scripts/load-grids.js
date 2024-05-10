@@ -80,90 +80,90 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // knife grid
     if (location[0] === '/') {
-        const gridDiv = document.querySelector('#grid');
+        // const gridDiv = document.querySelector('#grid');
 
-        const gridOptions = {
-            pagination: true,
-            defaultColDef: {
-                filter: true,
-                cellStyle: { textAlign: 'left' }
-            },
-            columnDefs: [
-                {
-                    headerName: '',
-                    width: 70,
-                    pinned: 'left',
-                    cellStyle: { textAlign: 'center' },
-                    cellRenderer: (params) => {
-                        return `<button class="btn btn-sm btn-light knife-detail-btn" value="${params.data.knife_id}"><i class="fa-solid fa-magnifying-glass"></i></button>`;
-                    },
-                },
-                { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
-                { headerName: 'Knife', field: 'knife', width: 350, pinned: 'left' },
-                { headerName: '# of Blades', field: 'num_of_blades', width: 120, cellStyle: { textAlign: 'right' } },
-                { headerName: 'Blade Material', field: 'blade_material', width: 250 },
-                { headerName: 'Handle Material', field: 'handle_material', width: 160 },
-                { headerName: 'Lock', field: 'lock_type', width: 120 },
-                { headerName: 'Deployment', field: 'deployment_type', width: 140 },
-                { headerName: 'Country', field: 'country', width: 140 },
-                { headerName: 'Vendor', field: 'vendor', width: 220 },
-                { headerName: 'Needs Work', field: 'needs_work', width: 140, cellStyle: { textAlign: 'center' } },
-            ]
-        };
+        // const gridOptions = {
+        //     pagination: true,
+        //     defaultColDef: {
+        //         filter: true,
+        //         cellStyle: { textAlign: 'left' }
+        //     },
+        //     columnDefs: [
+        //         {
+        //             headerName: '',
+        //             width: 70,
+        //             pinned: 'left',
+        //             cellStyle: { textAlign: 'center' },
+        //             cellRenderer: (params) => {
+        //                 return `<button class="btn btn-sm btn-light knife-detail-btn" value="${params.data.knife_id}"><i class="fa-solid fa-magnifying-glass"></i></button>`;
+        //             },
+        //         },
+        //         { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
+        //         { headerName: 'Knife', field: 'knife', width: 350, pinned: 'left' },
+        //         { headerName: '# of Blades', field: 'num_of_blades', width: 120, cellStyle: { textAlign: 'right' } },
+        //         { headerName: 'Blade Material', field: 'blade_material', width: 250 },
+        //         { headerName: 'Handle Material', field: 'handle_material', width: 160 },
+        //         { headerName: 'Lock', field: 'lock_type', width: 120 },
+        //         { headerName: 'Deployment', field: 'deployment_type', width: 140 },
+        //         { headerName: 'Country', field: 'country', width: 140 },
+        //         { headerName: 'Vendor', field: 'vendor', width: 220 },
+        //         { headerName: 'Needs Work', field: 'needs_work', width: 140, cellStyle: { textAlign: 'center' } },
+        //     ]
+        // };
 
-        const gridApi = agGrid.createGrid(gridDiv, gridOptions);
+        // const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', `${baseUrl}api/get_knife_grid`, true);
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var responseData = JSON.parse(xhr.responseText);
-                gridApi.setGridOption('rowData', responseData);
-            }
-        };
-        xhr.send();
+        // let xhr = new XMLHttpRequest();
+        // xhr.open('GET', `${baseUrl}api/get_knife_grid`, true);
+        // xhr.onreadystatechange = () => {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         var responseData = JSON.parse(xhr.responseText);
+        //         gridApi.setGridOption('rowData', responseData);
+        //     }
+        // };
+        // xhr.send();
     }
     // sharpener grid
     if (location[0] === '/sharpeners/') {
-        const gridDiv = document.querySelector('#grid');
+        // const gridDiv = document.querySelector('#grid');
 
-        const gridOptions = {
-            defaultColDef: {
-                filter: true,
-                cellStyle: { textAlign: 'left' }
-            },
-            columnDefs: [
-                {
-                    headerName: '',
-                    width: 70,
-                    pinned: 'left',
-                    cellStyle: { textAlign: 'center' },
-                    cellRenderer: (params) => {
-                        return `<button class="btn btn-sm btn-light sharpener-detail-btn" value=${params.data.sharpener_id}><i class="fa-solid fa-magnifying-glass"></i></button>`;
-                    },
-                },
-                { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
-                { headerName: 'Sharpener', field: 'sharpener', width: 350, pinned: 'left' },
-                { headerName: 'Cutting Agent', field: 'cutting_agent', width: 160 },
-                { headerName: 'Bonding Agent', field: 'bonding_agent', width: 190 },
-                { headerName: 'Length', field: 'length', width: 120 },
-                { headerName: 'Width', field: 'width', width: 120 },
-                { headerName: 'Country', field: 'country', width: 140 },
-                { headerName: 'Friable', field: 'is_friable', width: 140, cellStyle: { textAlign: 'center' } },
-            ]
-        };
+        // const gridOptions = {
+        //     defaultColDef: {
+        //         filter: true,
+        //         cellStyle: { textAlign: 'left' }
+        //     },
+        //     columnDefs: [
+        //         {
+        //             headerName: '',
+        //             width: 70,
+        //             pinned: 'left',
+        //             cellStyle: { textAlign: 'center' },
+        //             cellRenderer: (params) => {
+        //                 return `<button class="btn btn-sm btn-light sharpener-detail-btn" value=${params.data.sharpener_id}><i class="fa-solid fa-magnifying-glass"></i></button>`;
+        //             },
+        //         },
+        //         { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
+        //         { headerName: 'Sharpener', field: 'sharpener', width: 350, pinned: 'left' },
+        //         { headerName: 'Cutting Agent', field: 'cutting_agent', width: 160 },
+        //         { headerName: 'Bonding Agent', field: 'bonding_agent', width: 190 },
+        //         { headerName: 'Length', field: 'length', width: 120 },
+        //         { headerName: 'Width', field: 'width', width: 120 },
+        //         { headerName: 'Country', field: 'country', width: 140 },
+        //         { headerName: 'Friable', field: 'is_friable', width: 140, cellStyle: { textAlign: 'center' } },
+        //     ]
+        // };
 
-        const gridApi = agGrid.createGrid(gridDiv, gridOptions);
+        // const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', `${baseUrl}api/get_sharpener_grid`, true);
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var responseData = JSON.parse(xhr.responseText);
-                gridApi.setGridOption('rowData', responseData);
-            }
-        };
-        xhr.send();
+        // let xhr = new XMLHttpRequest();
+        // xhr.open('GET', `${baseUrl}api/get_sharpener_grid`, true);
+        // xhr.onreadystatechange = () => {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         var responseData = JSON.parse(xhr.responseText);
+        //         gridApi.setGridOption('rowData', responseData);
+        //     }
+        // };
+        // xhr.send();
     }
     // knife detail
     if (location[0] === '/knives/detail/') {
@@ -171,49 +171,49 @@ document.addEventListener('DOMContentLoaded', function () {
         const knife_id = !isNaN(rawId) ? rawId : -1;
 
         // blade grid
-        const gridDiv = document.querySelector('#blade_grid');
+        // const gridDiv = document.querySelector('#blade_grid');
 
-        const gridOptions = {
-            headerHeight: 35,
-            defaultColDef: {
-                cellStyle: { textAlign: 'left' }
-            },
-            columnDefs: [
-                {
-                    headerName: '',
-                    width: 70,
-                    cellStyle: { textAlign: 'center' },
-                    cellRenderer: (params) => {
-                        return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="fa-solid fa-edit"></i></button>`;
-                    },
-                },
-                { headerName: 'Shape', field: 'blade_shape', width: 135 },
-                { headerName: 'Length', field: 'length', width: 95 },
-                { headerName: 'C.E. Length', field: 'length_cutting_edge', width: 105 },
-                { headerName: 'Half-Stop', field: 'has_half_stop', width: 95 },
-                { headerName: 'Main', field: 'is_main_blade', width: 70 },
-                {
-                    headerName: '',
-                    width: 70,
-                    cellStyle: { textAlign: 'center' },
-                    cellRenderer: (params) => {
-                        return `<button class="btn btn-sm btn-light blade-delete-btn" value="[${params.data.blade_id}, ${params.data.knife_id}]"><i class="fa-solid fa-trash"></i></button>`;
-                    },
-                },
-            ]
-        };
+        // const gridOptions = {
+        //     headerHeight: 35,
+        //     defaultColDef: {
+        //         cellStyle: { textAlign: 'left' }
+        //     },
+        //     columnDefs: [
+        //         {
+        //             headerName: '',
+        //             width: 70,
+        //             cellStyle: { textAlign: 'center' },
+        //             cellRenderer: (params) => {
+        //                 return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="fa-solid fa-edit"></i></button>`;
+        //             },
+        //         },
+        //         { headerName: 'Shape', field: 'blade_shape', width: 135 },
+        //         { headerName: 'Length', field: 'length', width: 95 },
+        //         { headerName: 'C.E. Length', field: 'length_cutting_edge', width: 105 },
+        //         { headerName: 'Half-Stop', field: 'has_half_stop', width: 95 },
+        //         { headerName: 'Main', field: 'is_main_blade', width: 70 },
+        //         {
+        //             headerName: '',
+        //             width: 70,
+        //             cellStyle: { textAlign: 'center' },
+        //             cellRenderer: (params) => {
+        //                 return `<button class="btn btn-sm btn-light blade-delete-btn" value="[${params.data.blade_id}, ${params.data.knife_id}]"><i class="fa-solid fa-trash"></i></button>`;
+        //             },
+        //         },
+        //     ]
+        // };
 
-        const gridApi = agGrid.createGrid(gridDiv, gridOptions);
+        // const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', `${baseUrl}api/get_blade_grid/${knife_id}`, true);
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var responseData = JSON.parse(xhr.responseText);
-                gridApi.setGridOption('rowData', responseData);
-            }
-        };
-        xhr.send();
+        // let xhr = new XMLHttpRequest();
+        // xhr.open('GET', `${baseUrl}api/get_blade_grid/${knife_id}`, true);
+        // xhr.onreadystatechange = () => {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         var responseData = JSON.parse(xhr.responseText);
+        //         gridApi.setGridOption('rowData', responseData);
+        //     }
+        // };
+        // xhr.send();
 
         // work log grid
         const gridDiv_wl = document.querySelector('#wl_grid');

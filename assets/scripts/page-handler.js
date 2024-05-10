@@ -1,19 +1,27 @@
 'use strict';
 
 import { enums } from './index';
+import { grid_loader } from './index';
 
 document.addEventListener('DOMContentLoaded', function() {
     var variables = JSON.parse(document.getElementById('template-variables').textContent);
 
     switch (variables['view_type']) {
         case enums.ViewTypes.KnifeGrid:
-            console.log('KnifeGrid');
+            grid_loader.loadKnifeGrid();
             break;
         case enums.ViewTypes.SharpenerGrid:
-            console.log('SharpenerGrid');
+            grid_loader.loadSharpenerGrid();
             break;
-        case enums.ViewTypes.KnifeDetail:
-            console.log('KnifeDetail');
+        case enums.ViewTypes.KnifeDetail: {
+            const knife_id = variables['knife_id'];
+
+              if (!isNaN(knife_id)) {
+                  grid_loader.loadBladeGrid(knife_id);
+              } else {
+                  console.log('Invalid Knife ID');
+              }
+            }
             break;
         case enums.ViewTypes.SharpenerDetail:
             console.log('SharpenerDetail');
