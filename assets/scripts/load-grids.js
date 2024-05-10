@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 70,
                         cellStyle: { textAlign: 'center' },
                         cellRenderer: (params) => {
-                            return `<button onclick="redirectToWorkLogEditPage(${params.data.work_log_id}, ${entity_id}, ${is_knife_wl})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
+                            return `<button class="btn btn-sm btn-light wl-edit-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="fa-solid fa-edit"></i></button>`;
                         },
                     },
                     { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 { headerName: 'Knife', field: 'knife', width: 350, pinned: 'left' },
                 { headerName: '# of Blades', field: 'num_of_blades', width: 120, cellStyle: { textAlign: 'right' } },
                 { headerName: 'Blade Material', field: 'blade_material', width: 250 },
-                { headerName: 'Handle Material', field: 'handle_material', width: 140 },
+                { headerName: 'Handle Material', field: 'handle_material', width: 160 },
                 { headerName: 'Lock', field: 'lock_type', width: 120 },
                 { headerName: 'Deployment', field: 'deployment_type', width: 140 },
                 { headerName: 'Country', field: 'country', width: 140 },
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     pinned: 'left',
                     cellStyle: { textAlign: 'center' },
                     cellRenderer: (params) => {
-                        return `<button onclick="redirectToSharpenerDetailPage(${params.data.sharpener_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-magnifying-glass"></i></button>`;
+                        return `<button class="btn btn-sm btn-light sharpener-detail-btn" value=${params.data.sharpener_id}><i class="fa-solid fa-magnifying-glass"></i></button>`;
                     },
                 },
                 { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     width: 70,
                     cellStyle: { textAlign: 'center' },
                     cellRenderer: (params) => {
-                        return `<button onclick="redirectToBladeEditPage(${params.data.blade_id}, ${knife_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-edit"></i></button>`;
+                        return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="fa-solid fa-edit"></i></button>`;
                     },
                 },
                 { headerName: 'Shape', field: 'blade_shape', width: 135 },
