@@ -1,6 +1,7 @@
 'use strict';
 
 import { redirect_handler } from './index';
+import { delete_handler } from './index';
 
 document.addEventListener("click", function(e){
     const knifeDetailTarget = e.target.closest(".knife-detail-btn");
@@ -8,9 +9,7 @@ document.addEventListener("click", function(e){
     const bladeEditTarget = e.target.closest(".blade-edit-btn");
     const bladeDeleteTarget = e.target.closest(".blade-delete-btn");
     const workLogEditTarget = e.target.closest(".wl-edit-btn");
-    const knifeWorkLogDeleteTarget = e.target.closest(".knife-wl-delete-btn");
-    const sharpenerWorkLogDeleteTarget = e.target.closest(".sharpener-wl-delete-btn");
-
+    const workLogDeleteTarget = e.target.closest(".wl-delete-btn");
 
     if (knifeDetailTarget) {
       const knife_id = parseInt(knifeDetailTarget.value);
@@ -38,8 +37,17 @@ document.addEventListener("click", function(e){
             }
         }
     } else if (bladeDeleteTarget) {
+        const arr = JSON.parse(bladeDeleteTarget.value);
 
-        console.log('bladeDeleteTarget', bladeDeleteTarget.value);
+        if (Array.isArray(arr)
+            && arr.length === 2) {
+            const blade_id = arr[0];
+            const knife_id = arr[1];
+
+            if (!isNaN(blade_id) && !isNaN(knife_id)) {
+                delete_handler.deleteBlade(blade_id, knife_id);
+            }
+        }
 
     }  else if (workLogEditTarget) {
         const arr = JSON.parse(workLogEditTarget.value);
@@ -59,19 +67,20 @@ document.addEventListener("click", function(e){
           }
       }
 
-    } else if (knifeWorkLogDeleteTarget) {
+    } else if (workLogDeleteTarget) {
+      const arr = JSON.parse(workLogDeleteTarget.value);
 
-        console.log('knifeWorkLogDeleteTarget', knifeWorkLogDeleteTarget.value);
+      if (Array.isArray(arr)
+          && arr.length === 3) {
+          const work_log_id = arr[0];
+          const entity_id = arr[1];
+          const is_knife_wl = arr[2];
 
-    // } else if (sharpenerWorkLogEditTarget) {
-
-    //     console.log('sharpenerWorkLogEditTarget', sharpenerWorkLogEditTarget.value);
-        
-    } else if (sharpenerWorkLogDeleteTarget) {
-
-        console.log('sharpenerWorkLogDeleteTarget', sharpenerWorkLogDeleteTarget.value);
-
+          if (!isNaN(work_log_id) && !isNaN(entity_id)) {
+                  delete_handler.deleteWorkLog(work_log_id, entity_id, is_knife_wl);
+          }
+      }
     } else {
-        console.log('No Target');
+        console.log('Error: No Target');
     }
   });

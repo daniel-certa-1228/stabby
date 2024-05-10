@@ -78,25 +78,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    redirectToBladeEditPage = (blade_id, knife_id) => {
-        window.location.href = `${baseUrl}/knives/detail/${knife_id}/blades/edit/${blade_id}`;
-    };
+    // redirectToBladeEditPage = (blade_id, knife_id) => {
+    //     window.location.href = `${baseUrl}/knives/detail/${knife_id}/blades/edit/${blade_id}`;
+    // };
 
-    redirectToKnifeDetailPage = (knife_id) => {
-        window.location.href = `knives/detail/${knife_id}`;
-    };
+    // redirectToKnifeDetailPage = (knife_id) => {
+    //     window.location.href = `knives/detail/${knife_id}`;
+    // };
 
-    redirectToSharpenerDetailPage = (sharpener_id) => {
-        window.location.href = `detail/${sharpener_id}`;
-    };
+    // redirectToSharpenerDetailPage = (sharpener_id) => {
+    //     window.location.href = `detail/${sharpener_id}`;
+    // };
 
-    redirectToWorkLogEditPage = (work_log_id, entity_id, is_knife_wl) => {
-        if (is_knife_wl) {
-            window.location.href = `/knives/detail/${entity_id}/work-logs/edit/${work_log_id}`;
-        } else {
-            window.location.href = `/sharpeners/detail/${entity_id}/work-logs/edit/${work_log_id}`;
-        }
-    };
+    // redirectToWorkLogEditPage = (work_log_id, entity_id, is_knife_wl) => {
+    //     if (is_knife_wl) {
+    //         window.location.href = `/knives/detail/${entity_id}/work-logs/edit/${work_log_id}`;
+    //     } else {
+    //         window.location.href = `/sharpeners/detail/${entity_id}/work-logs/edit/${work_log_id}`;
+    //     }
+    // };
 
     removeEmbeddedIdFromUrl = (url) => {
         const regex = /\/(\d+)\//;
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         width: 70,
                         cellStyle: { textAlign: 'center' },
                         cellRenderer: (params) => {
-                            return `<button onclick="deleteWorkLog(${params.data.work_log_id}, ${entity_id}, ${is_knife_wl})" class="btn btn-sm btn-light"><i class="fa-solid fa-trash"></i></button>`;
+                            return `<button class="btn btn-sm btn-light wl-delete-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="fa-solid fa-trash"></i></button>`;
                         },
                     },
                 ]
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     width: 70,
                     cellStyle: { textAlign: 'center' },
                     cellRenderer: (params) => {
-                        return `<button onclick="deleteBlade(${params.data.blade_id}, ${params.data.knife_id})" class="btn btn-sm btn-light"><i class="fa-solid fa-trash"></i></button>`;
+                        return `<button class="btn btn-sm btn-light blade-delete-btn" value="[${params.data.blade_id}, ${params.data.knife_id}]"><i class="fa-solid fa-trash"></i></button>`;
                     },
                 },
             ]
