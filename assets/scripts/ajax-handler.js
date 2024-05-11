@@ -44,8 +44,15 @@ const getBladeGrid = async (url) => {
   }
 };
 
-const getWorkLogGrid = () => {
-  console.log('getSharpenerGrid');
+const getWorkLogGrid = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching work log grid data:', error);
+  }
 };
 
 export {
