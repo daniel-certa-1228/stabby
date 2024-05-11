@@ -9,7 +9,6 @@ import * as ajax_handler from './ajax-handler';
 import * as grid_loader from './grid-loader';
 import './page-handler';
 import './click-handler';
-import './load-grids';
 import './toast-handler';
 import '../styles/styles.scss';
 
