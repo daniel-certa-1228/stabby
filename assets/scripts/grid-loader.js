@@ -100,7 +100,7 @@ const loadBladeGrid = async (knife_id) => {
           return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="fa-solid fa-edit"></i></button>`;
         },
       },
-      { headerName: 'Shape', field: 'blade_shape', width: 135 },
+      { headerName: 'Shape', field: 'blade_shape', minWidth: 135, maxWidth: 185 },
       { headerName: 'Length', field: 'length', width: 95 },
       { headerName: 'C.E. Length', field: 'length_cutting_edge', width: 105 },
       { headerName: 'Half-Stop', field: 'has_half_stop', width: 95 },
