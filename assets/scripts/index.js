@@ -10,6 +10,7 @@ import * as grid_loader from './grid-loader';
 import './page-handler';
 import './click-handler';
 import './toast-handler';
+import './popover-handler';
 import '../styles/styles.scss';
 
 export { bootstrap };

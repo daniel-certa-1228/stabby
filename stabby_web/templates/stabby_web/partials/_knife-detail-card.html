@@ -16,6 +16,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a
                 {% endif %}
+                {% if knife.brand_notes %}<span class="text-info pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Brand Notes" data-bs-content="{{ knife.brand_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Knife:</dt>
             <dd class="col-sm-8 text-start">{{ knife.name }}</dd>
@@ -26,6 +27,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a
                 {% endif %}
+                {% if knife.knife_type_notes %}<span class="text-info pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Knife Type Notes" data-bs-content="{{ knife.knife_type_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Blade Material:</dt>
             <dd class="col-sm-8 text-start">
@@ -34,6 +36,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a
                 {% endif %}
+                {% if knife.blade_material_notes %}<span class="text-info pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Blade Material Notes" data-bs-content="{{ knife.blade_material_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Handle Material:</dt>
             <dd class="col-sm-8 text-start">
@@ -42,6 +45,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a
                 {% endif %}
+                {% if knife.handle_material_notes %}<span class="text-info pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Handle Material Notes" data-bs-content="{{ knife.handle_material_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Lock Type:</dt>
             <dd class="col-sm-8 text-start">
@@ -50,6 +54,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a
                 {% endif %}
+                {% if knife.lock_type_notes %}<span class="text-info pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Lock Type Notes" data-bs-content="{{ knife.lock_type_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end"># of Blades:</dt>
             <dd class="col-sm-8 text-start">{{ number_of_blades }}</dd>

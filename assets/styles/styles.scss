@@ -22,6 +22,10 @@
     height: 300px;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 /* specifically targets small grids in cards */
 #blade_grid.ag-theme-alpine .ag-root-wrapper {
     border: none;
