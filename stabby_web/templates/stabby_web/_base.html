@@ -10,50 +10,24 @@
   </head>
   <body>
     {% if user.is_authenticated %}
-      <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand"  href="{% url 'knives' %}">stabby.tech</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link {% if active == 'knives' %}active{% endif %}"  aria-current="page" href="{% url 'knives' %}">Knives</a>
-              <a class="nav-link {% if active == 'sharpeners' %}active{% endif %}" href="{% url 'sharpeners' %}">Sharpeners</a>
-              {{ user.user_id }}
-            </div>
-          </div>
-          <form id="logout-form" method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <span class="text-white me-3"><u>{{user.first_name}} {{user.last_name}}</u></span>
-            <button class="btn btn-sm btn-light" type="submit">Logout</button>
-          </form>
-        </div>
-      </nav>
+      {% include 'stabby_web/partials/_nav-bar.html' %}
     {% endif %}
+    
     <main id="main" class="ps-5 pe-5 pt-3">
       {% block main %}
+        {% comment %} CONTENT {% endcomment %}
       {% endblock %}
     </main>
+
     <script src="https://kit.fontawesome.com/351ee93ed8.js" crossorigin="anonymous"></script>
     <script src="{% static "stabby_web/js/bundle.js" %}"></script>
 
     {% if messages %}
           {% for message in messages %}
-          <div class="toast-container position-fixed top-0 end-0 p-3">
-            <div id="liveToast" class="toast" data-bs-delay="2000" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-header {% if message.tags == 'Success' %}bg-success{% elif message.tags == 'Error' %}bg-danger{% endif %} text-white">
-                {% if message.tags == 'Success' %}<i class="fa-solid fa-check"></i>{% elif message.tags == 'Error' %}<i class="fa-solid fa-x"></i>{% endif %}&nbsp;&nbsp;
-                <strong class="me-auto">{{ message.tags }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-              <div class="toast-body">
-                <strong>{{ message }}</strong>
-              </div>
-            </div>
-          </div>
+            {% include 'stabby_web/partials/_toast.html' %}
         {% endfor %}
     {% endif %}
+
     {{ template_variables|json_script:"template-variables" }}
   </body>
 </html>
