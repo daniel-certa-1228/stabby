@@ -9,6 +9,7 @@ const loadKnifeGrid = async () => {
 
   const gridOptions = {
     pagination: true,
+    paginationPageSize: 50,
     defaultColDef: {
       filter: true,
       cellStyle: { textAlign: 'left' }
