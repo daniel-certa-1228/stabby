@@ -33,6 +33,12 @@ class BladeForm(forms.ModelForm):
         self.fields["uom"].label = "UOM"
         self.fields["uom"].empty_label = "Select UOM"
 
+        def clean_blade_shape_notes(self):
+            blade_shape_notes = self.cleaned_data.get("blade_shape_notes")
+            if blade_shape_notes:
+                return blade_shape_notes.strip()
+            return blade_shape_notes
+
 
 class KnifeForm(forms.ModelForm):
 
@@ -90,6 +96,60 @@ class KnifeForm(forms.ModelForm):
         self.fields["vendor"].empty_label = "Select Vendor"
         self.fields["year_of_purchase"].label = "Year Purchased"
 
+        def clean_blade_material_notes(self):
+            blade_material_notes = self.cleaned_data.get("blade_material_notes")
+            if blade_material_notes:
+                return blade_material_notes.strip()
+            return blade_material_notes
+
+        def clean_brand_notes(self):
+            brand_notes = self.cleaned_data.get("brand_notes")
+            if brand_notes:
+                return brand_notes.strip()
+            return brand_notes
+
+        def clean_handle_material_notes(self):
+            handle_material_notes = self.cleaned_data.get("handle_material_notes")
+            if handle_material_notes:
+                return handle_material_notes.strip()
+            return handle_material_notes
+
+        def clean_knife_type_notes(self):
+            knife_type_notes = self.cleaned_data.get("knife_type_notes")
+            if knife_type_notes:
+                return knife_type_notes.strip()
+            return knife_type_notes
+
+        def clean_lock_type_notes(self):
+            lock_type_notes = self.cleaned_data.get("lock_type_notes")
+            if lock_type_notes:
+                return lock_type_notes.strip()
+            return lock_type_notes
+
+        def clean_name(self):
+            name = self.cleaned_data.get("name")
+            if name:
+                return name.strip()
+            return name
+
+        def clean_notes(self):
+            notes = self.cleaned_data.get("notes")
+            if notes:
+                return notes.strip()
+            return notes
+
+        def clean_year_of_manufacture(self):
+            year_of_manufacture = self.cleaned_data.get("year_of_manufacture")
+            if year_of_manufacture:
+                return year_of_manufacture.strip()
+            return year_of_manufacture
+
+        def clean_year_of_purchase(self):
+            year_of_purchase = self.cleaned_data.get("year_of_purchase")
+            if year_of_purchase:
+                return year_of_purchase.strip()
+            return year_of_purchase
+
 
 class SharpenerForm(forms.ModelForm):
 
@@ -128,6 +188,24 @@ class SharpenerForm(forms.ModelForm):
         self.fields["uom"].label = "UOM"
         self.fields["uom"].empty_label = "Select UOM"
 
+        def clean_brand_notes(self):
+            brand_notes = self.cleaned_data.get("brand_notes")
+            if brand_notes:
+                return brand_notes.strip()
+            return brand_notes
+
+        def clean_name(self):
+            name = self.cleaned_data.get("name")
+            if name:
+                return name.strip()
+            return name
+
+        def clean_notes(self):
+            notes = self.cleaned_data.get("notes")
+            if notes:
+                return notes.strip()
+            return notes
+
 
 class WorkLogForm(forms.ModelForm):
 
@@ -150,3 +228,9 @@ class WorkLogForm(forms.ModelForm):
         widget=forms.DateTimeInput(format="%Y-%m-%d", attrs={"type": "date"}),
         input_formats=["%Y-%m-%d"],
     )
+
+    def clean_description(self):
+        description = self.cleaned_data.get("description")
+        if description:
+            return description.strip()
+        return description
