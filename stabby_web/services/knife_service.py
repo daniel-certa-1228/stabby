@@ -9,27 +9,29 @@ from ..models import (
 class KnifeService:
 
     @classmethod
-    def delete_knife(self, knife):
+    def delete_knife(cls, knife):
         knife.is_active = False
 
         return knife
 
     @classmethod
-    def get_knife_detail(self, knife_id):
+    def get_knife_detail(cls, knife_id):
         return get_object_or_404(Knife, knife_id=knife_id)
 
     @classmethod
-    def get_knife_grid(self):
-        queryset = ViewKnifeGrid.objects.filter(is_active=1).order_by("brand", "knife")
+    def get_knife_grid(cls):
+        queryset = ViewKnifeGrid.objects.filter(is_active=True).order_by(
+            "brand", "knife"
+        )
 
         return list(queryset.values())
 
     @classmethod
-    def save_knife(self, knife):
+    def save_knife(cls, knife):
         return knife.save()
 
     @classmethod
-    def map_knife_form_data(self, request, form, knife=None):
+    def map_knife_form_data(cls, request, form, knife=None):
         if knife == None:
             knife = Knife()
             knife.create_date = timezone.now()

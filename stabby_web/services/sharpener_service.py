@@ -9,25 +9,25 @@ from ..models import (
 class SharpenerService:
 
     @classmethod
-    def delete_sharpener(self, sharpener):
+    def delete_sharpener(cls, sharpener):
         sharpener.is_active = False
 
         return sharpener
 
     @classmethod
-    def get_sharpener_detail(self, sharpener_id):
+    def get_sharpener_detail(cls, sharpener_id):
         return get_object_or_404(Sharpener, sharpener_id=sharpener_id)
 
     @classmethod
-    def get_sharpener_grid(self):
-        queryset = ViewSharpenerGrid.objects.filter(is_active=1).order_by(
+    def get_sharpener_grid(cls):
+        queryset = ViewSharpenerGrid.objects.filter(is_active=True).order_by(
             "brand", "sharpener", "cutting_agent"
         )
 
         return list(queryset.values())
 
     @classmethod
-    def map_sharpener_form_data(self, request, form, sharpener=None):
+    def map_sharpener_form_data(cls, request, form, sharpener=None):
         if sharpener == None:
             sharpener = Sharpener()
             sharpener.create_date = timezone.now()
@@ -49,5 +49,5 @@ class SharpenerService:
         return sharpener
 
     @classmethod
-    def save_sharpener(self, sharpener):
+    def save_sharpener(cls, sharpener):
         return sharpener.save()

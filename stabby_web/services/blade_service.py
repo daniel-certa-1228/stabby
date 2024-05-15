@@ -9,25 +9,25 @@ from ..models import (
 class BladeService:
 
     @classmethod
-    def delete_blade(self, blade):
+    def delete_blade(cls, blade):
         blade.is_active = False
 
         return blade
 
     @classmethod
-    def get_blade_detail(self, blade_id):
+    def get_blade_detail(cls, blade_id):
         return get_object_or_404(Blade, blade_id=blade_id)
 
     @classmethod
-    def get_blade_grid(self, knife_id):
+    def get_blade_grid(cls, knife_id):
         queryset = ViewBladeGrid.objects.filter(
-            is_active=1, knife_id=knife_id
+            is_active=True, knife_id=knife_id
         ).order_by("-is_main_blade", "-length")
 
         return list(queryset.values())
 
     @classmethod
-    def map_blade_form_to_data(self, request, form, knife=None, blade=None):
+    def map_blade_form_to_data(cls, request, form, knife=None, blade=None):
         if blade == None:
             blade = Blade()
             blade.create_date = timezone.now()
@@ -46,5 +46,5 @@ class BladeService:
         return blade
 
     @classmethod
-    def save_blade(self, blade):
+    def save_blade(cls, blade):
         return blade.save()
