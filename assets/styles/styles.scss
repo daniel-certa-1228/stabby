@@ -29,6 +29,11 @@
     cursor: pointer;
 }
 
+.toast-header-background {
+    background-color: #127a49;
+    color: white;
+}
+
 /* specifically targets small grids in cards */
 #blade_grid.ag-theme-alpine .ag-root-wrapper {
     border: none;
