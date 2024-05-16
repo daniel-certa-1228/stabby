@@ -1,1 +1,1 @@
-Knife Collection Organization App
+Organization app for knife collectors
