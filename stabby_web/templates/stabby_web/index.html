@@ -4,11 +4,7 @@
 {% block main%}
 
     <div class="d-flex flex-row justify-content-between">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item active" aria-current="page">Knives</li>
-          </ol>
-        </nav>
+        {% include 'stabby_web/partials/_bc-knives.html' %}
         
         <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</a>
     </div>

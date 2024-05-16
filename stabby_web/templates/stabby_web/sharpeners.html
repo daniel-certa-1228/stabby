@@ -4,11 +4,7 @@
 {% block main%}
 
     <div class="d-flex flex-row justify-content-between">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item active" aria-current="page">Sharpeners</li>
-          </ol>
-        </nav>
+      {% include 'stabby_web/partials/_bc-sharpeners.html' %}
 
         <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'sharpener_create'%}"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</a>
     </div>

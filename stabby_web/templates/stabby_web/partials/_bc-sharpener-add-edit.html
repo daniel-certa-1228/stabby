@@ -1,0 +1,8 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item" aria-current="page">
+      <a href="{% if form_type == 'add' %}{% url 'sharpeners' %}{% else %}{% url 'sharpener_detail' sharpener_id=sharpener_id %}{% endif %}" class="link-style">Sharpeners</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{% if form_type == 'add' %}Add{% else %}Edit{% endif %}</li>
+  </ol>
+</nav>

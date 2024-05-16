@@ -1,0 +1,11 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item" aria-current="page">
+      <a href="{% if active == 'knives' %}{% url 'knives' %}{% else %}{% url 'sharpeners' %}{% endif %}" class="link-style">{% if active == 'knives' %}Knives{% else%}Sharpeners{% endif %}</a>
+    </li>
+    <li class="breadcrumb-item" aria-current="page">
+      <a href="{% if active == 'knives' %}{% url 'knife_detail' knife_id=related_entity_id %}{% else %}{% url 'sharpener_detail' sharpener_id=related_entity_id %}{% endif %}#work_log_card" class="link-style">Detail</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{% if form_type == 'add'%}Add {% else %}Edit {% endif %}Work Log</li>
+  </ol>
+</nav>
