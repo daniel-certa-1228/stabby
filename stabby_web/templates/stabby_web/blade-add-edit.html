@@ -3,7 +3,7 @@
 {% block main%}
 
     <div class="d-flex flex-row">
-        <h5 class="inline-block mb-0">Knives / Detail / {% if form_type == 'add' %}Add{% else %}Edit{% endif %} Blade</h5>
+      {% include 'stabby_web/partials/_bc-blade-add-edit.html' %}
     </div>
 
     <div class="row mt-3">

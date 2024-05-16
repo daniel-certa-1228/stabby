@@ -4,7 +4,8 @@
 {% block main%}
 
     <div class="d-flex flex-row justify-content-between">
-        <h5 class="inline-block mb-0">Knives</h5>
+        {% include 'stabby_web/partials/_bc-knives.html' %}
+        
         <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</a>
     </div>
 
