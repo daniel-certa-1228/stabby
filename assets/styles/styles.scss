@@ -18,6 +18,12 @@
     cursor: pointer;
 }
 
+.navbar {
+  background-color: #12387a !important;
+  border: none !important;
+  border-width:0!important;
+}
+
 /* specifically targets small grids in cards */
 #blade_grid.ag-theme-alpine .ag-root-wrapper {
     border: none;
