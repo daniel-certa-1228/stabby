@@ -54,6 +54,7 @@ const loadSharpenerGrid = async () => {
       filter: true,
       cellStyle: { textAlign: 'left' }
     },
+    domLayout: "autoHeight",
     columnDefs: [
       {
         headerName: '',
@@ -65,9 +66,9 @@ const loadSharpenerGrid = async () => {
         },
       },
       { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
-      { headerName: 'Sharpener', field: 'sharpener', width: 350, pinned: 'left' },
-      { headerName: 'Cutting Agent', field: 'cutting_agent', width: 160 },
-      { headerName: 'Bonding Agent', field: 'bonding_agent', width: 190 },
+      { headerName: 'Sharpener', field: 'sharpener', width: 400, pinned: 'left' },
+      { headerName: 'Cutting Agent', field: 'cutting_agent', minWidth: 160 },
+      { headerName: 'Bonding Agent', field: 'bonding_agent', minWidth: 190 },
       { headerName: 'Length', field: 'length', width: 120 },
       { headerName: 'Width', field: 'width', width: 120 },
       { headerName: 'Country', field: 'country', width: 140 },
@@ -92,6 +93,7 @@ const loadBladeGrid = async (knife_id) => {
     defaultColDef: {
       cellStyle: { textAlign: 'left' }
     },
+    domLayout: "autoHeight",
     columnDefs: [
       {
         headerName: '',
@@ -162,6 +164,7 @@ const returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id, work_log
       defaultColDef: {
         cellStyle: { textAlign: 'left' }
       },
+      domLayout: "autoHeight",
       columnDefs: [
         {
           headerName: '',
@@ -186,6 +189,7 @@ const returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id, work_log
   } else {
     return {
       headerHeight: 35,
+      domLayout: "autoHeight",
       defaultColDef: {
         cellStyle: { textAlign: 'left' }
       },
