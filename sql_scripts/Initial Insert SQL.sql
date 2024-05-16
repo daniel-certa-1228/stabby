@@ -248,8 +248,8 @@ INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_man
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(3, 2, null, '1085', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(4, 2, null, '1095', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(5, 2, null, '1095 Cro Van', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(6, 1, 4, '12C27', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(7, 1, 4, '14C28N', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(6, 1, 5, '12C27', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(7, 1, 5, '14C28N', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(8, 1, 3, '154CM', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(9, 1, null, '3Cr13MoV', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(10, 1, null, '420', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -262,7 +262,7 @@ INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_man
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(17, 1, null, '7Cr17MoV', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(18, 1, null, '8Cr13MoV', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(19, 1, null, '9Cr18MoV', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(20, 1, 5, 'AEB-L', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(20, 1, 6, 'AEB-L', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(21, 1, null, 'AUS-10', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(22, 1, null, 'AUS-6', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(23, 1, null, 'AUS-8', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -280,7 +280,7 @@ INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_man
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(35, 1, 2, 'CTS-BD1N', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(36, 1, 2, 'CTS-XHP', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(37, 2, null, 'D2', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(38, 1, 5, 'Elmax', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(38, 1, 6, 'Elmax', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(39, 2, 1, 'K390', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(40, 1, 1, 'M390', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_bladematerial(blade_material_id, steel_type_id, steel_manufacturer_id, name, is_active, create_date, edit_date) VALUES(41, 2, 2, 'Maxamet', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
