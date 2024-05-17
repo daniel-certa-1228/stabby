@@ -185,7 +185,7 @@ INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id, is_active, create_
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(23, 'Eurstache', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(24, 'Fox', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(25, 'Frost', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(26, 'G.David', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(26, 'G. David', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(27, 'Great Eastern Cutlery', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id, is_active, create_date, edit_date) VALUES(28, 'Hammer Brand', 3, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id, is_active, create_date, edit_date) VALUES(29, 'Hibben Knives', 9, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
