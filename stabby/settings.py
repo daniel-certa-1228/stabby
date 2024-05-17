@@ -124,6 +124,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "stabby_web/static"),
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL = "/media/"
+
 # Directory to export staticfiles for production
 # All files from all STATICFILES_DIRS will be copied by
 # manage.py collectstatic to this directory.

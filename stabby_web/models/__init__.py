@@ -11,6 +11,7 @@ from .knife_model import Knife
 from .knife_type_model import KnifeType
 from .lock_type_model import LockType
 from .lubricant_model import Lubricant
+from .photo_model import Photo
 from .sharpener_model import Sharpener
 from .steel_manufacturer_model import SteelManufacturer
 from .steel_type_model import SteelType
@@ -22,26 +23,27 @@ from .view_sharpener_grid import ViewSharpenerGrid
 from .work_log_model import WorkLog
 
 __all__ = [
-    'BladeMaterial',
-    'Blade',
-    'BladeShape',
-    'BondingAgent',
-    'Brand',
-    'Country',
-    'CuttingAgent',
-    'DeploymentType',
-    'HandleMaterial',
-    'Knife',
-    'KnifeType',
-    'LockType',
-    'Lubricant',
-    'Sharpener',
-    'SteelManufacturer',
-    'SteelType',
-    'UnitOfMeasure',
-    'Vendor',
-    'ViewBladeGrid',
-    'ViewKnifeGrid',
-    'ViewSharpenerGrid',
-    'WorkLog'
+    "BladeMaterial",
+    "Blade",
+    "BladeShape",
+    "BondingAgent",
+    "Brand",
+    "Country",
+    "CuttingAgent",
+    "DeploymentType",
+    "HandleMaterial",
+    "Knife",
+    "KnifeType",
+    "LockType",
+    "Lubricant",
+    "Photo",
+    "Sharpener",
+    "SteelManufacturer",
+    "SteelType",
+    "UnitOfMeasure",
+    "Vendor",
+    "ViewBladeGrid",
+    "ViewKnifeGrid",
+    "ViewSharpenerGrid",
+    "WorkLog",
 ]
