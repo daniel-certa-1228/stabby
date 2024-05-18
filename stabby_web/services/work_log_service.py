@@ -12,18 +12,18 @@ class WorkLogService:
         work_log.is_active = False
 
         return work_log
-
+      
     @classmethod
-    def get_sharpener_work_log_grid(cls, sharpener):
-        queryset = WorkLog.objects.filter(is_active=True, sharpener=sharpener).order_by(
+    def get_knife_work_log_grid(cls, knife_id):
+        queryset = WorkLog.objects.filter(is_active=True, knife_id=knife_id).order_by(
             "-date"
         )
 
         return list(queryset.values())
 
     @classmethod
-    def get_knife_work_log_grid(cls, knife_id):
-        queryset = WorkLog.objects.filter(is_active=True, knife_id=knife_id).order_by(
+    def get_sharpener_work_log_grid(cls, sharpener):
+        queryset = WorkLog.objects.filter(is_active=True, sharpener=sharpener).order_by(
             "-date"
         )
 
