@@ -5,7 +5,7 @@ from .sharpener_model import Sharpener
 
 class Photo(models.Model):
     photo_id = models.AutoField(primary_key=True, db_column="photo_id")
-    photo_path = models.ImageField(upload_to="images/")
+    photo = models.ImageField(upload_to="images/")
     name = models.CharField(max_length=100, null=True, blank=True)
     knife = models.ForeignKey(Knife, on_delete=models.SET_NULL, null=True)
     sharpener = models.ForeignKey(Sharpener, on_delete=models.SET_NULL, null=True)
