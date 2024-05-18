@@ -1,3 +1,4 @@
+{% load custom_filters %}
 <div class="card">
     <div class="card-header  d-flex justify-content-between">
       Details
@@ -19,7 +20,7 @@
             <dt class="col-sm-4 text-end">Length:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.length %}
-                    {{ sharpener.length }}&nbsp;{% if sharpener.uom %}{{ sharpener.uom }}{% endif %}
+                    {{ sharpener.length|strip_trailing_zeros }}&nbsp;{% if sharpener.uom %}{{ sharpener.uom }}{% endif %}
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
@@ -27,7 +28,7 @@
             <dt class="col-sm-4 text-end">Width:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.width %}
-                    {{ sharpener.width }}&nbsp;{% if sharpener.uom %}{{ sharpener.uom }}{% endif %}
+                    {{ sharpener.width|strip_trailing_zeros }}&nbsp;{% if sharpener.uom %}{{ sharpener.uom }}{% endif %}
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}

@@ -1,3 +1,4 @@
+{% load custom_filters %}
 <div class="card">
     <div class="card-header d-flex justify-content-between">
       Details
@@ -69,7 +70,7 @@
             <dt class="col-sm-4 text-end">Closed Length:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.closed_length %}
-                    {{ knife.closed_length }}&nbsp;{% if knife.uom %}{{ knife.uom }}{% endif %}
+                    {{ knife.closed_length|strip_trailing_zeros }}&nbsp;{% if knife.uom %}{{ knife.uom }}{% endif %}
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
