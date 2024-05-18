@@ -26,4 +26,6 @@ class ViewTypes(Enum):
     SharpenerAddEdit = 6
     BladeAddEdit = 7
     KnifeWorkLogAddEdit = 8
-    SharpenerWorkLogAddEdit = 9
+    SharpenerWorkLogAddEdit = 9,
+    KnifePhotoAddEdit = 10,
+    SharpenerPhotoAddEdit = 11,

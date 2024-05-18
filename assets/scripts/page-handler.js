@@ -63,6 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
       break;
+    case enums.ViewTypes.KnifePhotoAddEdit:
+      break;
+    case enums.ViewTypes.SharpenerPhotoAddEdit:
+      break;
     default:
       console.log(`No Path`);
   }
