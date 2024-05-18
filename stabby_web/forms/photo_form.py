@@ -7,6 +7,11 @@ class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
         fields = ["name", "photo"]
+        widgets = {
+            "photo": forms.ClearableFileInput(
+                attrs={"class": "form-control-file", "accept": "image/*"}
+            )
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
