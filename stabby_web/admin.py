@@ -19,7 +19,7 @@ from .models import (
     Blade,
     Sharpener,
     WorkLog,
-    Photo
+    Photo,
 )
 
 
@@ -130,8 +130,8 @@ class SharpenerAdmin(admin.ModelAdmin):
 @admin.register(WorkLog)
 class WorkLogAdmin(admin.ModelAdmin):
     ordering = ["-date"]
-   
-    
+
+
 @admin.register(Photo)
-class WorkLogAdmin(admin.ModelAdmin):
-    ordering = ["name", "-create_date"]
+class PhotoAdmin(admin.ModelAdmin):
+    ordering = ["description", "-create_date"]
