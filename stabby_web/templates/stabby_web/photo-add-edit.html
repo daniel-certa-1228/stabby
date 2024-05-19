@@ -1,0 +1,23 @@
+{% extends "stabby_web/_base.html" %}
+
+{% block main%}
+
+    <div class="d-flex flex-row">
+      {% include 'stabby_web/partials/_bc-photo-add-edit.html' %}
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+          {% if active == 'knives' %}
+            {% include 'stabby_web/partials/_knife-detail-card.html' %}
+          {% else %}
+            {% include 'stabby_web/partials/_sharpener-detail-card.html' %}
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+            {% comment %} {% include 'stabby_web/partials/_blade-form-card.html' %} {% endcomment %}
+        </div>
+    </div>
+
+
+{% endblock %}

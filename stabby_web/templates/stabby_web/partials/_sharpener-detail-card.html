@@ -2,7 +2,11 @@
 <div class="card">
     <div class="card-header  d-flex justify-content-between">
       Details
-      <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'sharpener_update' sharpener_id=sharpener.sharpener_id %}"><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</a>
+      {% if not form %}
+        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'sharpener_update' sharpener_id=sharpener.sharpener_id %}"><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</a>
+      {% else %}
+        <button type="button" class="btn btn-light btn-sm align-self-center new-btn" disabled><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</button>
+      {% endif %}
     </div>
     <div class="card-body">
         <dl class="row">

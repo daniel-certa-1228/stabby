@@ -1,0 +1,9 @@
+<div class="card {% if active == 'knives' %}mt-3{% endif%}">
+  <div class="card-header d-flex justify-content-between">
+    Photo(s)
+    <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'photo_create' related_entity_id=knife.knife_id %}{% else %}{% url 'photo_create_sh' related_entity_id=sharpener.sharpener_id %}{% endif %}"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</a>
+  </div>
+  <div class="card-body">
+      <h2>This will be photos.</h2>
+  </div>
+</div>

@@ -23,6 +23,7 @@ from .work_log_views import (
     work_log_delete,
     work_log_update,
 )
+from .photo_views import photo_create, photo_update
 
 __all__ = [
     "login_view",
@@ -48,4 +49,6 @@ __all__ = [
     "work_log_create",
     "work_log_delete",
     "work_log_update",
+    "photo_create",
+    "photo_update",
 ]

@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from .models import (
     BladeShape,
     BondingAgent,
@@ -20,6 +19,7 @@ from .models import (
     Blade,
     Sharpener,
     WorkLog,
+    Photo
 )
 
 
@@ -130,3 +130,8 @@ class SharpenerAdmin(admin.ModelAdmin):
 @admin.register(WorkLog)
 class WorkLogAdmin(admin.ModelAdmin):
     ordering = ["-date"]
+   
+    
+@admin.register(Photo)
+class WorkLogAdmin(admin.ModelAdmin):
+    ordering = ["name", "-create_date"]

@@ -57,6 +57,26 @@ urlpatterns = [
         views.work_log_update,
         name="work_log_update_sh",
     ),
+    path(
+        "knives/detail/<int:related_entity_id>/photos/add",
+        views.photo_create,
+        name="photo_create",
+    ),
+    path(
+        "knives/detail/<int:related_entity_id>/photos/edit/<int:work_log_id>/",
+        views.photo_update,
+        name="photo_update",
+    ),
+    path(
+        "sharpeners/detail/<int:related_entity_id>/photos/add",
+        views.photo_create,
+        name="photo_create_sh",
+    ),
+    path(
+        "sharpeners/detail/<int:related_entity_id>/photos/edit/<int:work_log_id>/",
+        views.photo_update,
+        name="photo_update_sh",
+    ),
     path("sharpeners/", views.sharpeners, name="sharpeners"),
     path("sharpeners/add", views.sharpener_create, name="sharpener_create"),
     path(
