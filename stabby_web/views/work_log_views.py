@@ -56,7 +56,7 @@ def work_log_create(request, related_entity_id):
             initial = {"knife": related_entity, "date": datetime.datetime.now()}
             module = Modules.Knives.value
             variable_dto = TemplateVariableDTO(
-                ViewTypes.KnifeWorkLogAddEdit.value, related_entity_id, None, None, None
+                ViewTypes.KnifeWorkLogAddEdit.value, related_entity_id
             )
         else:
             show_existing = WorkLogService.show_work_log_card(None, related_entity_id)
@@ -65,9 +65,7 @@ def work_log_create(request, related_entity_id):
             variable_dto = TemplateVariableDTO(
                 ViewTypes.SharpenerWorkLogAddEdit.value,
                 None,
-                related_entity_id,
-                None,
-                None,
+                related_entity_id
             )
 
         form = WorkLogForm(initial)
@@ -100,7 +98,7 @@ def work_log_update(request, work_log_id, related_entity_id):
             related_entity_id,
             None,
             None,
-            work_log_id,
+            work_log_id
         )
     else:
         redirect_url = "sharpener_detail"
@@ -111,7 +109,7 @@ def work_log_update(request, work_log_id, related_entity_id):
             None,
             related_entity_id,
             None,
-            work_log_id,
+            work_log_id
         )
 
     if request.method == "POST":

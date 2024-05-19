@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def index(request):
     variable_dto = TemplateVariableDTO(
-        ViewTypes.KnifeGrid.value, None, None, None, None
+        ViewTypes.KnifeGrid.value
     )
 
     context = {
@@ -46,7 +46,7 @@ def knife_create(request):
         )
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.KnifeAddEdit.value, None, None, None, None
+            ViewTypes.KnifeAddEdit.value
         )
 
         context = {
@@ -66,7 +66,7 @@ def knife_detail(request, knife_id):
     number_of_blades = knife.number_of_blades()
 
     variable_dto = TemplateVariableDTO(
-        ViewTypes.KnifeDetail.value, knife_id, None, None, None
+        ViewTypes.KnifeDetail.value, knife_id
     )
 
     context = {
@@ -101,7 +101,7 @@ def knife_update(request, knife_id):
         form = KnifeForm(instance=knife)
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.KnifeAddEdit.value, knife_id, None, None, None
+            ViewTypes.KnifeAddEdit.value, knife_id
         )
 
         context = {

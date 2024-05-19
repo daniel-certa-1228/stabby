@@ -32,7 +32,7 @@ def blade_create(request, knife_id):
         number_of_blades = knife.number_of_blades()
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.BladeAddEdit.value, knife_id, None, None, None
+            ViewTypes.BladeAddEdit.value, knife_id
         )
 
         context = {
@@ -68,7 +68,7 @@ def blade_update(request, knife_id, blade_id):
         number_of_blades = knife.number_of_blades()
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.BladeAddEdit.value, knife_id, None, blade_id, None
+            ViewTypes.BladeAddEdit.value, knife_id, None, blade_id
         )
 
         context = {

@@ -27,7 +27,7 @@ def sharpener_create(request):
         form = SharpenerForm(initial={"uom": UnitsOfMeasure.inches.value})
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.SharpenerAddEdit.value, None, None, None, None
+            ViewTypes.SharpenerAddEdit.value
         )
 
         context = {
@@ -45,7 +45,7 @@ def sharpener_detail(request, sharpener_id):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
     variable_dto = TemplateVariableDTO(
-        ViewTypes.SharpenerDetail.value, None, sharpener_id, None, None
+        ViewTypes.SharpenerDetail.value, None, sharpener_id
     )
 
     context = {
@@ -78,7 +78,7 @@ def sharpener_update(request, sharpener_id):
         form = SharpenerForm(instance=sharpener)
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.SharpenerAddEdit.value, None, sharpener_id, None, None
+            ViewTypes.SharpenerAddEdit.value, None, sharpener_id
         )
 
         context = {
@@ -95,7 +95,7 @@ def sharpener_update(request, sharpener_id):
 @login_required
 def sharpeners(request):
     variable_dto = TemplateVariableDTO(
-        ViewTypes.SharpenerGrid.value, None, None, None, None
+        ViewTypes.SharpenerGrid.value
     )
 
     context = {
