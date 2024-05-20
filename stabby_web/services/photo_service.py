@@ -38,9 +38,9 @@ class PhotoService:
             photo.create_date = timezone.now()
             photo.knife = knife
             photo.sharpener = sharpener
+            photo.photo = form.cleaned_data["photo"]
 
         photo.edit_date = timezone.now()
-        photo.photo = form.cleaned_data["photo"]
         photo.description = form.cleaned_data["description"]
 
         return photo
