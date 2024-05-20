@@ -11,12 +11,11 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-12">
-                    {% comment %} {% if form_type == 'add' %} {% endcomment %}
-                        <div class="form-group">
-                            <label for="id_photo" class="form-label">{{ form.photo.label }}</label>
-                            {{ form.photo }}
-                        </div>
-                    {% comment %} {% endif %} {% endcomment %}
+                    <div class="form-group">
+                        <label for="id_photo" class="form-label">{{ form.photo.label }}</label>
+                        {{ form.photo }}
+                    </div>
+
                     <div class="form-group">
                         <label for="id_description" class="form-label">{{ form.description.label }}</label>
                         {{ form.description }}
