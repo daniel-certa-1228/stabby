@@ -1,6 +1,7 @@
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
-from ..models import ViewKnifeGrid, Knife
+from django.db.models import Prefetch
+from ..models import ViewKnifeGrid, Knife, Photo
 
 
 class KnifeService:
@@ -14,8 +15,12 @@ class KnifeService:
     @classmethod
     def get_knife_detail(cls, knife_id, include_photos=False):
         if include_photos:
+            photos_prefetch = Prefetch(
+                "photos", queryset=Photo.objects.order_by("create_date")
+            )
+
             return get_object_or_404(
-                Knife.objects.prefetch_related("photos"), knife_id=knife_id
+                Knife.objects.prefetch_related(photos_prefetch), knife_id=knife_id
             )
         else:
             return get_object_or_404(Knife, knife_id=knife_id)

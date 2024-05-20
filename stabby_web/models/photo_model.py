@@ -25,7 +25,7 @@ class Photo(models.Model):
     class Meta:
         verbose_name = "photo"
         verbose_name_plural = "photos"
-        ordering = ["-create_date"]
+        ordering = ["create_date"]
 
     def __str__(self):
         return self.description if self.description else f"Photo {self.photo_id}"
