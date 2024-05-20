@@ -10,4 +10,5 @@ __all__ = [
     "PhotoForm",
     "SharpenerForm",
     "WorkLogForm",
+    "PhotoForm"
 ]

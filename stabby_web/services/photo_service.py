@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
-from stabby_web.models.photo_model import Photo
+from ..models import Photo
 
 
 class PhotoService:
