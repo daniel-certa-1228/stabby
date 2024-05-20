@@ -12,9 +12,7 @@ from django.contrib.auth.decorators import login_required
 # MVT VIEWS
 @login_required
 def index(request):
-    variable_dto = TemplateVariableDTO(
-        ViewTypes.KnifeGrid.value
-    )
+    variable_dto = TemplateVariableDTO(ViewTypes.KnifeGrid.value)
 
     context = {
         "active": Modules.Knives.value,
@@ -45,9 +43,7 @@ def knife_create(request):
             initial={"uom": UnitsOfMeasure.inches.value, "purchased_new": True}
         )
 
-        variable_dto = TemplateVariableDTO(
-            ViewTypes.KnifeAddEdit.value
-        )
+        variable_dto = TemplateVariableDTO(ViewTypes.KnifeAddEdit.value)
 
         context = {
             "form": form,
@@ -61,17 +57,18 @@ def knife_create(request):
 
 @login_required
 def knife_detail(request, knife_id):
-    knife = KnifeService.get_knife_detail(knife_id)
+    knife = KnifeService.get_knife_detail(knife_id, True)
+
+    photos = knife.photos.all()
 
     number_of_blades = knife.number_of_blades()
 
-    variable_dto = TemplateVariableDTO(
-        ViewTypes.KnifeDetail.value, knife_id
-    )
+    variable_dto = TemplateVariableDTO(ViewTypes.KnifeDetail.value, knife_id)
 
     context = {
         "active": Modules.Knives.value,
         "knife": knife,
+        "photos": photos,
         "number_of_blades": number_of_blades,
         "template_variables": variable_dto.to_dict(),
     }
@@ -100,9 +97,7 @@ def knife_update(request, knife_id):
     else:
         form = KnifeForm(instance=knife)
 
-        variable_dto = TemplateVariableDTO(
-            ViewTypes.KnifeAddEdit.value, knife_id
-        )
+        variable_dto = TemplateVariableDTO(ViewTypes.KnifeAddEdit.value, knife_id)
 
         context = {
             "form": form,

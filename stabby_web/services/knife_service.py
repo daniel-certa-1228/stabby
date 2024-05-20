@@ -1,9 +1,6 @@
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
-from ..models import (
-    ViewKnifeGrid,
-    Knife,
-)
+from ..models import ViewKnifeGrid, Knife
 
 
 class KnifeService:
@@ -15,8 +12,13 @@ class KnifeService:
         return knife
 
     @classmethod
-    def get_knife_detail(cls, knife_id):
-        return get_object_or_404(Knife, knife_id=knife_id)
+    def get_knife_detail(cls, knife_id, include_photos=False):
+        if include_photos:
+            return get_object_or_404(
+                Knife.objects.prefetch_related("photos"), knife_id=knife_id
+            )
+        else:
+            return get_object_or_404(Knife, knife_id=knife_id)
 
     @classmethod
     def get_knife_grid(cls):

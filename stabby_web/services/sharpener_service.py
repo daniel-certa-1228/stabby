@@ -1,9 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
-from ..models import (
-    Sharpener,
-    ViewSharpenerGrid,
-)
+from django.db.models import Prefetch
+from ..models import Sharpener, ViewSharpenerGrid, Photo
 
 
 class SharpenerService:
@@ -15,8 +13,14 @@ class SharpenerService:
         return sharpener
 
     @classmethod
-    def get_sharpener_detail(cls, sharpener_id):
-        return get_object_or_404(Sharpener, sharpener_id=sharpener_id)
+    def get_sharpener_detail(cls, sharpener_id, include_photos=False):
+        if include_photos == True:
+            return get_object_or_404(
+                Sharpener.objects.prefetch_related("photos"),
+                sharpener_id=sharpener_id,
+            )
+        else:
+            return get_object_or_404(Sharpener, sharpener_id=sharpener_id)
 
     @classmethod
     def get_sharpener_grid(cls):

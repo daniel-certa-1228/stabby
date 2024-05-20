@@ -1,0 +1,22 @@
+<div class="card gallery-card {% if active == 'knives' %}mt-3{% endif%}">
+  <div class="card-header d-flex justify-content-between">
+    Photo(s)
+    <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'photo_create' related_entity_id=knife.knife_id %}{% else %}{% url 'photo_create_sh' related_entity_id=sharpener.sharpener_id %}{% endif %}"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Add</a>
+  </div>
+  <div class="card-body">
+    {% if photos %}
+      <div class="d-flex flex-row mb-2">
+        {% for photo in photos %}
+          <div class="card photo-card-sm d-inline-block me-2">
+            <img src="{{ photo.photo.url }}" alt="Photo of {{ knife.name }}">
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-body-tertiary text-center">
+        <h4>No Photos Uploaded</h4>
+        <h1 class="mb-0"><i class="fa-solid fa-images"></i></h1>
+      </div>
+    {% endif %}
+  </div>
+</div>
