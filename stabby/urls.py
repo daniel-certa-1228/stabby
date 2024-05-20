@@ -63,7 +63,7 @@ urlpatterns = [
         name="photo_create",
     ),
     path(
-        "knives/detail/<int:related_entity_id>/photos/edit/<int:work_log_id>/",
+        "knives/detail/<int:related_entity_id>/photos/edit/<int:photo_id>/",
         views.photo_update,
         name="photo_update",
     ),
@@ -73,7 +73,7 @@ urlpatterns = [
         name="photo_create_sh",
     ),
     path(
-        "sharpeners/detail/<int:related_entity_id>/photos/edit/<int:work_log_id>/",
+        "sharpeners/detail/<int:related_entity_id>/photos/edit/<int:photo_id>/",
         views.photo_update,
         name="photo_update_sh",
     ),
