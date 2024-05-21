@@ -56,6 +56,42 @@
     color: white;
 }
 
+.photo-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .photo-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .photo-container .edit-btn,
+  .photo-container .view-btn {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    padding: 5px 10px; /* Adjust padding for desired button size */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 3px; /* Rounded corners */
+    cursor: pointer;
+    display: none; /* Initially hide buttons */
+  }
+  
+  .photo-container:hover .edit-btn,
+  .photo-container:hover .view-btn {
+    display: inline-block; /* Show buttons on hover */
+  }
+  
+  .photo-container .edit-btn {
+    left: 10px; /* Position from the left */
+  }
+  
+  .photo-container .view-btn {
+    right: 10px; /* Position from the right */
+  }
+
 /* specifically targets small grids in cards */
 #blade_grid.ag-theme-alpine .ag-root-wrapper {
     border: none;
