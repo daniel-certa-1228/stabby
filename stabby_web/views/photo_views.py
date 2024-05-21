@@ -145,6 +145,7 @@ def photo_update(request, related_entity_id, photo_id):
             "form": form,
             "form_type": FormTypes.Edit.value,
             "active": module,
+            "photo": photo,
             "template_variables": variable_dto.to_dict(),
         }
 
