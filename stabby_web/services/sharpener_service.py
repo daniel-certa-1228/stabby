@@ -16,7 +16,8 @@ class SharpenerService:
     def get_sharpener_detail(cls, sharpener_id, include_photos=False):
         if include_photos == True:
             photos_prefetch = Prefetch(
-                "photos", queryset=Photo.objects.order_by("create_date")
+                "photos",
+                queryset=Photo.objects.filter(is_active=True).order_by("create_date"),
             )
 
             return get_object_or_404(

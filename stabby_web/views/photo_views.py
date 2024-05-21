@@ -1,4 +1,3 @@
-import datetime
 from django.http import JsonResponse
 from django.contrib import messages
 from django.shortcuts import redirect, render
@@ -10,6 +9,7 @@ from stabby_web.enums import FormTypes, Modules, ViewTypes
 from django.contrib.auth.decorators import login_required
 
 
+# MVT Views
 @login_required
 def photo_create(request, related_entity_id):
     related_entity = None
@@ -159,3 +159,15 @@ def photo_update(request, related_entity_id, photo_id):
             context["sharpener_id"] = related_entity_id
 
         return render(request, "stabby_web/photo-add-edit.html", context)
+
+
+# JSON VIEWS
+@login_required
+def photo_delete(request, photo_id):
+    work_log = PhotoService.get_photo_detail(photo_id)
+
+    PhotoService.save_photo(PhotoService.delete_photo(work_log))
+
+    messages.success(request, "Photo Deleted")
+
+    return JsonResponse(True, safe=False)

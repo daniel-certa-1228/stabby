@@ -12,22 +12,6 @@ class PhotoService:
         return photo
 
     @classmethod
-    def get_knife_photos(cls, knife_id):
-        queryset = Photo.objects.filter(is_active=True, knife_id=knife_id).order_by(
-            "-create_date"
-        )
-
-        return list(queryset.values())
-
-    @classmethod
-    def get_sharpener_photos(cls, sharpener_id):
-        queryset = Photo.objects.filter(
-            is_active=True, sharpener_id=sharpener_id
-        ).order_by("-create_date")
-
-        return list(queryset.values())
-
-    @classmethod
     def get_photo_detail(cls, photo_id):
         return get_object_or_404(Photo, photo_id=photo_id)
 
