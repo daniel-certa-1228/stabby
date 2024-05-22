@@ -115,6 +115,7 @@ INSERT INTO stabby_web_knifetype(knife_type_id, name, is_active, create_date, ed
 INSERT INTO stabby_web_knifetype(knife_type_id, name, is_active, create_date, edit_date) VALUES(23, 'Toothpick', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_knifetype(knife_type_id, name, is_active, create_date, edit_date) VALUES(24, 'Trapper', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_knifetype(knife_type_id, name, is_active, create_date, edit_date) VALUES(25, 'Whittler', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_knifetype(knife_type_id, name, is_active, create_date, edit_date) VALUES(26, 'Sodbuster', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- LOCK TYPE
 INSERT INTO stabby_web_locktype(lock_type_id, name, is_active, create_date, edit_date) VALUES(1, 'Button Lock', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
