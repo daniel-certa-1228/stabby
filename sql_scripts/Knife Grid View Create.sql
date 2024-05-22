@@ -7,7 +7,7 @@ CREATE VIEW IF NOT EXISTS view_knife_grid AS
 		kt.name AS knife_type,
 		b.name AS brand,
 		COUNT(CASE WHEN bl.blade_id IS NOT NULL THEN bl.blade_id ELSE NULL END) AS num_of_blades,
-		bm.name AS blade_material,
+		CASE WHEN bm.steel_manufacturer_id IS NOT NULL THEN sm.name || ' ' ||  bm.name ELSE bm.name END AS blade_material,
 		hm.name AS handle_material,
 		lt.name AS lock_type,
 		dt.name AS deployment_type,
@@ -19,6 +19,7 @@ CREATE VIEW IF NOT EXISTS view_knife_grid AS
 	FROM stabby_web_knife k
 	LEFT JOIN stabby_web_brand b on b.brand_id = k.brand_id 
 	LEFT JOIN stabby_web_bladematerial bm on bm.blade_material_id = k.blade_material_id
+	LEFT JOIN stabby_web_steelmanufacturer sm on sm.steel_manufacturer_id = bm.steel_manufacturer_id
 	LEFT JOIN stabby_web_locktype lt on lt.lock_type_id  = k.lock_type_id 
 	LEFT JOIN stabby_web_deploymenttype dt on dt.deployment_type_id = k.deployment_type_id
 	LEFT JOIN stabby_web_country c on c.country_id = k.country_id 

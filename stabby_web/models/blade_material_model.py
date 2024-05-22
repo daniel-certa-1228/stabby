@@ -2,6 +2,7 @@ from django.db import models
 from .steel_type_model import SteelType
 from .steel_manufacturer_model import SteelManufacturer
 
+
 class BladeMaterial(models.Model):
     blade_material_id = models.BigIntegerField(primary_key=True, null=False)
     steel_type = models.ForeignKey(SteelType, on_delete=models.SET_NULL, null=True)
@@ -19,4 +20,7 @@ class BladeMaterial(models.Model):
         verbose_name_plural = "blade materials"
 
     def __str__(self):
-        return self.name
+        if self.steel_manufacturer:
+            return f"{self.steel_manufacturer.name} {self.name}"
+        else:
+            return self.name
