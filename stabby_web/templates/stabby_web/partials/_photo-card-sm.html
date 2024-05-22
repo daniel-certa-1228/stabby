@@ -1,6 +1,6 @@
 <div class="card photo-card-sm d-inline-block me-2">
     <div class="photo-container">
-        <img src="{{ photo.photo.url }}" alt="Photo of {% if active == 'knives' %}{{ knife.name }}{% else %}{{ sharpener.name }}{% endif %}">
+        <img src="{{ photo.photo.url }}" title="{{ photo.description }}" alt="Photo of {% if active == 'knives' %}{{ knife.name }}{% else %}{{ sharpener.name }}{% endif %}">
 
         <a class="edit-btn btn" href="{% if active == 'knives' %}{% url 'photo_update' related_entity_id=knife.knife_id photo_id=photo.photo_id %}{% else %}{% url 'photo_update_sh' related_entity_id=sharpener.sharpener_id photo_id=photo.photo_id %}{% endif %}"><i class="fa-solid fa-edit"></i></a>
 
