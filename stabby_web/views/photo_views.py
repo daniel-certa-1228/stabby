@@ -100,7 +100,7 @@ def photo_update(request, related_entity_id, photo_id):
             None,
             None,
             None,
-            photo_id,
+            photo_id
         )
     else:
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
@@ -112,7 +112,7 @@ def photo_update(request, related_entity_id, photo_id):
             related_entity_id,
             None,
             None,
-            photo_id,
+            photo_id
         )
 
     if request.method == "POST":

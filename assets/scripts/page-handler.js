@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const work_log_id = variables['work_log_id'];
 
       if (!isNaN(knife_id)) {
-        grid_loader.loadBladeGrid(knife_id);
         grid_loader.loadWorkLogGrid(false, true, knife_id, work_log_id);
       } else {
         console.log('Invalid Knife ID');
