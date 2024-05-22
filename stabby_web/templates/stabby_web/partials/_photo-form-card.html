@@ -29,6 +29,10 @@
                             <img src="{{ photo.photo.url }}" alt="{{ photo.photo.description }}">
                         </div>
                     {% endif %}
+
+                    <div class="d-flex flex-row-reverse mt-2 mb-3">
+                        <button type="button" class="btn btn-outline-danger btn-sm align-self-center new-btn " id="photo-delete-btn" value="[{{ photo.photo_id }}, {% if active == 'knives' %}{{ knife_id }}{% else %}{{ sharpener_id }}{% endif %}, {% if active == 'knives' %}true{% else %}false{% endif %}]"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Delete</button>
+                    </div>
                 </div>
             </div>
         </form>

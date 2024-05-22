@@ -110,6 +110,11 @@ urlpatterns = [
         name="work_log_delete",
     ),
     path(
+        "api/delete_photo/<int:photo_id>/",
+        views.photo_delete,
+        name="photo_delete",
+    ),
+    path(
         "api/get_blade_grid/<int:knife_id>/",
         views.get_blade_grid,
         name="get_blade_grid",

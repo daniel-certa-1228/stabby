@@ -34,12 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
       break;
-    case enums.ViewTypes.KnifeAddEdit:
-      break;
-    case enums.ViewTypes.SharpenerAddEdit:
-      break;
-    case enums.ViewTypes.BladeAddEdit:
-      break;
     case enums.ViewTypes.KnifeWorkLogAddEdit: {
       const knife_id = variables['knife_id'];
       const work_log_id = variables['work_log_id'];
@@ -63,11 +57,13 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
       break;
+    case enums.ViewTypes.KnifeAddEdit:
+    case enums.ViewTypes.SharpenerAddEdit:
+    case enums.ViewTypes.BladeAddEdit:
     case enums.ViewTypes.KnifePhotoAddEdit:
-      break;
     case enums.ViewTypes.SharpenerPhotoAddEdit:
       break;
     default:
-      console.log(`No Path`);
+      console.log(`Error: No Path`);
   }
 });

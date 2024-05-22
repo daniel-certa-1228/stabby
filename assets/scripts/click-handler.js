@@ -13,6 +13,7 @@ document.addEventListener("click", function (e) {
   const sharpenerDeleteTarget = e.target.closest("#sharpener-delete-btn");
   const bladeDeleteTarget = e.target.closest(".blade-delete-btn");
   const workLogDeleteTarget = e.target.closest(".wl-delete-btn");
+  const photoDeleteTarget = e.target.closest("#photo-delete-btn");
 
   if (knifeDetailTarget) {
     const knife_id = parseInt(knifeDetailTarget.value);
@@ -93,7 +94,18 @@ document.addEventListener("click", function (e) {
         delete_handler.deleteWorkLog(work_log_id, entity_id, is_knife_wl);
       }
     }
-  } else {
-    console.log('Error: No Target');
+  } else if (photoDeleteTarget) {
+    const arr = JSON.parse(photoDeleteTarget.value);
+    
+    if (Array.isArray(arr)
+      && arr.length === 3) {
+      const photo_id = arr[0];
+      const entity_id = arr[1];
+      const is_knife_photo = arr[2];
+
+      if (!isNaN(photo_id) && !isNaN(entity_id)) {
+        delete_handler.deletePhoto(photo_id, entity_id, is_knife_photo);
+      }
+    }
   }
 });

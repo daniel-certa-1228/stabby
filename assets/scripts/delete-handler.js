@@ -56,9 +56,26 @@ const deleteWorkLog = async (work_log_id, entity_id, is_knife_wl) => {
   }
 };
 
+const deletePhoto = async (photo_id, entity_id, is_knife_photo) => {
+  if (window.confirm("Are you sure you want to delete this Photo?")) {
+    const url = `${baseUrl}api/delete_photo/${photo_id}/`;
+
+    const delete_successful = await ajax_handler.deleteEntity(url);
+
+    if (delete_successful) {
+      if (is_knife_photo) {
+        redirect_handler.redirectToKnifeDetailPage_abs(entity_id);
+      } else {
+        redirect_handler.redirectToSharpenerDetailPage_abs(entity_id);
+      }
+    }
+  }
+};
+
 export {
   deleteBlade,
   deleteKnife,
+  deletePhoto,
   deleteSharpener,
   deleteWorkLog
 };
