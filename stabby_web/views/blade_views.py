@@ -61,9 +61,10 @@ def blade_update(request, knife_id, blade_id):
 
             messages.success(request, "Blade Updated!")
 
-            return redirect("knife_detail", knife_id=blade.knife_id)
         else:
             messages.error(request, "Blade Update Failed.")
+            
+        return redirect("knife_detail", knife_id=blade.knife_id)
     else:
         form = BladeForm(instance=blade)
 

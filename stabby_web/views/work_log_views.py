@@ -42,12 +42,13 @@ def work_log_create(request, related_entity_id):
 
             messages.success(request, "Work Log Created!")
 
-            if type(related_entity) is Knife:
-                return redirect(redirect_url, knife_id=related_entity_id)
-            else:
-                return redirect(redirect_url, sharpener_id=related_entity_id)
         else:
             messages.error(request, "Work Log Create Failed")
+            
+        if type(related_entity) is Knife:
+            return redirect(redirect_url, knife_id=related_entity_id)
+        else:
+            return redirect(redirect_url, sharpener_id=related_entity_id)
     else:
         initial = None
         module = None
@@ -130,12 +131,13 @@ def work_log_update(request, work_log_id, related_entity_id):
 
             messages.success(request, "Work Log Updated!")
 
-            if type(related_entity) is Knife:
-                return redirect(redirect_url, knife_id=related_entity_id)
-            else:
-                return redirect(redirect_url, sharpener_id=related_entity_id)
         else:
             messages.error(request, "Work Log Update Failed")
+            
+        if type(related_entity) is Knife:
+            return redirect(redirect_url, knife_id=related_entity_id)
+        else:
+            return redirect(redirect_url, sharpener_id=related_entity_id)
     else:
         form = WorkLogForm(instance=work_log)
 
