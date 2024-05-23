@@ -22,6 +22,8 @@ def sharpener_create(request):
             messages.success(request, "Sharpener Created!")
 
             return redirect("sharpener_detail", sharpener_id=sharpener.sharpener_id)
+        else:
+            messages.error(request, "Sharpener Create Failed.")
 
     else:
         form = SharpenerForm(initial={"uom": UnitsOfMeasure.inches.value})
