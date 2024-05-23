@@ -46,6 +46,8 @@ def work_log_create(request, related_entity_id):
                 return redirect(redirect_url, knife_id=related_entity_id)
             else:
                 return redirect(redirect_url, sharpener_id=related_entity_id)
+        else:
+            messages.error(request, "Work Log Create Failed")
     else:
         initial = None
         module = None
@@ -97,7 +99,7 @@ def work_log_update(request, work_log_id, related_entity_id):
             related_entity_id,
             None,
             None,
-            work_log_id
+            work_log_id,
         )
     else:
         redirect_url = "sharpener_detail"
@@ -108,7 +110,7 @@ def work_log_update(request, work_log_id, related_entity_id):
             None,
             related_entity_id,
             None,
-            work_log_id
+            work_log_id,
         )
 
     if request.method == "POST":
@@ -132,7 +134,8 @@ def work_log_update(request, work_log_id, related_entity_id):
                 return redirect(redirect_url, knife_id=related_entity_id)
             else:
                 return redirect(redirect_url, sharpener_id=related_entity_id)
-
+        else:
+            messages.error(request, "Work Log Update Failed")
     else:
         form = WorkLogForm(instance=work_log)
 

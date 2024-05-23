@@ -25,15 +25,15 @@ def blade_create(request, knife_id):
             messages.success(request, "Blade Created!")
 
             return redirect("knife_detail", knife_id=blade.knife_id)
+        else:
+            messages.error(request, "Blade Create Failed.")
 
     else:
         form = BladeForm(initial={"knife": knife, "uom": knife.uom})
 
         number_of_blades = knife.number_of_blades()
 
-        variable_dto = TemplateVariableDTO(
-            ViewTypes.BladeAddEdit.value, knife_id
-        )
+        variable_dto = TemplateVariableDTO(ViewTypes.BladeAddEdit.value, knife_id)
 
         context = {
             "form": form,
@@ -62,6 +62,8 @@ def blade_update(request, knife_id, blade_id):
             messages.success(request, "Blade Updated!")
 
             return redirect("knife_detail", knife_id=blade.knife_id)
+        else:
+            messages.error(request, "Blade Update Failed.")
     else:
         form = BladeForm(instance=blade)
 

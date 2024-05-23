@@ -41,6 +41,8 @@ def photo_create(request, related_entity_id):
                 return redirect(redirect_url, knife_id=related_entity_id)
             else:
                 return redirect(redirect_url, sharpener_id=related_entity_id)
+        else:
+            messages.error(request, "Photo Create Failed")
     else:
         initial = None
         module = None
@@ -100,7 +102,7 @@ def photo_update(request, related_entity_id, photo_id):
             None,
             None,
             None,
-            photo_id
+            photo_id,
         )
     else:
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
@@ -112,7 +114,7 @@ def photo_update(request, related_entity_id, photo_id):
             related_entity_id,
             None,
             None,
-            photo_id
+            photo_id,
         )
 
     if request.method == "POST":
@@ -138,6 +140,8 @@ def photo_update(request, related_entity_id, photo_id):
                 return redirect(redirect_url, knife_id=related_entity_id)
             else:
                 return redirect(redirect_url, sharpener_id=related_entity_id)
+        else:
+            messages.error(request, "Photo Update Failed")
     else:
         form = PhotoForm(instance=photo)
 
