@@ -33,8 +33,8 @@ class BladeForm(forms.ModelForm):
         self.fields["uom"].label = "UOM"
         self.fields["uom"].empty_label = "Select UOM"
 
-        def clean_blade_shape_notes(self):
-            blade_shape_notes = self.cleaned_data.get("blade_shape_notes")
-            if blade_shape_notes:
-                return blade_shape_notes.strip()
-            return blade_shape_notes
+    def clean_blade_shape_notes(self):
+        blade_shape_notes = self.cleaned_data.get("blade_shape_notes")
+        if blade_shape_notes:
+            return blade_shape_notes.strip()
+        return blade_shape_notes

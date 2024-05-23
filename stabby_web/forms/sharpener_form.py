@@ -40,20 +40,20 @@ class SharpenerForm(forms.ModelForm):
         self.fields["uom"].label = "UOM"
         self.fields["uom"].empty_label = "Select UOM"
 
-        def clean_brand_notes(self):
-            brand_notes = self.cleaned_data.get("brand_notes")
-            if brand_notes:
-                return brand_notes.strip()
-            return brand_notes
+    def clean_brand_notes(self):
+        brand_notes = self.cleaned_data.get("brand_notes")
+        if brand_notes:
+            return brand_notes.strip()
+        return brand_notes
 
-        def clean_name(self):
-            name = self.cleaned_data.get("name")
-            if name:
-                return name.strip()
-            return name
+    def clean_name(self):
+        name = self.cleaned_data.get("name")
+        if name:
+            return name.strip()
+        return name
 
-        def clean_notes(self):
-            notes = self.cleaned_data.get("notes")
-            if notes:
-                return notes.strip()
-            return notes
+    def clean_notes(self):
+        notes = self.cleaned_data.get("notes")
+        if notes:
+            return notes.strip()
+        return notes
