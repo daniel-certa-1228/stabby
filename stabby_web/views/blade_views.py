@@ -63,9 +63,12 @@ def blade_update(request, knife_id, blade_id):
 
         else:
             messages.error(request, "Blade Update Failed.")
-            
+
         return redirect("knife_detail", knife_id=blade.knife_id)
     else:
+        blade.length = blade.length.normalize()
+        blade.length_cutting_edge = blade.length_cutting_edge.normalize()
+
         form = BladeForm(instance=blade)
 
         number_of_blades = knife.number_of_blades()

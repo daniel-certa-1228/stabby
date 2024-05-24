@@ -94,6 +94,8 @@ def knife_update(request, knife_id):
 
         return redirect("knife_detail", knife_id=knife.knife_id)
     else:
+        knife.closed_length = knife.closed_length.normalize()
+
         form = KnifeForm(instance=knife)
 
         variable_dto = TemplateVariableDTO(ViewTypes.KnifeAddEdit.value, knife_id)

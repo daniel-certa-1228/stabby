@@ -78,6 +78,9 @@ def sharpener_update(request, sharpener_id):
 
         return redirect("sharpener_detail", sharpener_id=sharpener.sharpener_id)
     else:
+        sharpener.length = sharpener.length.normalize()
+        sharpener.width = sharpener.width.normalize()
+
         form = SharpenerForm(instance=sharpener)
 
         variable_dto = TemplateVariableDTO(
