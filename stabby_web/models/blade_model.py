@@ -3,6 +3,7 @@ from .blade_shape_model import BladeShape
 from .knife_model import Knife
 from .unit_of_measure_model import UnitOfMeasure
 
+
 class Blade(models.Model):
     blade_id = models.AutoField(primary_key=True, db_column="blade_id")
     knife = models.ForeignKey(Knife, on_delete=models.DO_NOTHING)
