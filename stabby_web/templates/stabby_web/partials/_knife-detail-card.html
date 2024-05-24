@@ -33,7 +33,7 @@
             <dt class="col-sm-4 text-end">Blade Material:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.blade_material %}
-                  {% if knife.blade_material.steel_manufacturer %}{{ knife.blade_material.steel_manufacturer }}&nbsp;{% endif %}{{ knife.blade_material }}
+                  {{ knife.blade_material }}
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
