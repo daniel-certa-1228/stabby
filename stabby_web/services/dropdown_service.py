@@ -1,3 +1,6 @@
+from django.db.models import F, Value, CharField
+from django.db.models.functions import Coalesce, Concat
+
 from ..models import (
     BladeMaterial,
     BladeShape,
@@ -21,7 +24,18 @@ class DropdownService:
 
     @classmethod
     def get_blade_materials(cls):
-        return BladeMaterial.objects.filter(is_active=True).order_by("name")
+        return (
+            BladeMaterial.objects.filter(is_active=True)
+            .annotate(
+                composite_name=Concat(
+                    Coalesce(F("steel_manufacturer__name"), Value("")),
+                    Value(" "),
+                    F("name"),
+                    output_field=CharField(),
+                )
+            )
+            .order_by("composite_name")
+        )
 
     @classmethod
     def get_blade_shapes(cls):
