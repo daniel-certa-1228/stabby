@@ -1,4 +1,3 @@
-import json
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
