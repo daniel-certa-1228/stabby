@@ -4,16 +4,16 @@
 
 
 .blue {
-    color: #12387a;
+  color: #12387a;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .gallery-card {
-    max-height: 340px;
-    overflow: auto;
+  max-height: 340px;
+  overflow: auto;
 }
 
 .navbar {
@@ -27,84 +27,84 @@
 }
 
 .photo-card-sm {
-    max-width: 100px;
-    border: 0px;
+  max-width: 100px;
+  border: 0px;
 }
 
 .photo-card-sm img {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
 }
 
 .photo-card-lg img{
-    width: 100%;
+  width: 100%;
 }
 
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .link-style {
-    color: #12387a;
-    text-decoration: none
+  color: #12387a;
+  text-decoration: none
 }
 
 .toast-header-background {
-    background-color: #127a49;
-    color: white;
+  background-color: #127a49;
+  color: white;
 }
 
 .photo-container {
-    position: relative;
-    display: inline-block;
-  }
+  position: relative;
+  display: inline-block;
+}
   
-  .photo-container img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+.photo-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
   
-  .photo-container .edit-btn,
-  .photo-container .view-btn {
-    position: absolute;
-    top: 10px; /* Adjust as needed */
-    padding: 5px 10px; /* Adjust padding for desired button size */
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 3px; /* Rounded corners */
-    cursor: pointer;
-    display: none; /* Initially hide buttons */
-  }
+.photo-container .edit-btn,
+.photo-container .view-btn {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  padding: 5px 10px; /* Adjust padding for desired button size */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 3px; /* Rounded corners */
+  cursor: pointer;
+  display: none; /* Initially hide buttons */
+}
   
-  .photo-container:hover .edit-btn,
-  .photo-container:hover .view-btn {
-    display: inline-block; /* Show buttons on hover */
-  }
-  
-  .photo-container .edit-btn {
-    left: 10px; /* Position from the left */
-  }
-  
-  .photo-container .view-btn {
-    right: 10px; /* Position from the right */
-  }
+.photo-container:hover .edit-btn,
+.photo-container:hover .view-btn {
+  display: inline-block; /* Show buttons on hover */
+}
+
+.photo-container .edit-btn {
+  left: 10px; /* Position from the left */
+}
+
+.photo-container .view-btn {
+  right: 10px; /* Position from the right */
+}
 
 /* specifically targets small grids in cards */
 #blade_grid.ag-theme-alpine .ag-root-wrapper {
-    border: none;
+  border: none;
 }
 
 #wl_grid.ag-theme-alpine .ag-root-wrapper {
-    border: none;
+  border: none;
 }
 
 #grid {
-    height: 760px;
+  height: 760px;
 }
 
 #toast-container > div {
-    opacity: 1;
+  opacity: 1;
 }
