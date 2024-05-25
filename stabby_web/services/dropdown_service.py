@@ -21,7 +21,9 @@ class DropdownService:
 
     @classmethod
     def get_blade_materials(cls):
-        return BladeMaterial.objects.filter(is_active=True).order_by("name")
+        return BladeMaterial.objects.filter(is_active=True).order_by(
+            "steel_manufacturer__name", "name"
+        )
 
     @classmethod
     def get_blade_shapes(cls):
