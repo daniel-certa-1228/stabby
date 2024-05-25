@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from django.contrib import messages
+from django.conf import settings
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import FormTypes, Modules, ViewTypes
@@ -33,7 +34,9 @@ def blade_create(request, knife_id):
 
         number_of_blades = knife.number_of_blades()
 
-        variable_dto = TemplateVariableDTO(ViewTypes.BladeAddEdit.value, knife_id)
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.BladeAddEdit.value, not settings.DEBUG, knife_id
+        )
 
         context = {
             "form": form,
@@ -74,7 +77,7 @@ def blade_update(request, knife_id, blade_id):
         number_of_blades = knife.number_of_blades()
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.BladeAddEdit.value, knife_id, None, blade_id
+            ViewTypes.BladeAddEdit.value, not settings.DEBUG, knife_id, None, blade_id
         )
 
         context = {

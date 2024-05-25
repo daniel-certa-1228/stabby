@@ -2,9 +2,12 @@
 
 import { enums } from './index';
 import { grid_loader } from './index';
+import { constants } from './index';
 
 document.addEventListener('DOMContentLoaded', function () {
   var variables = JSON.parse(document.getElementById('template-variables').textContent);
+
+  constants.setBaseUrl(variables['is_production']);
 
   switch (variables['view_type']) {
     case enums.ViewTypes.KnifeGrid:

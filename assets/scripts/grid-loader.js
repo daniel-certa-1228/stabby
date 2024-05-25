@@ -2,7 +2,7 @@
 
 import { agGrid } from './index';
 import { ajax_handler } from './index';
-import { baseUrl } from './index';
+import { constants } from './index';
 
 const loadKnifeGrid = async () => {
   const gridDiv = document.querySelector('#grid');
@@ -39,7 +39,7 @@ const loadKnifeGrid = async () => {
 
   const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-  const url = `${baseUrl}api/get_knife_grid`;
+  const url = `${constants.getBaseUrl()}api/get_knife_grid`;
 
   const rowData = await ajax_handler.getKnifeGrid(url);
 
@@ -78,7 +78,7 @@ const loadSharpenerGrid = async () => {
 
   const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-  const url = `${baseUrl}api/get_sharpener_grid`;
+  const url = `${constants.getBaseUrl()}api/get_sharpener_grid`;
 
   const rowData = await ajax_handler.getSharpenerGrid(url);
 
@@ -121,7 +121,7 @@ const loadBladeGrid = async (knife_id) => {
 
   const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-  const url = `${baseUrl}api/get_blade_grid/${knife_id}`;
+  const url = `${constants.getBaseUrl()}api/get_blade_grid/${knife_id}`;
 
   const rowData = await ajax_handler.getSharpenerGrid(url);
 
@@ -142,9 +142,9 @@ const loadWorkLogGrid = async (with_buttons, is_knife_wl, entity_id, work_log_id
   let url;
 
   if (is_knife_wl) {
-    url = `${baseUrl}api/get_knife_work_log_grid/${entity_id}`;
+    url = `${constants.getBaseUrl()}api/get_knife_work_log_grid/${entity_id}`;
   } else {
-    url = `${baseUrl}api/get_sharpener_work_log_grid/${entity_id}`;
+    url = `${constants.getBaseUrl()}api/get_sharpener_work_log_grid/${entity_id}`;
   }
 
   const rowData = await ajax_handler.getSharpenerGrid(url);

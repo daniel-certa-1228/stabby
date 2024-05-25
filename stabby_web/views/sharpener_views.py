@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from django.contrib import messages
+from django.conf import settings
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import SharpenerForm
 from stabby_web.services import SharpenerService
@@ -28,7 +29,9 @@ def sharpener_create(request):
     else:
         form = SharpenerForm(initial={"uom": UnitsOfMeasure.inches.value})
 
-        variable_dto = TemplateVariableDTO(ViewTypes.SharpenerAddEdit.value)
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.SharpenerAddEdit.value, not settings.DEBUG
+        )
 
         context = {
             "form": form,
@@ -47,7 +50,7 @@ def sharpener_detail(request, sharpener_id):
     photos = sharpener.photos.all()
 
     variable_dto = TemplateVariableDTO(
-        ViewTypes.SharpenerDetail.value, None, sharpener_id
+        ViewTypes.SharpenerDetail.value, not settings.DEBUG, None, sharpener_id
     )
 
     context = {
@@ -84,7 +87,7 @@ def sharpener_update(request, sharpener_id):
         form = SharpenerForm(instance=sharpener)
 
         variable_dto = TemplateVariableDTO(
-            ViewTypes.SharpenerAddEdit.value, None, sharpener_id
+            ViewTypes.SharpenerAddEdit.value, not settings.DEBUG, None, sharpener_id
         )
 
         context = {
@@ -100,7 +103,9 @@ def sharpener_update(request, sharpener_id):
 
 @login_required
 def sharpeners(request):
-    variable_dto = TemplateVariableDTO(ViewTypes.SharpenerGrid.value)
+    variable_dto = TemplateVariableDTO(
+        ViewTypes.SharpenerGrid.value, not settings.DEBUG
+    )
 
     context = {
         "active": Modules.Sharpeners.value,

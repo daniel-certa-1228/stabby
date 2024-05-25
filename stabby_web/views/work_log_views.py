@@ -1,6 +1,7 @@
 import datetime
 from django.http import JsonResponse
 from django.contrib import messages
+from django.conf import settings
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import WorkLogForm
@@ -44,7 +45,7 @@ def work_log_create(request, related_entity_id):
 
         else:
             messages.error(request, "Work Log Create Failed")
-            
+
         if type(related_entity) is Knife:
             return redirect(redirect_url, knife_id=related_entity_id)
         else:
@@ -60,14 +61,19 @@ def work_log_create(request, related_entity_id):
             initial = {"knife": related_entity, "date": datetime.datetime.now()}
             module = Modules.Knives.value
             variable_dto = TemplateVariableDTO(
-                ViewTypes.KnifeWorkLogAddEdit.value, related_entity_id
+                ViewTypes.KnifeWorkLogAddEdit.value,
+                not settings.DEBUG,
+                related_entity_id,
             )
         else:
             show_existing = WorkLogService.show_work_log_card(None, related_entity_id)
             initial = {"sharpener": related_entity, "date": datetime.datetime.now()}
             module = Modules.Sharpeners.value
             variable_dto = TemplateVariableDTO(
-                ViewTypes.SharpenerWorkLogAddEdit.value, None, related_entity_id
+                ViewTypes.SharpenerWorkLogAddEdit.value,
+                not settings.DEBUG,
+                None,
+                related_entity_id,
             )
 
         form = WorkLogForm(initial)
@@ -97,6 +103,7 @@ def work_log_update(request, work_log_id, related_entity_id):
         module = Modules.Knives.value
         variable_dto = TemplateVariableDTO(
             ViewTypes.KnifeWorkLogAddEdit.value,
+            not settings.DEBUG,
             related_entity_id,
             None,
             None,
@@ -108,6 +115,7 @@ def work_log_update(request, work_log_id, related_entity_id):
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
         variable_dto = TemplateVariableDTO(
             ViewTypes.SharpenerWorkLogAddEdit.value,
+            not settings.DEBUG,
             None,
             related_entity_id,
             None,
@@ -133,7 +141,7 @@ def work_log_update(request, work_log_id, related_entity_id):
 
         else:
             messages.error(request, "Work Log Update Failed")
-            
+
         if type(related_entity) is Knife:
             return redirect(redirect_url, knife_id=related_entity_id)
         else:

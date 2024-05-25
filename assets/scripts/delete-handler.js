@@ -1,12 +1,12 @@
 'use strict';
 
-import { baseUrl } from "./index";
+import { constants } from "./index";
 import { redirect_handler } from "./index";
 import { ajax_handler } from "./index";
 
 const deleteBlade = async (blade_id, knife_id) => {
   if (window.confirm("Are you sure you want to delete this Blade?")) {
-    const url = `${baseUrl}api/delete_blade/${blade_id}/`;
+    const url = `${constants.getconstants.getBaseUrl()()}api/delete_blade/${blade_id}/`;
 
     const delete_successful = await ajax_handler.deleteEntity(url);
 
@@ -18,7 +18,7 @@ const deleteBlade = async (blade_id, knife_id) => {
 
 const deleteKnife = async (knife_id) => {
   if (window.confirm("Are you sure you want to delete this Knife?")) {
-    const url = `${baseUrl}api/delete_knife/${knife_id}/`;
+    const url = `${constants.getBaseUrl()}api/delete_knife/${knife_id}/`;
 
     const delete_successful = await ajax_handler.deleteEntity(url);
 
@@ -30,7 +30,7 @@ const deleteKnife = async (knife_id) => {
 
 const deleteSharpener = async (sharpener_id) => {
   if (window.confirm("Are you sure you want to delete this Sharpener?")) {
-    const url = `${baseUrl}api/delete_sharpener/${sharpener_id}/`;
+    const url = `${constants.getBaseUrl()}api/delete_sharpener/${sharpener_id}/`;
 
     const delete_successful = await ajax_handler.deleteEntity(url);
 
@@ -42,7 +42,7 @@ const deleteSharpener = async (sharpener_id) => {
 
 const deleteWorkLog = async (work_log_id, entity_id, is_knife_wl) => {
   if (window.confirm("Are you sure you want to delete this Work Log?")) {
-    const url = `${baseUrl}api/delete_work_log/${work_log_id}/`;
+    const url = `${constants.getBaseUrl()}api/delete_work_log/${work_log_id}/`;
 
     const delete_successful = await ajax_handler.deleteEntity(url);
 
@@ -58,7 +58,7 @@ const deleteWorkLog = async (work_log_id, entity_id, is_knife_wl) => {
 
 const deletePhoto = async (photo_id, entity_id, is_knife_photo) => {
   if (window.confirm("Are you sure you want to delete this Photo?")) {
-    const url = `${baseUrl}api/delete_photo/${photo_id}/`;
+    const url = `${constants.getBaseUrl()}api/delete_photo/${photo_id}/`;
 
     const delete_successful = await ajax_handler.deleteEntity(url);
 

@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.http import JsonResponse
+from django.conf import settings
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure, ViewTypes
@@ -11,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 # MVT VIEWS
 @login_required
 def index(request):
-    variable_dto = TemplateVariableDTO(ViewTypes.KnifeGrid.value)
+    variable_dto = TemplateVariableDTO(ViewTypes.KnifeGrid.value, not settings.DEBUG)
 
     context = {
         "active": Modules.Knives.value,
@@ -42,7 +43,9 @@ def knife_create(request):
             initial={"uom": UnitsOfMeasure.inches.value, "purchased_new": True}
         )
 
-        variable_dto = TemplateVariableDTO(ViewTypes.KnifeAddEdit.value)
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.KnifeAddEdit.value, not settings.DEBUG
+        )
 
         context = {
             "form": form,
@@ -62,7 +65,9 @@ def knife_detail(request, knife_id):
 
     number_of_blades = knife.number_of_blades()
 
-    variable_dto = TemplateVariableDTO(ViewTypes.KnifeDetail.value, knife_id)
+    variable_dto = TemplateVariableDTO(
+        ViewTypes.KnifeDetail.value, not settings.DEBUG, knife_id
+    )
 
     context = {
         "active": Modules.Knives.value,
@@ -98,7 +103,9 @@ def knife_update(request, knife_id):
 
         form = KnifeForm(instance=knife)
 
-        variable_dto = TemplateVariableDTO(ViewTypes.KnifeAddEdit.value, knife_id)
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.KnifeAddEdit.value, not settings.DEBUG, knife_id
+        )
 
         context = {
             "form": form,

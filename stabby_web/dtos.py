@@ -2,6 +2,7 @@ class TemplateVariableDTO:
     def __init__(
         self,
         view_type,
+        is_production,
         knife_id=None,
         sharpener_id=None,
         blade_id=None,
@@ -9,6 +10,7 @@ class TemplateVariableDTO:
         photo_id=None,
     ):
         self.view_type = view_type
+        self.is_production = is_production
         self.knife_id = knife_id
         self.sharpener_id = sharpener_id
         self.blade_id = blade_id
@@ -18,6 +20,7 @@ class TemplateVariableDTO:
     def to_dict(self):
         return {
             "view_type": self.view_type,
+            "is_production": self.is_production,
             "knife_id": self.knife_id,
             "sharpener_id": self.sharpener_id,
             "blade_id": self.blade_id,

@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from django.contrib import messages
+from django.conf import settings
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import PhotoForm
@@ -54,13 +55,16 @@ def photo_create(request, related_entity_id):
             initial = {"knife": related_entity}
             module = Modules.Knives.value
             variable_dto = TemplateVariableDTO(
-                ViewTypes.KnifePhotoAddEdit.value, related_entity_id
+                ViewTypes.KnifePhotoAddEdit.value, not settings.DEBUG, related_entity_id
             )
         else:
             initial = {"sharpener": related_entity}
             module = Modules.Sharpeners.value
             variable_dto = TemplateVariableDTO(
-                ViewTypes.SharpenerPhotoAddEdit.value, None, related_entity_id
+                ViewTypes.SharpenerPhotoAddEdit.value,
+                not settings.DEBUG,
+                None,
+                related_entity_id,
             )
 
         form = PhotoForm(initial)
@@ -98,6 +102,7 @@ def photo_update(request, related_entity_id, photo_id):
         redirect_url = "knife_detail"
         variable_dto = TemplateVariableDTO(
             ViewTypes.KnifePhotoAddEdit.value,
+            not settings.DEBUG,
             related_entity_id,
             None,
             None,
@@ -110,6 +115,7 @@ def photo_update(request, related_entity_id, photo_id):
         redirect_url = "sharpener_detail"
         variable_dto = TemplateVariableDTO(
             ViewTypes.SharpenerPhotoAddEdit.value,
+            not settings.DEBUG,
             None,
             related_entity_id,
             None,

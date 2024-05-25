@@ -1,7 +1,7 @@
 import '@popperjs/core';
 import * as bootstrap from 'bootstrap';
 import * as agGrid from 'ag-grid-community';
-import { baseUrl } from './constants';
+import * as constants from './constants';
 import * as enums from './enums';
 import * as redirect_handler from './redirect-handler';
 import * as delete_handler from './delete-handler';
@@ -19,5 +19,5 @@ export { redirect_handler };
 export { delete_handler };
 export { ajax_handler };
 export { grid_loader };
-export { baseUrl };
+export { constants };
 export { enums };
