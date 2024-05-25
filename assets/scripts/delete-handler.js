@@ -6,7 +6,7 @@ import { ajax_handler } from "./index";
 
 const deleteBlade = async (blade_id, knife_id) => {
   if (window.confirm("Are you sure you want to delete this Blade?")) {
-    const url = `${constants.getconstants.getBaseUrl()()}api/delete_blade/${blade_id}/`;
+    const url = `${constants.getBaseUrl()}api/delete_blade/${blade_id}/`;
 
     const delete_successful = await ajax_handler.deleteEntity(url);
 
