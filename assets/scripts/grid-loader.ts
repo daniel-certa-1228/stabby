@@ -5,9 +5,9 @@ import { ajax_handler } from './index';
 import { constants } from './index';
 
 const loadKnifeGrid = async () => {
-  const gridDiv = document.querySelector('#grid');
+  const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
-  const gridOptions = {
+  const gridOptions: any = {
     pagination: true,
     paginationPageSize: 50,
     defaultColDef: {
@@ -20,7 +20,7 @@ const loadKnifeGrid = async () => {
         width: 70,
         pinned: 'left',
         cellStyle: { textAlign: 'center' },
-        cellRenderer: (params) => {
+        cellRenderer: (params: any) => {
           return `<button class="btn btn-sm btn-light knife-detail-btn" value="${params.data.knife_id}"><i class="fa-solid fa-magnifying-glass"></i></button>`;
         },
       },
@@ -47,9 +47,9 @@ const loadKnifeGrid = async () => {
 };
 
 const loadSharpenerGrid = async () => {
-  const gridDiv = document.querySelector('#grid');
+  const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
-  const gridOptions = {
+  const gridOptions: any = {
     defaultColDef: {
       filter: true,
       cellStyle: { textAlign: 'left' }
@@ -61,7 +61,7 @@ const loadSharpenerGrid = async () => {
         width: 70,
         pinned: 'left',
         cellStyle: { textAlign: 'center' },
-        cellRenderer: (params) => {
+        cellRenderer: (params: any) => {
           return `<button class="btn btn-sm btn-light sharpener-detail-btn" value=${params.data.sharpener_id}><i class="fa-solid fa-magnifying-glass"></i></button>`;
         },
       },
@@ -85,10 +85,10 @@ const loadSharpenerGrid = async () => {
   gridApi.setGridOption('rowData', rowData);
 };
 
-const loadBladeGrid = async (knife_id) => {
-  const gridDiv = document.querySelector('#blade_grid');
+const loadBladeGrid = async (knife_id: number) => {
+  const gridDiv: HTMLElement = document.querySelector('#blade_grid')!;
 
-  const gridOptions = {
+  const gridOptions: any = {
     headerHeight: 35,
     defaultColDef: {
       cellStyle: { textAlign: 'left' }
@@ -99,7 +99,7 @@ const loadBladeGrid = async (knife_id) => {
         headerName: '',
         width: 70,
         cellStyle: { textAlign: 'center' },
-        cellRenderer: (params) => {
+        cellRenderer: (params: any) => {
           return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="fa-solid fa-edit"></i></button>`;
         },
       },
@@ -112,7 +112,7 @@ const loadBladeGrid = async (knife_id) => {
         headerName: '',
         width: 70,
         cellStyle: { textAlign: 'center' },
-        cellRenderer: (params) => {
+        cellRenderer: (params: any) => {
           return `<button class="btn btn-sm btn-light blade-delete-btn" value="[${params.data.blade_id}, ${params.data.knife_id}]"><i class="fa-solid fa-trash"></i></button>`;
         },
       },
@@ -128,10 +128,10 @@ const loadBladeGrid = async (knife_id) => {
   gridApi.setGridOption('rowData', rowData);
 };
 
-const loadWorkLogGrid = async (with_buttons, is_knife_wl, entity_id, work_log_id = null) => {
-  const gridDiv_wl = document.querySelector('#wl_grid');
+const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null = null) => {
+  const gridDiv_wl: HTMLElement = document.querySelector('#wl_grid')!;
 
-  const gridOptions = returnWorkLogGridOptions(
+  const gridOptions: any = returnWorkLogGridOptions(
     with_buttons,
     is_knife_wl,
     entity_id,
@@ -139,7 +139,7 @@ const loadWorkLogGrid = async (with_buttons, is_knife_wl, entity_id, work_log_id
 
   const gridApi = agGrid.createGrid(gridDiv_wl, gridOptions);
 
-  let url;
+  let url: string;
 
   if (is_knife_wl) {
     url = `${constants.getBaseUrl()}api/get_knife_work_log_grid/${entity_id}`;
@@ -147,9 +147,9 @@ const loadWorkLogGrid = async (with_buttons, is_knife_wl, entity_id, work_log_id
     url = `${constants.getBaseUrl()}api/get_sharpener_work_log_grid/${entity_id}`;
   }
 
-  const rowData = await ajax_handler.getSharpenerGrid(url);
+  const rowData: any = await ajax_handler.getSharpenerGrid(url);
 
-  rowData.forEach(d => {
+  rowData.forEach((d: any) => {
     d.date = d.date ? new Date(d.date) : null;
   });
 
@@ -157,7 +157,7 @@ const loadWorkLogGrid = async (with_buttons, is_knife_wl, entity_id, work_log_id
 };
 
 // Private Functions
-const returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id, work_log_id) => {
+const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null) => {
   if (with_buttons) {
     return {
       headerHeight: 35,
@@ -170,7 +170,7 @@ const returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id, work_log
           headerName: '',
           width: 70,
           cellStyle: { textAlign: 'center' },
-          cellRenderer: (params) => {
+          cellRenderer: (params: any) => {
             return `<button class="btn btn-sm btn-light wl-edit-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="fa-solid fa-edit"></i></button>`;
           },
         },
@@ -180,7 +180,7 @@ const returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id, work_log
           headerName: '',
           width: 70,
           cellStyle: { textAlign: 'center' },
-          cellRenderer: (params) => {
+          cellRenderer: (params: any) => {
             return `<button class="btn btn-sm btn-light wl-delete-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="fa-solid fa-trash"></i></button>`;
           },
         },
@@ -193,7 +193,7 @@ const returnWorkLogGridOptions = (with_buttons, is_knife_wl, entity_id, work_log
       defaultColDef: {
         cellStyle: { textAlign: 'left' }
       },
-      getRowClass: params => {
+      getRowClass: (params: any) => {
         if (params.data.work_log_id == work_log_id) {
           return 'bg-primary-subtle';
         }

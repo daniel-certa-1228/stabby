@@ -2,19 +2,19 @@
 
 import { constants } from "./index";
 
-const redirectToBladeEditPage_abs = (blade_id, knife_id) => {
+const redirectToBladeEditPage_abs = (blade_id: number, knife_id: number) => {
     window.location.href = `${constants.getBaseUrl()}/knives/detail/${knife_id}/blades/edit/${blade_id}`;
 };
 
-const redirectToKnifeDetailPage_abs = (knife_id) => {
+const redirectToKnifeDetailPage_abs = (knife_id: number) => {
     window.location.href = `${constants.getBaseUrl()}/knives/detail/${knife_id}`;
 };
 
-const redirectToKnifeDetailPage_rel = (knife_id) => {
+const redirectToKnifeDetailPage_rel = (knife_id: number) => {
     window.location.href = `knives/detail/${knife_id}`;
 };
 
-const redirectToKnifeDetailPageWlCard_abs = (knife_id) => {
+const redirectToKnifeDetailPageWlCard_abs = (knife_id: number) => {
     window.location.href = `${constants.getBaseUrl()}/knives/detail/${knife_id}#work_log_card`;
 };
 
@@ -22,15 +22,15 @@ const redirectToIndexPage_abs = () => {
     window.location.href = `${constants.getBaseUrl()}`;
 };
 
-const redirectToSharpenerDetailPage_abs = (sharpener_id) => {
+const redirectToSharpenerDetailPage_abs = (sharpener_id: number) => {
     window.location.href = `${constants.getBaseUrl()}/sharpeners/detail/${sharpener_id}`;
 };
 
-const redirectToSharpenerDetailPage_rel = (sharpener_id) => {
+const redirectToSharpenerDetailPage_rel = (sharpener_id: number) => {
     window.location.href = `detail/${sharpener_id}`;
 };
 
-const redirectToSharpenerDetailPageWlCard_abs = (sharpener_id) => {
+const redirectToSharpenerDetailPageWlCard_abs = (sharpener_id: number) => {
     window.location.href = `${constants.getBaseUrl()}/sharpeners/detail/${sharpener_id}#work_log_card`;
 };
 
@@ -38,7 +38,7 @@ const redirectToSharpenerGridPage_abs = () => {
     window.location.href = `${constants.getBaseUrl()}/sharpeners`;
 };
 
-const redirectToWorkLogEditPage_rel = (work_log_id, entity_id, is_knife_wl) => {
+const redirectToWorkLogEditPage_rel = (work_log_id: number, entity_id: number, is_knife_wl: boolean) => {
     if (is_knife_wl) {
         window.location.href = `/knives/detail/${entity_id}/work-logs/edit/${work_log_id}`;
     } else {

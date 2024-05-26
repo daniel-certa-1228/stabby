@@ -4,32 +4,33 @@ import { redirect_handler } from './index';
 import { delete_handler } from './index';
 
 document.addEventListener("click", function (e) {
-  const knifeDetailTarget = e.target.closest(".knife-detail-btn");
-  const sharpenerDetailTarget = e.target.closest(".sharpener-detail-btn");
-  const bladeEditTarget = e.target.closest(".blade-edit-btn");
-  const workLogEditTarget = e.target.closest(".wl-edit-btn");
+  const knifeDetailTarget = (e.target as Element)?.closest(".knife-detail-btn");
+  const sharpenerDetailTarget = (e.target as Element)?.closest(".sharpener-detail-btn");
+  const bladeEditTarget = (e.target as Element)?.closest(".blade-edit-btn");
+  const workLogEditTarget = (e.target as Element)?.closest(".wl-edit-btn");
 
-  const knifeDeleteTarget = e.target.closest("#knife-delete-btn");
-  const sharpenerDeleteTarget = e.target.closest("#sharpener-delete-btn");
-  const bladeDeleteTarget = e.target.closest(".blade-delete-btn");
-  const workLogDeleteTarget = e.target.closest(".wl-delete-btn");
-  const photoDeleteTarget = e.target.closest("#photo-delete-btn");
+  const knifeDeleteTarget = (e.target as Element)?.closest("#knife-delete-btn");
+  const sharpenerDeleteTarget = (e.target as Element)?.closest("#sharpener-delete-btn");
+  const bladeDeleteTarget = (e.target as Element)?.closest(".blade-delete-btn");
+  const workLogDeleteTarget = (e.target as Element)?.closest(".wl-delete-btn");
+  const photoDeleteTarget = (e.target as Element)?.closest("#photo-delete-btn");
 
   if (knifeDetailTarget) {
-    const knife_id = parseInt(knifeDetailTarget.value);
+    const knife_id = parseInt((knifeDetailTarget as HTMLInputElement).value);
 
     if (!isNaN(knife_id)) {
       redirect_handler.redirectToKnifeDetailPage_rel(knife_id);
     }
   } else if (sharpenerDetailTarget) {
-    const sharpener_id = parseInt(sharpenerDetailTarget.value);
+    const sharpener_id = parseInt((sharpenerDetailTarget as HTMLInputElement).value);
 
     if (!isNaN(sharpener_id)) {
       redirect_handler.redirectToSharpenerDetailPage_rel(sharpener_id);
     }
 
   } else if (bladeEditTarget) {
-    const arr = JSON.parse(bladeEditTarget.value);
+    const bladeEditTargetInput = bladeEditTarget as HTMLInputElement;
+    const arr = JSON.parse(bladeEditTargetInput.value);
 
     if (Array.isArray(arr)
       && arr.length === 2) {
@@ -41,7 +42,8 @@ document.addEventListener("click", function (e) {
       }
     }
   } else if (workLogEditTarget) {
-    const arr = JSON.parse(workLogEditTarget.value);
+    const workLogEditTargetInput = workLogEditTarget as HTMLInputElement;
+    const arr = JSON.parse(workLogEditTargetInput.value);
 
     if (Array.isArray(arr)
       && arr.length === 3) {
@@ -58,19 +60,20 @@ document.addEventListener("click", function (e) {
       }
     }
   } else if (knifeDeleteTarget) {
-    const knife_id = parseInt(knifeDeleteTarget.value);
+    const knife_id = parseInt((knifeDeleteTarget as HTMLInputElement).value);
 
     if (!isNaN(knife_id)) {
       delete_handler.deleteKnife(knife_id);
     }
   } else if (sharpenerDeleteTarget) {
-    const sharpener_id = parseInt(sharpenerDeleteTarget.value);
+    const sharpener_id = parseInt((sharpenerDeleteTarget as HTMLInputElement).value);
 
     if (!isNaN(sharpener_id)) {
       delete_handler.deleteSharpener(sharpener_id);
     }
   } else if (bladeDeleteTarget) {
-    const arr = JSON.parse(bladeDeleteTarget.value);
+    const bladeDeleteTargetInput = bladeDeleteTarget as HTMLInputElement; // Cast bladeDeleteTarget to HTMLInputElement
+    const arr = JSON.parse(bladeDeleteTargetInput.value);
 
     if (Array.isArray(arr)
       && arr.length === 2) {
@@ -82,7 +85,8 @@ document.addEventListener("click", function (e) {
       }
     }
   } else if (workLogDeleteTarget) {
-    const arr = JSON.parse(workLogDeleteTarget.value);
+    const workLogDeleteTargetInput = workLogDeleteTarget as HTMLInputElement; // Cast workLogDeleteTarget to HTMLInputElement
+    const arr = JSON.parse(workLogDeleteTargetInput.value);
 
     if (Array.isArray(arr)
       && arr.length === 3) {
@@ -95,7 +99,8 @@ document.addEventListener("click", function (e) {
       }
     }
   } else if (photoDeleteTarget) {
-    const arr = JSON.parse(photoDeleteTarget.value);
+    const photoDeleteTargetInput = photoDeleteTarget as HTMLInputElement; // Cast photoDeleteTarget to HTMLInputElement
+    const arr = JSON.parse(photoDeleteTargetInput.value);
     
     if (Array.isArray(arr)
       && arr.length === 3) {
