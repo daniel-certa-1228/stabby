@@ -1,9 +1,9 @@
 'use strict';
 
-const deleteEntity = async (url: string) => {
+const deleteEntity = async (url: string): Promise<boolean | undefined> => {
   try {
     const response: Response = await fetch(url);
-    const data: any = await response.json();
+    const data: boolean | undefined = await response.json();
 
     return data;
   } catch (error: any) {
@@ -11,9 +11,9 @@ const deleteEntity = async (url: string) => {
   }
 };
 
-const getKnifeGrid = async (url: string) => {
+const getKnifeGrid = async (url: string): Promise<any> => {
   try {
-    const response: Response= await fetch(url);
+    const response: Response = await fetch(url);
     const data: any = await response.json();
 
     return data;
@@ -22,9 +22,9 @@ const getKnifeGrid = async (url: string) => {
   }
 };
 
-const getSharpenerGrid = async (url: string) => {
+const getSharpenerGrid = async (url: string): Promise<any> => {
   try {
-    const response: Response= await fetch(url);
+    const response: Response = await fetch(url);
     const data: any = await response.json();
 
     return data;
@@ -33,9 +33,9 @@ const getSharpenerGrid = async (url: string) => {
   }
 };
 
-const getBladeGrid = async (url: string) => {
+const getBladeGrid = async (url: string): Promise<any> => {
   try {
-    const response: Response= await fetch(url);
+    const response: Response = await fetch(url);
     const data: any = await response.json();
 
     return data;
@@ -44,7 +44,7 @@ const getBladeGrid = async (url: string) => {
   }
 };
 
-const getWorkLogGrid = async (url: string) => {
+const getWorkLogGrid = async (url: string): Promise<any> => {
   try {
     const response: Response= await fetch(url);
     const data: any = await response.json();

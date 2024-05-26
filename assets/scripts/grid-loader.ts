@@ -4,7 +4,7 @@ import { agGrid } from './index';
 import { ajax_handler } from './index';
 import { constants } from './index';
 
-const loadKnifeGrid = async () => {
+const loadKnifeGrid = async (): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
   const gridOptions: any = {
@@ -46,7 +46,7 @@ const loadKnifeGrid = async () => {
   gridApi.setGridOption('rowData', rowData);
 };
 
-const loadSharpenerGrid = async () => {
+const loadSharpenerGrid = async (): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
   const gridOptions: any = {
@@ -85,7 +85,7 @@ const loadSharpenerGrid = async () => {
   gridApi.setGridOption('rowData', rowData);
 };
 
-const loadBladeGrid = async (knife_id: number) => {
+const loadBladeGrid = async (knife_id: number): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#blade_grid')!;
 
   const gridOptions: any = {
@@ -128,7 +128,7 @@ const loadBladeGrid = async (knife_id: number) => {
   gridApi.setGridOption('rowData', rowData);
 };
 
-const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null = null) => {
+const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null = null): Promise<void> => {
   const gridDiv_wl: HTMLElement = document.querySelector('#wl_grid')!;
 
   const gridOptions: any = returnWorkLogGridOptions(
@@ -157,7 +157,7 @@ const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, enti
 };
 
 // Private Functions
-const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null) => {
+const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null): any => {
   if (with_buttons) {
     return {
       headerHeight: 35,
