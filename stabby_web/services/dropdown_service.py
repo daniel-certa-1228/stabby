@@ -15,15 +15,21 @@ from ..models import (
     UnitOfMeasure,
     Vendor,
 )
+from django.db.models import Case, When, Value, CharField, F
+from django.db.models.functions import Concat
 
 
 class DropdownService:
 
     @classmethod
     def get_blade_materials(cls):
-        return BladeMaterial.objects.filter(is_active=True).order_by(
-            "steel_manufacturer__name", "name"
-        )
+        return BladeMaterial.objects.annotate(
+          sort_name=Case(
+              When(steel_manufacturer__name__isnull=False, then=Concat(F('steel_manufacturer__name'), Value(' '), F('name'))),
+              default=F('name'),
+              output_field=CharField()
+          )
+        ).order_by('sort_name')
 
     @classmethod
     def get_blade_shapes(cls):
