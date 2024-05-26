@@ -5,17 +5,17 @@ import { delete_handler } from './index';
 
 document.addEventListener("click", function (e) {
   //DETAIL
-  const knifeDetailTarget = (e.target as Element)?.closest(".knife-detail-btn");
-  const sharpenerDetailTarget = (e.target as Element)?.closest(".sharpener-detail-btn");
+  const knifeDetailTarget: Element | null = (e.target as Element)?.closest(".knife-detail-btn");
+  const sharpenerDetailTarget: Element | null = (e.target as Element)?.closest(".sharpener-detail-btn");
   //EDIT
-  const bladeEditTarget = (e.target as Element)?.closest(".blade-edit-btn");
-  const workLogEditTarget = (e.target as Element)?.closest(".wl-edit-btn");
+  const bladeEditTarget: Element | null = (e.target as Element)?.closest(".blade-edit-btn");
+  const workLogEditTarget: Element | null = (e.target as Element)?.closest(".wl-edit-btn");
   //DELETE
-  const knifeDeleteTarget = (e.target as Element)?.closest("#knife-delete-btn");
-  const sharpenerDeleteTarget = (e.target as Element)?.closest("#sharpener-delete-btn");
-  const bladeDeleteTarget = (e.target as Element)?.closest(".blade-delete-btn");
-  const workLogDeleteTarget = (e.target as Element)?.closest(".wl-delete-btn");
-  const photoDeleteTarget = (e.target as Element)?.closest("#photo-delete-btn");
+  const knifeDeleteTarget: Element | null = (e.target as Element)?.closest("#knife-delete-btn");
+  const sharpenerDeleteTarget: Element | null = (e.target as Element)?.closest("#sharpener-delete-btn");
+  const bladeDeleteTarget: Element | null = (e.target as Element)?.closest(".blade-delete-btn");
+  const workLogDeleteTarget: Element | null = (e.target as Element)?.closest(".wl-delete-btn");
+  const photoDeleteTarget: Element | null = (e.target as Element)?.closest("#photo-delete-btn");
 
   if (knifeDetailTarget) {
     const knife_id: number = parseInt((knifeDetailTarget as HTMLInputElement).value);
@@ -106,7 +106,7 @@ document.addEventListener("click", function (e) {
     }
   } else if (photoDeleteTarget) {
     const photoDeleteTargetInput: HTMLInputElement = photoDeleteTarget as HTMLInputElement; // Cast photoDeleteTarget to HTMLInputElement
-    
+
     const arr: [number, number, boolean] = JSON.parse(photoDeleteTargetInput.value);
     
     if (Array.isArray(arr)
