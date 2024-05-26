@@ -53,7 +53,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({
           cleanOnceBeforeBuildPatterns: ['js/**/*', 'css/**/*', '!images/**/*'],
-          // Adjust the patterns as per your folder structure
           root: path.resolve(__dirname, 'stabby_web/static/stabby_web'),
           verbose: true,
           dry: false
