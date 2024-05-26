@@ -17,6 +17,9 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
+                {% if knife.brand.parent_brand %}
+                  <span class="text-info pointer">&nbsp;<i class="fa-solid fa-p" data-bs-toggle="popover" data-bs-title="Parent Brand" data-bs-content="{{ knife.brand.parent_brand }}" data-bs-trigger="hover focus"></i></span>
+                {% endif %}
                 {% if knife.brand_notes %}<span class="text-primary pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Brand Notes" data-bs-content="{{ knife.brand_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Knife:</dt>

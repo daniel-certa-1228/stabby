@@ -201,7 +201,7 @@ INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id, is_active, create_
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(38, 'lionSTEEL', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(39, 'MAM', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(40, 'Marble''s', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id, is_active, create_date, edit_date) VALUES(41, 'Mercator', 4, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO stabby_web_brand(brand_id, name, parent_brand_id, is_active, create_date, edit_date) VALUES(41, 'Mercator', 5, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(42, 'Mikov', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(43, 'Novelty Cutlery', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO stabby_web_brand(brand_id, name, is_active, create_date, edit_date) VALUES(44, 'Okapi', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
