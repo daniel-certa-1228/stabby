@@ -23,7 +23,7 @@ class DropdownService:
 
     @classmethod
     def get_blade_materials(cls):
-        return BladeMaterial.objects.annotate(
+        return BladeMaterial.objects.filter(is_active=True).annotate(
           sort_name=Case(
               When(steel_manufacturer__name__isnull=False, then=Concat(F('steel_manufacturer__name'), Value(' '), F('name'))),
               default=F('name'),
