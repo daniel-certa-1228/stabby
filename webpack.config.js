@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const path = require('path');
-const autoprefixer = require('autoprefixer')
+const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -17,28 +17,24 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                    presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env']
                     }
                 }
             },
             {
-                test: /\.(scss)$/,
+                test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader'
-                    },
+                    'css-loader',
                     {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
-                                plugins: () => [autoprefixer()]
+                                plugins: [autoprefixer()]
                             }
                         }
                     },
-                    {
-                        loader: 'sass-loader'
-                    }
+                    'sass-loader'
                 ]
             }
         ]
@@ -47,5 +43,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/bundle.css'
         })
-    ]
+    ],
+    resolve: {
+        extensions: ['.js', '.jsx', '.scss', '.css']
+    }
 };
