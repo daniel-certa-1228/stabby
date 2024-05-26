@@ -5,7 +5,7 @@ import { grid_loader } from './index';
 import { constants } from './index';
 
 document.addEventListener('DOMContentLoaded', function () {
-  var variables = JSON.parse(document.getElementById('template-variables').textContent);
+  var variables: any = JSON.parse(document.getElementById('template-variables')?.textContent || "");
 
   constants.setBaseUrl(variables['is_production']);
 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
       grid_loader.loadSharpenerGrid();
       break;
     case enums.ViewTypes.KnifeDetail: {
-      const knife_id = variables['knife_id'];
+      const knife_id: number = variables['knife_id'];
 
       if (!isNaN(knife_id)) {
         grid_loader.loadBladeGrid(knife_id);
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
       break;
     case enums.ViewTypes.SharpenerDetail: {
-      const sharpener_id = variables['sharpener_id'];
+      const sharpener_id: number = variables['sharpener_id'];
 
       if (!isNaN(sharpener_id)) {
         grid_loader.loadWorkLogGrid(true, false, sharpener_id);
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
       break;
     case enums.ViewTypes.KnifeWorkLogAddEdit: {
-      const knife_id = variables['knife_id'];
-      const work_log_id = variables['work_log_id'];
+      const knife_id: number = variables['knife_id'];
+      const work_log_id: number | null = variables['work_log_id'];
 
       if (!isNaN(knife_id)) {
         grid_loader.loadWorkLogGrid(false, true, knife_id, work_log_id);
@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
       break;
     case enums.ViewTypes.SharpenerWorkLogAddEdit: {
-      const sharpener_id = variables['sharpener_id'];
-      const work_log_id = variables['work_log_id'];
+      const sharpener_id: number = variables['sharpener_id'];
+      const work_log_id: number | null = variables['work_log_id'];
 
       if (!isNaN(sharpener_id)) {
         grid_loader.loadWorkLogGrid(false, false, sharpener_id, work_log_id);
