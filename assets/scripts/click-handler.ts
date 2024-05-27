@@ -33,7 +33,7 @@ document.addEventListener("click", function (e) {
   } else if (bladeEditTarget) {
     const bladeEditTargetInput: HTMLInputElement = bladeEditTarget as HTMLInputElement;
 
-    const arr: [number, number] = JSON.parse(bladeEditTargetInput.value);
+    const arr: number[] = JSON.parse(bladeEditTargetInput.value);
 
     if (Array.isArray(arr)
       && arr.length === 2) {
@@ -78,7 +78,7 @@ document.addEventListener("click", function (e) {
   } else if (bladeDeleteTarget) {
     const bladeDeleteTargetInput: HTMLInputElement = bladeDeleteTarget as HTMLInputElement; // Cast bladeDeleteTarget to HTMLInputElement
 
-    const arr: [number, number] = JSON.parse(bladeDeleteTargetInput.value);
+    const arr: number[] = JSON.parse(bladeDeleteTargetInput.value);
 
     if (Array.isArray(arr)
       && arr.length === 2) {
