@@ -84,10 +84,24 @@ WSGI_APPLICATION = "stabby.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# SQLite
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "stabby.sqlite3",
+#     }
+# }
+# python manage.py dumpdata --exclude stabby_web.ViewBladeGrid --exclude stabby_web.ViewKnifeGrid --exclude stabby_web.ViewSharpenerGrid --exclude=contenttypes.ContentType >  db.json
+
+# postgres
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "stabby.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": "localhost",  # Set to empty string for localhost.
+        "PORT": "5432",  # Default port for PostgreSQL.
     }
 }
 

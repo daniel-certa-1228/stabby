@@ -142,3 +142,5 @@ GitHub.sublime-settings
 
 # Package Manager #
 node_modules
+
+db.json
