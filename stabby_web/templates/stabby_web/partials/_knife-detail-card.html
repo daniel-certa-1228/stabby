@@ -3,9 +3,9 @@
     <div class="card-header d-flex justify-content-between">
       Details
         {% if not form %}
-            <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_update' knife_id=knife.knife_id %}"><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</a>
+            <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_update' knife_id=knife.knife_id %}"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit</a>
         {% else %}
-            <button type="button" class="btn btn-light btn-sm align-self-center new-btn" disabled><i class="fa-solid fa-edit"></i>&nbsp;&nbsp;Edit</button>
+            <button type="button" class="btn btn-light btn-sm align-self-center new-btn" disabled><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit</button>
         {% endif %}
     </div>
     <div class="card-body">
@@ -18,9 +18,9 @@
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
                 {% if knife.brand.parent_brand %}
-                  <span class="text-info pointer">&nbsp;<i class="fa-solid fa-p" data-bs-toggle="popover" data-bs-title="Parent Brand" data-bs-content="{{ knife.brand.parent_brand }}" data-bs-trigger="hover focus"></i></span>
+                  <span class="text-info pointer">&nbsp;<i class="bi bi-p-circle-fill" data-bs-toggle="popover" data-bs-title="Parent Brand" data-bs-content="{{ knife.brand.parent_brand }}" data-bs-trigger="hover focus"></i></span>
                 {% endif %}
-                {% if knife.brand_notes %}<span class="text-primary pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Brand Notes" data-bs-content="{{ knife.brand_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
+                {% if knife.brand_notes %}<span class="text-primary pointer">&nbsp;<i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-title="Brand Notes" data-bs-content="{{ knife.brand_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Knife:</dt>
             <dd class="col-sm-8 text-start">{{ knife.name }}</dd>
@@ -31,7 +31,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
-                {% if knife.knife_type_notes %}<span class="text-primary pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Knife Type Notes" data-bs-content="{{ knife.knife_type_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
+                {% if knife.knife_type_notes %}<span class="text-primary pointer">&nbsp;<i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-title="Knife Type Notes" data-bs-content="{{ knife.knife_type_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Blade Material:</dt>
             <dd class="col-sm-8 text-start">
@@ -40,7 +40,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
-                {% if knife.blade_material_notes %}<span class="text-primary pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Blade Material Notes" data-bs-content="{{ knife.blade_material_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
+                {% if knife.blade_material_notes %}<span class="text-primary pointer">&nbsp;<i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-title="Blade Material Notes" data-bs-content="{{ knife.blade_material_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Handle Material:</dt>
             <dd class="col-sm-8 text-start">
@@ -49,7 +49,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
-                {% if knife.handle_material_notes %}<span class="text-primary pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Handle Material Notes" data-bs-content="{{ knife.handle_material_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
+                {% if knife.handle_material_notes %}<span class="text-primary pointer">&nbsp;<i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-title="Handle Material Notes" data-bs-content="{{ knife.handle_material_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Lock Type:</dt>
             <dd class="col-sm-8 text-start">
@@ -58,7 +58,7 @@
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
-                {% if knife.lock_type_notes %}<span class="text-primary pointer">&nbsp;<i class="fa-solid fa-circle-info" data-bs-toggle="popover" data-bs-title="Lock Type Notes" data-bs-content="{{ knife.lock_type_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
+                {% if knife.lock_type_notes %}<span class="text-primary pointer">&nbsp;<i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-title="Lock Type Notes" data-bs-content="{{ knife.lock_type_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
             <dt class="col-sm-4 text-end"># of Blades:</dt>
             <dd class="col-sm-8 text-start">{{ number_of_blades }}</dd>
@@ -119,9 +119,9 @@
                 {% endif %}
             </dd>
             <dt class="col-sm-4 text-end">Purchased New:</dt>
-            <dd class="col-sm-8 text-start">{% if knife.purchased_new == True %}<i class="fa-solid fa-circle-check text-primary"></i>{% else %}<i class="fa-solid fa-circle-xmark text-body-tertiary"></i>{% endif %}</dd>
+            <dd class="col-sm-8 text-start">{% if knife.purchased_new == True %}<i class="bi bi-check-circle-fill text-primary"></i>{% else %}<i class="bi bi-x-circle-fill text-body-tertiary"></i>{% endif %}</dd>
             <dt class="col-sm-4 text-end">Needs Work:</dt>
-            <dd class="col-sm-8 text-start">{% if knife.needs_work == True %}<i class="fa-solid fa-circle-check text-primary"></i>{% else %}<i class="fa-solid fa-circle-xmark text-body-tertiary"></i>{% endif %}</dd>
+            <dd class="col-sm-8 text-start">{% if knife.needs_work == True %}<i class="bi bi-check-circle-fill text-primary"></i>{% else %}<i class="bi bi-x-circle-fill text-body-tertiary"></i>{% endif %}</dd>
         </dl>
     </div>
 </div>

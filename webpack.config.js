@@ -44,6 +44,9 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
             }
         ]
     },
@@ -52,11 +55,11 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin({
-          cleanOnceBeforeBuildPatterns: ['js/**/*', 'css/**/*', '!images/**/*'],
-          root: path.resolve(__dirname, 'stabby_web/static/stabby_web'),
-          verbose: true,
-          dry: false
-      }),
+            cleanOnceBeforeBuildPatterns: ['js/**/*', 'css/**/*', '!images/**/*'],
+            root: path.resolve(__dirname, 'stabby_web/static/stabby_web'),
+            verbose: true,
+            dry: false
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/bundle.css'
         })

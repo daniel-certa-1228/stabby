@@ -4,8 +4,8 @@
         {% if form_type == 'add'%}Add {% else %}Edit {% endif %}Work Log{% if related_entity %} - <strong>{{ related_entity.brand}} {{ related_entity.name }}</strong>{% endif %}
       </span>
       <span>
-        <button type="submit" class="btn btn-primary btn-sm align-self-center new-btn me-2" form="work-log-form"><i class="fa-solid fa-floppy-disk"></i>&nbsp;&nbsp;Save</button>
-        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'knife_detail' knife_id=related_entity_id %}{% else %}{% url 'sharpener_detail' sharpener_id=related_entity_id %}{% endif %}#work_log_card"><i class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Cancel</a>
+        <button type="submit" class="btn btn-primary btn-sm align-self-center new-btn me-2" form="work-log-form"><i class="bi bi-floppy-fill"></i>&nbsp;&nbsp;Save</button>
+        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'knife_detail' knife_id=related_entity_id %}{% else %}{% url 'sharpener_detail' sharpener_id=related_entity_id %}{% endif %}#work_log_card"><i class="bi bi-x-circle"></i>&nbsp;&nbsp;Cancel</a>
         </span>
     </div>
     <div class="card-body">
