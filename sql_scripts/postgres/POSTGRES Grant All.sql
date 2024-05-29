@@ -1,0 +1,1 @@
+GRANT ALL ON ALL TABLES IN SCHEMA public to stabby_app;
