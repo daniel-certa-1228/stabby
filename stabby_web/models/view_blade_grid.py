@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ViewBladeGrid(models.Model):
     blade_id = models.BigIntegerField(primary_key=True, db_column="blade_id")
     knife_id = models.BigIntegerField(blank=False, null=False)
