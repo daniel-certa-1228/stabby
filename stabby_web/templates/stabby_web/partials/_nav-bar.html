@@ -13,8 +13,8 @@
     </div>
     <form id="logout-form" method="POST" action="{% url 'logout' %}">
       {% csrf_token %}
-      <span class="text-white me-3"><u>{{user.first_name}} {{user.last_name}}</u></span>
-      <button class="btn btn-sm btn-light" type="submit">Logout</button>
+      <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
+      <button class="btn btn-sm btn-light mb-1 logout-btn" type="submit">Logout</button>
     </form>
   </div>
 </nav>
