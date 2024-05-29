@@ -10,7 +10,7 @@ CREATE VIEW view_sharpener_grid AS
         CAST(
             (CASE 
                 WHEN sh."length" IS NOT NULL 
-                THEN CAST(sh."length" AS TEXT) 
+                THEN CAST(sh."length"::REAL AS TEXT) 
                 ELSE '' 
             END 
             || 
@@ -22,7 +22,7 @@ CREATE VIEW view_sharpener_grid AS
         CAST(
             (CASE 
                 WHEN sh."width" IS NOT NULL 
-                THEN CAST(sh."width" AS TEXT) 
+                THEN CAST(sh."width"::REAL AS TEXT) 
                 ELSE '' 
             END 
             || 

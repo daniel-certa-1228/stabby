@@ -8,7 +8,7 @@ CREATE VIEW view_blade_grid AS
         CAST(
             (CASE 
                 WHEN b."length" IS NOT NULL 
-                THEN CAST(b."length" AS TEXT) 
+                THEN CAST(b."length"::REAL AS TEXT) 
                 ELSE '' 
             END 
             || 
@@ -20,7 +20,7 @@ CREATE VIEW view_blade_grid AS
         CAST(
             (CASE 
                 WHEN b."length_cutting_edge" IS NOT NULL 
-                THEN CAST(b."length_cutting_edge" AS TEXT) 
+                THEN CAST(b."length_cutting_edge"::REAL AS TEXT) 
                 ELSE '' 
             END 
             || 
