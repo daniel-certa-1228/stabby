@@ -21,7 +21,7 @@ const loadKnifeGrid = async (): Promise<void> => {
         pinned: 'left',
         cellStyle: { textAlign: 'center' },
         cellRenderer: (params: any) => {
-          return `<button class="btn btn-sm btn-light knife-detail-btn" value="${params.data.knife_id}"><i class="fa-solid fa-magnifying-glass"></i></button>`;
+          return `<button class="btn btn-sm btn-light knife-detail-btn" value="${params.data.knife_id}"><i class="bi bi-search"></i></button>`;
         },
       },
       { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
@@ -62,7 +62,7 @@ const loadSharpenerGrid = async (): Promise<void> => {
         pinned: 'left',
         cellStyle: { textAlign: 'center' },
         cellRenderer: (params: any) => {
-          return `<button class="btn btn-sm btn-light sharpener-detail-btn" value=${params.data.sharpener_id}><i class="fa-solid fa-magnifying-glass"></i></button>`;
+          return `<button class="btn btn-sm btn-light sharpener-detail-btn" value=${params.data.sharpener_id}><i class="bi bi-search"></i></button>`;
         },
       },
       { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
@@ -100,7 +100,7 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
         width: 70,
         cellStyle: { textAlign: 'center' },
         cellRenderer: (params: any) => {
-          return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="fa-solid fa-edit"></i></button>`;
+          return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="bi bi-pencil-square"></i></button>`;
         },
       },
       { headerName: 'Shape', field: 'blade_shape', minWidth: 135, maxWidth: 185 },
@@ -113,7 +113,7 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
         width: 70,
         cellStyle: { textAlign: 'center' },
         cellRenderer: (params: any) => {
-          return `<button class="btn btn-sm btn-light blade-delete-btn" value="[${params.data.blade_id}, ${params.data.knife_id}]"><i class="fa-solid fa-trash"></i></button>`;
+          return `<button class="btn btn-sm btn-light blade-delete-btn" value="[${params.data.blade_id}, ${params.data.knife_id}]"><i class="bi bi-trash"></i></button>`;
         },
       },
     ]
@@ -171,7 +171,7 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
           width: 70,
           cellStyle: { textAlign: 'center' },
           cellRenderer: (params: any) => {
-            return `<button class="btn btn-sm btn-light wl-edit-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="fa-solid fa-edit"></i></button>`;
+            return `<button class="btn btn-sm btn-light wl-edit-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="bi bi-pencil-square"></i></button>`;
           },
         },
         { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
@@ -181,7 +181,7 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
           width: 70,
           cellStyle: { textAlign: 'center' },
           cellRenderer: (params: any) => {
-            return `<button class="btn btn-sm btn-light wl-delete-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="fa-solid fa-trash"></i></button>`;
+            return `<button class="btn btn-sm btn-light wl-delete-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="bi bi-trash"></i></button>`;
           },
         },
       ]
