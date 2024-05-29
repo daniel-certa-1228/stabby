@@ -3,7 +3,7 @@
       Photo
       <span>
         <button type="submit" class="btn btn-primary btn-sm align-self-center new-btn me-2" form="photo-form"><i class="bi bi-floppy-fill"></i>&nbsp;&nbsp;Save</button>
-        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'knife_detail' knife_id=knife_id %}{% else %}{% url 'sharpener_detail' sharpener_id=sharpener_id %}{% endif %}"><i class="bi bi-x-circle"></i>&nbsp;&nbsp;Cancel</a>
+        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'knife_detail' knife_id=knife_id %}{% else %}{% url 'sharpener_detail' sharpener_id=sharpener_id %}{% endif %}"><i class="bi bi-x-circle"></i>&nbsp;Cancel</a>
         </span>
     </div>
     <div class="card-body">
