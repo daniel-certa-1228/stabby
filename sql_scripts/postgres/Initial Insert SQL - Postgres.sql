@@ -129,7 +129,8 @@ VALUES
 (23, 'Toothpick', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (24, 'Trapper', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (25, 'Whittler', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(26, 'Sodbuster', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+(26, 'Sodbuster', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(27, 'Sodbuster Jr.', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- LOCK TYPE
 INSERT INTO stabby_web_locktype(lock_type_id, name, is_active, create_date, edit_date)
