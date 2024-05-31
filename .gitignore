@@ -6,8 +6,6 @@ __pycache__
 stabby.sqlite3
 stabby.sqlite3-journal
 media
-bundle.js
-bundle.css
 
 # Backup files # 
 *.bak 
