@@ -1,19 +1,24 @@
 <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand"  href="{% url 'knives' %}">stabby.tech</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link {% if active == 'knives' %}active{% endif %}"  aria-current="page" href="{% url 'knives' %}">Knives</a>
+
         <a class="nav-link {% if active == 'sharpeners' %}active{% endif %}" href="{% url 'sharpeners' %}">Sharpeners</a>
+        
         {{ user.user_id }}
       </div>
     </div>
     <form id="logout-form" method="POST" action="{% url 'logout' %}">
       {% csrf_token %}
+
       <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
+
       <button class="btn btn-sm btn-light mb-1 logout-btn" type="submit">Logout</button>
     </form>
   </div>

@@ -1,9 +1,14 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between">
       Photo
-      <span>
-        <button type="submit" class="btn btn-primary btn-sm align-self-center new-btn me-2" form="photo-form"><i class="bi bi-floppy-fill"></i>&nbsp;&nbsp;Save</button>
-        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'knife_detail' knife_id=knife_id %}{% else %}{% url 'sharpener_detail' sharpener_id=sharpener_id %}{% endif %}"><i class="bi bi-x-circle"></i>&nbsp;Cancel</a>
+        <span>
+            <button type="submit" class="btn btn-primary btn-sm align-self-center new-btn me-2" form="photo-form">
+                <i class="bi bi-floppy-fill"></i>&nbsp;&nbsp;Save
+            </button>
+
+            <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if active == 'knives' %}{% url 'knife_detail' knife_id=knife_id %}{% else %}{% url 'sharpener_detail' sharpener_id=sharpener_id %}{% endif %}">
+                <i class="bi bi-x-circle"></i>&nbsp;Cancel
+            </a>
         </span>
     </div>
     <div class="card-body">
@@ -32,7 +37,9 @@
                     {% endif %}
                     {% if photo %}
                         <div class="d-flex flex-row-reverse mt-2 mb-3">
-                            <button type="button" class="btn btn-outline-danger btn-sm align-self-center new-btn " id="photo-delete-btn" value="[{{ photo.photo_id }}, {% if active == 'knives' %}{{ knife_id }}{% else %}{{ sharpener_id }}{% endif %}, {% if active == 'knives' %}true{% else %}false{% endif %}]"><i class="bi bi-trash"></i>&nbsp;&nbsp;Delete</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm align-self-center new-btn " id="photo-delete-btn" value="[{{ photo.photo_id }}, {% if active == 'knives' %}{{ knife_id }}{% else %}{{ sharpener_id }}{% endif %}, {% if active == 'knives' %}true{% else %}false{% endif %}]">
+                                <i class="bi bi-trash"></i>&nbsp;&nbsp;Delete
+                            </button>
                         </div>
                     {% endif %}
                 </div>

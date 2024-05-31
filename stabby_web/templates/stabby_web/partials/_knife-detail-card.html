@@ -3,9 +3,13 @@
     <div class="card-header d-flex justify-content-between">
       Details
         {% if not form %}
-            <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_update' knife_id=knife.knife_id %}"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit</a>
+            <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_update' knife_id=knife.knife_id %}">
+                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit
+            </a>
         {% else %}
-            <button type="button" class="btn btn-light btn-sm align-self-center new-btn" disabled><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit</button>
+            <button type="button" class="btn btn-light btn-sm align-self-center new-btn" disabled>
+                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit
+            </button>
         {% endif %}
     </div>
     <div class="card-body">
