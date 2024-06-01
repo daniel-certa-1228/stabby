@@ -156,7 +156,7 @@ MEDIA_URL = "/media/"
 # /!\ It will not be served by django, you have to setup
 # your webserver (or use a third party module)
 # to serve assets from there.
-STATIC_ROOT = BASE_DIR / "assets"
+STATIC_ROOT = BASE_DIR / "production_assets"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
