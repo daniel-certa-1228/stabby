@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 from django.contrib import messages
 from dotenv import load_dotenv
 from django.core.management.utils import get_random_secret_key
+import sys
 
 load_dotenv()
 
@@ -33,13 +35,13 @@ if not SECRET_KEY:
     raise ValueError("SECRET_KEY environment variable is not set!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 # Application definition
-
 INSTALLED_APPS = [
     "stabby_web.apps.StabbyWebConfig",
     "django.contrib.admin",
@@ -94,17 +96,24 @@ WSGI_APPLICATION = "stabby.wsgi.application"
 # }
 # python manage.py dumpdata --exclude stabby_web.ViewBladeGrid --exclude stabby_web.ViewKnifeGrid --exclude stabby_web.ViewSharpenerGrid --exclude=contenttypes.ContentType >  db.json
 
-# postgres
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DB_NAME"),
-        "USER": os.environ.get("DB_USER"),
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "HOST": "localhost",  # Set to empty string for localhost.
-        "PORT": "5432",  # Default port for PostgreSQL.
+if DEVELOPMENT_MODE is True:
+    # postgres
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("DB_NAME"),
+            "USER": os.environ.get("DB_USER"),
+            "PASSWORD": os.environ.get("DB_PASSWORD"),
+            "HOST": "localhost",  # Set to empty string for localhost.
+            "PORT": "5432",  # Default port for PostgreSQL.
+        }
     }
-}
+elif len(sys.argv) > 0 and sys.argv[1] != "collectstatic":
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 
 # Password validation
