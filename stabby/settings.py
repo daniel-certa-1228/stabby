@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import os
-from pathlib import Path
 import dj_database_url
 from django.contrib import messages
-from dotenv import load_dotenv
 from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
+import os
+from pathlib import Path
 import sys
 
 load_dotenv()
@@ -150,6 +150,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # STATICFILES_DIRS = [BASE_DIR / "stabby_web" / "static"]
 STATICFILES_DIRS = [
