@@ -3,11 +3,11 @@
 import { constants } from "./index";
 
 const redirectToBladeEditPage_abs = (blade_id: number, knife_id: number): void => {
-    window.location.href = `${constants.getBaseUrl()}/knives/detail/${knife_id}/blades/edit/${blade_id}`;
+    window.location.href = `${constants.getBaseUrl()}knives/detail/${knife_id}/blades/edit/${blade_id}`;
 };
 
 const redirectToKnifeDetailPage_abs = (knife_id: number): void => {
-    window.location.href = `${constants.getBaseUrl()}/knives/detail/${knife_id}`;
+    window.location.href = `${constants.getBaseUrl()}knives/detail/${knife_id}`;
 };
 
 const redirectToKnifeDetailPage_rel = (knife_id: number): void => {
@@ -15,7 +15,7 @@ const redirectToKnifeDetailPage_rel = (knife_id: number): void => {
 };
 
 const redirectToKnifeDetailPageWlCard_abs = (knife_id: number): void => {
-    window.location.href = `${constants.getBaseUrl()}/knives/detail/${knife_id}#work_log_card`;
+    window.location.href = `${constants.getBaseUrl()}knives/detail/${knife_id}#work_log_card`;
 };
 
 const redirectToIndexPage_abs = (): void => {
@@ -23,7 +23,7 @@ const redirectToIndexPage_abs = (): void => {
 };
 
 const redirectToSharpenerDetailPage_abs = (sharpener_id: number): void => {
-    window.location.href = `${constants.getBaseUrl()}/sharpeners/detail/${sharpener_id}`;
+    window.location.href = `${constants.getBaseUrl()}sharpeners/detail/${sharpener_id}`;
 };
 
 const redirectToSharpenerDetailPage_rel = (sharpener_id: number): void => {
@@ -31,11 +31,11 @@ const redirectToSharpenerDetailPage_rel = (sharpener_id: number): void => {
 };
 
 const redirectToSharpenerDetailPageWlCard_abs = (sharpener_id: number): void => {
-    window.location.href = `${constants.getBaseUrl()}/sharpeners/detail/${sharpener_id}#work_log_card`;
+    window.location.href = `${constants.getBaseUrl()}sharpeners/detail/${sharpener_id}#work_log_card`;
 };
 
 const redirectToSharpenerGridPage_abs = (): void => {
-    window.location.href = `${constants.getBaseUrl()}/sharpeners`;
+    window.location.href = `${constants.getBaseUrl()}sharpeners`;
 };
 
 const redirectToWorkLogEditPage_rel = (work_log_id: number, entity_id: number, is_knife_wl: boolean): void => {
