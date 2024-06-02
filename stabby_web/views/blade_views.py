@@ -69,8 +69,10 @@ def blade_update(request, knife_id, blade_id):
 
         return redirect("knife_detail", knife_id=blade.knife_id)
     else:
-        blade.length = blade.length.normalize()
-        blade.length_cutting_edge = blade.length_cutting_edge.normalize()
+        blade.length = blade.length.normalize() if blade.length else None
+        blade.length_cutting_edge = (
+            blade.length_cutting_edge.normalize() if blade.length_cutting_edge else None
+        )
 
         form = BladeForm(instance=blade)
 

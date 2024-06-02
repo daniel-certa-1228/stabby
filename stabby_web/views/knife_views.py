@@ -99,7 +99,9 @@ def knife_update(request, knife_id):
 
         return redirect("knife_detail", knife_id=knife.knife_id)
     else:
-        knife.closed_length = knife.closed_length.normalize()
+        knife.closed_length = (
+            knife.closed_length.normalize() if knife.closed_length else None
+        )
 
         form = KnifeForm(instance=knife)
 

@@ -81,8 +81,8 @@ def sharpener_update(request, sharpener_id):
 
         return redirect("sharpener_detail", sharpener_id=sharpener.sharpener_id)
     else:
-        sharpener.length = sharpener.length.normalize()
-        sharpener.width = sharpener.width.normalize()
+        sharpener.length = sharpener.length.normalize() if sharpener.length else None
+        sharpener.width = sharpener.width.normalize() if sharpener.width else None
 
         form = SharpenerForm(instance=sharpener)
 
