@@ -163,16 +163,21 @@ AWS_ACCESS_KEY_ID = os.getenv("SPACES_ACCESS_KEY")
 AWS_SECRET_ACCESS_KEY = os.getenv("SPACES_SECRET_KEY")
 AWS_STORAGE_BUCKET_NAME = os.getenv("SPACES_BUCKET_NAME")
 AWS_S3_ENDPOINT_URL = os.getenv("SPACES_URL")
-AWS_S3_OBJECT_PARAMETERS = os.getenv("SPACES_S3_OBJECT_PARAMETERS")
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": "max-age=86400",
+}
 AWS_LOCATION = os.getenv("SPACES_LOCATION", "")
+AWS_S3_SIGNATURE_VERSION = "s3v4"
 
 if DEVELOPMENT_MODE is True:
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
     MEDIA_URL = "/media/"
 else:
-    MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/media/"
+    MEDIA_URL = (
+        f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/{AWS_LOCATION}/images/"
+    )
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Directory to export staticfiles for production
 # All files from all STATICFILES_DIRS will be copied by
