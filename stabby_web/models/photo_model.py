@@ -6,7 +6,9 @@ from django_resized import ResizedImageField
 
 class Photo(models.Model):
     photo_id = models.AutoField(primary_key=True, db_column="photo_id")
-    photo = ResizedImageField(size=[2000, 1500], upload_to="images/", quality=85)
+    photo = ResizedImageField(
+        size=[1200, 900], upload_to="images/", quality=85, force_format="JPEG"
+    )
     description = models.TextField(null=True, blank=True)
     knife = models.ForeignKey(
         Knife, related_name="photos", on_delete=models.SET_NULL, null=True, blank=True
