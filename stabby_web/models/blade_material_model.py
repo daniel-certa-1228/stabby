@@ -7,7 +7,7 @@ class BladeMaterial(models.Model):
     blade_material_id = models.BigIntegerField(primary_key=True, null=False)
     steel_type = models.ForeignKey(SteelType, on_delete=models.SET_NULL, null=True)
     steel_manufacturer = models.ForeignKey(
-        SteelManufacturer, on_delete=models.SET_NULL, null=True
+        SteelManufacturer, on_delete=models.SET_NULL, null=True, blank=True
     )
     name = models.CharField(max_length=100)
     notes = models.TextField(null=True, blank=True)
