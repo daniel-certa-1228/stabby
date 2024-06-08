@@ -10,11 +10,17 @@
         <a class="nav-link {% if active == 'knives' %}active{% endif %}"  aria-current="page" href="{% url 'knives' %}">Knives</a>
 
         <a class="nav-link {% if active == 'sharpeners' %}active{% endif %}" href="{% url 'sharpeners' %}">Sharpeners</a>
-        
-        {{ user.user_id }}
+
+        <form id="logout-form" method="POST" action="{% url 'logout' %}" class="d-lg-none d-inline-block mt-2">
+          {% csrf_token %}
+    
+          <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
+    
+          <button class="btn btn-sm btn-light mb-1 logout-btn" type="submit">Logout</button>
+        </form>
       </div>
     </div>
-    <form id="logout-form" method="POST" action="{% url 'logout' %}">
+    <form id="logout-form" method="POST" action="{% url 'logout' %}" class="d-lg-inline-block d-none">
       {% csrf_token %}
 
       <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
