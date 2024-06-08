@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
         <dl class="row">
-            <dt class="col-sm-4 text-end">Brand:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Brand:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.brand %}
                     {{ sharpener.brand }}
@@ -23,9 +23,9 @@
                 {% endif %}
                 {% if sharpener.brand_notes %}<span class="text-primary pointer">&nbsp;<i class="bi bi-info-circle" data-bs-toggle="popover" data-bs-title="Brand Notes" data-bs-content="{{ sharpener.brand_notes }}" data-bs-trigger="hover focus"></i></span>{% endif %}
             </dd>
-            <dt class="col-sm-4 text-end">Sharpener:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Sharpener:</dt>
             <dd class="col-sm-8 text-start">{{ sharpener.name }}</dd>
-            <dt class="col-sm-4 text-end">Length:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Length:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.length %}
                     {{ sharpener.length|strip_trailing_zeros }}&nbsp;{% if sharpener.uom %}{{ sharpener.uom }}{% endif %}
@@ -33,7 +33,7 @@
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
             </dd>
-            <dt class="col-sm-4 text-end">Width:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Width:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.width %}
                     {{ sharpener.width|strip_trailing_zeros }}&nbsp;{% if sharpener.uom %}{{ sharpener.uom }}{% endif %}
@@ -41,7 +41,7 @@
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
             </dd>
-            <dt class="col-sm-4 text-end">Cutting Agent:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Cutting Agent:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.cutting_agent %}
                     {{ sharpener.cutting_agent }}
@@ -49,7 +49,7 @@
                     <span class="text-body-tertiary">n/a
                 {% endif %}
             </dd>
-            <dt class="col-sm-4 text-end">Bonding Agent:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Bonding Agent:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.bonding_agent %}
                     {{ sharpener.bonding_agent }}
@@ -57,7 +57,7 @@
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
             </dd>
-            <dt class="col-sm-4 text-end">Lubricant:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Lubricant:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.lubricant %}
                     {{ sharpener.lubricant }}
@@ -65,7 +65,7 @@
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
             </dd>
-            <dt class="col-sm-4 text-end">Country:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Country:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.country %}
                     {{ sharpener.country }}
@@ -73,7 +73,7 @@
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
             </dd>
-            <dt class="col-sm-4 text-end">Notes:</dt>
+            <dt class="col-sm-4 text-sm-end text-start">Notes:</dt>
             <dd class="col-sm-8 text-start">
                 {% if sharpener.notes %}
                     {{ sharpener.notes }}
