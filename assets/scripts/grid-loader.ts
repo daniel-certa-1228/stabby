@@ -1,8 +1,13 @@
 'use strict';
 
-import { agGrid } from './index';
-import { ajax_handler } from './index';
-import { constants } from './index';
+import { 
+  agGrid, 
+  ajax_handler, 
+  constants, 
+  view_blade_grid_model, 
+  view_knife_grid_model, 
+  view_sharpener_grid_model, 
+  work_log_model} from './index';
 
 const loadKnifeGrid = async (): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
@@ -39,9 +44,9 @@ const loadKnifeGrid = async (): Promise<void> => {
 
   const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-  const url = `${constants.getBaseUrl()}api/get_knife_grid`;
+  const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;
 
-  const rowData = await ajax_handler.getKnifeGrid(url);
+  const rowData: view_knife_grid_model[] | undefined = await ajax_handler.getKnifeGrid(url);
 
   gridApi.setGridOption('rowData', rowData);
 };
@@ -78,9 +83,9 @@ const loadSharpenerGrid = async (): Promise<void> => {
 
   const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-  const url = `${constants.getBaseUrl()}api/get_sharpener_grid`;
+  const url: string = `${constants.getBaseUrl()}api/get_sharpener_grid`;
 
-  const rowData = await ajax_handler.getSharpenerGrid(url);
+  const rowData: view_sharpener_grid_model[] | undefined = await ajax_handler.getSharpenerGrid(url);
 
   gridApi.setGridOption('rowData', rowData);
 };
@@ -121,9 +126,9 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
 
   const gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-  const url = `${constants.getBaseUrl()}api/get_blade_grid/${knife_id}`;
+  const url: string = `${constants.getBaseUrl()}api/get_blade_grid/${knife_id}`;
 
-  const rowData = await ajax_handler.getSharpenerGrid(url);
+  const rowData: view_blade_grid_model[] | undefined = await ajax_handler.getBladeGrid(url);
 
   gridApi.setGridOption('rowData', rowData);
 };
@@ -147,11 +152,13 @@ const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, enti
     url = `${constants.getBaseUrl()}api/get_sharpener_work_log_grid/${entity_id}`;
   }
 
-  const rowData: any = await ajax_handler.getSharpenerGrid(url);
+  const rowData: work_log_model[] | undefined = await ajax_handler.getWorkLogGrid(url);
 
-  rowData.forEach((d: any) => {
-    d.date = d.date ? new Date(d.date) : null;
-  });
+  if (rowData){
+    rowData.forEach((d: any) => {
+      d.date = d.date ? new Date(d.date) : null;
+    });
+  }
 
   gridApi.setGridOption('rowData', rowData);
 };

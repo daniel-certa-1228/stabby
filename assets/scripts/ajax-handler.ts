@@ -1,5 +1,11 @@
 'use strict';
 
+import { 
+  view_blade_grid_model,
+  view_knife_grid_model, 
+  view_sharpener_grid_model,
+  work_log_model } from "./index";
+
 const deleteEntity = async (url: string): Promise<boolean | undefined> => {
   try {
     const response: Response = await fetch(url);
@@ -11,10 +17,10 @@ const deleteEntity = async (url: string): Promise<boolean | undefined> => {
   }
 };
 
-const getKnifeGrid = async (url: string): Promise<any> => {
+const getKnifeGrid = async (url: string): Promise<view_knife_grid_model[] | undefined> => {
   try {
     const response: Response = await fetch(url);
-    const data: any = await response.json();
+    const data: view_knife_grid_model[] = await response.json();
 
     return data;
   } catch (error: any) {
@@ -22,10 +28,10 @@ const getKnifeGrid = async (url: string): Promise<any> => {
   }
 };
 
-const getSharpenerGrid = async (url: string): Promise<any> => {
+const getSharpenerGrid = async (url: string): Promise<view_sharpener_grid_model[] | undefined> => {
   try {
     const response: Response = await fetch(url);
-    const data: any = await response.json();
+    const data: view_sharpener_grid_model[] = await response.json();
 
     return data;
   } catch (error: any) {
@@ -33,10 +39,10 @@ const getSharpenerGrid = async (url: string): Promise<any> => {
   }
 };
 
-const getBladeGrid = async (url: string): Promise<any> => {
+const getBladeGrid = async (url: string): Promise<view_blade_grid_model[] | undefined> => {
   try {
     const response: Response = await fetch(url);
-    const data: any = await response.json();
+    const data: view_blade_grid_model[] = await response.json();
 
     return data;
   } catch (error: any) {
@@ -44,10 +50,10 @@ const getBladeGrid = async (url: string): Promise<any> => {
   }
 };
 
-const getWorkLogGrid = async (url: string): Promise<any> => {
+const getWorkLogGrid = async (url: string): Promise<work_log_model[] | undefined> => {
   try {
     const response: Response= await fetch(url);
-    const data: any = await response.json();
+    const data: work_log_model[] = await response.json();
 
     return data;
   } catch (error: any) {

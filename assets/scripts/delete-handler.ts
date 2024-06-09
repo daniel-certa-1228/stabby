@@ -1,8 +1,9 @@
 'use strict';
 
-import { constants } from "./index";
-import { redirect_handler } from "./index";
-import { ajax_handler } from "./index";
+import { 
+  ajax_handler, 
+  constants, 
+  redirect_handler } from "./index";
 
 const deleteBlade = async (blade_id: number, knife_id: number): Promise<void> => {
   if (window.confirm("Are you sure you want to delete this Blade?")) {
