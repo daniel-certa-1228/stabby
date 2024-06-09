@@ -1,8 +1,10 @@
 'use strict';
 
-import { enums } from './index';
-import { grid_loader } from './index';
-import { constants } from './index';
+import { 
+  constants, 
+  enums, 
+  grid_loader } from './index';
+
 
 document.addEventListener('DOMContentLoaded', function () {
   var variables: any = JSON.parse(document.getElementById('template-variables')?.textContent || "");

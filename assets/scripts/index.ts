@@ -14,7 +14,8 @@ import './popover-handler';
 import '../styles/styles.scss';
 import { view_knife_grid_model } from './models/view-knife-grid.model';
 import { view_sharpener_grid_model } from './models/view-sharpener-grid.model';
-
+import { view_blade_grid_model } from './models/view-blade-grid.model';
+import { work_log_model } from './models/work-log.model';
 
 export { bootstrap };
 export { agGrid };
@@ -26,3 +27,5 @@ export { constants };
 export { enums };
 export { view_knife_grid_model }
 export { view_sharpener_grid_model }
+export { view_blade_grid_model }
+export { work_log_model }

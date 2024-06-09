@@ -1,7 +1,8 @@
 'use strict';
 
-import { redirect_handler } from './index';
-import { delete_handler } from './index';
+import { 
+  delete_handler, 
+  redirect_handler } from './index';
 
 document.addEventListener("click", function (e) {
   //DETAIL
