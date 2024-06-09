@@ -12,6 +12,9 @@ import './click-handler';
 import './toast-handler';
 import './popover-handler';
 import '../styles/styles.scss';
+import { view_knife_grid_model } from './models/view-knife-grid.model';
+import { view_sharpener_grid_model } from './models/view-sharpener-grid.model';
+
 
 export { bootstrap };
 export { agGrid };
@@ -21,3 +24,5 @@ export { ajax_handler };
 export { grid_loader };
 export { constants };
 export { enums };
+export { view_knife_grid_model }
+export { view_sharpener_grid_model }
