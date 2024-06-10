@@ -136,31 +136,33 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
 const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null = null): Promise<void> => {
   const gridDiv_wl: HTMLElement = document.querySelector('#wl_grid')!;
 
-  const gridOptions: any = returnWorkLogGridOptions(
-    with_buttons,
-    is_knife_wl,
-    entity_id,
-    work_log_id);
-
-  const gridApi = agGrid.createGrid(gridDiv_wl, gridOptions);
-
-  let url: string;
-
-  if (is_knife_wl) {
-    url = `${constants.getBaseUrl()}api/get_knife_work_log_grid/${entity_id}`;
-  } else {
-    url = `${constants.getBaseUrl()}api/get_sharpener_work_log_grid/${entity_id}`;
+  if (gridDiv_wl) {
+    const gridOptions: any = returnWorkLogGridOptions(
+      with_buttons,
+      is_knife_wl,
+      entity_id,
+      work_log_id);
+  
+    const gridApi = agGrid.createGrid(gridDiv_wl, gridOptions);
+  
+    let url: string;
+  
+    if (is_knife_wl) {
+      url = `${constants.getBaseUrl()}api/get_knife_work_log_grid/${entity_id}`;
+    } else {
+      url = `${constants.getBaseUrl()}api/get_sharpener_work_log_grid/${entity_id}`;
+    }
+  
+    const rowData: work_log_model[] | undefined = await ajax_handler.getWorkLogGrid(url);
+  
+    if (rowData){
+      rowData.forEach((d: any) => {
+        d.date = d.date ? new Date(d.date) : null;
+      });
+    }
+  
+    gridApi.setGridOption('rowData', rowData);
   }
-
-  const rowData: work_log_model[] | undefined = await ajax_handler.getWorkLogGrid(url);
-
-  if (rowData){
-    rowData.forEach((d: any) => {
-      d.date = d.date ? new Date(d.date) : null;
-    });
-  }
-
-  gridApi.setGridOption('rowData', rowData);
 };
 
 // Private Functions
