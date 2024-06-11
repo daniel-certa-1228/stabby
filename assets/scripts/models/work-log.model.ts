@@ -9,6 +9,7 @@ export class work_log_model {
     is_active: boolean;
     create_date: Date;
     edit_date: Date;
+    
     constructor(
         work_log_id: number,
         knife: number,

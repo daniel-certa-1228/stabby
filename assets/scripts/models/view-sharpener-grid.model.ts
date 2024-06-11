@@ -12,6 +12,7 @@ export class view_sharpener_grid_model {
     is_friable: boolean;
     is_active: boolean;
     user_id: number;
+    
     constructor(
         sharpener_id: number,
         sharpener: string,
