@@ -9,6 +9,7 @@ export class view_blade_grid_model {
     has_half_stop: boolean;
     is_main_blade: boolean;
     is_active: boolean;
+    
     constructor(
         blade_id: number,
         knife_id: number,

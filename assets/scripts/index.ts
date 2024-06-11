@@ -9,9 +9,10 @@ import * as ajax_handler from './ajax-handler';
 import * as grid_loader from './grid-loader';
 import './page-handler';
 import './click-handler';
-import './toast-handler';
 import './popover-handler';
 import '../styles/styles.scss';
+import './toast-handler';
+import { template_variable_model } from './models/template-variable.model';
 import { view_knife_grid_model } from './models/view-knife-grid.model';
 import { view_sharpener_grid_model } from './models/view-sharpener-grid.model';
 import { view_blade_grid_model } from './models/view-blade-grid.model';
@@ -25,7 +26,8 @@ export { ajax_handler };
 export { grid_loader };
 export { constants };
 export { enums };
-export { view_knife_grid_model }
-export { view_sharpener_grid_model }
-export { view_blade_grid_model }
-export { work_log_model }
+export { template_variable_model };
+export { view_knife_grid_model };
+export { view_sharpener_grid_model };
+export { view_blade_grid_model };
+export { work_log_model };

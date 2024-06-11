@@ -3,11 +3,12 @@
 import { 
   constants, 
   enums, 
-  grid_loader } from './index';
+  grid_loader,
+  template_variable_model } from './index';
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  var variables: any = JSON.parse(document.getElementById('template-variables')?.textContent || "");
+  var variables: template_variable_model = JSON.parse(document.getElementById('template-variables')?.textContent || "");
 
   constants.setBaseUrl(variables['is_production']);
 
