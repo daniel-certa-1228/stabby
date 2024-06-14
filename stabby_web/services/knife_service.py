@@ -1,10 +1,69 @@
 from django.utils import timezone
+from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.db.models import Prefetch
-from ..models import ViewKnifeGrid, Knife, Photo
+from stabby_web.models import Blade, Knife, Photo, ViewKnifeGrid
 
 
 class KnifeService:
+
+    @classmethod
+    def copy_knife(cls, knife_id):
+        try:
+            original_knife = Knife.objects.get(knife_id=knife_id)
+            original_blades = original_knife.blades.filter(is_active=True)
+
+            with transaction.atomic():
+                new_knife = Knife(
+                    name=f"{original_knife.name} (Copy)",
+                    notes=original_knife.notes,
+                    brand=original_knife.brand,
+                    brand_notes=original_knife.brand_notes,
+                    closed_length=original_knife.closed_length,
+                    uom=original_knife.uom,
+                    year_of_manufacture=original_knife.year_of_manufacture,
+                    country=original_knife.country,
+                    vendor=original_knife.vendor,
+                    year_of_purchase=original_knife.year_of_purchase,
+                    purchased_new=original_knife.purchased_new,
+                    knife_type=original_knife.knife_type,
+                    knife_type_notes=original_knife.knife_type_notes,
+                    blade_material=original_knife.blade_material,
+                    blade_material_notes=original_knife.blade_material_notes,
+                    handle_material=original_knife.handle_material,
+                    handle_material_notes=original_knife.handle_material_notes,
+                    lock_type=original_knife.lock_type,
+                    lock_type_notes=original_knife.lock_type_notes,
+                    deployment_type=original_knife.deployment_type,
+                    needs_work=original_knife.needs_work,
+                    is_active=original_knife.is_active,
+                    user=original_knife.user,
+                    create_date=timezone.now(),
+                    edit_date=timezone.now(),
+                )
+                new_knife.save()
+
+                for blade in original_blades:
+                    new_blade = Blade(
+                        knife=new_knife,
+                        length=blade.length,
+                        length_cutting_edge=blade.length_cutting_edge,
+                        uom=blade.uom,
+                        blade_shape=blade.blade_shape,
+                        blade_shape_notes=blade.blade_shape_notes,
+                        has_half_stop=blade.has_half_stop,
+                        is_main_blade=blade.is_main_blade,
+                        is_active=blade.is_active,
+                        create_date=timezone.now(),
+                        edit_date=timezone.now(),
+                    )
+                    new_blade.save()
+
+            return new_knife
+
+        except Knife.DoesNotExist:
+            print(f"Knife with id {knife_id} does not exist.")
+            return None
 
     @classmethod
     def delete_knife(cls, knife):

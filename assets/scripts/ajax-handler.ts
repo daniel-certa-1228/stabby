@@ -6,6 +6,17 @@ import {
   view_sharpener_grid_model,
   work_log_model } from "./index";
 
+const copyKnife = async (url: string): Promise<number | undefined> => {
+  try {
+    const response: Response = await fetch(url);
+    const data: number | undefined = await response.json();
+
+    return data;
+  } catch (error: any) {
+    console.error('Error copying:', error);
+  }
+};
+
 const deleteEntity = async (url: string): Promise<boolean | undefined> => {
   try {
     const response: Response = await fetch(url);
@@ -62,6 +73,7 @@ const getWorkLogGrid = async (url: string): Promise<work_log_model[] | undefined
 };
 
 export {
+  copyKnife,
   deleteEntity,
   getBladeGrid,
   getKnifeGrid,

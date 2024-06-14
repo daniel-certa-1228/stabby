@@ -1,6 +1,7 @@
 'use strict';
 
 import { 
+  copy_handler,
   delete_handler, 
   redirect_handler } from './index';
 
@@ -17,6 +18,8 @@ document.addEventListener("click", function (e) {
   const bladeDeleteTarget: Element | null = (e.target as Element)?.closest(".blade-delete-btn");
   const workLogDeleteTarget: Element | null = (e.target as Element)?.closest(".wl-delete-btn");
   const photoDeleteTarget: Element | null = (e.target as Element)?.closest("#photo-delete-btn");
+  //COPY
+  const knifeCopyTarget: Element | null = (e.target as Element)?.closest("#knife-copy-btn");
 
   if (knifeDetailTarget) {
     const knife_id: number = parseInt((knifeDetailTarget as HTMLInputElement).value);
@@ -119,6 +122,12 @@ document.addEventListener("click", function (e) {
       if (!isNaN(photo_id) && !isNaN(entity_id)) {
         delete_handler.deletePhoto(photo_id, entity_id, is_knife_photo);
       }
+    }
+  } else if (knifeCopyTarget) {
+    const knife_id: number = parseInt((knifeCopyTarget as HTMLInputElement).value);
+
+    if (!isNaN(knife_id)) {
+      copy_handler.copyKnife(knife_id);
     }
   }
 });

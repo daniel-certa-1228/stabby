@@ -90,6 +90,11 @@ urlpatterns = [
         name="sharpener_detail",
     ),
     path(
+        "api/copy_knife/<int:knife_id>/",
+        views.copy_knife,
+        name="copy_knife",
+    ),
+    path(
         "api/delete_blade/<int:blade_id>/",
         views.blade_delete,
         name="blade_delete",

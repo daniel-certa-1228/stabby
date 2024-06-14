@@ -10,6 +10,7 @@ from .unit_of_measure_model import UnitOfMeasure
 from django.contrib.auth.models import User
 from .vendor_model import Vendor
 
+
 class Knife(models.Model):
     knife_id = models.AutoField(primary_key=True, db_column="knife_id")
     name = models.CharField(max_length=255)
@@ -53,7 +54,7 @@ class Knife(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def number_of_blades(self):
-        return self.blade_set.filter(is_active=1).count()
+        return self.blades.filter(is_active=1).count()
 
     class Meta:
         verbose_name = "knife"
