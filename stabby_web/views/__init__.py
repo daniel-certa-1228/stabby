@@ -1,5 +1,6 @@
 from .authentication_views import login_view, logout_view
 from .knife_views import (
+    copy_knife,
     get_knife_grid,
     index,
     knife_create,
@@ -26,6 +27,7 @@ from .work_log_views import (
 from .photo_views import photo_create, photo_delete, photo_update
 
 __all__ = [
+    "copy_knife",
     "login_view",
     "logout_view",
     "get_knife_grid",

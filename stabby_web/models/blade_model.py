@@ -6,7 +6,7 @@ from .unit_of_measure_model import UnitOfMeasure
 
 class Blade(models.Model):
     blade_id = models.AutoField(primary_key=True, db_column="blade_id")
-    knife = models.ForeignKey(Knife, on_delete=models.DO_NOTHING)
+    knife = models.ForeignKey(Knife, related_name="blades", on_delete=models.DO_NOTHING)
     length = models.DecimalField(null=True, blank=True, decimal_places=4, max_digits=8)
     length_cutting_edge = models.DecimalField(
         null=True, blank=True, decimal_places=4, max_digits=8

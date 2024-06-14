@@ -122,6 +122,20 @@ def knife_update(request, knife_id):
 
 # JSON VIEWS
 @login_required
+def copy_knife(request, knife_id):
+    new_knife = KnifeService.copy_knife(knife_id)
+
+    if new_knife:
+        messages.success(request, "Knife Copied!")
+    else:
+        messages.error(request, "Knife Copy Failed.")
+
+    id = new_knife.knife_id if new_knife is not None else -1
+
+    return JsonResponse(id, safe=False)
+
+
+@login_required
 def get_knife_grid(request):
     data = KnifeService.get_knife_grid()
 
