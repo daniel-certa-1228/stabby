@@ -21,8 +21,6 @@ document.addEventListener("click", function (e) {
   //COPY
   const knifeCopyTarget: Element | null = (e.target as Element)?.closest("#knife-copy-btn");
 
-  debugger;
-
   if (knifeDetailTarget) {
     const knife_id: number = parseInt((knifeDetailTarget as HTMLInputElement).value);
 
@@ -126,7 +124,6 @@ document.addEventListener("click", function (e) {
       }
     }
   } else if (knifeCopyTarget) {
-    debugger;
     const knife_id: number = parseInt((knifeCopyTarget as HTMLInputElement).value);
 
     if (!isNaN(knife_id)) {
