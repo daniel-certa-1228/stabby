@@ -1,12 +1,13 @@
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure, ViewTypes
 from stabby_web.forms import KnifeForm
 from stabby_web.services import KnifeService
-from django.contrib.auth.decorators import login_required
+from stabby_web.decorators import skip_save
 
 
 # MVT VIEWS
@@ -22,6 +23,7 @@ def index(request):
     return render(request, "stabby_web/index.html", context)
 
 
+@skip_save
 @login_required
 def knife_create(request):
     if request.method == "POST":
@@ -30,11 +32,15 @@ def knife_create(request):
         if form.is_valid():
             knife = KnifeService.map_knife_form_data(request, form)
 
-            KnifeService.save_knife(knife)
+            if request.is_collector:
+                KnifeService.save_knife(knife)
 
             messages.success(request, "Knife Created!")
 
-            return redirect("knife_detail", knife_id=knife.knife_id)
+            if request.is_collector:
+                return redirect("knife_detail", knife_id=knife.knife_id)
+            else:
+                return redirect("knives")
         else:
             messages.error(request, "Knife Create Failed.")
 
@@ -80,6 +86,7 @@ def knife_detail(request, knife_id):
     return render(request, "stabby_web/knife-detail.html", context)
 
 
+@skip_save
 @login_required
 def knife_update(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
@@ -88,9 +95,10 @@ def knife_update(request, knife_id):
         form = KnifeForm(request.POST)
 
         if form.is_valid():
-            KnifeService.save_knife(
-                KnifeService.map_knife_form_data(request, form, knife)
-            )
+            if request.is_collector:
+                KnifeService.save_knife(
+                    KnifeService.map_knife_form_data(request, form, knife)
+                )
 
             messages.success(request, "Knife Updated!")
 
@@ -121,16 +129,25 @@ def knife_update(request, knife_id):
 
 
 # JSON VIEWS
+@skip_save
 @login_required
 def copy_knife(request, knife_id):
-    new_knife = KnifeService.copy_knife(knife_id)
+    new_knife = None
 
-    if new_knife:
+    if request.is_collector:
+        new_knife = KnifeService.copy_knife(knife_id)
+
+    if new_knife or not request.is_collector:
         messages.success(request, "Knife Copied!")
     else:
         messages.error(request, "Knife Copy Failed.")
 
-    id = new_knife.knife_id if new_knife is not None else -1
+    if new_knife and request.is_collector:
+        id = new_knife.knife_id
+    elif not new_knife and request.is_collector:
+        id = -1
+    else:
+        id = knife_id
 
     return JsonResponse(id, safe=False)
 
@@ -142,11 +159,13 @@ def get_knife_grid(request):
     return JsonResponse(data, safe=False)
 
 
+@skip_save
 @login_required
 def knife_delete(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
-    KnifeService.save_knife(KnifeService.delete_knife(knife))
+    if request.is_collector:
+        KnifeService.save_knife(KnifeService.delete_knife(knife))
 
     messages.success(request, "Knife Deleted")
 
