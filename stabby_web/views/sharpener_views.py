@@ -7,9 +7,11 @@ from stabby_web.services import SharpenerService
 from django.shortcuts import render, redirect
 from stabby_web.enums import FormTypes, Modules, UnitsOfMeasure, ViewTypes
 from django.contrib.auth.decorators import login_required
+from stabby_web.decorators import skip_save
 
 
 # MVT VIEWS
+@skip_save
 @login_required
 def sharpener_create(request):
     if request.method == "POST":
@@ -18,11 +20,15 @@ def sharpener_create(request):
         if form.is_valid():
             sharpener = SharpenerService.map_sharpener_form_data(request, form)
 
-            SharpenerService.save_sharpener(sharpener)
+            if request.is_collector:
+                SharpenerService.save_sharpener(sharpener)
 
             messages.success(request, "Sharpener Created!")
 
-            return redirect("sharpener_detail", sharpener_id=sharpener.sharpener_id)
+            if request.is_collector:
+                return redirect("sharpener_detail", sharpener_id=sharpener.sharpener_id)
+            else:
+                return redirect("sharpeners")
         else:
             messages.error(request, "Sharpener Create Failed.")
 
@@ -63,6 +69,7 @@ def sharpener_detail(request, sharpener_id):
     return render(request, "stabby_web/sharpener-detail.html", context)
 
 
+@skip_save
 @login_required
 def sharpener_update(request, sharpener_id):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
@@ -70,9 +77,10 @@ def sharpener_update(request, sharpener_id):
     if request.method == "POST":
         form = SharpenerForm(request.POST)
         if form.is_valid():
-            SharpenerService.save_sharpener(
-                SharpenerService.map_sharpener_form_data(request, form, sharpener)
-            )
+            if request.is_collector:
+                SharpenerService.save_sharpener(
+                    SharpenerService.map_sharpener_form_data(request, form, sharpener)
+                )
 
             messages.success(request, "Sharpener Updated!")
 
@@ -123,11 +131,13 @@ def get_sharpener_grid(request):
     return JsonResponse(data, safe=False)
 
 
+@skip_save
 @login_required
 def sharpener_delete(request, sharpener_id):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
-    SharpenerService.save_sharpener(SharpenerService.delete_sharpener(sharpener))
+    if request.is_collector:
+        SharpenerService.save_sharpener(SharpenerService.delete_sharpener(sharpener))
 
     messages.success(request, "Sharpener Deleted")
 
