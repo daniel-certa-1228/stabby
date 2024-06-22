@@ -8,9 +8,11 @@ from stabby_web.forms import BladeForm
 from stabby_web.services import BladeService
 from stabby_web.services.knife_service import KnifeService
 from django.contrib.auth.decorators import login_required
+from stabby_web.decorators import skip_save
 
 
 # MVT VIEWS
+@skip_save
 @login_required
 def blade_create(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
@@ -21,7 +23,8 @@ def blade_create(request, knife_id):
         if form.is_valid():
             blade = BladeService.map_blade_form_to_data(request, form, knife)
 
-            BladeService.save_blade(blade)
+            if request.is_collector:
+                BladeService.save_blade(blade)
 
             messages.success(request, "Blade Created!")
 
@@ -49,6 +52,7 @@ def blade_create(request, knife_id):
         return render(request, "stabby_web/blade-add-edit.html", context)
 
 
+@skip_save
 @login_required
 def blade_update(request, knife_id, blade_id):
     knife = KnifeService.get_knife_detail(knife_id)
@@ -58,9 +62,10 @@ def blade_update(request, knife_id, blade_id):
         form = BladeForm(request.POST)
 
         if form.is_valid():
-            BladeService.save_blade(
-                BladeService.map_blade_form_to_data(request, form, knife, blade)
-            )
+            if request.is_collector:
+                BladeService.save_blade(
+                    BladeService.map_blade_form_to_data(request, form, knife, blade)
+                )
 
             messages.success(request, "Blade Updated!")
 
@@ -95,11 +100,13 @@ def blade_update(request, knife_id, blade_id):
 
 
 # JSON VIEWS
+@skip_save
 @login_required
 def blade_delete(request, blade_id):
     blade = BladeService.get_blade_detail(blade_id)
 
-    BladeService.save_blade(BladeService.delete_blade(blade))
+    if request.is_collector:
+        BladeService.save_blade(BladeService.delete_blade(blade))
 
     messages.success(request, "Blade Deleted")
 
