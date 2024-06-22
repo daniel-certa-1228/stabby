@@ -9,9 +9,11 @@ from stabby_web.models import Knife
 from stabby_web.services import WorkLogService, KnifeService, SharpenerService
 from stabby_web.enums import FormTypes, Modules, ViewTypes
 from django.contrib.auth.decorators import login_required
+from stabby_web.decorators import skip_save
 
 
 # MVT Views
+@skip_save
 @login_required
 def work_log_create(request, related_entity_id):
     related_entity = None
@@ -39,7 +41,8 @@ def work_log_create(request, related_entity_id):
                     form, None, related_entity
                 )
 
-            WorkLogService.save_work_log(work_log)
+            if request.is_collector:
+                WorkLogService.save_work_log(work_log)
 
             messages.success(request, "Work Log Created!")
 
@@ -90,6 +93,7 @@ def work_log_create(request, related_entity_id):
         return render(request, "stabby_web/work-log-add-edit.html", context)
 
 
+@skip_save
 @login_required
 def work_log_update(request, work_log_id, related_entity_id):
     work_log = WorkLogService.get_work_log_detail(work_log_id)
@@ -135,7 +139,8 @@ def work_log_update(request, work_log_id, related_entity_id):
                     form, None, related_entity, work_log
                 )
 
-            WorkLogService.save_work_log(work_log)
+            if request.is_collector:
+                WorkLogService.save_work_log(work_log)
 
             messages.success(request, "Work Log Updated!")
 
@@ -177,11 +182,13 @@ def get_sharpener_work_log_grid(request, sharpener_id):
     return JsonResponse(data, safe=False)
 
 
+@skip_save
 @login_required
 def work_log_delete(request, work_log_id):
     work_log = WorkLogService.get_work_log_detail(work_log_id)
 
-    WorkLogService.save_work_log(WorkLogService.delete_work_log(work_log))
+    if request.is_collector:
+        WorkLogService.save_work_log(WorkLogService.delete_work_log(work_log))
 
     messages.success(request, "Work Log Deleted")
 
