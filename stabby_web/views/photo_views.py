@@ -8,9 +8,11 @@ from stabby_web.models import Knife
 from stabby_web.services import KnifeService, SharpenerService, PhotoService
 from stabby_web.enums import FormTypes, Modules, ViewTypes
 from django.contrib.auth.decorators import login_required
+from stabby_web.decorators import skip_save
 
 
 # MVT Views
+@skip_save
 @login_required
 def photo_create(request, related_entity_id):
     related_entity = None
@@ -34,7 +36,8 @@ def photo_create(request, related_entity_id):
             else:
                 photo = PhotoService.map_photo_form_data(form, None, related_entity)
 
-            PhotoService.save_photo(photo)
+            if request.is_collector:
+                PhotoService.save_photo(photo)
 
             messages.success(request, "Photo Created!")
 
@@ -88,6 +91,7 @@ def photo_create(request, related_entity_id):
         return render(request, "stabby_web/photo-add-edit.html", context)
 
 
+@skip_save
 @login_required
 def photo_update(request, related_entity_id, photo_id):
     photo = PhotoService.get_photo_detail(photo_id)
@@ -138,7 +142,8 @@ def photo_update(request, related_entity_id, photo_id):
                     form, None, related_entity, photo
                 )
 
-            PhotoService.save_photo(photo)
+            if request.is_collector:
+                PhotoService.save_photo(photo)
 
             messages.success(request, "Photo Updated!")
 
@@ -172,11 +177,13 @@ def photo_update(request, related_entity_id, photo_id):
 
 
 # JSON VIEWS
+@skip_save
 @login_required
 def photo_delete(request, photo_id):
     work_log = PhotoService.get_photo_detail(photo_id)
 
-    PhotoService.save_photo(PhotoService.delete_photo(work_log))
+    if request.is_collector:
+        PhotoService.save_photo(PhotoService.delete_photo(work_log))
 
     messages.success(request, "Photo Deleted")
 

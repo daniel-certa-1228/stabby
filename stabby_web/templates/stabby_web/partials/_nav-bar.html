@@ -14,7 +14,11 @@
         <form id="logout-form" method="POST" action="{% url 'logout' %}" class="d-lg-none d-inline-block mt-2">
           {% csrf_token %}
     
-          <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
+          {% if is_collector %}
+            <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
+          {% else %}
+            <div class="text-white me-2 fs-4 d-inline-block" title="Guest"><i class="bi bi-person-fill-lock"></i>&nbsp;</div>
+          {% endif %}
     
           <button class="btn btn-sm btn-light mb-1 logout-btn" type="submit">Logout</button>
         </form>
@@ -23,7 +27,11 @@
     <form id="logout-form" method="POST" action="{% url 'logout' %}" class="d-lg-inline-block d-none">
       {% csrf_token %}
 
-      <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
+      {% if is_collector %}
+        <div class="text-white me-2 fs-4 d-inline-block" title="{{user.first_name}} {{user.last_name}}"><i class="bi bi-person-fill"></i>&nbsp;</div>
+      {% else %}
+        <div class="text-white me-2 fs-4 d-inline-block" title="Guest"><i class="bi bi-person-fill-lock"></i>&nbsp;</div>
+      {% endif %}
 
       <button class="btn btn-sm btn-light mb-1 logout-btn" type="submit">Logout</button>
     </form>
