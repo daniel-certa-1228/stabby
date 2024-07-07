@@ -15,6 +15,7 @@ const loadKnifeGrid = async (): Promise<void> => {
   const gridOptions: any = {
     pagination: true,
     paginationPageSize: 50,
+    suppressMenuHide: true,
     defaultColDef: {
       filter: true,
       cellStyle: { textAlign: 'left' }
@@ -27,11 +28,12 @@ const loadKnifeGrid = async (): Promise<void> => {
         cellStyle: { textAlign: 'center' },
         cellRenderer: (params: any) => {
           return `<button class="btn btn-sm btn-light knife-detail-btn" value="${params.data.knife_id}"><i class="bi bi-search"></i></button>`;
-        },
+        }, 
+        filter: false
       },
       { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
       { headerName: 'Knife', field: 'knife', width: 350, pinned: 'left' },
-      { headerName: '# of Blades', field: 'num_of_blades', width: 120, cellStyle: { textAlign: 'right' } },
+      { headerName: '# of Blades', field: 'num_of_blades', width: 130, cellStyle: { textAlign: 'right' } },
       { headerName: 'Blade Material', field: 'blade_material', width: 280 },
       { headerName: 'Handle Material', field: 'handle_material', width: 160 },
       { headerName: 'Lock', field: 'lock_type', width: 120 },
@@ -59,6 +61,7 @@ const loadSharpenerGrid = async (): Promise<void> => {
       filter: true,
       cellStyle: { textAlign: 'left' }
     },
+    suppressMenuHide: true,
     domLayout: "autoHeight",
     columnDefs: [
       {
@@ -68,7 +71,8 @@ const loadSharpenerGrid = async (): Promise<void> => {
         cellStyle: { textAlign: 'center' },
         cellRenderer: (params: any) => {
           return `<button class="btn btn-sm btn-light sharpener-detail-btn" value=${params.data.sharpener_id}><i class="bi bi-search"></i></button>`;
-        },
+        }, 
+        filter: false
       },
       { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
       { headerName: 'Sharpener', field: 'sharpener', width: 400, pinned: 'left' },
