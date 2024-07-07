@@ -3,15 +3,12 @@
 
 {% block main%}
 
-<h1>Dashboard</h1>
-    {% comment %} <div class="d-flex flex-row justify-content-between">
-        {% include 'stabby_web/partials/_bc-knives.html' %}
+    <div class="d-flex flex-row justify-content-between">
+        {% include 'stabby_web/partials/_bc-dashboard.html' %}
         
-        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}">
-            <i class="bi bi-plus-lg"></i>&nbsp;&nbsp;Add
-        </a>
+        {% comment %} <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}">
+            <i class="bi bi-plus-lg"></i>&nbsp;&nbsp;Add Knife
+        </a>  {% endcomment %}
     </div>
-
-    <div id="grid" class="ag-theme-alpine mt-2 mb-4"></div> {% endcomment %}
 
 {% endblock %}
