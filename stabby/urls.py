@@ -23,7 +23,8 @@ from django.conf.urls.static import static
 
 app_name = "stabby_web"
 urlpatterns = [
-    path("", views.index, name="knives"),
+    path("", views.index, name="index"),
+    path("knives", views.knives, name="knives"),
     path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
     path("knives/add", views.knife_create, name="knife_create"),
     path("knives/edit/<int:knife_id>/", views.knife_update, name="knife_update"),

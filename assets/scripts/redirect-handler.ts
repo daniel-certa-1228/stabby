@@ -19,7 +19,7 @@ const redirectToKnifeDetailPageWlCard_abs = (knife_id: number): void => {
 };
 
 const redirectToKnifeGridPage_abs = (): void => {
-    window.location.href = `${constants.getBaseUrl()}`;
+    window.location.href = `${constants.getBaseUrl()}knives`;
 };
 
 const redirectToSharpenerDetailPage_abs = (sharpener_id: number): void => {

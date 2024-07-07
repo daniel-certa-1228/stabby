@@ -1,8 +1,11 @@
 from .authentication_views import login_view, logout_view
+
+from .dashboard_views import index
+
 from .knife_views import (
     copy_knife,
     get_knife_grid,
-    index,
+    knives,
     knife_create,
     knife_delete,
     knife_detail,
@@ -32,6 +35,7 @@ __all__ = [
     "logout_view",
     "get_knife_grid",
     "index",
+    "knives",
     "knife_create",
     "knife_delete",
     "knife_detail",

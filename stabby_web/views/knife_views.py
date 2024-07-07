@@ -12,7 +12,7 @@ from stabby_web.decorators import skip_save
 
 # MVT VIEWS
 @login_required
-def index(request):
+def knives(request):
     variable_dto = TemplateVariableDTO(ViewTypes.KnifeGrid.value, not settings.DEBUG)
 
     context = {
@@ -20,7 +20,7 @@ def index(request):
         "template_variables": variable_dto.to_dict(),
     }
 
-    return render(request, "stabby_web/index.html", context)
+    return render(request, "stabby_web/knives.html", context)
 
 
 @skip_save

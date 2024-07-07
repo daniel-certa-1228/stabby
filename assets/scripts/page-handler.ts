@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
       break;
+    case enums.ViewTypes.Dashboard:
     case enums.ViewTypes.KnifeAddEdit:
     case enums.ViewTypes.SharpenerAddEdit:
     case enums.ViewTypes.BladeAddEdit:
