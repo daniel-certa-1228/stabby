@@ -9,6 +9,7 @@ from .deployment_type_model import DeploymentType
 from .handle_material_model import HandleMaterial
 from .knife_model import Knife
 from .knife_type_model import KnifeType
+from .last_purchase_date_model import LastPurchaseDate
 from .lock_type_model import LockType
 from .lubricant_model import Lubricant
 from .photo_model import Photo
@@ -34,6 +35,7 @@ __all__ = [
     "HandleMaterial",
     "Knife",
     "KnifeType",
+    "LastPurchaseDate",
     "LockType",
     "Lubricant",
     "Photo",
