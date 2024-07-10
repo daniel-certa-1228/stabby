@@ -139,6 +139,11 @@ urlpatterns = [
         views.get_sharpener_work_log_grid,
         name="get_sharpener_work_log_grid",
     ),
+    path(
+        "api/set_last_purchase_date/",
+        views.set_last_purchase_date,
+        name="set_last_purchase_date",
+    ),
     path("accounts/", include("django.contrib.auth.urls")),
     path("admin/", admin.site.urls),
 ]

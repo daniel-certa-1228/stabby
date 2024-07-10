@@ -1,7 +1,8 @@
 'use strict';
 
 import { 
-  constants, 
+  constants,
+  date_handler,
   enums, 
   grid_loader,
   template_variable_model } from './index';
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
       break;
     case enums.ViewTypes.Dashboard:
-      console.log("Dashboard")
+      date_handler.initDateHandling();
       break;
     case enums.ViewTypes.KnifeAddEdit:
     case enums.ViewTypes.SharpenerAddEdit:

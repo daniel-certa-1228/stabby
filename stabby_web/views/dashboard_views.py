@@ -4,6 +4,9 @@ from django.conf import settings
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from stabby_web.services import DashboardService
+from stabby_web.decorators import skip_save
+from django.http import JsonResponse
+import json
 
 
 # MVT VIEWS
@@ -20,3 +23,32 @@ def index(request):
     }
 
     return render(request, "stabby_web/index.html", context)
+
+
+# JSON VIEWS
+@skip_save
+@login_required
+def set_last_purchase_date(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+
+            selected_date = data.get("date")
+
+            row = DashboardService.get_last_purchase_date_row()
+
+            if row is not None and selected_date is not None:
+                row.last_purchase_date = selected_date
+
+                if request.is_collector:
+                    DashboardService.save_date_row(row)
+
+                return JsonResponse(True, safe=False)
+            else:
+                return JsonResponse(False, safe=False)
+
+        except Exception as e:
+            print(e)
+            return JsonResponse(False, safe=False)
+    else:
+        return JsonResponse(False, safe=False)

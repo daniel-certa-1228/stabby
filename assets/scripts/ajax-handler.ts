@@ -63,7 +63,7 @@ const getBladeGrid = async (url: string): Promise<view_blade_grid_model[] | unde
 
 const getWorkLogGrid = async (url: string): Promise<work_log_model[] | undefined> => {
   try {
-    const response: Response= await fetch(url);
+    const response: Response = await fetch(url);
     const data: work_log_model[] = await response.json();
 
     return data;
@@ -72,11 +72,31 @@ const getWorkLogGrid = async (url: string): Promise<work_log_model[] | undefined
   }
 };
 
+const setLastPurchaseDate = async (url: string, csrfToken: string, selectedDate: string): Promise<boolean | undefined> => {
+  try {
+    const response: Response =  await fetch(url, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'X-CSRFToken': csrfToken
+          },
+          body: JSON.stringify({ date: selectedDate }),
+      })
+
+      const data: boolean | undefined = await response.json();
+
+      return data;
+  } catch (error: any) {
+    console.error('Error setting last purchase date:', error);
+  }
+}
+
 export {
   copyKnife,
   deleteEntity,
   getBladeGrid,
   getKnifeGrid,
   getSharpenerGrid,
-  getWorkLogGrid
+  getWorkLogGrid,
+  setLastPurchaseDate
 };

@@ -6,10 +6,18 @@ class DashboardService:
 
     @classmethod
     def get_last_purchase_date(cls):
-        date_row = LastPurchaseDate.objects.first()
+        date_row = cls.get_last_purchase_date_row()
         date = timezone.now()
 
         if date_row is not None and date_row.last_purchase_date is not None:
             date = date_row.last_purchase_date if date_row else None
 
         return date
+
+    @classmethod
+    def get_last_purchase_date_row(cls):
+        return LastPurchaseDate.objects.first()
+
+    @classmethod
+    def save_date_row(cls, row):
+        return row.save()
