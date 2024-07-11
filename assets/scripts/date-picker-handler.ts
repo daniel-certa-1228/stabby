@@ -5,7 +5,7 @@ import {
     bootstrap, 
     constants } from './index';
 
-const initDateHandling = () => {
+const initDateHandling = (): void => {
     const datePicker: HTMLInputElement = document.getElementById('lastPurchaseDate') as HTMLInputElement;
 
     const csrfToken: string = (document.querySelector('[name=csrfmiddlewaretoken]') as HTMLInputElement).value;
@@ -14,13 +14,17 @@ const initDateHandling = () => {
 
     const successToast: bootstrap.Toast = new bootstrap.Toast(document.getElementById('successToast') as HTMLElement);
 
-    const handleChange = async () => {
+    const errorToast: bootstrap.Toast = new bootstrap.Toast(document.getElementById('errorToast') as HTMLElement);
+
+    const handleChange = async (): Promise<void> => {
         const selectedDate = datePicker.value;
 
         const success = await ajax_handler.setLastPurchaseDate(url, csrfToken, selectedDate);
 
         if (success) {
             successToast.show();
+        } else {
+            errorToast.show();
         }
     };
 
