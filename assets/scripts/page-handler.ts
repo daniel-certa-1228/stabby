@@ -2,7 +2,7 @@
 
 import { 
   constants,
-  date_handler,
+  date_picker_handler,
   enums, 
   grid_loader,
   template_variable_model } from './index';
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
       break;
     case enums.ViewTypes.Dashboard:
-      date_handler.initDateHandling();
+      date_picker_handler.initDateHandling();
       break;
     case enums.ViewTypes.KnifeAddEdit:
     case enums.ViewTypes.SharpenerAddEdit:
