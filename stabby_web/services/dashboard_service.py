@@ -1,6 +1,7 @@
 from django.utils import timezone
-from ..models import LastPurchaseDate
+from ..models import LastPurchaseDate, ViewSteelTypeChart
 from zoneinfo import ZoneInfo
+from django.db import connection
 
 
 class DashboardService:
@@ -8,6 +9,7 @@ class DashboardService:
     @classmethod
     def get_last_purchase_date(cls):
         date_row = cls.get_last_purchase_date_row()
+
         date = timezone.now()
 
         if date_row is not None and date_row.last_purchase_date is not None:
@@ -32,6 +34,14 @@ class DashboardService:
         diff = (today - stored_date).days
 
         return diff
+
+    @classmethod
+    def get_steel_type_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_steel_type_chart;")
+            rows = cursor.fetchall()
+
+        return rows
 
     @classmethod
     def save_date_row(cls, row):

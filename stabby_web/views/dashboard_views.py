@@ -26,6 +26,13 @@ def index(request):
 
 
 # JSON VIEWS
+@login_required
+def get_steel_type_chart_data(request):
+    data = DashboardService.get_steel_type_chart_data()
+
+    return JsonResponse(data, safe=False)
+
+
 @skip_save
 @login_required
 def set_last_purchase_date(request):

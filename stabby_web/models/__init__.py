@@ -21,6 +21,7 @@ from .vendor_model import Vendor
 from .view_blade_grid import ViewBladeGrid
 from .view_knife_grid import ViewKnifeGrid
 from .view_sharpener_grid import ViewSharpenerGrid
+from .view_steel_type_chart import ViewSteelTypeChart
 from .work_log_model import WorkLog
 
 __all__ = [
@@ -47,5 +48,6 @@ __all__ = [
     "ViewBladeGrid",
     "ViewKnifeGrid",
     "ViewSharpenerGrid",
+    "ViewSteelTypeChart",
     "WorkLog",
 ]

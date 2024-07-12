@@ -1,6 +1,7 @@
 'use strict';
 
 import { 
+  chart_data_model,
   view_blade_grid_model,
   view_knife_grid_model, 
   view_sharpener_grid_model,
@@ -61,6 +62,17 @@ const getBladeGrid = async (url: string): Promise<view_blade_grid_model[] | unde
   }
 };
 
+const getSteelTypeChart = async (url: string): Promise<chart_data_model[] | undefined> => {
+  try {
+    const response: Response = await fetch(url);
+    const data: chart_data_model[] = await response.json();
+
+    return data;
+  } catch (error: any) {
+    console.error('Error fetching steel type chart data:', error);
+  }
+};
+
 const getWorkLogGrid = async (url: string): Promise<work_log_model[] | undefined> => {
   try {
     const response: Response = await fetch(url);
@@ -98,5 +110,6 @@ export {
   getKnifeGrid,
   getSharpenerGrid,
   getWorkLogGrid,
+  getSteelTypeChart,
   setLastPurchaseDate
 };
