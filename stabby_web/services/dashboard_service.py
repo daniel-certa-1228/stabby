@@ -1,5 +1,6 @@
 from django.utils import timezone
 from ..models import LastPurchaseDate
+from zoneinfo import ZoneInfo
 
 
 class DashboardService:
@@ -17,6 +18,20 @@ class DashboardService:
     @classmethod
     def get_last_purchase_date_row(cls):
         return LastPurchaseDate.objects.first()
+
+    @classmethod
+    def get_number_of_days_since_purchase(cls):
+        central = ZoneInfo("America/Chicago")
+
+        today = timezone.now().astimezone(central).date()
+
+        date_row = cls.get_last_purchase_date_row()
+
+        stored_date = date_row.last_purchase_date if date_row else today
+
+        diff = (today - stored_date).days
+
+        return diff
 
     @classmethod
     def save_date_row(cls, row):

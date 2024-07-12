@@ -1,5 +1,7 @@
 from .authentication_views import login_view, logout_view
 
+from .custom_login_views import custom_login_view
+
 from .dashboard_views import index, set_last_purchase_date
 
 from .knife_views import (
@@ -31,6 +33,7 @@ from .photo_views import photo_create, photo_delete, photo_update
 
 __all__ = [
     "copy_knife",
+    "custom_login_view",
     "login_view",
     "logout_view",
     "get_knife_grid",

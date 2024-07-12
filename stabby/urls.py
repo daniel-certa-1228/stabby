@@ -144,6 +144,7 @@ urlpatterns = [
         views.set_last_purchase_date,
         name="set_last_purchase_date",
     ),
+    path("accounts/login/", views.custom_login_view.as_view(), name="login"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("admin/", admin.site.urls),
 ]
