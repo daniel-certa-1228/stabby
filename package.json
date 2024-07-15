@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "ag-charts-community": "^10.0.2",
     "ag-grid-community": "^31.3.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3"
