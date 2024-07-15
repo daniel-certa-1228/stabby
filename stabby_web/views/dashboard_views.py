@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from stabby_web.services import DashboardService
 from stabby_web.decorators import skip_save
+from stabby_web.custom_encoders import DecimalEncoder
 from django.http import JsonResponse
 import json
 
@@ -30,7 +31,7 @@ def index(request):
 def get_steel_type_chart_data(request):
     data = DashboardService.get_steel_type_chart_data()
 
-    return JsonResponse(data, safe=False)
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
 
 
 @skip_save
