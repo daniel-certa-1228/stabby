@@ -1,5 +1,6 @@
 from django.utils import timezone
-from ..models import LastPurchaseDate, ViewSteelTypeChart
+from stabby_web.dtos import ChartDataDTO
+from ..models import LastPurchaseDate
 from zoneinfo import ZoneInfo
 from django.db import connection
 
@@ -41,7 +42,13 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_steel_type_chart;")
             rows = cursor.fetchall()
 
-        return rows
+        dtos = list()
+
+        for row in rows:
+            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
+            dtos.append(dto.to_dict())
+
+        return dtos
 
     @classmethod
     def save_date_row(cls, row):

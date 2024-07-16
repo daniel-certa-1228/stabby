@@ -1,12 +1,14 @@
 import '@popperjs/core';
 import * as bootstrap from 'bootstrap';
 import * as agGrid from 'ag-grid-community';
+import * as agCharts from 'ag-charts-community';
 import * as constants from './constants';
 import * as enums from './enums';
 import * as redirect_handler from './redirect-handler';
 import * as copy_handler from './copy-handler';
 import * as delete_handler from './delete-handler';
 import * as ajax_handler from './ajax-handler';
+import * as chart_loader from './chart-loader';
 import * as grid_loader from './grid-loader';
 import * as date_picker_handler from './date-picker-handler';
 import './click-handler';
@@ -22,11 +24,13 @@ import { view_blade_grid_model } from './models/view-blade-grid.model';
 import { work_log_model } from './models/work-log.model';
 
 export { bootstrap };
+export { agCharts };
 export { agGrid };
 export { redirect_handler };
 export { copy_handler };
 export { delete_handler };
 export { ajax_handler };
+export { chart_loader };
 export { grid_loader };
 export { constants };
 export { date_picker_handler };
