@@ -40,6 +40,7 @@ const loadKnifeGrid = async (): Promise<void> => {
       { headerName: 'Deployment', field: 'deployment_type', width: 140 },
       { headerName: 'Country', field: 'country', width: 140 },
       { headerName: 'Vendor', field: 'vendor', width: 220 },
+      { headerName: 'Purchased New', field: 'purchased_new', width: 160, cellStyle: { textAlign: 'center' } },
       { headerName: 'Needs Work', field: 'needs_work', width: 140, cellStyle: { textAlign: 'center' } },
     ]
   };

@@ -13,6 +13,7 @@ export class view_knife_grid_model {
     country: string;
     vendor: string;
     needs_work: boolean;
+    purchased_new: boolean;
     is_active: boolean;
     user_id: number;
 
@@ -29,6 +30,7 @@ export class view_knife_grid_model {
         country: string,
         vendor: string,
         needs_work: boolean,
+        purchased_new: boolean,
         is_active: boolean,
         user_id: number,
     ) {
@@ -44,6 +46,7 @@ export class view_knife_grid_model {
         this.country = country;
         this.vendor = vendor;
         this.needs_work = needs_work;
+        this.purchased_new = purchased_new;
         this.is_active = is_active;
         this.user_id = user_id;
     }

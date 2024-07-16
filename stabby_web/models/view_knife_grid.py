@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ViewKnifeGrid(models.Model):
     knife_id = models.BigIntegerField(primary_key=True, db_column="knife_id")
     knife = models.CharField(max_length=255, null=True)
@@ -13,6 +14,7 @@ class ViewKnifeGrid(models.Model):
     country = models.CharField(max_length=255, null=True)
     vendor = models.CharField(max_length=255, null=True)
     needs_work = models.BooleanField(null=False)
+    purchased_new = models.BooleanField(null=False)
     is_active = models.BooleanField(null=False)
     user_id = models.BigIntegerField(null=False)
 
