@@ -12,7 +12,7 @@ import {
 const loadKnifeGrid = async (): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
-  const gridOptions: any = {
+  const gridOptions: agGrid.GridOptions = {
     pagination: true,
     paginationPageSize: 50,
     suppressMenuHide: true,
@@ -56,7 +56,7 @@ const loadKnifeGrid = async (): Promise<void> => {
 const loadSharpenerGrid = async (): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
-  const gridOptions: any = {
+  const gridOptions: agGrid.GridOptions = {
     defaultColDef: {
       filter: true,
       cellStyle: { textAlign: 'left' }
@@ -97,7 +97,7 @@ const loadSharpenerGrid = async (): Promise<void> => {
 const loadBladeGrid = async (knife_id: number): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#blade_grid')!;
 
-  const gridOptions: any = {
+  const gridOptions: agGrid.GridOptions = {
     headerHeight: 35,
     defaultColDef: {
       cellStyle: { textAlign: 'left' }
@@ -141,7 +141,7 @@ const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, enti
   const gridDiv_wl: HTMLElement = document.querySelector('#wl_grid')!;
 
   if (gridDiv_wl) {
-    const gridOptions: any = returnWorkLogGridOptions(
+    const gridOptions: agGrid.GridOptions = returnWorkLogGridOptions(
       with_buttons,
       is_knife_wl,
       entity_id,
@@ -170,7 +170,7 @@ const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, enti
 };
 
 // Private Functions
-const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null): any => {
+const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null): agGrid.GridOptions => {
   if (with_buttons) {
     return {
       headerHeight: 35,

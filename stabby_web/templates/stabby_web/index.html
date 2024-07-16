@@ -9,10 +9,20 @@
 
     <div class="row mt-3">
         <div class="col-md-6">
-            <div id="steel-type-chart"></div>
+            {% include 'stabby_web/partials/_last-purchase-date-card.html' %}
+
+            <div id="steel-type-chart" class="mt-4">
+                <div class="center" id="st-chart-spinner" style="margin-top: 125px;">
+                    <div class="d-inline-block">
+                        <div class="spinner-border text-secondary chart-spinner" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
-            {% include 'stabby_web/partials/_last-purchase-date-card.html' %}
+            
         </div>
     </div>
 

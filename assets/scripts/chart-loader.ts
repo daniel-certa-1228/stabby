@@ -10,35 +10,37 @@ import {
 const loadSteelTypeChart = async () => {
     const chartDiv: HTMLElement = document.querySelector('#steel-type-chart')!;
 
+    const st_spinner = document.querySelector('#st-chart-spinner');
+
     const url: string = `${constants.getBaseUrl()}api/get_steel_type_chart_data`;
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getSteelTypeChart(url);
 
-    const options: any = {
-        // Container: HTML Element to hold the chart
+    const options: agCharts.AgChartOptions = {
         container: chartDiv,
         title: {
             text: "Steel Types",
           },
-        width: 600,  // Set the desired width
-        height: 400,  // Set the desired height
-        // Data: Data to be displayed in the chart
+        width: 350,
+        height: 350,
         data: chartData,
-        // Series: Defines which chart type and data to use
-
         series: [{
             type: "pie",
             angleKey: "count",
             legendItemKey: "name",
-            angleName: "Steel Types", // Specifies the name of the angle column
-            // sectorLabel: {
-            //     // Use the `formatter` function to format the label
-            //         formatter: ({params}: {params:  any}) => {debugger; `${Math.round(params.count)}`},
-            //     },
+            angleName: "Steel Types",
+            tooltip: {
+                renderer: (params) => {
+                  return {
+                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                  };
+                }
+              }
         }],
     };
     
-    // Create Chart
+    st_spinner?.remove();
+
     const chart = agCharts.AgCharts.create(options);
 }
 

@@ -23182,12 +23182,24 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.chart-spinner {
+  width: 5rem;
+  height: 5rem;
+}
+
 .blue {
   color: #12387a;
 }
 
 .center {
   text-align: center;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .gallery-card {
