@@ -121,8 +121,8 @@ const loadLockTypeChart = async () => {
                 legendItemKey: "name",
                 calloutLabelKey: "name",
                 angleKey: "count",
-                outerRadiusRatio: 0.5,
-                innerRadiusRatio: 0.3,
+                outerRadiusRatio: 0.4,
+                innerRadiusRatio: 0.2,
                 showInLegend: false,
                 tooltip: {
                 renderer: (params) => {
