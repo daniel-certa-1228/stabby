@@ -37,6 +37,20 @@ class DashboardService:
         return LastPurchaseDate.objects.first()
 
     @classmethod
+    def get_lock_type_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_lock_type_chart;")
+            rows = cursor.fetchall()
+
+        dtos = list()
+
+        for row in rows:
+            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
+            dtos.append(dto.to_dict())
+
+        return dtos
+
+    @classmethod
     def get_number_of_days_since_purchase(cls):
         central = ZoneInfo("America/Chicago")
 

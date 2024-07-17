@@ -35,6 +35,13 @@ def get_country_chart_data(request):
 
 
 @login_required
+def get_lock_type_chart_data(request):
+    data = DashboardService.get_lock_type_chart_data()
+
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
+
+
+@login_required
 def get_steel_type_chart_data(request):
     data = DashboardService.get_steel_type_chart_data()
 
