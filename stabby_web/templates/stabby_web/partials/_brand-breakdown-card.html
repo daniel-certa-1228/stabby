@@ -8,6 +8,7 @@
                 <tr>
                     <th scope="col">Brand</th>
                     <th scope="col" class="right">Count</th>
+                    <th scope="col" class="right">Percentage</th>
                   </tr>
             </thead>
             <tbody>
@@ -15,6 +16,7 @@
                     <tr>
                         <td>{{ brand.name }}</td>
                         <td class="right">{{ brand.count }}</td>
+                        <td class="right">{{ brand.percentage }}%</td>
                     </tr>
                 {% endfor %}
             </tbody>
