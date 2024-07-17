@@ -23,6 +23,8 @@ def index(request):
 
     total_sharpeners = DashboardService.get_total_sharpeners()
 
+    brand_breakdown = DashboardService.get_brand_chart_data()
+
     context = {
         "active": Modules.Dashboard.value,
         "template_variables": variable_dto.to_dict(),
@@ -30,6 +32,7 @@ def index(request):
         "total_knives": total_knives,
         "total_blades": total_blades,
         "total_sharpeners": total_sharpeners,
+        "brand_breakdown": brand_breakdown,
     }
 
     return render(request, "stabby_web/index.html", context)

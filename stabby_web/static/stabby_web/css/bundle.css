@@ -23191,6 +23191,11 @@ textarea.form-control-lg {
   color: #12387a;
 }
 
+.brand-card-body {
+  height: 300px;
+  overflow: auto;
+}
+
 .center {
   text-align: center;
 }
@@ -23238,6 +23243,10 @@ textarea.form-control-lg {
 
 .pointer {
   cursor: pointer;
+}
+
+.right {
+  text-align: right;
 }
 
 .link-style {

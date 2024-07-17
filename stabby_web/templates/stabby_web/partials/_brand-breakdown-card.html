@@ -1,0 +1,23 @@
+<div class="card mt-3">
+    <div class="card-header d-flex justify-content-between">
+        Brand Breakdown
+    </div>
+    <div class="card-body pb-0 pt-0 brand-card-body">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Brand</th>
+                    <th scope="col" class="right">Count</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for brand in brand_breakdown %}
+                    <tr>
+                        <td>{{ brand.name }}</td>
+                        <td class="right">{{ brand.count }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
