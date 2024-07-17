@@ -37,11 +37,11 @@ const loadCountryChart = async () => {
             innerRadiusRatio: 0.8,
             showInLegend: false,
             tooltip: {
-            renderer: (params) => {
-                return {
-                content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
-                };
-            }
+                renderer: (params) => {
+                    return {
+                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                    };
+                }
             }
         },
         {
@@ -58,12 +58,12 @@ const loadCountryChart = async () => {
             innerRadiusRatio: 0.3,
             showInLegend: false,
             tooltip: {
-            renderer: (params) => {
-                return {
-                title: `${params.datum.name}`,
-                content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
-                };
-            }
+                renderer: (params) => {
+                    return {
+                    title: `${params.datum.name}`,
+                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                    };
+                }
             }
         },
     ]};
@@ -104,11 +104,11 @@ const loadLockTypeChart = async () => {
                 innerRadiusRatio: 0.8,
                 showInLegend: false,
                 tooltip: {
-                renderer: (params) => {
-                    return {
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
-                    };
-                }
+                    renderer: (params) => {
+                        return {
+                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                        };
+                    }
                 }
             },
             {
@@ -116,8 +116,8 @@ const loadLockTypeChart = async () => {
                 fills:["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00"],
                 data: donut_2,
                 title: {
-                text: "Other",
-                },
+                    text: "Other",
+                    },
                 legendItemKey: "name",
                 calloutLabelKey: "name",
                 angleKey: "count",
@@ -125,12 +125,12 @@ const loadLockTypeChart = async () => {
                 innerRadiusRatio: 0.2,
                 showInLegend: false,
                 tooltip: {
-                renderer: (params) => {
-                    return {
-                    title: `${params.datum.name}`,
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
-                    };
-                }
+                    renderer: (params) => {
+                        return {
+                        title: `${params.datum.name}`,
+                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                        };
+                    }
                 }
             },
         ],
