@@ -25,6 +25,7 @@ from .view_knife_grid import ViewKnifeGrid
 from .view_lock_type_chart import ViewLockTypeChart
 from .view_sharpener_grid import ViewSharpenerGrid
 from .view_steel_type_chart import ViewSteelTypeChart
+from .view_vendor_chart import ViewVendorChart
 from .work_log_model import WorkLog
 
 __all__ = [
@@ -55,5 +56,6 @@ __all__ = [
     "ViewLockTypeChart",
     "ViewSharpenerGrid",
     "ViewSteelTypeChart",
+    "ViewVendorChart",
     "WorkLog",
 ]
