@@ -1,8 +1,13 @@
 from django.utils import timezone
 from stabby_web.dtos import ChartDataDTO
-from ..models import LastPurchaseDate
+from stabby_web.models.knife_model import Knife
+from stabby_web.models.sharpener_model import Sharpener
+from stabby_web.models import LastPurchaseDate
 from zoneinfo import ZoneInfo
 from django.db import connection
+from django.db.models import Sum
+
+from stabby_web.models.view_knife_grid import ViewKnifeGrid
 
 
 class DashboardService:
@@ -77,6 +82,20 @@ class DashboardService:
             dtos.append(dto.to_dict())
 
         return dtos
+
+    @classmethod
+    def get_total_blades(cls):
+        return ViewKnifeGrid.objects.filter(is_active=True).aggregate(
+            total=Sum("num_of_blades")
+        )["total"]
+
+    @classmethod
+    def get_total_knives(cls):
+        return Knife.objects.filter(is_active=True).count()
+
+    @classmethod
+    def get_total_sharpeners(cls):
+        return Sharpener.objects.filter(is_active=True).count()
 
     @classmethod
     def save_date_row(cls, row):

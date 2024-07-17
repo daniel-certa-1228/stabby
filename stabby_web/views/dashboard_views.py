@@ -17,10 +17,19 @@ def index(request):
 
     last_purchase_date = DashboardService.get_last_purchase_date()
 
+    total_knives = DashboardService.get_total_knives()
+
+    total_blades = DashboardService.get_total_blades()
+
+    total_sharpeners = DashboardService.get_total_sharpeners()
+
     context = {
         "active": Modules.Dashboard.value,
         "template_variables": variable_dto.to_dict(),
         "last_purchase_date": last_purchase_date,
+        "total_knives": total_knives,
+        "total_blades": total_blades,
+        "total_sharpeners": total_sharpeners,
     }
 
     return render(request, "stabby_web/index.html", context)

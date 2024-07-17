@@ -2,7 +2,7 @@
     <div class="card-header d-flex justify-content-between">
       Stats
     </div>
-    <div class="card-body">
+    <div class="card-body pb-0">
       {% csrf_token %}
       <div class="form-group row">
         <div class="col-auto">
@@ -12,5 +12,14 @@
             <input type="date" id="lastPurchaseDate" class="form-control form-control-sm" value="{{ last_purchase_date|date:'Y-m-d' }}">
         </div>
       </div>
+      <hr />
+      <dl class="row">
+        <dt class="col-sm-6 text-sm-end text-start">Total Knives:</dt>
+        <dd class="col-sm-6 text-start">{{ total_knives }}</dd>
+        <dt class="col-sm-6 text-sm-end text-start">Total Blades:</dt>
+        <dd class="col-sm-6 text-start">{{ total_blades }}</dd>
+        <dt class="col-sm-6 text-sm-end text-start">Total Sharpeners:</dt>
+        <dd class="col-sm-6 text-start">{{ total_sharpeners }}</dd>
+      </dl>
     </div>
 </div>
