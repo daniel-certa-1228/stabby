@@ -17,16 +17,45 @@ def index(request):
 
     last_purchase_date = DashboardService.get_last_purchase_date()
 
+    total_knives = DashboardService.get_total_knives()
+
+    total_blades = DashboardService.get_total_blades()
+
+    total_sharpeners = DashboardService.get_total_sharpeners()
+
+    brand_breakdown = DashboardService.get_brand_chart_data()
+
+    vendor_breakdown = DashboardService.get_vendor_chart_data()
+
     context = {
         "active": Modules.Dashboard.value,
         "template_variables": variable_dto.to_dict(),
         "last_purchase_date": last_purchase_date,
+        "total_knives": total_knives,
+        "total_blades": total_blades,
+        "total_sharpeners": total_sharpeners,
+        "brand_breakdown": brand_breakdown,
+        "vendor_breakdown": vendor_breakdown,
     }
 
     return render(request, "stabby_web/index.html", context)
 
 
 # JSON VIEWS
+@login_required
+def get_country_chart_data(request):
+    data = DashboardService.get_country_chart_data()
+
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
+
+
+@login_required
+def get_lock_type_chart_data(request):
+    data = DashboardService.get_lock_type_chart_data()
+
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
+
+
 @login_required
 def get_steel_type_chart_data(request):
     data = DashboardService.get_steel_type_chart_data()

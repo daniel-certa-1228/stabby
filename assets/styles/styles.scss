@@ -3,13 +3,30 @@
 @import "ag-grid-community/styles/ag-grid.css";
 @import "ag-grid-community/styles/ag-theme-alpine.css";
 
+.chart-spinner {
+  width: 5rem; 
+  height: 5rem;
+}
 
 .blue {
   color: #12387a;
 }
 
+.dash-card-body {
+  height: 200px;
+  overflow: auto;
+}
+
 .center {
   text-align: center;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .gallery-card {
@@ -46,9 +63,12 @@
   width: 100%;
 }
 
-
 .pointer {
   cursor: pointer;
+}
+
+.right {
+  text-align: right;
 }
 
 .link-style {

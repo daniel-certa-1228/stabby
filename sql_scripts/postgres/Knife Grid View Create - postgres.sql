@@ -14,6 +14,7 @@ CREATE VIEW view_knife_grid AS
         c.name AS country,
         v.name AS vendor,
         k.needs_work,
+        k.purchased_new,
         k.is_active,
         k.user_id
     FROM stabby_web_knife k
@@ -40,6 +41,9 @@ CREATE VIEW view_knife_grid AS
         v.name,
         sm.name,
         k.needs_work,
+        k.purchased_new,
         k.is_active,
         k.user_id,
         bm.steel_manufacturer_id;
+ 
+GRANT SELECT ON view_knife_grid TO stabby_app;

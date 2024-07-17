@@ -1,6 +1,7 @@
 'use strict';
 
 import { 
+  chart_loader,
   constants,
   date_picker_handler,
   enums, 
@@ -63,8 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
       break;
-    case enums.ViewTypes.Dashboard:
+    case enums.ViewTypes.Dashboard: {
       date_picker_handler.initDateHandling();
+      chart_loader.loadSteelTypeChart();
+      chart_loader.loadCountryChart();
+      chart_loader.loadLockTypeChart();
+    }
       break;
     case enums.ViewTypes.KnifeAddEdit:
     case enums.ViewTypes.SharpenerAddEdit:

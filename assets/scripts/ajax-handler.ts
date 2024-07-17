@@ -62,14 +62,14 @@ const getBladeGrid = async (url: string): Promise<view_blade_grid_model[] | unde
   }
 };
 
-const getSteelTypeChart = async (url: string): Promise<chart_data_model[] | undefined> => {
+const getChartData = async (url: string): Promise<chart_data_model[] | undefined> => {
   try {
     const response: Response = await fetch(url);
     const data: chart_data_model[] = await response.json();
 
     return data;
   } catch (error: any) {
-    console.error('Error fetching steel type chart data:', error);
+    console.error('Error chart data:', error);
   }
 };
 
@@ -110,6 +110,6 @@ export {
   getKnifeGrid,
   getSharpenerGrid,
   getWorkLogGrid,
-  getSteelTypeChart,
+  getChartData,
   setLastPurchaseDate
 };
