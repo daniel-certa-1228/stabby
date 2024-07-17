@@ -2,7 +2,12 @@ from .authentication_views import login_view, logout_view
 
 from .custom_login_views import custom_login_view
 
-from .dashboard_views import get_steel_type_chart_data, index, set_last_purchase_date
+from .dashboard_views import (
+    get_country_chart_data,
+    get_steel_type_chart_data,
+    index,
+    set_last_purchase_date,
+)
 
 from .knife_views import (
     copy_knife,
@@ -43,6 +48,7 @@ __all__ = [
     "knife_delete",
     "knife_detail",
     "knife_update",
+    "get_country_chart_data",
     "get_sharpener_grid",
     "get_steel_type_chart_data",
     "set_last_purchase_date",

@@ -28,6 +28,13 @@ def index(request):
 
 # JSON VIEWS
 @login_required
+def get_country_chart_data(request):
+    data = DashboardService.get_country_chart_data()
+
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
+
+
+@login_required
 def get_steel_type_chart_data(request):
     data = DashboardService.get_steel_type_chart_data()
 

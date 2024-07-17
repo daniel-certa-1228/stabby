@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     case enums.ViewTypes.Dashboard: {
       date_picker_handler.initDateHandling();
       chart_loader.loadSteelTypeChart();
+      chart_loader.loadCountryChart();
     }
       break;
     case enums.ViewTypes.KnifeAddEdit:
