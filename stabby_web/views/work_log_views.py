@@ -6,7 +6,12 @@ from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import WorkLogForm
 from stabby_web.models import Knife
-from stabby_web.services import WorkLogService, KnifeService, SharpenerService
+from stabby_web.services import (
+    WorkLogService,
+    KnifeService,
+    SharpenerService,
+    TimeZoneService,
+)
 from stabby_web.enums import FormTypes, Modules, ViewTypes
 from django.contrib.auth.decorators import login_required
 from stabby_web.decorators import skip_save
@@ -27,6 +32,8 @@ def work_log_create(request, related_entity_id):
         redirect_url = "sharpener_detail"
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = WorkLogForm(request.POST)
 
         if form.is_valid():
@@ -34,11 +41,11 @@ def work_log_create(request, related_entity_id):
 
             if type(related_entity) is Knife:
                 work_log = WorkLogService.map_work_log_form_to_data(
-                    form, related_entity
+                    form, now, related_entity
                 )
             else:
                 work_log = WorkLogService.map_work_log_form_to_data(
-                    form, None, related_entity
+                    form, now, None, related_entity
                 )
 
             if request.is_collector:
@@ -127,16 +134,18 @@ def work_log_update(request, work_log_id, related_entity_id):
         )
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = WorkLogForm(request.POST)
 
         if form.is_valid():
             if type(related_entity) is Knife:
                 work_log = WorkLogService.map_work_log_form_to_data(
-                    form, related_entity, None, work_log
+                    form, now, related_entity, None, work_log
                 )
             else:
                 work_log = WorkLogService.map_work_log_form_to_data(
-                    form, None, related_entity, work_log
+                    form, now, None, related_entity, work_log
                 )
 
             if request.is_collector:

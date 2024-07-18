@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.conf import settings
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import SharpenerForm
-from stabby_web.services import SharpenerService
+from stabby_web.services import SharpenerService, TimeZoneService
 from django.shortcuts import render, redirect
 from stabby_web.enums import FormTypes, Modules, UnitsOfMeasure, ViewTypes
 from django.contrib.auth.decorators import login_required
@@ -15,10 +15,12 @@ from stabby_web.decorators import skip_save
 @login_required
 def sharpener_create(request):
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = SharpenerForm(request.POST)
 
         if form.is_valid():
-            sharpener = SharpenerService.map_sharpener_form_data(request, form)
+            sharpener = SharpenerService.map_sharpener_form_data(request, form, now)
 
             if request.is_collector:
                 SharpenerService.save_sharpener(sharpener)
@@ -75,11 +77,16 @@ def sharpener_update(request, sharpener_id):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = SharpenerForm(request.POST)
+
         if form.is_valid():
             if request.is_collector:
                 SharpenerService.save_sharpener(
-                    SharpenerService.map_sharpener_form_data(request, form, sharpener)
+                    SharpenerService.map_sharpener_form_data(
+                        request, form, now, sharpener
+                    )
                 )
 
             messages.success(request, "Sharpener Updated!")
