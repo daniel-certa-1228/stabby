@@ -27,7 +27,7 @@ CREATE VIEW view_knife_grid AS
     LEFT JOIN stabby_web_handlematerial hm ON hm.handle_material_id = k.handle_material_id
     LEFT JOIN stabby_web_vendor v ON v.vendor_id = k.vendor_id
     LEFT JOIN stabby_web_knifetype kt ON kt.knife_type_id = k.knife_type_id
-    LEFT JOIN stabby_web_blade bl ON bl.knife_id = k.knife_id
+    LEFT JOIN stabby_web_blade bl ON bl.knife_id = k.knife_id AND bl.is_active = True
     GROUP BY
         k.knife_id,
         k.name,
