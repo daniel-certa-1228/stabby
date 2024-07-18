@@ -5,7 +5,12 @@ from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import PhotoForm
 from stabby_web.models import Knife
-from stabby_web.services import KnifeService, SharpenerService, PhotoService
+from stabby_web.services import (
+    KnifeService,
+    SharpenerService,
+    PhotoService,
+    TimeZoneService,
+)
 from stabby_web.enums import FormTypes, Modules, ViewTypes
 from django.contrib.auth.decorators import login_required
 from stabby_web.decorators import skip_save
@@ -26,15 +31,19 @@ def photo_create(request, related_entity_id):
         redirect_url = "sharpener_detail"
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = PhotoForm(request.POST, request.FILES)
 
         if form.is_valid():
             photo = None
 
             if type(related_entity) is Knife:
-                photo = PhotoService.map_photo_form_data(form, related_entity)
+                photo = PhotoService.map_photo_form_data(form, now, related_entity)
             else:
-                photo = PhotoService.map_photo_form_data(form, None, related_entity)
+                photo = PhotoService.map_photo_form_data(
+                    form, now, None, related_entity
+                )
 
             if request.is_collector:
                 PhotoService.save_photo(photo)
@@ -128,18 +137,18 @@ def photo_update(request, related_entity_id, photo_id):
         )
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = PhotoForm(request.POST, request.FILES, instance=photo)
-        print(form.data)
-        print(form.files)
 
         if form.is_valid():
             if type(related_entity) is Knife:
                 photo = PhotoService.map_photo_form_data(
-                    form, related_entity, None, photo
+                    form, now, related_entity, None, photo
                 )
             else:
                 photo = PhotoService.map_photo_form_data(
-                    form, None, related_entity, photo
+                    form, now, None, related_entity, photo
                 )
 
             if request.is_collector:

@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure, ViewTypes
 from stabby_web.forms import KnifeForm
-from stabby_web.services import KnifeService
+from stabby_web.services import KnifeService, TimeZoneService
 from stabby_web.decorators import skip_save
 
 
@@ -27,10 +27,12 @@ def knives(request):
 @login_required
 def knife_create(request):
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = KnifeForm(request.POST)
 
         if form.is_valid():
-            knife = KnifeService.map_knife_form_data(request, form)
+            knife = KnifeService.map_knife_form_data(request, form, now)
 
             if request.is_collector:
                 KnifeService.save_knife(knife)
@@ -92,12 +94,14 @@ def knife_update(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = KnifeForm(request.POST)
 
         if form.is_valid():
             if request.is_collector:
                 KnifeService.save_knife(
-                    KnifeService.map_knife_form_data(request, form, knife)
+                    KnifeService.map_knife_form_data(request, form, now, knife)
                 )
 
             messages.success(request, "Knife Updated!")
@@ -132,10 +136,12 @@ def knife_update(request, knife_id):
 @skip_save
 @login_required
 def copy_knife(request, knife_id):
+    now = TimeZoneService.get_now()
+
     new_knife = None
 
     if request.is_collector:
-        new_knife = KnifeService.copy_knife(knife_id)
+        new_knife = KnifeService.copy_knife(knife_id, now)
 
     if new_knife or not request.is_collector:
         messages.success(request, "Knife Copied!")
