@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from django.utils import timezone
 from ..models import (
     Blade,
     ViewBladeGrid,
@@ -27,14 +26,14 @@ class BladeService:
         return list(queryset.values())
 
     @classmethod
-    def map_blade_form_to_data(cls, request, form, knife=None, blade=None):
+    def map_blade_form_to_data(cls, request, form, now, knife=None, blade=None):
         if blade == None:
             blade = Blade()
-            blade.create_date = timezone.now()
+            blade.create_date = now
             blade.user = request.user
             blade.knife = knife
 
-        blade.edit_date = timezone.now()
+        blade.edit_date = now
         blade.length = form.cleaned_data["length"]
         blade.length_cutting_edge = form.cleaned_data["length_cutting_edge"]
         blade.uom = form.cleaned_data["uom"]

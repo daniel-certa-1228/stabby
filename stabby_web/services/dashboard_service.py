@@ -4,7 +4,6 @@ from stabby_web.models.knife_model import Knife
 from stabby_web.models.sharpener_model import Sharpener
 from stabby_web.models.view_knife_grid import ViewKnifeGrid
 from stabby_web.models import LastPurchaseDate
-from zoneinfo import ZoneInfo
 from django.db import connection
 from django.db.models import Sum
 
@@ -40,10 +39,10 @@ class DashboardService:
         return dtos
 
     @classmethod
-    def get_last_purchase_date(cls):
+    def get_last_purchase_date(cls, now):
         date_row = cls.get_last_purchase_date_row()
 
-        date = timezone.now()
+        date = now
 
         if date_row is not None and date_row.last_purchase_date is not None:
             date = date_row.last_purchase_date if date_row else None
@@ -69,10 +68,8 @@ class DashboardService:
         return dtos
 
     @classmethod
-    def get_number_of_days_since_purchase(cls):
-        central = ZoneInfo("America/Chicago")
-
-        today = timezone.now().astimezone(central).date()
+    def get_number_of_days_since_purchase(cls, now):
+        today = now.date()
 
         date_row = cls.get_last_purchase_date_row()
 

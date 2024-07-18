@@ -4,6 +4,7 @@ from .dropdown_service import DropdownService
 from .knife_service import KnifeService
 from .photo_service import PhotoService
 from .sharpener_service import SharpenerService
+from .time_zone_service import TimeZoneService
 from .work_log_service import WorkLogService
 
 __all__ = [
@@ -13,5 +14,6 @@ __all__ = [
     "KnifeService",
     "PhotoService",
     "SharpenerService",
+    "TimeZoneService",
     "WorkLogService",
 ]
