@@ -36,13 +36,13 @@ class SharpenerService:
         return list(queryset.values())
 
     @classmethod
-    def map_sharpener_form_data(cls, request, form, sharpener=None):
+    def map_sharpener_form_data(cls, request, form, now, sharpener=None):
         if sharpener == None:
             sharpener = Sharpener()
-            sharpener.create_date = timezone.now()
+            sharpener.create_date = now
             sharpener.user = request.user
 
-        sharpener.edit_date = timezone.now()
+        sharpener.edit_date = now
         sharpener.name = form.cleaned_data["name"]
         sharpener.notes = form.cleaned_data["notes"]
         sharpener.brand = form.cleaned_data["brand"]

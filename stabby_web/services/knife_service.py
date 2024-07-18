@@ -8,7 +8,7 @@ from stabby_web.models import Blade, Knife, Photo, ViewKnifeGrid
 class KnifeService:
 
     @classmethod
-    def copy_knife(cls, knife_id):
+    def copy_knife(cls, knife_id, now):
         try:
             original_knife = Knife.objects.get(knife_id=knife_id)
             original_blades = original_knife.blades.filter(is_active=True)
@@ -38,8 +38,8 @@ class KnifeService:
                     needs_work=original_knife.needs_work,
                     is_active=original_knife.is_active,
                     user=original_knife.user,
-                    create_date=timezone.now(),
-                    edit_date=timezone.now(),
+                    create_date=now,
+                    edit_date=now,
                 )
                 new_knife.save()
 
@@ -54,8 +54,8 @@ class KnifeService:
                         has_half_stop=blade.has_half_stop,
                         is_main_blade=blade.is_main_blade,
                         is_active=blade.is_active,
-                        create_date=timezone.now(),
-                        edit_date=timezone.now(),
+                        create_date=now,
+                        edit_date=now,
                     )
                     new_blade.save()
 
@@ -98,13 +98,13 @@ class KnifeService:
         return knife.save()
 
     @classmethod
-    def map_knife_form_data(cls, request, form, knife=None):
+    def map_knife_form_data(cls, request, form, now, knife=None):
         if knife == None:
             knife = Knife()
-            knife.create_date = timezone.now()
+            knife.create_date = now
             knife.user = request.user
 
-        knife.edit_date = timezone.now()
+        knife.edit_date = now
         knife.name = form.cleaned_data["name"]
         knife.notes = form.cleaned_data["notes"]
         knife.brand = form.cleaned_data["brand"]

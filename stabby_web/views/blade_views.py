@@ -5,8 +5,7 @@ from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import FormTypes, Modules, ViewTypes
 from stabby_web.forms import BladeForm
-from stabby_web.services import BladeService
-from stabby_web.services.knife_service import KnifeService
+from stabby_web.services import BladeService, KnifeService, TimeZoneService
 from django.contrib.auth.decorators import login_required
 from stabby_web.decorators import skip_save
 
@@ -18,10 +17,12 @@ def blade_create(request, knife_id):
     knife = KnifeService.get_knife_detail(knife_id)
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = BladeForm(request.POST)
 
         if form.is_valid():
-            blade = BladeService.map_blade_form_to_data(request, form, knife)
+            blade = BladeService.map_blade_form_to_data(request, form, now, knife)
 
             if request.is_collector:
                 BladeService.save_blade(blade)
@@ -59,12 +60,16 @@ def blade_update(request, knife_id, blade_id):
     blade = BladeService.get_blade_detail(blade_id)
 
     if request.method == "POST":
+        now = TimeZoneService.get_now()
+
         form = BladeForm(request.POST)
 
         if form.is_valid():
             if request.is_collector:
                 BladeService.save_blade(
-                    BladeService.map_blade_form_to_data(request, form, knife, blade)
+                    BladeService.map_blade_form_to_data(
+                        request, form, now, knife, blade
+                    )
                 )
 
             messages.success(request, "Blade Updated!")

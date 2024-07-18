@@ -3,7 +3,7 @@ from stabby_web.enums import Modules, ViewTypes
 from django.conf import settings
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from stabby_web.services import DashboardService
+from stabby_web.services import DashboardService, TimeZoneService
 from stabby_web.decorators import skip_save
 from stabby_web.custom_encoders import DecimalEncoder
 from django.http import JsonResponse
@@ -15,7 +15,9 @@ import json
 def index(request):
     variable_dto = TemplateVariableDTO(ViewTypes.Dashboard.value, not settings.DEBUG)
 
-    last_purchase_date = DashboardService.get_last_purchase_date()
+    now = TimeZoneService.get_now()
+
+    last_purchase_date = DashboardService.get_last_purchase_date(now)
 
     total_knives = DashboardService.get_total_knives()
 

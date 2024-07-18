@@ -1,4 +1,4 @@
-from datetime import timezone
+from django.utils import timezone
 from zoneinfo import ZoneInfo
 
 
@@ -9,6 +9,4 @@ class TimeZoneService:
     def get_now(cls):
         central = ZoneInfo("America/Chicago")
 
-        now = timezone.now().astimezone(central)
-
-        return now
+        return timezone.now().astimezone(central)

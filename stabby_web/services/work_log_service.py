@@ -12,7 +12,7 @@ class WorkLogService:
         work_log.is_active = False
 
         return work_log
-      
+
     @classmethod
     def get_knife_work_log_grid(cls, knife_id):
         queryset = WorkLog.objects.filter(is_active=True, knife_id=knife_id).order_by(
@@ -34,14 +34,16 @@ class WorkLogService:
         return get_object_or_404(WorkLog, work_log_id=work_log_id)
 
     @classmethod
-    def map_work_log_form_to_data(cls, form, knife=None, sharpener=None, work_log=None):
+    def map_work_log_form_to_data(
+        cls, form, now, knife=None, sharpener=None, work_log=None
+    ):
         if work_log == None:
             work_log = WorkLog()
-            work_log.create_date = timezone.now()
+            work_log.create_date = now
             work_log.knife = knife
             work_log.sharpener = sharpener
 
-        work_log.edit_date = timezone.now()
+        work_log.edit_date = now
         work_log.date = form.cleaned_data["date"]
         work_log.description = form.cleaned_data["description"]
 
