@@ -2,12 +2,11 @@ from django.utils import timezone
 from stabby_web.dtos import ChartDataDTO
 from stabby_web.models.knife_model import Knife
 from stabby_web.models.sharpener_model import Sharpener
+from stabby_web.models.view_knife_grid import ViewKnifeGrid
 from stabby_web.models import LastPurchaseDate
 from zoneinfo import ZoneInfo
 from django.db import connection
 from django.db.models import Sum
-
-from stabby_web.models.view_knife_grid import ViewKnifeGrid
 
 
 class DashboardService:
