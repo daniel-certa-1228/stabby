@@ -4,13 +4,27 @@
 {% block main%}
 
     <div class="d-flex flex-row justify-content-between">
-        {% include 'stabby_web/partials/_bc-knives.html' %}
-        
-        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}">
-            <i class="bi bi-plus-lg"></i>&nbsp;&nbsp;Add
-        </a>
+        {% include 'stabby_web/partials/_bc-dashboard.html' %}
     </div>
 
-    <div id="grid" class="ag-theme-alpine mt-2 mb-4"></div>
+    <div class="row mt-3 mb-5">
+        <div class="col-md-4">
+            {% include 'stabby_web/partials/_dash-stats-card.html' %}
+
+            {% include 'stabby_web/partials/_steel-type-chart-card.html' %}
+        </div>
+
+        <div class="col-md-4">
+            {% include 'stabby_web/partials/_brand-breakdown-card.html' %}
+
+            {% include 'stabby_web/partials/_country-chart-card.html' %}
+        </div>
+
+        <div class="col-md-4">
+            {% include 'stabby_web/partials/_vendor-breakdown-card.html' %}
+
+            {% include 'stabby_web/partials/_lock-type-chart-card.html' %}
+        </div>
+    </div>
 
 {% endblock %}

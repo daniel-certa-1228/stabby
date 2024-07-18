@@ -1,7 +1,9 @@
 'use strict';
 
 import { 
-  constants, 
+  chart_loader,
+  constants,
+  date_picker_handler,
   enums, 
   grid_loader,
   template_variable_model } from './index';
@@ -60,6 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         console.log('Invalid Sharpener ID');
       }
+    }
+      break;
+    case enums.ViewTypes.Dashboard: {
+      date_picker_handler.initDateHandling();
+      chart_loader.loadSteelTypeChart();
+      chart_loader.loadCountryChart();
+      chart_loader.loadLockTypeChart();
     }
       break;
     case enums.ViewTypes.KnifeAddEdit:

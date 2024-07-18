@@ -24,7 +24,7 @@ const deleteKnife = async (knife_id: number): Promise<void> => {
     const delete_successful: boolean | undefined = await ajax_handler.deleteEntity(url);
 
     if (delete_successful) {
-      redirect_handler.redirectToIndexPage_abs();
+      redirect_handler.redirectToKnifeGridPage_abs();
     }
   }
 };

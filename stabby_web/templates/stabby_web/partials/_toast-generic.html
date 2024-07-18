@@ -1,0 +1,28 @@
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  {% comment %} Success {% endcomment %}
+  <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+    <div class="toast-header toast-header-background text-white">
+      <i class="bi bi-check-lg"></i>&nbsp;&nbsp;
+      <strong class="me-auto">Success</strong>
+      <span data-bs-theme="dark">
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </span>
+    </div>
+    <div class="toast-body">
+      <strong>Updated successfully!</strong>
+    </div>
+  </div>
+  {% comment %} Error {% endcomment %}
+  <div class="toast" id="errorToast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+    <div class="toast-header bg-danger text-white">
+      <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;
+      <strong class="me-auto">Error</strong>
+      <span data-bs-theme="dark">
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </span>
+    </div>
+    <div class="toast-body">
+      <strong>Updated failed.</strong>
+    </div>
+  </div>
+</div>

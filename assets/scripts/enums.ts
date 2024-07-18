@@ -12,6 +12,7 @@ enum ViewTypes {
     SharpenerWorkLogAddEdit = 9,
     KnifePhotoAddEdit = 10,
     SharpenerPhotoAddEdit = 11,
+    Dashboard = 12
 };
 
 export { ViewTypes };

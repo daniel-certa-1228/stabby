@@ -23,7 +23,8 @@ from django.conf.urls.static import static
 
 app_name = "stabby_web"
 urlpatterns = [
-    path("", views.index, name="knives"),
+    path("", views.index, name="index"),
+    path("knives", views.knives, name="knives"),
     path("knives/detail/<int:knife_id>/", views.knife_detail, name="knife_detail"),
     path("knives/add", views.knife_create, name="knife_create"),
     path("knives/edit/<int:knife_id>/", views.knife_update, name="knife_update"),
@@ -124,6 +125,21 @@ urlpatterns = [
         views.get_blade_grid,
         name="get_blade_grid",
     ),
+    path(
+        "api/get_lock_type_chart_data/",
+        views.get_lock_type_chart_data,
+        name="get_lock_type_chart_data",
+    ),
+    path(
+        "api/get_steel_type_chart_data/",
+        views.get_steel_type_chart_data,
+        name="get_steel_type_chart_data",
+    ),
+    path(
+        "api/get_country_chart_data/",
+        views.get_country_chart_data,
+        name="get_country_chart_data",
+    ),
     path("api/get_knife_grid/", views.get_knife_grid, name="get_knife_grid"),
     path(
         "api/get_sharpener_grid/", views.get_sharpener_grid, name="get_sharpener_grid"
@@ -138,6 +154,12 @@ urlpatterns = [
         views.get_sharpener_work_log_grid,
         name="get_sharpener_work_log_grid",
     ),
+    path(
+        "api/set_last_purchase_date/",
+        views.set_last_purchase_date,
+        name="set_last_purchase_date",
+    ),
+    path("accounts/login/", views.custom_login_view.as_view(), name="login"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("admin/", admin.site.urls),
 ]

@@ -1,8 +1,19 @@
 from .authentication_views import login_view, logout_view
+
+from .custom_login_views import custom_login_view
+
+from .dashboard_views import (
+    get_country_chart_data,
+    get_lock_type_chart_data,
+    get_steel_type_chart_data,
+    index,
+    set_last_purchase_date,
+)
+
 from .knife_views import (
     copy_knife,
     get_knife_grid,
-    index,
+    knives,
     knife_create,
     knife_delete,
     knife_detail,
@@ -28,15 +39,21 @@ from .photo_views import photo_create, photo_delete, photo_update
 
 __all__ = [
     "copy_knife",
+    "custom_login_view",
     "login_view",
     "logout_view",
     "get_knife_grid",
     "index",
+    "knives",
     "knife_create",
     "knife_delete",
     "knife_detail",
     "knife_update",
+    "get_country_chart_data",
+    "get_lock_type_chart_data",
     "get_sharpener_grid",
+    "get_steel_type_chart_data",
+    "set_last_purchase_date",
     "sharpener_create",
     "sharpener_delete",
     "sharpener_detail",
