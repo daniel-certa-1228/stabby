@@ -7,21 +7,21 @@ import {
     constants
 }  from './index';
 
-const fill_1 = ["#4D4993", "#00764E", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#C4C454", "#006676"];
-const fill_2 = ["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00"];
+const fill_1: string[] = ["#4D4993", "#00764E", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#C4C454", "#006676"];
+const fill_2: string[] = ["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00"];
 
-const loadCountryChart = async () => {
+const loadCountryChart = async (): Promise<void> => {
     const chartDiv: HTMLElement = document.querySelector('#country-chart')!;
 
-    const spinner = document.querySelector('#country-chart-spinner');
+    const spinner: HTMLElement | null = document.querySelector('#country-chart-spinner');
 
     const url: string = `${constants.getBaseUrl()}api/get_country_chart_data`;
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const donut_1 = chartData?.filter(x => x.count >= 4);
+    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 4);
 
-    const donut_2 = chartData?.filter(x => x.count < 4);
+    const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < 4);
 
     const options: agCharts.AgChartOptions = {
         container: chartDiv,
@@ -73,21 +73,21 @@ const loadCountryChart = async () => {
    
     spinner?.remove();
 
-    const chart = agCharts.AgCharts.create(options);
+    const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
 }
 
-const loadLockTypeChart = async () => {
+const loadLockTypeChart = async (): Promise<void> => {
     const chartDiv: HTMLElement = document.querySelector('#lock-type-chart')!;
 
-    const spinner = document.querySelector('#lt-chart-spinner');
+    const spinner: HTMLElement | null = document.querySelector('#lt-chart-spinner');
 
     const url: string = `${constants.getBaseUrl()}api/get_lock_type_chart_data`;
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const donut_1 = chartData?.filter(x => x.count >= 3);
+    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 3);
 
-    const donut_2 = chartData?.filter(x => x.count < 3);
+    const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < 3);
 
     const options: agCharts.AgChartOptions = {
         container: chartDiv,
@@ -141,13 +141,13 @@ const loadLockTypeChart = async () => {
     
     spinner?.remove();
 
-    const chart = agCharts.AgCharts.create(options);
+    const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
 }
 
-const loadSteelTypeChart = async () => {
+const loadSteelTypeChart = async (): Promise<void> => {
     const chartDiv: HTMLElement = document.querySelector('#steel-type-chart')!;
 
-    const spinner = document.querySelector('#st-chart-spinner');
+    const spinner: HTMLElement | null = document.querySelector('#st-chart-spinner');
 
     const url: string = `${constants.getBaseUrl()}api/get_steel_type_chart_data`;
 
@@ -177,7 +177,7 @@ const loadSteelTypeChart = async () => {
     
     spinner?.remove();
 
-    const chart = agCharts.AgCharts.create(options);
+    const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
 }
 
 export {

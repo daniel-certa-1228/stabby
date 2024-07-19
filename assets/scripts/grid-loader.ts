@@ -45,7 +45,7 @@ const loadKnifeGrid = async (): Promise<void> => {
     ]
   };
 
-  const gridApi = agGrid.createGrid(gridDiv, gridOptions);
+  const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv, gridOptions);
 
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;
 
@@ -86,7 +86,7 @@ const loadSharpenerGrid = async (): Promise<void> => {
     ]
   };
 
-  const gridApi = agGrid.createGrid(gridDiv, gridOptions);
+  const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv, gridOptions);
 
   const url: string = `${constants.getBaseUrl()}api/get_sharpener_grid`;
 
@@ -129,7 +129,7 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
     ]
   };
 
-  const gridApi = agGrid.createGrid(gridDiv, gridOptions);
+  const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv, gridOptions);
 
   const url: string = `${constants.getBaseUrl()}api/get_blade_grid/${knife_id}`;
 
@@ -148,7 +148,7 @@ const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, enti
       entity_id,
       work_log_id);
   
-    const gridApi = agGrid.createGrid(gridDiv_wl, gridOptions);
+    const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv_wl, gridOptions);
   
     let url: string;
   

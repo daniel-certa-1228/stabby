@@ -18,9 +18,9 @@ const initDateHandling = (): void => {
 
     if (datePicker && csrfToken) {
         const handleChange = async (): Promise<void> => {
-            const selectedDate = datePicker.value;
+            const selectedDate: string = datePicker.value;
     
-            const success = await ajax_handler.setLastPurchaseDate(url, csrfToken, selectedDate);
+            const success: boolean | undefined = await ajax_handler.setLastPurchaseDate(url, csrfToken, selectedDate);
     
             if (success) {
                 successToast.show();
