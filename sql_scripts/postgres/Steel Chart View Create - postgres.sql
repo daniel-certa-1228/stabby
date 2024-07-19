@@ -25,4 +25,4 @@ CREATE VIEW view_steel_type_chart AS
 		"count" DESC, 
 		st.name;
 		
-GRANT SELECT ON view_steel_type_chart TO stabby_app;
+GRANT SELECT ON view_steel_type_chart TO db;

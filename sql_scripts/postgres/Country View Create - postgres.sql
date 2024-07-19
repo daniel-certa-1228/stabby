@@ -25,4 +25,4 @@ CREATE VIEW view_country_chart AS
 		"count" DESC, 
 		c.name;
 		
-GRANT SELECT ON view_country_chart TO stabby_app;
+GRANT SELECT ON view_country_chart TO db;

@@ -24,4 +24,4 @@ CREATE VIEW view_vendor_chart AS
 		"count" DESC, 
 		v.name;
 		
-GRANT SELECT ON view_vendor_chart TO stabby_app;
+GRANT SELECT ON view_vendor_chart TO db;

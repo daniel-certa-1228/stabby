@@ -23,4 +23,4 @@ CREATE VIEW view_lock_type_chart AS
 		"count" DESC, 
 		lt.name;
 		
-GRANT SELECT ON view_lock_type_chart TO stabby_app;
+GRANT SELECT ON view_lock_type_chart TO db;

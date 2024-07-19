@@ -17,4 +17,4 @@ CREATE VIEW view_brand_chart AS
 		"count" DESC, 
 		b.name;
 		
-GRANT SELECT ON view_brand_chart TO stabby_app;
+GRANT SELECT ON view_brand_chart TO db;
