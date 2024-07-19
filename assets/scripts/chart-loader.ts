@@ -7,6 +7,9 @@ import {
     constants
 }  from './index';
 
+const fill_1 = ["#4D4993", "#00764E", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#C4C454", "#006676"];
+const fill_2 = ["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00"];
+
 const loadCountryChart = async () => {
     const chartDiv: HTMLElement = document.querySelector('#country-chart')!;
 
@@ -28,7 +31,7 @@ const loadCountryChart = async () => {
         series: [
         {
             type: "donut",
-            fills: ["#4D4993", "#00764E", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#F9F871"],
+            fills: fill_1,
             data: donut_1,
             calloutLabelKey: "name",
             legendItemKey: "name",
@@ -46,7 +49,7 @@ const loadCountryChart = async () => {
         },
         {
             type: "donut",
-            fills:["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00"],
+            fills: fill_2,
             data: donut_2,
             title: {
             text: "Other",
@@ -95,7 +98,7 @@ const loadLockTypeChart = async () => {
         series: [
             {
                 type: "donut",
-                fills: ["#4D4993", "#00764E", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#F9F871"],
+                fills: fill_1,
                 data: donut_1,
                 calloutLabelKey: "name",
                 legendItemKey: "name",
@@ -113,7 +116,7 @@ const loadLockTypeChart = async () => {
             },
             {
                 type: "donut",
-                fills:["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00"],
+                fills: fill_2,
                 data: donut_2,
                 title: {
                     text: "Other",
@@ -158,7 +161,7 @@ const loadSteelTypeChart = async () => {
         data: chartData,
         series: [{
             type: "pie",
-            fills: ["#4D4993", "#00764E", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#F9F871"],
+            fills: fill_1,
             angleKey: "count",
             legendItemKey: "name",
             angleName: "Steel Types",
