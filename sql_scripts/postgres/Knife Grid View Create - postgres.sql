@@ -47,4 +47,4 @@ CREATE VIEW view_knife_grid AS
         k.user_id,
         bm.steel_manufacturer_id;
  
-GRANT SELECT ON view_knife_grid TO stabby_app;
+GRANT SELECT ON view_knife_grid TO db;
