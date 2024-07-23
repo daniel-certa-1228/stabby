@@ -15,6 +15,7 @@ export class view_knife_grid_model {
     needs_work: boolean;
     purchased_new: boolean;
     is_active: boolean;
+    create_date: Date | null;
     user_id: number;
 
     constructor(
@@ -32,6 +33,7 @@ export class view_knife_grid_model {
         needs_work: boolean,
         purchased_new: boolean,
         is_active: boolean,
+        create_date: Date,
         user_id: number,
     ) {
         this.knife_id = knife_id;
@@ -48,6 +50,7 @@ export class view_knife_grid_model {
         this.needs_work = needs_work;
         this.purchased_new = purchased_new;
         this.is_active = is_active;
+        this.create_date = create_date;
         this.user_id = user_id;
     }
 }

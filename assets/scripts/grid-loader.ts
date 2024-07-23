@@ -42,6 +42,7 @@ const loadKnifeGrid = async (): Promise<void> => {
       { headerName: 'Vendor', field: 'vendor', width: 220 },
       { headerName: 'Purchased New', field: 'purchased_new', width: 160, cellStyle: { textAlign: 'center' } },
       { headerName: 'Needs Work', field: 'needs_work', width: 140, cellStyle: { textAlign: 'center' } },
+      { headerName: 'Date Entered', field: 'create_date', width: 150, cellDataType: 'date' },
     ]
   };
 
@@ -50,6 +51,16 @@ const loadKnifeGrid = async (): Promise<void> => {
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;
 
   const rowData: view_knife_grid_model[] | undefined = await ajax_handler.getKnifeGrid(url);
+
+  if (rowData){
+    rowData.forEach((d: view_knife_grid_model) => {
+      const date = d.create_date ? new Date(d.create_date) : null;
+
+      if (date) {
+        d.create_date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      }
+    });
+  }
 
   gridApi.setGridOption('rowData', rowData);
 };
@@ -161,7 +172,7 @@ const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, enti
     const rowData: work_log_model[] | undefined = await ajax_handler.getWorkLogGrid(url);
   
     if (rowData){
-      rowData.forEach((d: any) => {
+      rowData.forEach((d: work_log_model) => {
         d.date = d.date ? new Date(d.date) : null;
       });
     }

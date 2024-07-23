@@ -16,6 +16,7 @@ class ViewKnifeGrid(models.Model):
     needs_work = models.BooleanField(null=False)
     purchased_new = models.BooleanField(null=False)
     is_active = models.BooleanField(null=False)
+    create_date = models.DateTimeField(null=False)
     user_id = models.BigIntegerField(null=False)
 
     class Meta:
