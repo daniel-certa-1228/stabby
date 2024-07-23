@@ -4,7 +4,7 @@ export class work_log_model {
     work_log_id: number;
     knife: number;
     sharpener: number;
-    date: Date;
+    date: Date | null;
     description: string;
     is_active: boolean;
     create_date: Date;

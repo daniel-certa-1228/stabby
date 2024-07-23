@@ -16,6 +16,7 @@ CREATE VIEW view_knife_grid AS
         k.needs_work,
         k.purchased_new,
         k.is_active,
+        k.create_date,
         k.user_id
     FROM stabby_web_knife k
     LEFT JOIN stabby_web_brand b ON b.brand_id = k.brand_id 
@@ -46,4 +47,4 @@ CREATE VIEW view_knife_grid AS
         k.user_id,
         bm.steel_manufacturer_id;
  
-GRANT SELECT ON view_knife_grid TO db;
+GRANT SELECT ON view_knife_grid TO stabby_app;
