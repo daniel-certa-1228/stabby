@@ -31,18 +31,114 @@ const loadKnifeGrid = async (): Promise<void> => {
         }, 
         filter: false
       },
-      { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
-      { headerName: 'Knife', field: 'knife', width: 350, pinned: 'left' },
-      { headerName: '# of Blades', field: 'num_of_blades', width: 130, cellStyle: { textAlign: 'right' } },
-      { headerName: 'Blade Material', field: 'blade_material', width: 280 },
-      { headerName: 'Handle Material', field: 'handle_material', width: 160 },
-      { headerName: 'Lock', field: 'lock_type', width: 120 },
-      { headerName: 'Deployment', field: 'deployment_type', width: 140 },
-      { headerName: 'Country', field: 'country', width: 140 },
-      { headerName: 'Vendor', field: 'vendor', width: 220 },
-      { headerName: 'Purchased New', field: 'purchased_new', width: 160, cellStyle: { textAlign: 'center' } },
-      { headerName: 'Needs Work', field: 'needs_work', width: 140, cellStyle: { textAlign: 'center' } },
-      { headerName: 'Date Entered', field: 'create_date', width: 150, cellDataType: 'date' },
+      { 
+        headerName: 'Brand', 
+        field: 'brand', 
+        width: 220, 
+        pinned: 'left',
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Knife', 
+        field: 'knife', 
+        width: 350, 
+        pinned: 'left', 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: '# of Blades', 
+        field: 'num_of_blades', 
+        width: 130, 
+        cellStyle: { 
+          textAlign: 'right' 
+        }, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Blade Material', 
+        field: 'blade_material', 
+        width: 280, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Handle Material', 
+        field: 'handle_material', 
+        width: 160, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Lock', 
+        field: 'lock_type', 
+        width: 120, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Deployment', 
+        field: 'deployment_type', 
+        width: 140, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Country', 
+        field: 'country', 
+        width: 140, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Vendor', 
+        field: 'vendor', 
+        width: 220, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Purchased New', 
+        field: 'purchased_new', 
+        width: 160, 
+        cellStyle: { 
+          textAlign: 'center' 
+        }, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Needs Work', 
+        field: 'needs_work', 
+        width: 140, 
+        cellStyle: { 
+          textAlign: 'center' 
+        }, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Date Entered', 
+        field: 'create_date', 
+        width: 150, 
+        cellDataType: 'date', 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
     ]
   };
 
@@ -86,14 +182,75 @@ const loadSharpenerGrid = async (): Promise<void> => {
         }, 
         filter: false
       },
-      { headerName: 'Brand', field: 'brand', width: 220, pinned: 'left' },
-      { headerName: 'Sharpener', field: 'sharpener', width: 400, pinned: 'left' },
-      { headerName: 'Cutting Agent', field: 'cutting_agent', minWidth: 160 },
-      { headerName: 'Bonding Agent', field: 'bonding_agent', minWidth: 190 },
-      { headerName: 'Length', field: 'length', width: 120 },
-      { headerName: 'Width', field: 'width', width: 120 },
-      { headerName: 'Country', field: 'country', width: 140 },
-      { headerName: 'Friable', field: 'is_friable', width: 140, cellStyle: { textAlign: 'center' } },
+      { 
+        headerName: 'Brand', 
+        field: 'brand', 
+        width: 220, 
+        pinned: 'left', 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Sharpener', 
+        field: 'sharpener', 
+        width: 400, 
+        pinned: 'left', 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Cutting Agent', 
+        field: 'cutting_agent', 
+        minWidth: 160, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Bonding Agent', 
+        field: 'bonding_agent', 
+        minWidth: 190, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Length', 
+        field: 'length', 
+        width: 120, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Width', 
+        field: 'width', 
+        width: 120, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Country', 
+        field: 'country', 
+        width: 140, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
+        headerName: 'Friable', 
+        field: 'is_friable', 
+        width: 140, 
+        cellStyle: { 
+          textAlign: 'center' 
+        }, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
     ]
   };
 
@@ -124,11 +281,32 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
           return `<button class="btn btn-sm btn-light blade-edit-btn" value="[${params.data.blade_id}, ${knife_id}]"><i class="bi bi-pencil-square"></i></button>`;
         },
       },
-      { headerName: 'Shape', field: 'blade_shape', minWidth: 135, maxWidth: 185 },
-      { headerName: 'Length', field: 'length', width: 95 },
-      { headerName: 'C.E. Length', field: 'length_cutting_edge', width: 105 },
-      { headerName: 'Half-Stop', field: 'has_half_stop', width: 95 },
-      { headerName: 'Main', field: 'is_main_blade', width: 70 },
+      { 
+        headerName: 'Shape', 
+        field: 'blade_shape', 
+        minWidth: 135, 
+        maxWidth: 185
+      },
+      { 
+        headerName: 'Length', 
+        field: 'length', 
+        width: 95 
+      },
+      { 
+        headerName: 'C.E. Length', 
+        field: 'length_cutting_edge', 
+        width: 105 
+      },
+      { 
+        headerName: 'Half-Stop', 
+        field: 'has_half_stop', 
+        width: 95 
+      },
+      { 
+        headerName: 'Main', 
+        field: 'is_main_blade', 
+        width: 70 
+      },
       {
         headerName: '',
         width: 70,
@@ -199,8 +377,19 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
             return `<button class="btn btn-sm btn-light wl-edit-btn" value="[${params.data.work_log_id}, ${entity_id}, ${is_knife_wl}]"><i class="bi bi-pencil-square"></i></button>`;
           },
         },
-        { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
-        { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true },
+        { 
+          headerName: 'Date', 
+          field: 'date', 
+          width: 120, 
+          cellDataType: 'date' 
+        },
+        { 
+          headerName: 'Description', 
+          field: 'description', 
+          flex: 1, 
+          wrapText: true, 
+          autoHeight: true 
+        },
         {
           headerName: '',
           width: 70,
@@ -224,8 +413,19 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
         }
       },
       columnDefs: [
-        { headerName: 'Date', field: 'date', width: 120, cellDataType: 'date' },
-        { headerName: 'Description', field: 'description', flex: 1, wrapText: true, autoHeight: true }
+        { 
+          headerName: 'Date', 
+          field: 'date', 
+          width: 120, 
+          cellDataType: 'date' 
+        },
+        { 
+          headerName: 'Description', 
+          field: 'description', 
+          flex: 1, 
+          wrapText: true, 
+          autoHeight: true 
+        }
       ]
     };
   }
