@@ -11,6 +11,20 @@ from django.db.models import Sum
 class DashboardService:
 
     @classmethod
+    def get_blade_material_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_blade_material_chart;")
+            rows = cursor.fetchall()
+
+        dtos = list()
+
+        for row in rows:
+            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
+            dtos.append(dto.to_dict())
+
+        return dtos
+
+    @classmethod
     def get_brand_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_brand_chart;")
@@ -28,6 +42,20 @@ class DashboardService:
     def get_country_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_country_chart;")
+            rows = cursor.fetchall()
+
+        dtos = list()
+
+        for row in rows:
+            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
+            dtos.append(dto.to_dict())
+
+        return dtos
+
+    @classmethod
+    def get_handle_material_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_handle_material_chart;")
             rows = cursor.fetchall()
 
         dtos = list()
