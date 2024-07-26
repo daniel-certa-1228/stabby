@@ -19,11 +19,11 @@ const loadCountryChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 4);
+    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 6);
     
     //Aggregate "OTHER"
-    const donut_2_raw: chart_data_model[] | undefined = chartData?.filter(x => x.count < 4 && x.count > 1);
-    const other_raw: chart_data_model[] | undefined = chartData?.filter(x => x.count === 1);
+    const donut_2_raw: chart_data_model[] | undefined = chartData?.filter(x => x.count < 6 && x.count > 2);
+    const other_raw: chart_data_model[] | undefined = chartData?.filter(x => x.count <= 2);
     const other: chart_data_model | null = convertToOther(other_raw);
 
     let donut_2: chart_data_model[];
@@ -99,16 +99,16 @@ const loadLockTypeChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 4);
+    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 5);
 
-    const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < 4);
+    const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < 5);
 
     const options: agCharts.AgChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
             right: 5,
-            bottom: 5,
+            bottom: 0,
             left: 5
         },
         title: {
