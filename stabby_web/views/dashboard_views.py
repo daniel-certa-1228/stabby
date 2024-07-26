@@ -21,6 +21,10 @@ def index(request):
 
     total_knives = DashboardService.get_total_knives()
 
+    total_new_knives = DashboardService.get_total_new_knives()
+
+    total_used_knives = DashboardService.get_total_used_knives()
+
     total_blades = DashboardService.get_total_blades()
 
     total_sharpeners = DashboardService.get_total_sharpeners()
@@ -34,6 +38,8 @@ def index(request):
         "template_variables": variable_dto.to_dict(),
         "last_purchase_date": last_purchase_date,
         "total_knives": total_knives,
+        "total_new_knives": total_new_knives,
+        "total_used_knives": total_used_knives,
         "total_blades": total_blades,
         "total_sharpeners": total_sharpeners,
         "brand_breakdown": brand_breakdown,

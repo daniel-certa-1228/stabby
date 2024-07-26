@@ -104,6 +104,14 @@ class DashboardService:
         return Knife.objects.filter(is_active=True).count()
 
     @classmethod
+    def get_total_new_knives(cls):
+        return Knife.objects.filter(is_active=True, purchased_new=True).count()
+
+    @classmethod
+    def get_total_used_knives(cls):
+        return Knife.objects.filter(is_active=True, purchased_new=False).count()
+
+    @classmethod
     def get_total_sharpeners(cls):
         return Sharpener.objects.filter(is_active=True).count()
 
