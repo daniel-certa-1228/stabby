@@ -59,7 +59,7 @@ const loadCountryChart = async (): Promise<void> => {
             tooltip: {
                 renderer: (params) => {
                     return {
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                     };
                 }
             }
@@ -78,7 +78,7 @@ const loadCountryChart = async (): Promise<void> => {
                 renderer: (params) => {
                     return {
                     title: `${params.datum.name}`,
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                     };
                 }
             }
@@ -129,7 +129,7 @@ const loadLockTypeChart = async (): Promise<void> => {
                 tooltip: {
                     renderer: (params) => {
                         return {
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                         };
                     }
                 }
@@ -148,7 +148,7 @@ const loadLockTypeChart = async (): Promise<void> => {
                     renderer: (params) => {
                         return {
                         title: `${params.datum.name}`,
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                         };
                     }
                 }
@@ -191,7 +191,7 @@ const loadSteelTypeChart = async (): Promise<void> => {
             tooltip: {
                 renderer: (params) => {
                   return {
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage}%`
+                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                   };
                 }
               }
