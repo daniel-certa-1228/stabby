@@ -99,9 +99,9 @@ const loadLockTypeChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 5);
+    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 6);
 
-    const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < 5);
+    const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < 6);
 
     const options: agCharts.AgChartOptions = {
         container: chartDiv,
