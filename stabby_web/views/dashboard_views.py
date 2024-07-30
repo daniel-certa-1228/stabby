@@ -25,6 +25,14 @@ def index(request):
 
     total_used_knives = DashboardService.get_total_used_knives()
 
+    new_percentage = (
+        f"{(total_new_knives / total_knives if total_knives > 0 else 0) * 100:.2f}%"
+    )
+
+    used_percentage = (
+        f"{(total_used_knives / total_knives if total_knives > 0 else 0) * 100:.2f}%"
+    )
+
     total_blades = DashboardService.get_total_blades()
 
     total_sharpeners = DashboardService.get_total_sharpeners()
@@ -33,6 +41,10 @@ def index(request):
 
     vendor_breakdown = DashboardService.get_vendor_chart_data()
 
+    blade_material_breakdown = DashboardService.get_blade_material_chart_data()
+
+    handle_material_breakdown = DashboardService.get_handle_material_chart_data()
+
     context = {
         "active": Modules.Dashboard.value,
         "template_variables": variable_dto.to_dict(),
@@ -40,9 +52,13 @@ def index(request):
         "total_knives": total_knives,
         "total_new_knives": total_new_knives,
         "total_used_knives": total_used_knives,
+        "new_percentage": new_percentage,
+        "used_percentage": used_percentage,
         "total_blades": total_blades,
         "total_sharpeners": total_sharpeners,
         "brand_breakdown": brand_breakdown,
+        "blade_material_breakdown": blade_material_breakdown,
+        "handle_material_breakdown": handle_material_breakdown,
         "vendor_breakdown": vendor_breakdown,
     }
 

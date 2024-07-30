@@ -19,8 +19,10 @@ from .steel_type_model import SteelType
 from .unit_of_measure_model import UnitOfMeasure
 from .vendor_model import Vendor
 from .view_blade_grid import ViewBladeGrid
+from .view_blade_material_chart import ViewBladeMaterialChart
 from .view_brand_chart import ViewBrandChart
 from .view_country_chart import ViewCountryChart
+from .view_handle_material_chart import ViewHandleMaterialChart
 from .view_knife_grid import ViewKnifeGrid
 from .view_lock_type_chart import ViewLockTypeChart
 from .view_sharpener_grid import ViewSharpenerGrid
@@ -51,7 +53,9 @@ __all__ = [
     "Vendor",
     "ViewBladeGrid",
     "ViewBrandChart",
+    "ViewBladeMaterialChart",
     "ViewCountryChart",
+    "ViewHandleMaterialChart",
     "ViewKnifeGrid",
     "ViewLockTypeChart",
     "ViewSharpenerGrid",

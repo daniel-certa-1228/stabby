@@ -1,0 +1,25 @@
+<div class="card mt-4">
+    <div class="card-header d-flex justify-content-between">
+        Vendor Breakdown
+    </div>
+    <div class="card-body pb-0 pt-0 dash-card-body">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Vendor</th>
+                    <th scope="col" class="right">Count</th>
+                    <th scope="col" class="right">Percentage</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for vend in vendor_breakdown %}
+                    <tr>
+                        <td>{{ vend.name }}</td>
+                        <td class="right">{{ vend.count }}</td>
+                        <td class="right">{{ vend.percentage }}%</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

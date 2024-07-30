@@ -1,22 +1,22 @@
-<div class="card mt-md-0 mt-3">
+<div class="card mt-4">
     <div class="card-header d-flex justify-content-between">
-        Brand Breakdown
+        Blade Material Breakdown
     </div>
     <div class="card-body pb-0 pt-0 dash-card-body">
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                    <th scope="col">Brand</th>
+                    <th scope="col">Blade Material</th>
                     <th scope="col" class="right">Count</th>
                     <th scope="col" class="right">Percentage</th>
                   </tr>
             </thead>
             <tbody>
-                {% for brand in brand_breakdown %}
+                {% for bm in blade_material_breakdown %}
                     <tr>
-                        <td>{{ brand.name }}</td>
-                        <td class="right">{{ brand.count }}</td>
-                        <td class="right">{{ brand.percentage }}%</td>
+                        <td>{{ bm.name }}</td>
+                        <td class="right">{{ bm.count }}</td>
+                        <td class="right">{{ bm.percentage }}%</td>
                     </tr>
                 {% endfor %}
             </tbody>
