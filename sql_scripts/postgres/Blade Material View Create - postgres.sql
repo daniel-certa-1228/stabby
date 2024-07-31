@@ -1,4 +1,3 @@
-
 DROP VIEW IF EXISTS view_blade_material_chart;
 
 CREATE VIEW view_blade_material_chart AS
@@ -6,8 +5,8 @@ CREATE VIEW view_blade_material_chart AS
 	    CASE 
 		    WHEN 
 		    	bm.name IS NOT NULL 
-		    THEN 
-		    	bm.name 
+		    THEN
+		    	CASE WHEN sm.name IS NOT NULL THEN sm.name || ' ' || bm.name ELSE bm.name END
 		    ELSE 
 		    	'Unknown' 
 		END AS "name",
@@ -16,13 +15,17 @@ CREATE VIEW view_blade_material_chart AS
 	FROM 
 		stabby_web_knife k
 	LEFT JOIN 
-		stabby_web_bladematerial bm ON bm.blade_material_id  = k.blade_material_id 
+		stabby_web_bladematerial bm ON bm.blade_material_id = k.blade_material_id 
+	LEFT JOIN 
+		stabby_web_steelmanufacturer sm ON sm.steel_manufacturer_id  = bm.steel_manufacturer_id 
 	WHERE 
 		k.is_active = true
 	GROUP BY 
-		bm.name
+		bm.name,
+		sm.name
 	ORDER BY 
 		"count" DESC, 
+		sm.name,
 		bm.name;
 		
 GRANT SELECT ON view_blade_material_chart TO db;
