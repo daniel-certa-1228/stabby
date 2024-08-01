@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
       chart_loader.loadSteelTypeChart();
       chart_loader.loadCountryChart();
       chart_loader.loadLockTypeChart();
+      chart_loader.loadDeploymentTypeChart();
     }
       break;
     case enums.ViewTypes.KnifeAddEdit:

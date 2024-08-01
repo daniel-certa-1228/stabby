@@ -53,6 +53,20 @@ class DashboardService:
         return dtos
 
     @classmethod
+    def get_deployment_type_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_deployment_type_chart;")
+            rows = cursor.fetchall()
+
+        dtos = list()
+
+        for row in rows:
+            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
+            dtos.append(dto.to_dict())
+
+        return dtos
+
+    @classmethod
     def get_handle_material_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_handle_material_chart;")

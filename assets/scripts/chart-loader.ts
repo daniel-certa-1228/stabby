@@ -90,6 +90,77 @@ const loadCountryChart = async (): Promise<void> => {
     const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
 }
 
+const loadDeploymentTypeChart = async (): Promise<void> => {
+    const chartDiv: HTMLElement = document.querySelector('#deployment-type-chart')!;
+
+    const spinner: HTMLElement | null = document.querySelector('#dt-chart-spinner');
+
+    const url: string = `${constants.getBaseUrl()}api/get_deployment_type_chart_data`;
+
+    const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
+
+    const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= 6);
+
+    const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < 6);
+
+    const options: agCharts.AgChartOptions = {
+        container: chartDiv,
+        padding:{
+            top: 5,
+            right: 5,
+            bottom: 0,
+            left: 5
+        },
+        title: {
+            text: "Deployment Types",
+          },
+        data: chartData,
+        series: [
+            {
+                type: "donut",
+                fills: fill_1,
+                data: donut_1,
+                calloutLabelKey: "name",
+                legendItemKey: "name",
+                angleKey: "count",
+                outerRadiusRatio: 1,
+                innerRadiusRatio: 0.8,
+                showInLegend: false,
+                tooltip: {
+                    renderer: (params) => {
+                        return {
+                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
+                        };
+                    }
+                }
+            },
+            {
+                type: "donut",
+                fills: fill_2,
+                data: donut_2,
+                legendItemKey: "name",
+                calloutLabelKey: "name",
+                angleKey: "count",
+                outerRadiusRatio: 0.5,
+                innerRadiusRatio: 0.3,
+                showInLegend: false,
+                tooltip: {
+                    renderer: (params) => {
+                        return {
+                        title: `${params.datum.name}`,
+                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
+                        };
+                    }
+                }
+            },
+        ],
+    };
+
+    spinner?.remove();
+
+    const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
+}
+
 const loadLockTypeChart = async (): Promise<void> => {
     const chartDiv: HTMLElement = document.querySelector('#lock-type-chart')!;
 
@@ -228,6 +299,7 @@ const convertToOther = (arr: chart_data_model[] | undefined): chart_data_model |
 
 export {
     loadCountryChart,
+    loadDeploymentTypeChart,
     loadLockTypeChart,
     loadSteelTypeChart
 }

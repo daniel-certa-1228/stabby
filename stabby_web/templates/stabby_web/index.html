@@ -7,6 +7,10 @@
         {% include 'stabby_web/partials/_bc-dashboard.html' %}
     </div>
 
+    {% comment %} <div class="row mt-3 mb-5">
+        {% include 'stabby_web/partials/_chart-deployment-type-card.html' %}
+    </div> {% endcomment %}
+
     <div class="row mt-3 mb-5">
         <div class="col-md-4">
             {% include 'stabby_web/partials/_dash-stats-card.html' %}
@@ -28,6 +32,8 @@
             {% include 'stabby_web/partials/_breakdown-vendor-card.html' %}
 
             {% include 'stabby_web/partials/_chart-lock-type-card.html' %}
+
+            {% include 'stabby_web/partials/_chart-deployment-type-card.html' %}
         </div>
     </div>
 
