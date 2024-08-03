@@ -94,6 +94,13 @@ def get_steel_type_chart_data(request):
     return JsonResponse(data, safe=False, encoder=DecimalEncoder)
 
 
+@login_required
+def get_usa_new_vintage_chart_data(request):
+    data = DashboardService.get_usa_new_vintage_chart_data()
+
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
+
+
 @skip_save
 @login_required
 def set_last_purchase_date(request):

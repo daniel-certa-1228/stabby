@@ -158,6 +158,20 @@ class DashboardService:
         return Sharpener.objects.filter(is_active=True).count()
 
     @classmethod
+    def get_usa_new_vintage_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_usa_new_vintage_chart;")
+            rows = cursor.fetchall()
+
+        dtos = list()
+
+        for row in rows:
+            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
+            dtos.append(dto.to_dict())
+
+        return dtos
+
+    @classmethod
     def get_vendor_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_vendor_chart;")

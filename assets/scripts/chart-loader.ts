@@ -7,7 +7,7 @@ import {
     constants
 }  from './index';
 
-const fill_1: string[] = ["#4D4993", "#00764E", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#C4C454", "#006676", "#E6A902"];
+const fill_1: string[] = ["#4D4993", "#027600", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#C4C454", "#006676", "#E6A902"];
 const fill_2: string[] = ["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00", "#5DE602"];
 
 const loadCountryChart = async (): Promise<void> => {
@@ -282,6 +282,51 @@ const loadSteelTypeChart = async (): Promise<void> => {
     const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
 }
 
+const loadUsaNewVintageChart = async (): Promise<void> => {
+    const chartDiv: HTMLElement = document.querySelector('#usa-new-vintage-chart')!;
+
+    const spinner: HTMLElement | null = document.querySelector('#usa-chart-spinner');
+
+    const url: string = `${constants.getBaseUrl()}api/get_usa_new_vintage_chart_data`;
+
+    const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
+
+    const options: agCharts.AgChartOptions = {
+        container: chartDiv,
+        padding:{
+            top: 5,
+            right: 5,
+            bottom: 5,
+            left: 5
+        },
+        title: {
+            text: "U.S.A.",
+          },
+        subtitle: {
+            text: "New/Vintage"
+        },
+        data: chartData,
+        series: [{
+            type: "pie",
+            fills: fill_1,
+            angleKey: "count",
+            legendItemKey: "name",
+            angleName: "U.S.A.",
+            tooltip: {
+                renderer: (params) => {
+                  return {
+                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
+                  };
+                }
+              }
+        }],
+    };
+    
+    spinner?.remove();
+
+    const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
+}
+
 // PRIVATE
 
 const convertToOther = (arr: chart_data_model[] | undefined): chart_data_model | null => {
@@ -309,5 +354,6 @@ export {
     loadCountryChart,
     loadDeploymentTypeChart,
     loadLockTypeChart,
-    loadSteelTypeChart
+    loadSteelTypeChart,
+    loadUsaNewVintageChart
 }
