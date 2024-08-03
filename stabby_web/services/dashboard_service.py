@@ -16,13 +16,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_blade_material_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_brand_chart_data(cls):
@@ -30,13 +24,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_brand_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_country_chart_data(cls):
@@ -44,13 +32,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_country_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_deployment_type_chart_data(cls):
@@ -58,13 +40,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_deployment_type_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_handle_material_chart_data(cls):
@@ -72,13 +48,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_handle_material_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_last_purchase_date(cls, now):
@@ -101,13 +71,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_lock_type_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_number_of_days_since_purchase(cls, now):
@@ -127,13 +91,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_steel_type_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_total_blades(cls):
@@ -163,13 +121,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_usa_new_vintage_chart;")
             rows = cursor.fetchall()
 
-        dtos = list()
-
-        for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
-            dtos.append(dto.to_dict())
-
-        return dtos
+        return cls.map_to_chart_dto(rows)
 
     @classmethod
     def get_vendor_chart_data(cls):
@@ -177,6 +129,10 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_vendor_chart;")
             rows = cursor.fetchall()
 
+        return cls.map_to_chart_dto(rows)
+
+    @classmethod
+    def map_to_chart_dto(cls, rows):
         dtos = list()
 
         for row in rows:
