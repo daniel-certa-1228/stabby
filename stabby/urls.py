@@ -126,6 +126,11 @@ urlpatterns = [
         name="get_blade_grid",
     ),
     path(
+        "api/get_deployment_type_chart_data/",
+        views.get_deployment_type_chart_data,
+        name="get_deployment_type_chart_data",
+    ),
+    path(
         "api/get_lock_type_chart_data/",
         views.get_lock_type_chart_data,
         name="get_lock_type_chart_data",
@@ -134,6 +139,11 @@ urlpatterns = [
         "api/get_steel_type_chart_data/",
         views.get_steel_type_chart_data,
         name="get_steel_type_chart_data",
+    ),
+    path(
+        "api/get_usa_new_vintage_chart_data/",
+        views.get_usa_new_vintage_chart_data,
+        name="get_usa_new_vintage_chart_data",
     ),
     path(
         "api/get_country_chart_data/",

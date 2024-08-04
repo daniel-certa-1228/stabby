@@ -1,0 +1,25 @@
+<div class="card mt-4">
+    <div class="card-header d-flex justify-content-between">
+        Blade Shape Breakdown
+    </div>
+    <div class="card-body pb-0 pt-0 dash-card-body">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Blade Shape</th>
+                    <th scope="col" class="right">Count</th>
+                    <th scope="col" class="right">Percentage</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for bs in blade_shape_breakdown %}
+                    <tr>
+                        <td>{{ bs.name }}</td>
+                        <td class="right">{{ bs.count }}</td>
+                        <td class="right">{{ bs.percentage }}%</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -4,8 +4,10 @@ from .custom_login_views import custom_login_view
 
 from .dashboard_views import (
     get_country_chart_data,
+    get_deployment_type_chart_data,
     get_lock_type_chart_data,
     get_steel_type_chart_data,
+    get_usa_new_vintage_chart_data,
     index,
     set_last_purchase_date,
 )
@@ -50,9 +52,11 @@ __all__ = [
     "knife_detail",
     "knife_update",
     "get_country_chart_data",
+    "get_deployment_type_chart_data",
     "get_lock_type_chart_data",
     "get_sharpener_grid",
     "get_steel_type_chart_data",
+    "get_usa_new_vintage_chart_data",
     "set_last_purchase_date",
     "sharpener_create",
     "sharpener_delete",
