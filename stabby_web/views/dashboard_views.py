@@ -43,6 +43,8 @@ def index(request):
 
     blade_material_breakdown = DashboardService.get_blade_material_chart_data()
 
+    blade_shape_breakdown = DashboardService.get_blade_shape_chart_data()
+
     handle_material_breakdown = DashboardService.get_handle_material_chart_data()
 
     context = {
@@ -58,6 +60,7 @@ def index(request):
         "total_sharpeners": total_sharpeners,
         "brand_breakdown": brand_breakdown,
         "blade_material_breakdown": blade_material_breakdown,
+        "blade_shape_breakdown": blade_shape_breakdown,
         "handle_material_breakdown": handle_material_breakdown,
         "vendor_breakdown": vendor_breakdown,
     }

@@ -1,4 +1,3 @@
-
 DROP VIEW IF EXISTS view_usa_new_vintage_chart;
 
 CREATE VIEW view_usa_new_vintage_chart AS

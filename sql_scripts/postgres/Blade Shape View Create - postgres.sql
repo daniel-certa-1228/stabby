@@ -1,4 +1,3 @@
-
 DROP VIEW IF EXISTS view_blade_shape_chart;
 
 CREATE VIEW view_blade_shape_chart AS

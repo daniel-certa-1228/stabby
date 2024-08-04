@@ -19,6 +19,14 @@ class DashboardService:
         return cls.map_to_chart_dto(rows)
 
     @classmethod
+    def get_blade_shape_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_blade_shape_chart;")
+            rows = cursor.fetchall()
+
+        return cls.map_to_chart_dto(rows)
+
+    @classmethod
     def get_brand_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_brand_chart;")

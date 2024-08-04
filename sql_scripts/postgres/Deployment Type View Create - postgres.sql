@@ -1,4 +1,3 @@
-
 DROP VIEW IF EXISTS view_deployment_type_chart;
 
 CREATE VIEW view_deployment_type_chart AS
