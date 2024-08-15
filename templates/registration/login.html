@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mt-4">
-        <h6 class="d-inline-block blue">It's been <span class="d-inline-block border ps-1 pe-1 text-danger"><samp><strong>{{number_of_days}}</strong></samp></span> days since Dan bought a knife.</h6>
+        <h6 class="d-inline-block blue">It's been <span class="d-inline-block border ps-1 pe-1 text-danger"><samp><strong>{{number_of_days}}</strong></samp></span> day{% if number_of_days != 1 %}s{% endif %} since Dan bought a knife.</h6>
     </div>
 
 {% endblock %}
