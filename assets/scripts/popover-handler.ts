@@ -6,5 +6,5 @@ document.addEventListener('DOMContentLoaded', function() {
   const popoverTriggerList: NodeListOf<Element> = document.querySelectorAll('[data-bs-toggle="popover"]');
   
     // eslint-disable-next-line no-unused-vars
-  const popoverList = Array.from(popoverTriggerList).map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+  const popoverList: bootstrap.Popover[] = Array.from(popoverTriggerList).map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 });
