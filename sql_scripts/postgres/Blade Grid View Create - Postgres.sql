@@ -29,6 +29,7 @@ CREATE VIEW view_blade_grid AS
                 THEN ' ' || uom.name
                 ELSE ''
             END) AS TEXT) AS "length_cutting_edge",
+        b.blade_shape_notes,
         b.has_half_stop,
         b.is_main_blade,
         b.is_active 

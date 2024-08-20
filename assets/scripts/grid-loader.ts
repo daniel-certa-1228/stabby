@@ -2,8 +2,9 @@
 
 import { 
   agGrid, 
-  ajax_handler, 
-  constants, 
+  ajax_handler,
+  constants,
+  popover_handler,
   view_blade_grid_model, 
   view_knife_grid_model, 
   view_sharpener_grid_model, 
@@ -268,6 +269,9 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
 
   const gridOptions: agGrid.GridOptions = {
     headerHeight: 35,
+    onFirstDataRendered(event) {
+      popover_handler.initGridPopovers();
+    },
     defaultColDef: {
       cellStyle: { textAlign: 'left' }
     },
@@ -282,8 +286,10 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
         },
       },
       { 
-        headerName: 'Shape', 
-        field: 'blade_shape', 
+        headerName: 'Shape',
+        cellRenderer: (params: any) => {
+          return `${params.data.blade_shape}${params.data.blade_shape_notes ? `<span class="text-primary pointer">&nbsp;&nbsp;<i class="bi bi-info-circle grid-popover" data-bs-toggle="popover" data-bs-title="Blade Shape Notes" data-bs-content="${params.data.blade_shape_notes}" data-bs-trigger="hover focus"></i></span>` : ''}`;
+        },
         minWidth: 135, 
         maxWidth: 185
       },

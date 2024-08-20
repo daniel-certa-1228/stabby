@@ -7,6 +7,7 @@ class ViewBladeGrid(models.Model):
     blade_shape = models.CharField(max_length=100)
     length = models.CharField(max_length=20)
     length_cutting_edge = models.CharField(max_length=20)
+    blade_shape_notes = models.TextField(null=True, blank=True)
     has_half_stop = models.BooleanField(default=False, null=False)
     is_main_blade = models.BooleanField(default=True, null=False)
     is_active = models.BooleanField(default=True, null=False)
