@@ -36,3 +36,5 @@ CREATE VIEW view_blade_grid AS
     FROM stabby_web_blade b
     LEFT JOIN stabby_web_unitofmeasure uom ON uom.uom_id = b.uom_id 
     LEFT JOIN stabby_web_bladeshape sh ON sh.blade_shape_id = b.blade_shape_id;
+   
+ GRANT SELECT ON view_blade_grid TO db;
