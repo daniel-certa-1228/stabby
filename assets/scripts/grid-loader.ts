@@ -9,8 +9,9 @@ import {
   view_knife_grid_model, 
   view_sharpener_grid_model, 
   work_log_model} from './index';
+import { knife_filter_model } from './models/knife-filter-model';
 
-const loadKnifeGrid = async (): Promise<void> => {
+const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
   const gridOptions: agGrid.GridOptions = {
@@ -144,6 +145,10 @@ const loadKnifeGrid = async (): Promise<void> => {
   };
 
   const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv, gridOptions);
+
+  if (knife_filter && knife_filter.brand) {
+    gridApi.setColumnFilterModel('brand', { filter: knife_filter?.brand, type: 'equals' });
+  }
 
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;
 

@@ -4,7 +4,8 @@ CREATE VIEW view_brand_chart AS
 	SELECT
 	    b.name,
 	    COUNT(k.knife_id) AS "count",
-	    ROUND((COUNT(k.knife_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_knife WHERE is_active = true)), 2) AS percentage
+	    ROUND((COUNT(k.knife_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_knife WHERE is_active = true)), 2) AS percentage,
+	    url_encode(b.name) AS query_str
 	FROM 
 		stabby_web_knife k
 	LEFT JOIN 

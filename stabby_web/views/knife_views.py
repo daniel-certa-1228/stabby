@@ -13,7 +13,11 @@ from stabby_web.decorators import skip_save
 # MVT VIEWS
 @login_required
 def knives(request):
-    variable_dto = TemplateVariableDTO(ViewTypes.KnifeGrid.value, not settings.DEBUG)
+    filter = KnifeService.set_knife_filter(request)
+
+    variable_dto = TemplateVariableDTO(
+        ViewTypes.KnifeGrid.value, not settings.DEBUG, knife_filter=filter
+    )
 
     context = {
         "active": Modules.Knives.value,
