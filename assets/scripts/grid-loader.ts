@@ -449,6 +449,12 @@ const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter
     } else {
       gridApi.setColumnFilterModel('vendor', { type: 'blank' })
     }
+  } else if (knife_filter && knife_filter.blade_material) {
+    if (knife_filter.blade_material !== 'Unknown') {
+      gridApi.setColumnFilterModel('blade_material', { filter: knife_filter?.blade_material, type: 'equals' });
+    } else {
+      gridApi.setColumnFilterModel('blade_material', { type: 'blank' })
+    }
   }
 }
 
