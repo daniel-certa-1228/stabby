@@ -441,19 +441,21 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
 };
 
 const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter_model | null): void => {
-  if (knife_filter && knife_filter.brand) {
-    gridApi.setColumnFilterModel('brand', { filter: knife_filter?.brand, type: 'equals' });
-  } else if (knife_filter && knife_filter.vendor) {
-    if (knife_filter.vendor !== 'Unknown') {
-      gridApi.setColumnFilterModel('vendor', { filter: knife_filter?.vendor, type: 'equals' });
-    } else {
-      gridApi.setColumnFilterModel('vendor', { type: 'blank' })
-    }
-  } else if (knife_filter && knife_filter.blade_material) {
-    if (knife_filter.blade_material !== 'Unknown') {
-      gridApi.setColumnFilterModel('blade_material', { filter: knife_filter?.blade_material, type: 'equals' });
-    } else {
-      gridApi.setColumnFilterModel('blade_material', { type: 'blank' })
+  if (knife_filter) {
+    if (knife_filter.brand) {
+      gridApi.setColumnFilterModel('brand', { filter: knife_filter?.brand, type: 'equals' });
+    } else if (knife_filter.vendor) {
+      if (knife_filter.vendor !== 'Unknown') {
+        gridApi.setColumnFilterModel('vendor', { filter: knife_filter?.vendor, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('vendor', { type: 'blank' })
+      }
+    } else if (knife_filter.blade_material) {
+      if (knife_filter.blade_material !== 'Unknown') {
+        gridApi.setColumnFilterModel('blade_material', { filter: knife_filter?.blade_material, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('blade_material', { type: 'blank' })
+      }
     }
   }
 }
