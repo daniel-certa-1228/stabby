@@ -146,15 +146,7 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
 
   const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv, gridOptions);
 
-  if (knife_filter && knife_filter.brand) {
-    gridApi.setColumnFilterModel('brand', { filter: knife_filter?.brand, type: 'equals' });
-  } else if (knife_filter && knife_filter.vendor) {
-    if (knife_filter.vendor !== 'Unknown') {
-      gridApi.setColumnFilterModel('vendor', { filter: knife_filter?.vendor, type: 'equals' });
-    } else {
-      gridApi.setColumnFilterModel('vendor', { type: 'blank' })
-    }
-  }
+  setKnifeFilter(gridApi, knife_filter);
 
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;
 
@@ -447,6 +439,18 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
     };
   }
 };
+
+const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter_model | null): void => {
+  if (knife_filter && knife_filter.brand) {
+    gridApi.setColumnFilterModel('brand', { filter: knife_filter?.brand, type: 'equals' });
+  } else if (knife_filter && knife_filter.vendor) {
+    if (knife_filter.vendor !== 'Unknown') {
+      gridApi.setColumnFilterModel('vendor', { filter: knife_filter?.vendor, type: 'equals' });
+    } else {
+      gridApi.setColumnFilterModel('vendor', { type: 'blank' })
+    }
+  }
+}
 
 export {
   loadBladeGrid,
