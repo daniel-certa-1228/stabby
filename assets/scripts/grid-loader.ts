@@ -148,6 +148,12 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
 
   if (knife_filter && knife_filter.brand) {
     gridApi.setColumnFilterModel('brand', { filter: knife_filter?.brand, type: 'equals' });
+  } else if (knife_filter && knife_filter.vendor) {
+    if (knife_filter.vendor !== 'Unknown') {
+      gridApi.setColumnFilterModel('vendor', { filter: knife_filter?.vendor, type: 'equals' });
+    } else {
+      gridApi.setColumnFilterModel('vendor', { type: 'blank' })
+    }
   }
 
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;

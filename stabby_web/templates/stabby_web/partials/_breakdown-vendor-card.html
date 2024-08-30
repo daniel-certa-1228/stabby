@@ -14,7 +14,9 @@
             <tbody>
                 {% for vend in vendor_breakdown %}
                     <tr>
-                        <td>{{ vend.name }}</td>
+                        <td>
+                            <a href="{% url 'knives' %}?vendor={{ vend.query_str }}" class="link-style">{{ vend.name }}</a>
+                        </td>
                         <td class="right">{{ vend.count }}</td>
                         <td class="right">{{ vend.percentage }}%</td>
                     </tr>

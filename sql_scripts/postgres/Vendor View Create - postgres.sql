@@ -3,7 +3,7 @@ DROP VIEW IF EXISTS view_vendor_chart;
 CREATE VIEW view_vendor_chart AS
 	SELECT
 	    CASE 
-		    WHEN 
+		    WHEN
 		    	v.name IS NOT NULL 
 		    THEN 
 		    	v.name 
@@ -11,7 +11,8 @@ CREATE VIEW view_vendor_chart AS
 		    	'Unknown' 
 		END AS "name",
 	    COUNT(k.knife_id) AS "count",
-	    ROUND((COUNT(k.knife_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_knife WHERE is_active = true)), 2) AS percentage
+	    ROUND((COUNT(k.knife_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_knife WHERE is_active = true)), 2) AS percentage,
+	    CASE WHEN v.name IS NOT NULL THEN url_encode(v.name) ELSE 'Unknown' END AS query_str
 	FROM 
 		stabby_web_knife k
 	LEFT JOIN 
@@ -24,4 +25,4 @@ CREATE VIEW view_vendor_chart AS
 		"count" DESC, 
 		v.name;
 		
-GRANT SELECT ON view_vendor_chart TO db;
+GRANT SELECT ON view_vendor_chart TO stabby_app;
