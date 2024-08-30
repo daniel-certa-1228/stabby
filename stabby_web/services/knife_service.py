@@ -99,14 +99,17 @@ class KnifeService:
         brand = request.GET.get("brand")
         vendor = request.GET.get("vendor")
         blade_material = request.GET.get("blade_material")
+        handle_material = request.GET.get("handle_material")
 
-        if brand or vendor or blade_material:
+        if brand or vendor or blade_material or handle_material:
             if brand:
                 dto = KnifeFilterDTO(brand=brand)
             elif vendor:
                 dto = KnifeFilterDTO(vendor=vendor)
             elif blade_material:
                 dto = KnifeFilterDTO(blade_material=blade_material)
+            elif handle_material:
+                dto = KnifeFilterDTO(handle_material=handle_material)
 
             return dto
         else:
