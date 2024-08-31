@@ -14,7 +14,9 @@
             <tbody>
                 {% for hm in handle_material_breakdown %}
                     <tr>
-                        <td>{{ hm.name }}</td>
+                        <td>
+                            <a href="{% url 'knives' %}?handle_material={{ hm.query_str }}" class="link-style">{{ hm.name }}</a>
+                        </td>
                         <td class="right">{{ hm.count }}</td>
                         <td class="right">{{ hm.percentage }}%</td>
                     </tr>

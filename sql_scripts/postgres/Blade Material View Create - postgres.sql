@@ -11,7 +11,17 @@ CREATE VIEW view_blade_material_chart AS
 		    	'Unknown' 
 		END AS "name",
 	    COUNT(k.knife_id) AS "count",
-	    ROUND((COUNT(k.knife_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_knife WHERE is_active = true)), 2) AS percentage
+	    ROUND((COUNT(k.knife_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_knife WHERE is_active = true)), 2) AS percentage,
+	    url_encode(
+		    CASE 
+			    WHEN 
+			    	bm.name IS NOT NULL 
+			    THEN
+			    	CASE WHEN sm.name IS NOT NULL THEN sm.name || ' ' || bm.name ELSE bm.name END
+			    ELSE 
+			    	'Unknown' 
+			END
+	) AS query_str
 	FROM 
 		stabby_web_knife k
 	LEFT JOIN 

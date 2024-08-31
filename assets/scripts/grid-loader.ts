@@ -9,8 +9,9 @@ import {
   view_knife_grid_model, 
   view_sharpener_grid_model, 
   work_log_model} from './index';
+import { knife_filter_model } from './models/knife-filter-model';
 
-const loadKnifeGrid = async (): Promise<void> => {
+const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
   const gridOptions: agGrid.GridOptions = {
@@ -144,6 +145,8 @@ const loadKnifeGrid = async (): Promise<void> => {
   };
 
   const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv, gridOptions);
+
+  setKnifeFilter(gridApi, knife_filter);
 
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;
 
@@ -436,6 +439,32 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
     };
   }
 };
+
+const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter_model | null): void => {
+  if (knife_filter) {
+    if (knife_filter.brand) {
+      gridApi.setColumnFilterModel('brand', { filter: knife_filter?.brand, type: 'equals' });
+    } else if (knife_filter.vendor) {
+      if (knife_filter.vendor !== 'Unknown') {
+        gridApi.setColumnFilterModel('vendor', { filter: knife_filter?.vendor, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('vendor', { type: 'blank' })
+      }
+    } else if (knife_filter.blade_material) {
+      if (knife_filter.blade_material !== 'Unknown') {
+        gridApi.setColumnFilterModel('blade_material', { filter: knife_filter?.blade_material, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('blade_material', { type: 'blank' })
+      }
+    } else if (knife_filter.handle_material) {
+      if (knife_filter.handle_material !== 'Unknown') {
+        gridApi.setColumnFilterModel('handle_material', { filter: knife_filter?.handle_material, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('handle_material', { type: 'blank' })
+      }
+    }
+  }
+}
 
 export {
   loadBladeGrid,

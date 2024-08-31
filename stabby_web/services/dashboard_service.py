@@ -144,7 +144,12 @@ class DashboardService:
         dtos = list()
 
         for row in rows:
-            dto = ChartDataDTO(name=row[0], count=row[1], percentage=row[2])
+            dto = ChartDataDTO(
+                name=row[0],
+                count=row[1],
+                percentage=row[2],
+                query_str=row[3] if len(row) > 3 and row[3] else None,
+            )
             dtos.append(dto.to_dict())
 
         return dtos
