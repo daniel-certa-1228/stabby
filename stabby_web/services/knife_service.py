@@ -2,6 +2,7 @@ from django.utils import timezone
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.db.models import Prefetch
+from stabby_web.dtos.knife_filter_dto import KnifeFilterDTO
 from stabby_web.models import Blade, Knife, Photo, ViewKnifeGrid
 
 
@@ -92,6 +93,27 @@ class KnifeService:
         )
 
         return list(queryset.values())
+
+    @classmethod
+    def set_knife_filter(cls, request):
+        brand = request.GET.get("brand")
+        vendor = request.GET.get("vendor")
+        blade_material = request.GET.get("blade_material")
+        handle_material = request.GET.get("handle_material")
+
+        if brand or vendor or blade_material or handle_material:
+            if brand:
+                dto = KnifeFilterDTO(brand=brand)
+            elif vendor:
+                dto = KnifeFilterDTO(vendor=vendor)
+            elif blade_material:
+                dto = KnifeFilterDTO(blade_material=blade_material)
+            elif handle_material:
+                dto = KnifeFilterDTO(handle_material=handle_material)
+
+            return dto
+        else:
+            return None
 
     @classmethod
     def save_knife(cls, knife):

@@ -14,7 +14,9 @@
             <tbody>
                 {% for bm in blade_material_breakdown %}
                     <tr>
-                        <td>{{ bm.name }}</td>
+                        <td>
+                            <a href="{% url 'knives' %}?blade_material={{ bm.query_str }}" class="link-style">{{ bm.name }}</a>
+                        </td>
                         <td class="right">{{ bm.count }}</td>
                         <td class="right">{{ bm.percentage }}%</td>
                     </tr>

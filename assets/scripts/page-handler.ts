@@ -14,9 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   constants.setBaseUrl(variables['is_production']);
 
+  const knife_filter = variables["knife_filter"] ? variables["knife_filter"] : null;
+
   switch (variables['view_type']) {
     case enums.ViewTypes.KnifeGrid:
-      grid_loader.loadKnifeGrid();
+      grid_loader.loadKnifeGrid(knife_filter);
       break;
     case enums.ViewTypes.SharpenerGrid:
       grid_loader.loadSharpenerGrid();
