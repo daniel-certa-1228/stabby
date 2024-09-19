@@ -1,5 +1,6 @@
 'use strict';
 
+import { IFilter } from 'ag-grid-community';
 import { 
   agGrid, 
   ajax_handler,
@@ -462,6 +463,9 @@ const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter
       } else {
         gridApi.setColumnFilterModel('handle_material', { type: 'blank' })
       }
+    } 
+    else if (knife_filter.purchased_new !== undefined && knife_filter.purchased_new !== null) {
+      gridApi.setColumnFilterModel('purchased_new', { filter: knife_filter?.purchased_new });
     }
   }
 }
