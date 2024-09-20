@@ -164,7 +164,7 @@ def copy_knife(request, knife_id):
 
 @login_required
 def get_knife_grid(request):
-    data = KnifeService.get_knife_grid()
+    data = KnifeService.get_knife_grid(request)
 
     return JsonResponse(data, safe=False)
 

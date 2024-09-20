@@ -5,16 +5,19 @@ export class knife_filter_model {
     vendor: string;
     blade_material: string;
     handle_material: string;
+    blade_shape_id: number;
   
     constructor(
         brand: string,
         vendor: string,
         blade_material: string,
-        handle_material: string
+        handle_material: string,
+        blade_shape_id: number,
     ) {
         this.brand = brand;
         this.vendor = vendor;
         this.blade_material = blade_material;
         this.handle_material = handle_material;
+        this.blade_shape_id = blade_shape_id;
     }
 }

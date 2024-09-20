@@ -14,7 +14,9 @@
             <tbody>
                 {% for bs in blade_shape_breakdown %}
                     <tr>
-                        <td>{{ bs.name }}</td>
+                        <td>
+                            <a href="{% url 'knives' %}?blade_shape_id={{ bs.query_str }}" class="link-style">{{ bs.name }}</a>
+                        </td>
                         <td class="right">{{ bs.count }}</td>
                         <td class="right">{{ bs.percentage }}%</td>
                     </tr>
