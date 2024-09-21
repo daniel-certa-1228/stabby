@@ -147,7 +147,7 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
   const gridApi: agGrid.GridApi<any> = agGrid.createGrid(gridDiv, gridOptions);
 
   setKnifeFilter(gridApi, knife_filter);
-  debugger;
+
   const queryStr: string = knife_filter && knife_filter.blade_shape_id ?
     `?blade_shape_id=${knife_filter.blade_shape_id}`
     : '';
