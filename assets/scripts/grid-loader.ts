@@ -149,7 +149,11 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
 
   setKnifeFilter(gridApi, knife_filter);
 
-  const url: string = `${constants.getBaseUrl()}api/get_knife_grid`;
+  const queryStr: string = knife_filter && knife_filter.blade_shape_id ?
+    `?blade_shape_id=${knife_filter.blade_shape_id}`
+    : '';
+
+  const url: string = `${constants.getBaseUrl()}api/get_knife_grid${queryStr}`;
 
   const rowData: view_knife_grid_model[] | undefined = await ajax_handler.getKnifeGrid(url);
 

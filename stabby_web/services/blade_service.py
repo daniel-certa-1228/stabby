@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from ..models import (
     Blade,
+    BladeShape,
     ViewBladeGrid,
 )
 
@@ -24,6 +25,20 @@ class BladeService:
         ).order_by("-is_main_blade", "-length")
 
         return list(queryset.values())
+
+    @classmethod
+    def get_blade_shape_name(cls, blade_shape_id):
+        try:
+            blade_shape_id_int = int(blade_shape_id)
+        except (TypeError, ValueError):
+            return None
+
+        blade_shape = get_object_or_404(BladeShape, blade_shape_id=blade_shape_id_int)
+
+        if blade_shape and blade_shape.name:
+            return blade_shape.name
+
+        return None
 
     @classmethod
     def map_blade_form_to_data(cls, request, form, now, knife=None, blade=None):

@@ -6,6 +6,7 @@ export class knife_filter_model {
     blade_material: string;
     handle_material: string;
     purchased_new: boolean;
+    blade_shape_id: number;
   
     constructor(
         brand: string,
@@ -13,11 +14,13 @@ export class knife_filter_model {
         blade_material: string,
         handle_material: string,
         purchased_new: boolean,
+        blade_shape_id: number,
     ) {
         this.brand = brand;
         this.vendor = vendor;
         this.blade_material = blade_material;
         this.handle_material = handle_material;
         this.purchased_new = purchased_new;
+        this.blade_shape_id = blade_shape_id;
     }
 }
