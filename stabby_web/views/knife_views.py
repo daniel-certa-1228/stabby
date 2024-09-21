@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure, ViewTypes
 from stabby_web.forms import KnifeForm
-from stabby_web.services import KnifeService, TimeZoneService
+from stabby_web.services import BladeService, KnifeService, TimeZoneService
 from stabby_web.decorators import skip_save
 
 
@@ -19,9 +19,21 @@ def knives(request):
         ViewTypes.KnifeGrid.value, not settings.DEBUG, knife_filter=filter
     )
 
+    blade_shape_name = None
+
+    if (
+        variable_dto
+        and variable_dto.knife_filter
+        and variable_dto.knife_filter.blade_shape_id
+    ):
+        blade_shape_name = BladeService.get_blade_shape_name(
+            variable_dto.knife_filter.blade_shape_id
+        )
+
     context = {
         "active": Modules.Knives.value,
         "template_variables": variable_dto.to_dict(),
+        "blade_shape_name": blade_shape_name,
     }
 
     return render(request, "stabby_web/knives.html", context)
