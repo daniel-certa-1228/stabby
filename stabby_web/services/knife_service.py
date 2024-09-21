@@ -3,7 +3,7 @@ from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.db.models import Prefetch
 from stabby_web.dtos.knife_filter_dto import KnifeFilterDTO
-from stabby_web.models import Blade, Knife, Photo, ViewKnifeGrid
+from stabby_web.models import Blade, Knife, Photo, ViewKnifeGrid, ViewKnifeBladeGrid
 
 
 class KnifeService:
@@ -87,10 +87,22 @@ class KnifeService:
             return get_object_or_404(Knife, knife_id=knife_id)
 
     @classmethod
-    def get_knife_grid(cls):
-        queryset = ViewKnifeGrid.objects.filter(is_active=True).order_by(
-            "brand", "knife"
-        )
+    def get_knife_grid(cls, request):
+        blade_shape_id = request.GET.get("blade_shape_id")
+
+        try:
+            blade_shape_id_int = int(blade_shape_id)
+        except (TypeError, ValueError):
+            blade_shape_id = None
+
+        if blade_shape_id is None:
+            queryset = ViewKnifeGrid.objects.filter(is_active=True).order_by(
+                "brand", "knife"
+            )
+        else:
+            queryset = ViewKnifeBladeGrid.objects.filter(
+                is_active=True, blade_shape_id=blade_shape_id_int
+            ).order_by("brand", "knife")
 
         return list(queryset.values())
 
@@ -100,8 +112,9 @@ class KnifeService:
         vendor = request.GET.get("vendor")
         blade_material = request.GET.get("blade_material")
         handle_material = request.GET.get("handle_material")
+        blade_shape_id = request.GET.get("blade_shape_id")
 
-        if brand or vendor or blade_material or handle_material:
+        if brand or vendor or blade_material or handle_material or blade_shape_id:
             if brand:
                 dto = KnifeFilterDTO(brand=brand)
             elif vendor:
@@ -110,6 +123,8 @@ class KnifeService:
                 dto = KnifeFilterDTO(blade_material=blade_material)
             elif handle_material:
                 dto = KnifeFilterDTO(handle_material=handle_material)
+            elif blade_shape_id:
+                dto = KnifeFilterDTO(blade_shape_id=blade_shape_id)
 
             return dto
         else:

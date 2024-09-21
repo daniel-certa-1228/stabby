@@ -7,6 +7,7 @@ class ViewBladeShapeChart(models.Model):
     percentage = models.DecimalField(
         null=True, blank=True, decimal_places=2, max_digits=8
     )
+    blade_shape_id = models.BigIntegerField(null=False)
 
     class Meta:
         db_table = "view_blade_shape_chart"

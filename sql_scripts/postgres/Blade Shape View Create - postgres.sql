@@ -4,7 +4,8 @@ CREATE VIEW view_blade_shape_chart AS
 	SELECT 
 		bs.Name,
 		COUNT(bs.blade_shape_id) AS "count",
-		ROUND((COUNT(bs.blade_shape_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_blade b2 LEFT JOIN stabby_web_knife k2 ON k2.knife_id = b2.knife_id AND k2.is_active = TRUE WHERE b2.is_active = true)), 2) AS percentage
+		ROUND((COUNT(bs.blade_shape_id) * 100.0 / (SELECT COUNT(*) FROM stabby_web_blade b2 LEFT JOIN stabby_web_knife k2 ON k2.knife_id = b2.knife_id AND k2.is_active = TRUE WHERE b2.is_active = true)), 2) AS percentage,
+		bs.blade_shape_id
 	FROM 
 		stabby_web_blade b
 	LEFT JOIN 
@@ -15,7 +16,8 @@ CREATE VIEW view_blade_shape_chart AS
 		b.is_active = TRUE 
 		AND k.is_active = TRUE
 	GROUP BY 
-		bs.Name
+		bs.Name,
+		bs.blade_shape_id
 	ORDER BY 
 		"count" DESC, 
 		bs.name;
