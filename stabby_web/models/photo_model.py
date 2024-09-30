@@ -1,4 +1,5 @@
 from django.db import models
+from .brand_model import Brand
 from .knife_model import Knife
 from .sharpener_model import Sharpener
 from django_resized import ResizedImageField
@@ -15,6 +16,13 @@ class Photo(models.Model):
     )
     sharpener = models.ForeignKey(
         Sharpener,
+        related_name="photos",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+    brand = models.ForeignKey(
+        Brand,
         related_name="photos",
         on_delete=models.SET_NULL,
         null=True,
