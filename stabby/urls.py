@@ -90,6 +90,7 @@ urlpatterns = [
         views.sharpener_detail,
         name="sharpener_detail",
     ),
+    path("library", views.library, name="library"),
     path(
         "api/copy_knife/<int:knife_id>/",
         views.copy_knife,

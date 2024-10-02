@@ -5,6 +5,7 @@ class Modules(Enum):
     Dashboard = "dashboard"
     Knives = "knives"
     Sharpeners = "sharpeners"
+    Library = "library"
 
 
 class FormTypes(Enum):
@@ -30,3 +31,4 @@ class ViewTypes(Enum):
     KnifePhotoAddEdit = 10
     SharpenerPhotoAddEdit = 11
     Dashboard = 12
+    Library = 13
