@@ -13,7 +13,7 @@ from stabby_web.decorators import skip_save
 # MVT VIEWS
 @login_required
 def library(request):
-    filter = KnifeService.set_knife_filter(request)
+    # filter = KnifeService.set_knife_filter(request)
 
     variable_dto = TemplateVariableDTO(ViewTypes.Library.value, not settings.DEBUG)
 
