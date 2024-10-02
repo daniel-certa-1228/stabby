@@ -1,23 +1,6 @@
 from enum import Enum
 
 
-class Modules(Enum):
-    Dashboard = "dashboard"
-    Knives = "knives"
-    Sharpeners = "sharpeners"
-    Library = "library"
-
-
-class FormTypes(Enum):
-    Add = "add"
-    Edit = "edit"
-
-
-class UnitsOfMeasure(Enum):
-    inches = 1
-    centimeters = 2
-
-
 class ViewTypes(Enum):
     KnifeGrid = 1
     SharpenerGrid = 2
