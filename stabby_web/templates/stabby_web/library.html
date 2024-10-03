@@ -7,11 +7,13 @@
 
         {% include 'stabby_web/partials/_bc-library.html' %}
         
-        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}">
+        {% comment %} <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}">
             <i class="bi bi-plus-lg"></i>&nbsp;&nbsp;Add
-        </a>
+        </a> {% endcomment %}
     </div>
 
-    <h1>Coming Soon</h1>
+    <div class="text-center">
+        <h1 class="mt-3 text-muted">Coming Soon</h1>
+    </div>
 
 {% endblock %}
