@@ -30,7 +30,7 @@ from .sharpener_views import (
     sharpeners,
 )
 from .blade_views import get_blade_grid, blade_create, blade_update, blade_delete
-from .library_views import library
+from .library_views import library, library_item_create
 from .work_log_views import (
     get_knife_work_log_grid,
     get_sharpener_work_log_grid,
@@ -53,6 +53,7 @@ __all__ = [
     "knife_detail",
     "knife_update",
     "library",
+    "library_item_create",
     "get_country_chart_data",
     "get_deployment_type_chart_data",
     "get_lock_type_chart_data",

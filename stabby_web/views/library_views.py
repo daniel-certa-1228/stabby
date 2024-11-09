@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure, ViewTypes
-from stabby_web.forms import KnifeForm
+from stabby_web.forms import KnifeForm, PhotoForm
 from stabby_web.services import BladeService, KnifeService, TimeZoneService
 from stabby_web.decorators import skip_save
 
@@ -37,46 +37,46 @@ def library(request):
     return render(request, "stabby_web/library.html", context)
 
 
-# @skip_save
-# @login_required
-# def knife_create(request):
-#     if request.method == "POST":
-#         now = TimeZoneService.get_now()
+@skip_save
+@login_required
+def library_item_create(request):
+    if request.method == "POST":
+        now = TimeZoneService.get_now()
 
-#         form = KnifeForm(request.POST)
+        form = PhotoForm(request.POST)
 
-#         if form.is_valid():
-#             knife = KnifeService.map_knife_form_data(request, form, now)
+        # if form.is_valid():
+        #     knife = KnifeService.map_knife_form_data(request, form, now)
 
-#             if request.is_collector:
-#                 KnifeService.save_knife(knife)
+        #     if request.is_collector:
+        #         KnifeService.save_knife(knife)
 
-#             messages.success(request, "Knife Created!")
+        #     messages.success(request, "Knife Created!")
 
-#             if request.is_collector:
-#                 return redirect("knife_detail", knife_id=knife.knife_id)
-#             else:
-#                 return redirect("knives")
-#         else:
-#             messages.error(request, "Knife Create Failed.")
+        #     if request.is_collector:
+        #         return redirect("knife_detail", knife_id=knife.knife_id)
+        #     else:
+        #         return redirect("knives")
+        # else:
+        #     messages.error(request, "Knife Create Failed.")
 
-#     else:
-#         form = KnifeForm(
-#             initial={"uom": UnitsOfMeasure.inches.value, "purchased_new": True}
-#         )
+    else:
+        form = KnifeForm(
+            initial={"uom": UnitsOfMeasure.inches.value, "purchased_new": True}
+        )
 
-#         variable_dto = TemplateVariableDTO(
-#             ViewTypes.KnifeAddEdit.value, not settings.DEBUG
-#         )
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.LibraryItemAddEdit.value, not settings.DEBUG
+        )
 
-#         context = {
-#             "form": form,
-#             "form_type": FormTypes.Add.value,
-#             "active": Modules.Knives.value,
-#             "template_variables": variable_dto.to_dict(),
-#         }
+        context = {
+            "form": form,
+            "form_type": FormTypes.Add.value,
+            "active": Modules.Library.value,
+            "template_variables": variable_dto.to_dict(),
+        }
 
-#         return render(request, "stabby_web/knife-add-edit.html", context)
+        return render(request, "stabby_web/library-add-edit.html", context)
 
 
 # @login_required

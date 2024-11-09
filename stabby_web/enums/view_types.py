@@ -15,4 +15,4 @@ class ViewTypes(Enum):
     SharpenerPhotoAddEdit = 11
     Dashboard = 12
     Library = 13
-    LibraryAddEdit = 14
+    LibraryItemAddEdit = 14

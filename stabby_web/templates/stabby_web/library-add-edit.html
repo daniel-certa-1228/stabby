@@ -7,11 +7,21 @@
 
         {% include 'stabby_web/partials/_bc-library-add-edit.html' %}
         
-        {% comment %} <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'knife_create'%}">
-            <i class="bi bi-plus-lg"></i>&nbsp;&nbsp;Add
-        </a> {% endcomment %}
+        <span>
+            <button type="submit" form="photo-form" class="btn btn-primary btn-sm align-self-center new-btn me-2">
+                <i class="bi bi-floppy-fill"></i>&nbsp;&nbsp;Save
+            </button>
+
+            {% comment %} Need to change from Sharpeners {% endcomment %}
+            <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% if form_type == 'add' %}{% url 'sharpeners' %}{% else %}{% url 'sharpener_detail' sharpener_id=sharpener_id %}{% endif %}">
+                <i class="bi bi-x-circle"></i>&nbsp;Cancel
+            </a>
+        </span>
     </div>
 
-    <h1>Coming Soon</h1>
+    <div class="text-center">
+        <h1 class="mt-3 text-muted">Coming Soon - Library Add</h1>
+        <h1 class="mt-3 text-muted"><i class="bi bi-tools"></i></h1>
+    </div>
 
 {% endblock %}
