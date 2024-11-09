@@ -103,7 +103,7 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const breakPoint: number = 6
+    const breakPoint: number = 7
 
     const donut_1: chart_data_model[] | undefined = chartData?.filter(x => x.count >= breakPoint);
 
