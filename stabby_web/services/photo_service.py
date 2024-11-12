@@ -23,7 +23,7 @@ class PhotoService:
             photo.create_date = now
             photo.knife = knife
             photo.sharpener = sharpener
-            photo.brand = brand
+            photo.brand = form.cleaned_data["brand"]
             photo.photo = form.cleaned_data["photo"]
 
         photo.edit_date = now

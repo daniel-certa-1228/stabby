@@ -55,8 +55,10 @@ def photo_create(request, related_entity_id=None):
 
             if type(related_entity) is Knife:
                 return redirect(redirect_url, knife_id=related_entity_id)
-            else:
+            elif type(related_entity) is Sharpener:
                 return redirect(redirect_url, sharpener_id=related_entity_id)
+            else:
+                return redirect(redirect_url)
         else:
             messages.error(request, "Photo Create Failed")
     else:
