@@ -4,7 +4,7 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import PhotoForm
-from stabby_web.models import Knife
+from stabby_web.models import Knife, Sharpener
 from stabby_web.services import (
     KnifeService,
     SharpenerService,
@@ -19,16 +19,19 @@ from stabby_web.decorators import skip_save
 # MVT Views
 @skip_save
 @login_required
-def photo_create(request, related_entity_id):
+def photo_create(request, related_entity_id=None):
     related_entity = None
     redirect_url = None
 
     if "knives" in request.path:
         related_entity = KnifeService.get_knife_detail(related_entity_id)
         redirect_url = "knife_detail"
-    else:
+    if "sharpeners" in request.path:
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
         redirect_url = "sharpener_detail"
+    else:
+        related_entity = None
+        redirect_url = "library"
 
     if request.method == "POST":
         now = TimeZoneService.get_now()
@@ -69,7 +72,7 @@ def photo_create(request, related_entity_id):
             variable_dto = TemplateVariableDTO(
                 ViewTypes.KnifePhotoAddEdit.value, not settings.DEBUG, related_entity_id
             )
-        else:
+        elif type(related_entity) is Sharpener:
             initial = {"sharpener": related_entity}
             module = Modules.Sharpeners.value
             variable_dto = TemplateVariableDTO(
@@ -78,8 +81,16 @@ def photo_create(request, related_entity_id):
                 None,
                 related_entity_id,
             )
+        else:
+            initial = None
+            module = Modules.Library.value
+            variable_dto = TemplateVariableDTO(
+                ViewTypes.LibraryItemAddEdit.value,
+                not settings.DEBUG,
+                related_entity_id,
+            )
 
-        form = PhotoForm(initial)
+        form = PhotoForm(initial, active=module)
 
         context = {
             "form": form,
@@ -163,7 +174,7 @@ def photo_update(request, related_entity_id, photo_id):
         else:
             messages.error(request, "Photo Update Failed")
     else:
-        form = PhotoForm(instance=photo)
+        form = PhotoForm(instance=photo, active=module)
 
         context = {
             "form": form,

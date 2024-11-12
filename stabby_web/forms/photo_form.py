@@ -1,12 +1,12 @@
 from django import forms
+from stabby_web.services.dropdown_service import DropdownService
 from ..models import Photo
 
 
 class PhotoForm(forms.ModelForm):
-
     class Meta:
         model = Photo
-        fields = ["description", "photo", "photo_id"]
+        fields = ["brand", "description", "photo", "photo_id"]
         widgets = {
             "photo": forms.ClearableFileInput(
                 attrs={"class": "form-control-file", "accept": "image/*"}
@@ -14,18 +14,21 @@ class PhotoForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        active = kwargs.pop("active", None)  # Extract 'active' from kwargs
         super().__init__(*args, **kwargs)
-        if self.instance and self.instance.photo_id:
-            self.fields["photo"].required = False
-        # Add Bootstrap class to form fields
+
+        # Conditionally set 'brand' as required if 'active' is 'library'
+        if active == "library":
+            self.fields["brand"].required = True
+        else:
+            self.fields["brand"].required = False
+
+        # Bootstrap styling and other initializations
         for field_name, field in self.fields.items():
             field.widget.attrs["class"] = "form-control form-control-sm mb-2"
-
             if isinstance(field.widget, forms.Textarea):
                 field.widget.attrs["rows"] = 4
 
-    def clean_description(self):
-        description = self.cleaned_data.get("description")
-        if description:
-            return description.strip()
-        return description
+        # Dropdown queryset for brand
+        self.fields["brand"].queryset = DropdownService.get_brands()
+        self.fields["brand"].empty_label = "Select Brand"

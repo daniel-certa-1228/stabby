@@ -10,7 +10,7 @@
         <div class="col-md-6 order-md-1 order-2 mt-3 mt-md-0">
           {% if active == 'knives' %}
             {% include 'stabby_web/partials/_knife-detail-card.html' %}
-          {% else %}
+          {% elif active == 'sharpeners' %}
             {% include 'stabby_web/partials/_sharpener-detail-card.html' %}
           {% endif %}
         </div>
