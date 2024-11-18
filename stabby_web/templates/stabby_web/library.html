@@ -12,14 +12,13 @@
         </a> 
     </div>
 
-    <div class="text-center">
-        <h1 class="mt-3 text-muted">Coming Soon - Library Index</h1>
-        <h1 class="mt-3 text-muted"><i class="bi bi-tools"></i></h1>
-    </div>
-
-    <div class="text-body-tertiary text-center">
-        <h4>No Items Uploaded</h4>
-        <h1 class="mb-0"><i class="bi bi-images"></i></h1>
-    </div>
+    {% if library|length > 0 %}
+        Library has stuff.
+    {% else %}
+        <div class="text-body-tertiary text-center">
+            <h4>No Items Uploaded</h4>
+            <h1 class="mb-0"><i class="bi bi-images"></i></h1>
+        </div>
+    {% endif %}
 
 {% endblock %}
