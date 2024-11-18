@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
-from stabby_web.dtos import KnifeFilterDTO
+from stabby_web.dtos.knife_filter_dto import KnifeFilterDTO
 
 
 @dataclass

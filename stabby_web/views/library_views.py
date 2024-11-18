@@ -6,32 +6,21 @@ from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.enums import Modules, FormTypes, UnitsOfMeasure, ViewTypes
 from stabby_web.forms import KnifeForm, PhotoForm
-from stabby_web.services import BladeService, KnifeService, TimeZoneService
+from stabby_web.services import LibraryService, KnifeService, TimeZoneService
 from stabby_web.decorators import skip_save
 
 
 # MVT VIEWS
 @login_required
 def library(request):
-    # filter = KnifeService.set_knife_filter(request)
+    library = LibraryService.get_photos_grouped_by_brand()
 
     variable_dto = TemplateVariableDTO(ViewTypes.Library.value, not settings.DEBUG)
-
-    # blade_shape_name = None
-
-    # if (
-    #     variable_dto
-    #     and variable_dto.knife_filter
-    #     and variable_dto.knife_filter.blade_shape_id
-    # ):
-    #     blade_shape_name = BladeService.get_blade_shape_name(
-    #         variable_dto.knife_filter.blade_shape_id
-    #     )
 
     context = {
         "active": Modules.Library.value,
         "template_variables": variable_dto.to_dict(),
-        # "blade_shape_name": blade_shape_name,
+        "library": library,
     }
 
     return render(request, "stabby_web/library.html", context)

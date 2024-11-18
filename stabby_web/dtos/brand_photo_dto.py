@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from stabby_web.dtos import PhotoDTO
+from .photo_dto import PhotoDTO
 
 
 @dataclass
