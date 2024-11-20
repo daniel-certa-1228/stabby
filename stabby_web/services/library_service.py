@@ -1,7 +1,6 @@
-from django.shortcuts import get_object_or_404
 from django.db.models import Count, Q
 from stabby_web.dtos import BrandPhotoDTO, PhotoDTO
-from ..models import Brand, Photo
+from ..models import Brand
 
 
 class LibraryService:
@@ -13,6 +12,7 @@ class LibraryService:
                 photo_count=Count("photos", filter=Q(photos__is_active=True))
             )
             .filter(photo_count__gt=0)
+            .order_by("name")
             .prefetch_related("photos")
         )
 

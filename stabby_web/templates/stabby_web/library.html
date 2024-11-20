@@ -13,7 +13,7 @@
     </div>
 
     {% if library|length > 0 %}
-        Library has stuff.
+        {% include 'stabby_web/partials/_library-list-card.html' %}
     {% else %}
         <div class="text-body-tertiary text-center">
             <h4>No Items Uploaded</h4>
