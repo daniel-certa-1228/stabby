@@ -90,7 +90,7 @@ def photo_create(request, related_entity_id=None):
             initial = None
             module = Modules.Library.value
             variable_dto = TemplateVariableDTO(
-                ViewTypes.LibraryItemAddEdit.value, not settings.DEBUGS
+                ViewTypes.LibraryItemAddEdit.value, not settings.DEBUG
             )
 
         form = PhotoForm(initial, active=module)
