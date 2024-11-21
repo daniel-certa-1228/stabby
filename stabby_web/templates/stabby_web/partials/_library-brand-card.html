@@ -1,14 +1,16 @@
-<div class="card gallery-card mt-3">
-  <div class="card-header d-flex justify-content-between">
-      {{ brand.brand_name }}
-  </div>
-  <div class="card-body">
-      {% if brand.photos %}
-        <div class="d-flex flex-row mb-2">
-            {% for photo in brand.photos %}
-                {% include 'stabby_web/partials/_library-photo-card.html' %}
-            {% endfor %}
-        </div>
-      {% endif %}
+<div class="col-md-6">
+  <div class="card mt-3 gx-0">
+    <div class="card-header d-flex justify-content-between">
+        {{ brand.brand_name }}
+    </div>
+    <div class="card-body">
+        {% if brand.photos %}
+          <div class="d-flex flex-row mb-2">
+              {% for photo in brand.photos %}
+                  {% include 'stabby_web/partials/_library-photo-card.html' %}
+              {% endfor %}
+          </div>
+        {% endif %}
+    </div>
   </div>
 </div>

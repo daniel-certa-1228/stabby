@@ -13,7 +13,9 @@
     </div>
 
     {% if library|length > 0 %}
-        {% include 'stabby_web/partials/_library-list-card.html' %}
+        <div class="row gx-0 dynamic-row">
+            {% include 'stabby_web/partials/_library-list-card.html' %}
+        </div>
     {% else %}
         <div class="text-body-tertiary text-center">
             <h4>No Items Uploaded</h4>

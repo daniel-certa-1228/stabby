@@ -23311,3 +23311,20 @@ textarea.form-control-lg {
 #toast-container > div {
   opacity: 1;
 }
+
+.dynamic-row > div:nth-child(odd) {
+  padding-right: 15px; /* Add padding to the right of odd columns */
+}
+
+.dynamic-row > div:nth-child(even) {
+  padding-left: 15px; /* Add padding to the left of even columns */
+}
+
+/* Remove padding when columns stack */
+@media (max-width: 767.98px) {
+  .dynamic-row > div:nth-child(odd),
+  .dynamic-row > div:nth-child(even) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
