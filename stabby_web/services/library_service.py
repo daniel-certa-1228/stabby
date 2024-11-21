@@ -1,4 +1,5 @@
 from django.db.models import Count, Q
+from django.shortcuts import get_object_or_404
 from stabby_web.dtos import BrandPhotoDTO, PhotoDTO
 from ..models import Brand
 
@@ -37,3 +38,7 @@ class LibraryService:
             )
 
         return brand_photos_dtos
+
+    @classmethod
+    def get_brand_detail(cls, brand_id):
+        return get_object_or_404(Brand, brand_id=brand_id)

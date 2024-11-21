@@ -92,6 +92,7 @@ urlpatterns = [
     ),
     path("library/", views.library, name="library"),
     path("library/add", views.photo_create, name="library_item_create"),
+    path("library/edit/<int:photo_id>", views.photo_update, name="library_item_update"),
     path(
         "api/copy_knife/<int:knife_id>/",
         views.copy_knife,

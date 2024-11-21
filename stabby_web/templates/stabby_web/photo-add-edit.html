@@ -12,6 +12,8 @@
             {% include 'stabby_web/partials/_knife-detail-card.html' %}
           {% elif active == 'sharpeners' %}
             {% include 'stabby_web/partials/_sharpener-detail-card.html' %}
+          {% else %}
+            {% include 'stabby_web/partials/_library-list-card.html' %}
           {% endif %}
         </div>
         <div class="col-md-6 order-md-2 order-1">
