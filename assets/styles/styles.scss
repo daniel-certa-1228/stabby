@@ -135,11 +135,11 @@
 }
 
 .dynamic-row > div:nth-child(odd) {
-  padding-right: 15px; /* Add padding to the right of odd columns */
+  padding-right: 15px;
 }
 
 .dynamic-row > div:nth-child(even) {
-  padding-left: 15px; /* Add padding to the left of even columns */
+  padding-left: 15px;
 }
 
 /* Remove padding when columns stack */
