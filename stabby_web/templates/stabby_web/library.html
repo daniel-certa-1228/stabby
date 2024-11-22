@@ -1,0 +1,19 @@
+
+{% extends "stabby_web/_base.html" %}
+
+{% block main%}
+
+    <div class="d-flex flex-row justify-content-between">
+
+        {% include 'stabby_web/partials/_bc-library.html' %}
+        
+        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'library_item_create'%}">
+            <i class="bi bi-plus-lg"></i>&nbsp;&nbsp;Add
+        </a> 
+    </div>
+
+    <div class="mt-2">
+        {% include 'stabby_web/partials/_library-list-card.html' %}
+    <div>
+
+{% endblock %}

@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.db.models import Prefetch
-from stabby_web.dtos.knife_filter_dto import KnifeFilterDTO
+from stabby_web.dtos import KnifeFilterDTO
 from stabby_web.models import Blade, Knife, Photo, ViewKnifeGrid, ViewKnifeBladeGrid
 
 

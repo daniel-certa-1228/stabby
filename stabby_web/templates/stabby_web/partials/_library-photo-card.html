@@ -1,0 +1,11 @@
+<div class="card photo-card-sm d-inline-block me-2">
+    <div class="photo-container">
+        <img src="{{ photo.photo_url }}" title="{{ photo.description }}" alt="{{ photo.description }}">
+
+        <a class="edit-btn btn" href="{% url 'library_item_update'  photo_id=photo.photo_id %}">
+            <i class="bi bi-pencil-square"></i>
+        </a>
+
+        <a class="view-btn btn" href="{{ photo.photo_url }}"><i class="bi bi-search"></i></a>
+    </div>
+</div>

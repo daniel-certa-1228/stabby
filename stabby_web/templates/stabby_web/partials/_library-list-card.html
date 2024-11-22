@@ -1,0 +1,12 @@
+{% if library|length > 0 %}
+  <div class="row gx-0 dynamic-row">
+      {% for brand in library %}
+          {% include 'stabby_web/partials/_library-brand-card.html' %}
+      {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-body-tertiary text-center">
+      <h4>No Items Uploaded</h4>
+      <h1 class="mb-0"><i class="bi bi-images"></i></h1>
+  </div>
+{% endif %}

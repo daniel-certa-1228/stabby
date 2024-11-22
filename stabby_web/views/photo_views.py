@@ -4,9 +4,10 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from stabby_web.dtos import TemplateVariableDTO
 from stabby_web.forms import PhotoForm
-from stabby_web.models import Knife
+from stabby_web.models import Knife, Sharpener
 from stabby_web.services import (
     KnifeService,
+    LibraryService,
     SharpenerService,
     PhotoService,
     TimeZoneService,
@@ -19,16 +20,19 @@ from stabby_web.decorators import skip_save
 # MVT Views
 @skip_save
 @login_required
-def photo_create(request, related_entity_id):
+def photo_create(request, related_entity_id=None):
     related_entity = None
     redirect_url = None
 
     if "knives" in request.path:
         related_entity = KnifeService.get_knife_detail(related_entity_id)
         redirect_url = "knife_detail"
-    else:
+    if "sharpeners" in request.path:
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
         redirect_url = "sharpener_detail"
+    else:
+        related_entity = None
+        redirect_url = "library"
 
     if request.method == "POST":
         now = TimeZoneService.get_now()
@@ -40,10 +44,12 @@ def photo_create(request, related_entity_id):
 
             if type(related_entity) is Knife:
                 photo = PhotoService.map_photo_form_data(form, now, related_entity)
-            else:
+            elif type(related_entity) is Sharpener:
                 photo = PhotoService.map_photo_form_data(
                     form, now, None, related_entity
                 )
+            else:
+                photo = PhotoService.map_photo_form_data(form, now, None, None)
 
             if request.is_collector:
                 PhotoService.save_photo(photo)
@@ -52,8 +58,10 @@ def photo_create(request, related_entity_id):
 
             if type(related_entity) is Knife:
                 return redirect(redirect_url, knife_id=related_entity_id)
-            else:
+            elif type(related_entity) is Sharpener:
                 return redirect(redirect_url, sharpener_id=related_entity_id)
+            else:
+                return redirect(redirect_url)
         else:
             messages.error(request, "Photo Create Failed")
     else:
@@ -69,7 +77,7 @@ def photo_create(request, related_entity_id):
             variable_dto = TemplateVariableDTO(
                 ViewTypes.KnifePhotoAddEdit.value, not settings.DEBUG, related_entity_id
             )
-        else:
+        elif type(related_entity) is Sharpener:
             initial = {"sharpener": related_entity}
             module = Modules.Sharpeners.value
             variable_dto = TemplateVariableDTO(
@@ -78,8 +86,14 @@ def photo_create(request, related_entity_id):
                 None,
                 related_entity_id,
             )
+        else:
+            initial = None
+            module = Modules.Library.value
+            variable_dto = TemplateVariableDTO(
+                ViewTypes.LibraryItemAddEdit.value, not settings.DEBUG
+            )
 
-        form = PhotoForm(initial)
+        form = PhotoForm(initial, active=module)
 
         context = {
             "form": form,
@@ -92,17 +106,18 @@ def photo_create(request, related_entity_id):
             context["knife"] = related_entity
             context["knife_id"] = related_entity_id
             context["number_of_blades"] = number_of_blades
-
-        else:
+        elif type(related_entity) is Sharpener:
             context["sharpener"] = related_entity
             context["sharpener_id"] = related_entity_id
+        else:
+            context["library"] = LibraryService.get_photos_grouped_by_brand()
 
         return render(request, "stabby_web/photo-add-edit.html", context)
 
 
 @skip_save
 @login_required
-def photo_update(request, related_entity_id, photo_id):
+def photo_update(request, photo_id, related_entity_id=None):
     photo = PhotoService.get_photo_detail(photo_id)
 
     related_entity = None
@@ -122,7 +137,7 @@ def photo_update(request, related_entity_id, photo_id):
             None,
             photo_id,
         )
-    else:
+    elif "sharpeners" in request.path:
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
         module = Modules.Sharpeners.value
         redirect_url = "sharpener_detail"
@@ -131,6 +146,19 @@ def photo_update(request, related_entity_id, photo_id):
             not settings.DEBUG,
             None,
             related_entity_id,
+            None,
+            None,
+            photo_id,
+        )
+    else:
+        related_entity = None
+        module = Modules.Library.value
+        redirect_url = "library"
+        variable_dto = TemplateVariableDTO(
+            ViewTypes.LibraryItemAddEdit.value,
+            not settings.DEBUG,
+            None,
+            None,
             None,
             None,
             photo_id,
@@ -146,10 +174,12 @@ def photo_update(request, related_entity_id, photo_id):
                 photo = PhotoService.map_photo_form_data(
                     form, now, related_entity, None, photo
                 )
-            else:
+            elif type(related_entity) is Sharpener:
                 photo = PhotoService.map_photo_form_data(
                     form, now, None, related_entity, photo
                 )
+            else:
+                photo = PhotoService.map_photo_form_data(form, now, None, None, photo)
 
             if request.is_collector:
                 PhotoService.save_photo(photo)
@@ -158,12 +188,14 @@ def photo_update(request, related_entity_id, photo_id):
 
             if type(related_entity) is Knife:
                 return redirect(redirect_url, knife_id=related_entity_id)
-            else:
+            elif type(related_entity) is Sharpener:
                 return redirect(redirect_url, sharpener_id=related_entity_id)
+            else:
+                return redirect(redirect_url)
         else:
             messages.error(request, "Photo Update Failed")
     else:
-        form = PhotoForm(instance=photo)
+        form = PhotoForm(instance=photo, active=module)
 
         context = {
             "form": form,
@@ -177,10 +209,11 @@ def photo_update(request, related_entity_id, photo_id):
             context["knife"] = related_entity
             context["knife_id"] = related_entity_id
             context["number_of_blades"] = number_of_blades
-
-        else:
+        elif type(related_entity) is Sharpener:
             context["sharpener"] = related_entity
             context["sharpener_id"] = related_entity_id
+        else:
+            context["library"] = LibraryService.get_photos_grouped_by_brand()
 
         return render(request, "stabby_web/photo-add-edit.html", context)
 
