@@ -111,16 +111,15 @@ document.addEventListener("click", function (e) {
   } else if (photoDeleteTarget) {
     const photoDeleteTargetInput: HTMLInputElement = photoDeleteTarget as HTMLInputElement; // Cast photoDeleteTarget to HTMLInputElement
 
-    const arr: [number, number, boolean] = JSON.parse(photoDeleteTargetInput.value);
-    
+    const arr: [number, number, number] = JSON.parse(photoDeleteTargetInput.value);
     if (Array.isArray(arr)
       && arr.length === 3) {
       const photo_id: number = arr[0];
-      const entity_id: number = arr[1];
-      const is_knife_photo: boolean = arr[2];
+      const photo_type: number = arr[1];
+      const entity_id: number = arr[2];
 
       if (!isNaN(photo_id) && !isNaN(entity_id)) {
-        delete_handler.deletePhoto(photo_id, entity_id, is_knife_photo);
+        delete_handler.deletePhoto(photo_id, photo_type, entity_id);
       }
     }
   } else if (knifeCopyTarget) {

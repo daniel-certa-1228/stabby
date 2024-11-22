@@ -22,6 +22,10 @@ const redirectToKnifeGridPage_abs = (): void => {
     window.location.href = `${constants.getBaseUrl()}knives`;
 };
 
+const redirectToLibraryPage_abs = (): void => {
+    window.location.href = `${constants.getBaseUrl()}library`;
+}
+
 const redirectToSharpenerDetailPage_abs = (sharpener_id: number): void => {
     window.location.href = `${constants.getBaseUrl()}sharpeners/detail/${sharpener_id}`;
 };
@@ -52,6 +56,7 @@ export {
     redirectToKnifeDetailPage_rel, 
     redirectToKnifeDetailPageWlCard_abs,
     redirectToKnifeGridPage_abs,
+    redirectToLibraryPage_abs,
     redirectToSharpenerDetailPage_abs,
     redirectToSharpenerDetailPage_rel,
     redirectToSharpenerDetailPageWlCard_abs,

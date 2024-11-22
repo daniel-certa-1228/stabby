@@ -27,7 +27,7 @@ def photo_create(request, related_entity_id=None):
     if "knives" in request.path:
         related_entity = KnifeService.get_knife_detail(related_entity_id)
         redirect_url = "knife_detail"
-    if "sharpeners" in request.path:
+    elif "sharpeners" in request.path:
         related_entity = SharpenerService.get_sharpener_detail(related_entity_id)
         redirect_url = "sharpener_detail"
     else:

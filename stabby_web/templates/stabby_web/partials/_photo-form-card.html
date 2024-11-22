@@ -43,7 +43,7 @@
                     {% endif %}
                     {% if photo %}
                         <div class="d-flex flex-row-reverse mt-2 mb-3">
-                            <button type="button" class="btn btn-outline-danger btn-sm align-self-center new-btn " id="photo-delete-btn" value="[{{ photo.photo_id }}, {% if active == 'knives' %}{{ knife_id }}{% else %}{{ sharpener_id }}{% endif %}, {% if active == 'knives' %}true{% else %}false{% endif %}]">
+                            <button type="button" class="btn btn-outline-danger btn-sm align-self-center new-btn " id="photo-delete-btn" value="[{{ photo.photo_id }}, {% if active == 'knives' %}1{% elif active == 'sharpeners' %}2{% else %}3{% endif %}, {% if active == 'knives' %}{{ knife_id }}{% elif active == 'sharpeners' %}{{ sharpener_id }}{% else %}-1{% endif %}]">
                                 <i class="bi bi-trash"></i>&nbsp;&nbsp;Delete
                             </button>
                         </div>
