@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from django.utils import timezone
 from ..models import Photo
 
 
@@ -16,12 +15,15 @@ class PhotoService:
         return get_object_or_404(Photo, photo_id=photo_id)
 
     @classmethod
-    def map_photo_form_data(cls, form, now, knife=None, sharpener=None, photo=None):
+    def map_photo_form_data(
+        cls, form, now, knife=None, sharpener=None, photo=None, brand=None
+    ):
         if photo == None:
             photo = Photo()
             photo.create_date = now
             photo.knife = knife
             photo.sharpener = sharpener
+            photo.brand = form.cleaned_data["brand"]
             photo.photo = form.cleaned_data["photo"]
 
         photo.edit_date = now
