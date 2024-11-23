@@ -41,15 +41,27 @@ class Photo(models.Model):
         # Open the image file
         img = Image.open(self.photo)
 
+        max_size = 1200
+
         # Check the resolution of the image
-        if img.width > 1200 or img.height > 900:
-            # Resize the image only if it's larger than the desired size
-            img = img.resize((1200, 900), Image.LANCZOS)
+        if img.width > max_size or img.height > max_size:
+            # Calculate the scaling factor to resize the image
+            scale_factor = max_size / float(max(img.width, img.height))
+            new_width = int(img.width * scale_factor)
+            new_height = int(img.height * scale_factor)
+
+            # Resize the image while preserving the aspect ratio
+            img = img.resize((new_width, new_height), Image.LANCZOS)
+
+            # Save the resized image to a BytesIO buffer
             output = BytesIO()
-            img.save(output, format="JPEG", quality=85)
+
+            img_format = img.format if img.format else "JPEG"
+
+            img.save(output, format=img_format, quality=85)
+
             output.seek(0)
 
-            # Replace the old photo with the resized one
             self.photo = ContentFile(output.read(), self.photo.name)
 
         # Call the parent class's save method to save the model
