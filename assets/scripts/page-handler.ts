@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
     case enums.ViewTypes.BladeAddEdit:
     case enums.ViewTypes.KnifePhotoAddEdit:
     case enums.ViewTypes.SharpenerPhotoAddEdit:
+    case enums.ViewTypes.Library:
+    case enums.ViewTypes.LibraryAddEdit:
       break;
     default:
       console.log(`Error: No Path`);
