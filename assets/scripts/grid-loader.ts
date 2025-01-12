@@ -1,6 +1,5 @@
 'use strict';
 
-import { IFilter } from 'ag-grid-community';
 import { 
   agGrid, 
   ajax_handler,
