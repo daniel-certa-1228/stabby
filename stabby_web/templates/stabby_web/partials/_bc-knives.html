@@ -1,5 +1,5 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mb-0">
-    <li class="breadcrumb-item active" aria-current="page">Knives{% if blade_shape_name is not None %} - {{ blade_shape_name }}{% endif %}</li>
+    <li class="breadcrumb-item active" aria-current="page">Knives{% if blade_shape_name is not None %} - {{ blade_shape_name }}{% endif %}{% if new_or_used is not None %} - {{ new_or_used }}{% endif %}</li>
   </ol>
 </nav>
