@@ -151,7 +151,9 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
 
   const queryStr: string = knife_filter && knife_filter.blade_shape_id ?
     `?blade_shape_id=${knife_filter.blade_shape_id}`
-    : '';
+    : knife_filter && knife_filter.purchased_new !== null && knife_filter.purchased_new !== undefined ? 
+      `?purchased_new=${knife_filter.purchased_new}`
+      : '';
 
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid${queryStr}`;
 
@@ -467,9 +469,6 @@ const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter
       } else {
         gridApi.setColumnFilterModel('handle_material', { type: 'blank' })
       }
-    } 
-    else if (knife_filter.purchased_new !== undefined && knife_filter.purchased_new !== null) {
-      gridApi.setColumnFilterModel('purchased_new', { filter: knife_filter?.purchased_new });
     }
   }
 }

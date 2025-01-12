@@ -89,20 +89,30 @@ class KnifeService:
     @classmethod
     def get_knife_grid(cls, request):
         blade_shape_id = request.GET.get("blade_shape_id")
+        purchased_new = request.GET.get("purchased_new")
 
         try:
             blade_shape_id_int = int(blade_shape_id)
         except (TypeError, ValueError):
             blade_shape_id = None
 
-        if blade_shape_id is None:
-            queryset = ViewKnifeGrid.objects.filter(is_active=True).order_by(
-                "brand", "knife"
-            )
-        else:
+        purchased_new_bool = None
+
+        if purchased_new:
+            purchased_new_bool = purchased_new.lower() == "true"
+
+        if blade_shape_id is not None:
             queryset = ViewKnifeBladeGrid.objects.filter(
                 is_active=True, blade_shape_id=blade_shape_id_int
             ).order_by("brand", "knife")
+        elif purchased_new is not None:
+            queryset = ViewKnifeGrid.objects.filter(
+                is_active=True, purchased_new=purchased_new_bool
+            ).order_by("brand", "knife")
+        else:
+            queryset = ViewKnifeGrid.objects.filter(is_active=True).order_by(
+                "brand", "knife"
+            )
 
         return list(queryset.values())
 
