@@ -17,9 +17,13 @@
         <dt class="col-sm-6 text-sm-end text-start">Total Knives:</dt>
         <dd class="col-sm-6 text-start">{{ total_knives }}</dd>
         <dt class="col-sm-6 text-sm-end text-start">New Knives:</dt>
-        <dd class="col-sm-6 text-start">{{ total_new_knives }}&nbsp;<span class="text-muted">({{ new_percentage }})</span></dd>
+        <dd class="col-sm-6 text-start">
+          <a href="{% url 'knives' %}?purchased_new=true" class="link-style">{{ total_new_knives }}</a>&nbsp;<span class="text-muted">({{ new_percentage }})</span>
+        </dd>
         <dt class="col-sm-6 text-sm-end text-start">Used Knives:</dt>
-        <dd class="col-sm-6 text-start">{{ total_used_knives }}&nbsp;<span class="text-muted">({{ used_percentage }})</span></dd>
+        <dd class="col-sm-6 text-start">
+          <a href="{% url 'knives' %}?purchased_new=false" class="link-style">{{ total_used_knives }}</a>&nbsp;<span class="text-muted">({{ used_percentage }})</span
+            ></dd>
         <dt class="col-sm-6 text-sm-end text-start">Total Blades:</dt>
         <dd class="col-sm-6 text-start">{{ total_blades }}</dd>
         <dt class="col-sm-6 text-sm-end text-start">Total Sharpeners:</dt>

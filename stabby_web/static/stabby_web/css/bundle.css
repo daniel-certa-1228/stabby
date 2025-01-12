@@ -23227,7 +23227,7 @@ textarea.form-control-lg {
 }
 
 .photo-card-sm-lib {
-  width: 100%;
+  width: 100px;
   height: 100px;
   border: 0px;
   overflow: hidden;
