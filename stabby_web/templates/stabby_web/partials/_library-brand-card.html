@@ -5,9 +5,11 @@
     </div>
     <div class="card-body">
         {% if brand.photos %}
-          <div class="d-flex flex-row mb-2">
+          <div class="d-flex flex-row flex-wrap mb-2">
               {% for photo in brand.photos %}
+                <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                   {% include 'stabby_web/partials/_library-photo-card.html' %}
+                </div>
               {% endfor %}
           </div>
         {% endif %}

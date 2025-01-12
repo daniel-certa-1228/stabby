@@ -17,4 +17,11 @@ enum ViewTypes {
     LibraryAddEdit = 14
 };
 
-export { ViewTypes };
+enum PhotoTypes {
+    Knife = 1,
+    Sharpener = 2,
+    Library = 3
+}
+
+
+export { ViewTypes, PhotoTypes };
