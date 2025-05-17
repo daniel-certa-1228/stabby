@@ -62,10 +62,18 @@ const loadCountryChart = async (): Promise<void> => {
             showInLegend: false,
             tooltip: {
                 renderer: (params) => {
-                    return {
-                    title: params.datum.name,
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                    };
+                    const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><b>Count:</b> ${params.datum.count}</div>
+                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
             }
         },
@@ -81,10 +89,18 @@ const loadCountryChart = async (): Promise<void> => {
             showInLegend: false,
             tooltip: {
                 renderer: (params) => {
-                    return {
-                    title: `${params.datum.name}`,
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                    };
+                  const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><b>Count:</b> ${params.datum.count}</div>
+                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
             }
         },
@@ -135,10 +151,18 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        title: params.datum.name,
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                            <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><b>Count:</b> ${params.datum.count}</div>
+                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -154,10 +178,18 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        title: `${params.datum.name}`,
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                            <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><b>Count:</b> ${params.datum.count}</div>
+                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -209,10 +241,18 @@ const loadLockTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        title: params.datum.name,
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                            <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><b>Count:</b> ${params.datum.count}</div>
+                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -228,10 +268,18 @@ const loadLockTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        title: `${params.datum.name}`,
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                            <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><b>Count:</b> ${params.datum.count}</div>
+                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -272,10 +320,18 @@ const loadSteelTypeChart = async (): Promise<void> => {
             angleName: "Steel Types",
             tooltip: {
                 renderer: (params) => {
-                  return {
-                    title: params.datum.name,
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                  };
+                    const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><b>Count:</b> ${params.datum.count}</div>
+                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
               }
         }],
@@ -318,10 +374,18 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
             angleName: "U.S.A.",
             tooltip: {
                 renderer: (params) => {
-                  return {
-                    title: params.datum.name,
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                  };
+                    const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><b>Count:</b> ${params.datum.count}</div>
+                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
               }
         }],
