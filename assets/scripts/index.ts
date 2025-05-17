@@ -23,6 +23,10 @@ import { view_sharpener_grid_model } from './models/view-sharpener-grid.model';
 import { view_blade_grid_model } from './models/view-blade-grid.model';
 import { work_log_model } from './models/work-log.model';
 
+import { ModuleRegistry } from 'ag-grid-community';
+import { AllCommunityModule } from 'ag-grid-community';
+ModuleRegistry.registerModules([AllCommunityModule]);
+
 export { bootstrap };
 export { agCharts };
 export { agGrid };
