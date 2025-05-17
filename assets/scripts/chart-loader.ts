@@ -38,7 +38,7 @@ const loadCountryChart = async (): Promise<void> => {
         donut_2 = [...(donut_2_raw || [])];
     }
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -63,6 +63,7 @@ const loadCountryChart = async (): Promise<void> => {
             tooltip: {
                 renderer: (params) => {
                     return {
+                    title: params.datum.name,
                     content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                     };
                 }
@@ -109,7 +110,7 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
 
     const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < breakPoint);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -135,6 +136,7 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                 tooltip: {
                     renderer: (params) => {
                         return {
+                        title: params.datum.name,
                         content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                         };
                     }
@@ -182,7 +184,7 @@ const loadLockTypeChart = async (): Promise<void> => {
 
     const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < breakPoint);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -208,6 +210,7 @@ const loadLockTypeChart = async (): Promise<void> => {
                 tooltip: {
                     renderer: (params) => {
                         return {
+                        title: params.datum.name,
                         content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                         };
                     }
@@ -249,7 +252,7 @@ const loadSteelTypeChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -270,6 +273,7 @@ const loadSteelTypeChart = async (): Promise<void> => {
             tooltip: {
                 renderer: (params) => {
                   return {
+                    title: params.datum.name,
                     content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                   };
                 }
@@ -291,7 +295,7 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -315,6 +319,7 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
             tooltip: {
                 renderer: (params) => {
                   return {
+                    title: params.datum.name,
                     content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
                   };
                 }
