@@ -15,6 +15,7 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
   const gridOptions: agGrid.GridOptions = {
+    theme: 'legacy',
     pagination: true,
     paginationPageSize: 50,
     suppressMenuHide: true,
@@ -175,6 +176,7 @@ const loadSharpenerGrid = async (): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#grid')!;
 
   const gridOptions: agGrid.GridOptions = {
+    theme: 'legacy',
     defaultColDef: {
       filter: true,
       cellStyle: { textAlign: 'left' }
@@ -277,6 +279,7 @@ const loadBladeGrid = async (knife_id: number): Promise<void> => {
   const gridDiv: HTMLElement = document.querySelector('#blade_grid')!;
 
   const gridOptions: agGrid.GridOptions = {
+    theme: 'legacy',
     headerHeight: 35,
     onFirstDataRendered(event) {
       popover_handler.initGridPopovers();
@@ -378,6 +381,7 @@ const loadWorkLogGrid = async (with_buttons: boolean, is_knife_wl: boolean, enti
 const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, entity_id: number, work_log_id: number | null): agGrid.GridOptions => {
   if (with_buttons) {
     return {
+      theme: 'legacy',
       headerHeight: 35,
       defaultColDef: {
         cellStyle: { textAlign: 'left' }
@@ -417,6 +421,7 @@ const returnWorkLogGridOptions = (with_buttons: boolean, is_knife_wl: boolean, e
     };
   } else {
     return {
+      theme: 'legacy',
       headerHeight: 35,
       domLayout: "autoHeight",
       defaultColDef: {

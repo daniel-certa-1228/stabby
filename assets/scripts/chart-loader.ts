@@ -38,7 +38,7 @@ const loadCountryChart = async (): Promise<void> => {
         donut_2 = [...(donut_2_raw || [])];
     }
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -62,9 +62,18 @@ const loadCountryChart = async (): Promise<void> => {
             showInLegend: false,
             tooltip: {
                 renderer: (params) => {
-                    return {
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                    };
+                    const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
             }
         },
@@ -80,10 +89,18 @@ const loadCountryChart = async (): Promise<void> => {
             showInLegend: false,
             tooltip: {
                 renderer: (params) => {
-                    return {
-                    title: `${params.datum.name}`,
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                    };
+                  const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
             }
         },
@@ -109,7 +126,7 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
 
     const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < breakPoint);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -134,9 +151,18 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                            <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -152,10 +178,18 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        title: `${params.datum.name}`,
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                            <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -182,7 +216,7 @@ const loadLockTypeChart = async (): Promise<void> => {
 
     const donut_2: chart_data_model[] | undefined = chartData?.filter(x => x.count < breakPoint);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -207,9 +241,18 @@ const loadLockTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                            <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -225,10 +268,18 @@ const loadLockTypeChart = async (): Promise<void> => {
                 showInLegend: false,
                 tooltip: {
                     renderer: (params) => {
-                        return {
-                        title: `${params.datum.name}`,
-                        content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                        };
+                        const fillColor = (params as any).fill ?? '#888';
+                        
+                        return `
+                             <div style="padding: 8px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                                <b>${params.datum.name}</b>
+                                </div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                            </div>
+                        `;
                     }
                 }
             },
@@ -249,7 +300,7 @@ const loadSteelTypeChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -269,9 +320,18 @@ const loadSteelTypeChart = async (): Promise<void> => {
             angleName: "Steel Types",
             tooltip: {
                 renderer: (params) => {
-                  return {
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                  };
+                    const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                       <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
               }
         }],
@@ -291,7 +351,7 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
 
-    const options: agCharts.AgChartOptions = {
+    const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
             top: 5,
@@ -314,9 +374,18 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
             angleName: "U.S.A.",
             tooltip: {
                 renderer: (params) => {
-                  return {
-                    content: `<b>Count:</b> ${params.datum.count}<br /><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%`
-                  };
+                    const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
                 }
               }
         }],
