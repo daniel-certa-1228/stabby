@@ -53,6 +53,17 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
         } 
       },
       { 
+        headerName: 'Type', 
+        field: 'knife_type', 
+        width: 160, 
+        cellStyle: { 
+          textAlign: 'left' 
+        }, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
         headerName: '# of Blades', 
         field: 'num_of_blades', 
         width: 130, 
