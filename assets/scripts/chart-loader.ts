@@ -67,11 +67,11 @@ const loadCountryChart = async (): Promise<void> => {
                     return `
                         <div style="padding: 8px;">
                             <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                             <b>${params.datum.name}</b>
                             </div>
-                            <div><b>Count:</b> ${params.datum.count}</div>
-                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                         </div>
                     `;
                 }
@@ -94,11 +94,11 @@ const loadCountryChart = async (): Promise<void> => {
                     return `
                         <div style="padding: 8px;">
                             <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                             <b>${params.datum.name}</b>
                             </div>
-                            <div><b>Count:</b> ${params.datum.count}</div>
-                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                         </div>
                     `;
                 }
@@ -156,11 +156,11 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                         return `
                             <div style="padding: 8px;">
                                 <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                                 <b>${params.datum.name}</b>
                                 </div>
-                                <div><b>Count:</b> ${params.datum.count}</div>
-                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                             </div>
                         `;
                     }
@@ -183,11 +183,11 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                         return `
                             <div style="padding: 8px;">
                                 <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                                 <b>${params.datum.name}</b>
                                 </div>
-                                <div><b>Count:</b> ${params.datum.count}</div>
-                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                             </div>
                         `;
                     }
@@ -246,11 +246,11 @@ const loadLockTypeChart = async (): Promise<void> => {
                         return `
                             <div style="padding: 8px;">
                                 <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                                 <b>${params.datum.name}</b>
                                 </div>
-                                <div><b>Count:</b> ${params.datum.count}</div>
-                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                             </div>
                         `;
                     }
@@ -271,13 +271,13 @@ const loadLockTypeChart = async (): Promise<void> => {
                         const fillColor = (params as any).fill ?? '#888';
                         
                         return `
-                            <div style="padding: 8px;">
+                             <div style="padding: 8px;">
                                 <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                                <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                                <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                                 <b>${params.datum.name}</b>
                                 </div>
-                                <div><b>Count:</b> ${params.datum.count}</div>
-                                <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                                <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                                <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                             </div>
                         `;
                     }
@@ -323,13 +323,13 @@ const loadSteelTypeChart = async (): Promise<void> => {
                     const fillColor = (params as any).fill ?? '#888';
                     
                     return `
-                        <div style="padding: 8px;">
+                       <div style="padding: 8px;">
                             <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                             <b>${params.datum.name}</b>
                             </div>
-                            <div><b>Count:</b> ${params.datum.count}</div>
-                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                         </div>
                     `;
                 }
@@ -379,11 +379,11 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
                     return `
                         <div style="padding: 8px;">
                             <div style="display: flex; align-items: center; margin-bottom: 3px;">
-                            <span style="background:${fillColor}; width:10px; height:10px; border-radius:50%; margin-right:6px;"></span>
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
                             <b>${params.datum.name}</b>
                             </div>
-                            <div><b>Count:</b> ${params.datum.count}</div>
-                            <div><b>Percent:</b> ${params.datum.percentage.toFixed(2)}%</div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
                         </div>
                     `;
                 }
