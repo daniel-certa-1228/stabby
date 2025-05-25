@@ -25,7 +25,7 @@ class LibraryService:
             photo_dtos = [
                 PhotoDTO(
                     photo_id=photo.photo_id,
-                    photo_url=photo.photo.url,
+                    photo_url=photo.photo_url,
                     description=photo.description,
                 )
                 for photo in photos

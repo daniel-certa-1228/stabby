@@ -1,10 +1,12 @@
 from io import BytesIO
+import os
 from PIL import Image
 from django.db import models
 from .brand_model import Brand
 from .knife_model import Knife
 from .sharpener_model import Sharpener
 from django.core.files.base import ContentFile
+from stabby_web.s3_utils import S3SpacesUtility
 
 
 class Photo(models.Model):
@@ -31,6 +33,27 @@ class Photo(models.Model):
     is_active = models.BooleanField(default=True, null=False)
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
+
+    @property
+    def photo_url(self):
+        if not self.photo:
+            return ""
+
+        # Object key = relative path in your bucket
+        object_key = "stabby-web-media/stabby-web/" + self.photo.name
+
+        try:
+            client = S3SpacesUtility.get_spaces_client()
+            bucket_name = os.getenv("SPACES_BUCKET_NAME")
+
+            url = client.generate_presigned_url(
+                "get_object",
+                Params={"Bucket": bucket_name, "Key": object_key},
+                ExpiresIn=1800,  # 30 minutes
+            )
+            return url
+        except Exception as e:
+            return self.photo.url if self.photo else ""
 
     class Meta:
         verbose_name = "photo"
