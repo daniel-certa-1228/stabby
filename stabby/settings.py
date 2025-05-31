@@ -171,6 +171,9 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = os.getenv("SPACES_LOCATION", "")
 AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_DEFAULT_ACL = "private"  # Crucial for private files
+AWS_QUERYSTRING_AUTH = True  # Required for private files
+AWS_S3_FILE_OVERWRITE = False
 
 if DEVELOPMENT_MODE is True:
     MEDIA_URL = "/media/"
