@@ -55,7 +55,7 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
       {
         headerName: 'Type',
         field: 'knife_type',
-        width: 160,
+        width: 210,
         cellStyle: {
           textAlign: 'left'
         },
