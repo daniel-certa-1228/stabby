@@ -5,7 +5,7 @@ from io import BytesIO
 class ExcelService:
 
     @classmethod
-    def generate_knife_excel(cls, knife_list):
+    def generate_knife_excel(cls, knife_queryset):
         wb = Workbook()
 
         ws = wb.active

@@ -3,9 +3,9 @@ from stabby_web.services import ExcelService, KnifeService
 
 
 def export_knife_excel(request):
-    knife_list = KnifeService.get_knife_grid(request)
+    knife_queryset = KnifeService.get_knife_queryset()
 
-    excel_file = ExcelService.generate_knife_excel(knife_list)
+    excel_file = ExcelService.generate_knife_excel(knife_queryset)
 
     response = HttpResponse(
         excel_file,

@@ -116,6 +116,10 @@ class KnifeService:
         return list(queryset.values())
 
     @classmethod
+    def get_knife_queryset(cls):
+        return ViewKnifeGrid.objects.filter(is_active=True).order_by("brand", "knife")
+
+    @classmethod
     def set_knife_filter(cls, request):
         brand = request.GET.get("brand")
         vendor = request.GET.get("vendor")
