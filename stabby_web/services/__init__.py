@@ -1,6 +1,7 @@
 from .blade_service import BladeService
 from .dashboard_service import DashboardService
 from .dropdown_service import DropdownService
+from .excel_service import ExcelService
 from .knife_service import KnifeService
 from .library_service import LibraryService
 from .photo_service import PhotoService
@@ -12,6 +13,7 @@ __all__ = [
     "BladeService",
     "DashboardService",
     "DropdownService",
+    "ExcelService",
     "KnifeService",
     "LibraryService",
     "PhotoService",
