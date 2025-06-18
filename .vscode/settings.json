@@ -10,8 +10,11 @@
         "endfor",
         "laguiole",
         "LANCZOS",
+        "officedocument",
+        "openxmlformats",
         "nbsp",
         "popperjs",
+        "spreadsheetml",
         "stabby",
         "toastr"
     ]

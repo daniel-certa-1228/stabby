@@ -90,6 +90,7 @@ urlpatterns = [
         views.sharpener_detail,
         name="sharpener_detail",
     ),
+    path("knives/export", views.export_knife_excel, name="knife_excel"),
     path("library/", views.library, name="library"),
     path("library/add", views.photo_create, name="library_item_create"),
     path("library/edit/<int:photo_id>", views.photo_update, name="library_item_update"),
