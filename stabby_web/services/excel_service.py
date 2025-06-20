@@ -91,29 +91,27 @@ class ExcelService:
             date_cell.number_format = "m/d/yyyy"
             col += 1
 
-            # Auto-width adjustment for all columns based on content
-            num_columns = len(headers)
+        # Auto-width adjustment for all columns based on content
+        num_columns = len(headers)
 
-            # Loop through each column index (1-based for openpyxl)
-            for col_idx in range(1, num_columns + 1):
-                col_letter = get_column_letter(col_idx)
+        # Loop through each column index (1-based for openpyxl)
+        for col_idx in range(1, num_columns + 1):
+            col_letter = get_column_letter(col_idx)
 
-                max_length = 0
+            max_length = 0
 
-                for row in ws.iter_rows(
-                    min_row=1, max_row=ws.max_row, min_col=col_idx, max_col=col_idx
-                ):
-                    for cell in row:
-                        if cell.value:
-                            try:
-                                # Strip the value, convert to string, and measure its length
-                                max_length = max(
-                                    max_length, len(str(cell.value).strip())
-                                )
-                            except:
-                                pass
+            for row in ws.iter_rows(
+                min_row=1, max_row=ws.max_row, min_col=col_idx, max_col=col_idx
+            ):
+                for cell in row:
+                    if cell.value:
+                        try:
+                            # Strip the value, convert to string, and measure its length
+                            max_length = max(max_length, len(str(cell.value).strip()))
+                        except:
+                            pass
 
-                ws.column_dimensions[col_letter].width = max_length
+            ws.column_dimensions[col_letter].width = max_length
 
         # Manual widths for problem columns
         column_map = {
