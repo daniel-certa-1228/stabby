@@ -91,7 +91,7 @@ class ExcelService:
             date_cell.number_format = "m/d/yyyy"
             col += 1
 
-        # Auto-width adjustment for all columns based on content
+        # Auto-width hack for all columns based on content
         num_columns = len(headers)
 
         # Loop through each column index (1-based for openpyxl)
