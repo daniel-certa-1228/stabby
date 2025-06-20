@@ -36,6 +36,7 @@ class ExcelService:
 
         ws.append(headers)
 
+        # Apply header styles
         for col in range(1, len(headers) + 1):
             cell = ws.cell(row=1, column=col)
             cell.font = header_font
@@ -67,21 +68,20 @@ class ExcelService:
             purchased_new_value = "New" if knife.purchased_new else "Used"
             pn_font = Font(color="A0A0A0") if not knife.purchased_new else None
 
-            cell = ws.cell(row=row_idx, column=col, value=purchased_new_value)
+            pn_cell = ws.cell(row=row_idx, column=col, value=purchased_new_value)
 
             if pn_font:
-                cell.font = pn_font
+                pn_cell.font = pn_font
 
             col += 1
-
             # Needs Work bool column
             needs_work_value = "Yes" if knife.needs_work else "No"
             nw_font = Font(color="A0A0A0") if not knife.needs_work else None
 
-            cell = ws.cell(row=row_idx, column=col, value=needs_work_value)
+            nw_cell = ws.cell(row=row_idx, column=col, value=needs_work_value)
 
             if nw_font:
-                cell.font = nw_font
+                nw_cell.font = nw_font
 
             col += 1
             # Date col
@@ -91,24 +91,29 @@ class ExcelService:
             date_cell.number_format = "m/d/yyyy"
             col += 1
 
-        # Hack for auto-width
-        num_columns = len(headers)
+            # Auto-width adjustment for all columns based on content
+            num_columns = len(headers)
 
-        for col_idx in range(1, num_columns + 1):
-            col_letter = get_column_letter(col_idx)
-            max_length = 0
+            # Loop through each column index (1-based for openpyxl)
+            for col_idx in range(1, num_columns + 1):
+                col_letter = get_column_letter(col_idx)
 
-            for row in ws.iter_rows(
-                min_row=1, max_row=ws.max_row, min_col=col_idx, max_col=col_idx
-            ):
-                for cell in row:
-                    if cell.value:
-                        try:
-                            max_length = max(max_length, len(str(cell.value).strip()))
-                        except:
-                            pass
+                max_length = 0
 
-            ws.column_dimensions[col_letter].width = max_length
+                for row in ws.iter_rows(
+                    min_row=1, max_row=ws.max_row, min_col=col_idx, max_col=col_idx
+                ):
+                    for cell in row:
+                        if cell.value:
+                            try:
+                                # Strip the value, convert to string, and measure its length
+                                max_length = max(
+                                    max_length, len(str(cell.value).strip())
+                                )
+                            except:
+                                pass
+
+                ws.column_dimensions[col_letter].width = max_length
 
         # Manual widths for problem columns
         column_map = {
