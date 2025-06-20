@@ -4,6 +4,7 @@ import {
   chart_loader,
   constants,
   date_picker_handler,
+  excel_handler,
   enums, 
   grid_loader,
   template_variable_model } from './index';
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   switch (variables['view_type']) {
     case enums.ViewTypes.KnifeGrid:
       grid_loader.loadKnifeGrid(knife_filter);
+      excel_handler.setKnifeExcelEventHandler();
       break;
     case enums.ViewTypes.SharpenerGrid:
       grid_loader.loadSharpenerGrid();
