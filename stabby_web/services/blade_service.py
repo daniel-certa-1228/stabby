@@ -1,7 +1,9 @@
+import datetime
 from django.shortcuts import get_object_or_404
 from ..models import (
     Blade,
     BladeShape,
+    Knife,
     ViewBladeGrid,
 )
 
@@ -9,17 +11,17 @@ from ..models import (
 class BladeService:
 
     @classmethod
-    def delete_blade(cls, blade):
+    def delete_blade(cls, blade: Blade):
         blade.is_active = False
 
         return blade
 
     @classmethod
-    def get_blade_detail(cls, blade_id):
+    def get_blade_detail(cls, blade_id: int):
         return get_object_or_404(Blade, blade_id=blade_id)
 
     @classmethod
-    def get_blade_grid(cls, knife_id):
+    def get_blade_grid(cls, knife_id: int):
         queryset = ViewBladeGrid.objects.filter(
             is_active=True, knife_id=knife_id
         ).order_by("-is_main_blade", "-length")
@@ -27,7 +29,7 @@ class BladeService:
         return list(queryset.values())
 
     @classmethod
-    def get_blade_shape_name(cls, blade_shape_id):
+    def get_blade_shape_name(cls, blade_shape_id: int):
         try:
             blade_shape_id_int = int(blade_shape_id)
         except (TypeError, ValueError):
@@ -41,7 +43,9 @@ class BladeService:
         return None
 
     @classmethod
-    def map_blade_form_to_data(cls, request, form, now, knife=None, blade=None):
+    def map_blade_form_to_data(
+        cls, request, form, now: datetime, knife: Knife = None, blade: Blade = None
+    ):
         if blade == None:
             blade = Blade()
             blade.create_date = now
@@ -60,5 +64,5 @@ class BladeService:
         return blade
 
     @classmethod
-    def save_blade(cls, blade):
+    def save_blade(cls, blade: Blade):
         return blade.save()

@@ -52,7 +52,7 @@ def sharpener_create(request):
 
 
 @login_required
-def sharpener_detail(request, sharpener_id):
+def sharpener_detail(request, sharpener_id: int):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id, True)
 
     photos = sharpener.photos.all()
@@ -73,7 +73,7 @@ def sharpener_detail(request, sharpener_id):
 
 @skip_save
 @login_required
-def sharpener_update(request, sharpener_id):
+def sharpener_update(request, sharpener_id: int):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
     if request.method == "POST":
@@ -140,7 +140,7 @@ def get_sharpener_grid(request):
 
 @skip_save
 @login_required
-def sharpener_delete(request, sharpener_id):
+def sharpener_delete(request, sharpener_id: int):
     sharpener = SharpenerService.get_sharpener_detail(sharpener_id)
 
     if request.is_collector:

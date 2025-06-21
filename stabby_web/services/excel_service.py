@@ -1,5 +1,5 @@
 from openpyxl import Workbook
-from openpyxl.styles import Font, PatternFill, numbers
+from openpyxl.styles import Font, PatternFill
 from openpyxl.utils import get_column_letter
 from io import BytesIO
 from contextlib import suppress
@@ -135,7 +135,7 @@ class ExcelService:
         return output.getvalue()
 
     @classmethod
-    def _create_workbook(cls, title):
+    def _create_workbook(cls, title: str):
         wb = Workbook()
         ws = wb.active
         ws.title = title
@@ -158,7 +158,7 @@ class ExcelService:
 
     @classmethod
     def _write_boolean_cell(
-        cls, ws, row, col, value: bool, true_display="Yes", false_display="No"
+        cls, ws, row: int, col: int, value: bool, true_display="Yes", false_display="No"
     ):
         cell_value = true_display if value else false_display
 

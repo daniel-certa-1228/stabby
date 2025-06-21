@@ -1,22 +1,28 @@
+import datetime
 from django.shortcuts import get_object_or_404
-from ..models import Photo
+from ..models import Photo, Knife, Sharpener
 
 
 class PhotoService:
 
     @classmethod
-    def delete_photo(cls, photo):
+    def delete_photo(cls, photo: Photo):
         photo.is_active = False
 
         return photo
 
     @classmethod
-    def get_photo_detail(cls, photo_id):
+    def get_photo_detail(cls, photo_id: int):
         return get_object_or_404(Photo, photo_id=photo_id)
 
     @classmethod
     def map_photo_form_data(
-        cls, form, now, knife=None, sharpener=None, photo=None, brand=None
+        cls,
+        form,
+        now: datetime,
+        knife: Knife = None,
+        sharpener: Sharpener = None,
+        photo: Photo = None,
     ):
         if photo == None:
             photo = Photo()

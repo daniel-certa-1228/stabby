@@ -1,6 +1,8 @@
+import datetime
 from django.shortcuts import get_object_or_404
-from django.utils import timezone
 from ..models import (
+    Knife,
+    Sharpener,
     WorkLog,
 )
 
@@ -8,13 +10,13 @@ from ..models import (
 class WorkLogService:
 
     @classmethod
-    def delete_work_log(cls, work_log):
+    def delete_work_log(cls, work_log: WorkLog):
         work_log.is_active = False
 
         return work_log
 
     @classmethod
-    def get_knife_work_log_grid(cls, knife_id):
+    def get_knife_work_log_grid(cls, knife_id: int):
         queryset = WorkLog.objects.filter(is_active=True, knife_id=knife_id).order_by(
             "-date"
         )
@@ -22,20 +24,25 @@ class WorkLogService:
         return list(queryset.values())
 
     @classmethod
-    def get_sharpener_work_log_grid(cls, sharpener):
-        queryset = WorkLog.objects.filter(is_active=True, sharpener=sharpener).order_by(
-            "-date"
-        )
+    def get_sharpener_work_log_grid(cls, sharpener_id: int):
+        queryset = WorkLog.objects.filter(
+            is_active=True, sharpener_id=sharpener_id
+        ).order_by("-date")
 
         return list(queryset.values())
 
     @classmethod
-    def get_work_log_detail(cls, work_log_id):
+    def get_work_log_detail(cls, work_log_id: int):
         return get_object_or_404(WorkLog, work_log_id=work_log_id)
 
     @classmethod
     def map_work_log_form_to_data(
-        cls, form, now, knife=None, sharpener=None, work_log=None
+        cls,
+        form,
+        now: datetime,
+        knife: Knife = None,
+        sharpener: Sharpener = None,
+        work_log: WorkLog = None,
     ):
         if work_log == None:
             work_log = WorkLog()
@@ -54,7 +61,7 @@ class WorkLogService:
         return work_log.save()
 
     @classmethod
-    def show_work_log_card(cls, knife_id=None, sharpener_id=None):
+    def show_work_log_card(cls, knife_id: int = None, sharpener_id: int = None):
         if knife_id:
             count = WorkLog.objects.filter(is_active=True, knife_id=knife_id).count()
 

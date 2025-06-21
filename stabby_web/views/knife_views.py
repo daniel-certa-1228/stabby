@@ -90,7 +90,7 @@ def knife_create(request):
 
 
 @login_required
-def knife_detail(request, knife_id):
+def knife_detail(request, knife_id: int):
     knife = KnifeService.get_knife_detail(knife_id, True)
 
     photos = knife.photos.all()
@@ -114,7 +114,7 @@ def knife_detail(request, knife_id):
 
 @skip_save
 @login_required
-def knife_update(request, knife_id):
+def knife_update(request, knife_id: int):
     knife = KnifeService.get_knife_detail(knife_id)
 
     if request.method == "POST":
@@ -159,7 +159,7 @@ def knife_update(request, knife_id):
 # JSON VIEWS
 @skip_save
 @login_required
-def copy_knife(request, knife_id):
+def copy_knife(request, knife_id: int):
     now = TimeZoneService.get_now()
 
     new_knife = None
@@ -191,7 +191,7 @@ def get_knife_grid(request):
 
 @skip_save
 @login_required
-def knife_delete(request, knife_id):
+def knife_delete(request, knife_id: int):
     knife = KnifeService.get_knife_detail(knife_id)
 
     if request.is_collector:

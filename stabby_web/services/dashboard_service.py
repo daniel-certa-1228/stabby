@@ -1,11 +1,13 @@
-from django.utils import timezone
+import datetime
 from stabby_web.dtos import ChartDataDTO
-from stabby_web.models.knife_model import Knife
-from stabby_web.models.sharpener_model import Sharpener
-from stabby_web.models.view_knife_grid import ViewKnifeGrid
-from stabby_web.models import LastPurchaseDate
 from django.db import connection
 from django.db.models import Sum
+from ..models import (
+    Knife,
+    LastPurchaseDate,
+    Sharpener,
+    ViewKnifeGrid,
+)
 
 
 class DashboardService:
@@ -16,7 +18,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_blade_material_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
     def get_blade_shape_chart_data(cls):
@@ -24,7 +26,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_blade_shape_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
     def get_brand_chart_data(cls):
@@ -32,7 +34,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_brand_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
     def get_country_chart_data(cls):
@@ -40,7 +42,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_country_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
     def get_deployment_type_chart_data(cls):
@@ -48,7 +50,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_deployment_type_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
     def get_handle_material_chart_data(cls):
@@ -56,10 +58,10 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_handle_material_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
-    def get_last_purchase_date(cls, now):
+    def get_last_purchase_date(cls, now: datetime):
         date_row = cls.get_last_purchase_date_row()
 
         date = now
@@ -79,10 +81,10 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_lock_type_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
-    def get_number_of_days_since_purchase(cls, now):
+    def get_number_of_days_since_purchase(cls, now: datetime):
         today = now.date()
 
         date_row = cls.get_last_purchase_date_row()
@@ -99,7 +101,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_steel_type_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
     def get_total_blades(cls):
@@ -129,7 +131,7 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_usa_new_vintage_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
     def get_vendor_chart_data(cls):
@@ -137,10 +139,10 @@ class DashboardService:
             cursor.execute("SELECT * FROM view_vendor_chart;")
             rows = cursor.fetchall()
 
-        return cls.map_to_chart_dto(rows)
+        return cls._map_to_chart_dto(rows)
 
     @classmethod
-    def map_to_chart_dto(cls, rows):
+    def _map_to_chart_dto(cls, rows):
         dtos = list()
 
         for row in rows:
@@ -155,5 +157,5 @@ class DashboardService:
         return dtos
 
     @classmethod
-    def save_date_row(cls, row):
+    def save_date_row(cls, row: LastPurchaseDate):
         return row.save()

@@ -1,3 +1,4 @@
+import datetime
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.db.models import Prefetch
@@ -8,7 +9,7 @@ from stabby_web.models import Blade, Knife, Photo, ViewKnifeGrid, ViewKnifeBlade
 class KnifeService:
 
     @classmethod
-    def copy_knife(cls, knife_id, now):
+    def copy_knife(cls, knife_id: int, now: datetime):
         try:
             original_knife = Knife.objects.get(knife_id=knife_id)
             original_blades = original_knife.blades.filter(is_active=True)
@@ -66,13 +67,13 @@ class KnifeService:
             return None
 
     @classmethod
-    def delete_knife(cls, knife):
+    def delete_knife(cls, knife: Knife):
         knife.is_active = False
 
         return knife
 
     @classmethod
-    def get_knife_detail(cls, knife_id, include_photos=False):
+    def get_knife_detail(cls, knife_id: int, include_photos: bool = False):
         if include_photos:
             photos_prefetch = Prefetch(
                 "photos",
@@ -152,11 +153,11 @@ class KnifeService:
             return None
 
     @classmethod
-    def save_knife(cls, knife):
+    def save_knife(cls, knife: Knife):
         return knife.save()
 
     @classmethod
-    def map_knife_form_data(cls, request, form, now, knife=None):
+    def map_knife_form_data(cls, request, form, now: datetime, knife: Knife = None):
         if knife == None:
             knife = Knife()
             knife.create_date = now

@@ -117,7 +117,7 @@ def photo_create(request, related_entity_id=None):
 
 @skip_save
 @login_required
-def photo_update(request, photo_id, related_entity_id=None):
+def photo_update(request, photo_id: int, related_entity_id: int = None):
     photo = PhotoService.get_photo_detail(photo_id)
 
     related_entity = None
@@ -221,7 +221,7 @@ def photo_update(request, photo_id, related_entity_id=None):
 # JSON VIEWS
 @skip_save
 @login_required
-def photo_delete(request, photo_id):
+def photo_delete(request, photo_id: int):
     work_log = PhotoService.get_photo_detail(photo_id)
 
     if request.is_collector:
