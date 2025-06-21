@@ -13,7 +13,7 @@ from stabby_web.decorators import skip_save
 # MVT VIEWS
 @skip_save
 @login_required
-def blade_create(request, knife_id):
+def blade_create(request, knife_id: int):
     knife = KnifeService.get_knife_detail(knife_id)
 
     if request.method == "POST":
@@ -55,7 +55,7 @@ def blade_create(request, knife_id):
 
 @skip_save
 @login_required
-def blade_update(request, knife_id, blade_id):
+def blade_update(request, knife_id: int, blade_id: int):
     knife = KnifeService.get_knife_detail(knife_id)
     blade = BladeService.get_blade_detail(blade_id)
 
@@ -107,7 +107,7 @@ def blade_update(request, knife_id, blade_id):
 # JSON VIEWS
 @skip_save
 @login_required
-def blade_delete(request, blade_id):
+def blade_delete(request, blade_id: int):
     blade = BladeService.get_blade_detail(blade_id)
 
     if request.is_collector:
@@ -119,7 +119,7 @@ def blade_delete(request, blade_id):
 
 
 @login_required
-def get_blade_grid(request, knife_id):
+def get_blade_grid(request, knife_id: int):
     data = BladeService.get_blade_grid(knife_id)
 
     return JsonResponse(data, safe=False)

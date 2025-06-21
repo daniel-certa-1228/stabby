@@ -20,7 +20,7 @@ from stabby_web.decorators import skip_save
 # MVT Views
 @skip_save
 @login_required
-def work_log_create(request, related_entity_id):
+def work_log_create(request, related_entity_id: int):
     related_entity = None
     redirect_url = None
 
@@ -102,7 +102,7 @@ def work_log_create(request, related_entity_id):
 
 @skip_save
 @login_required
-def work_log_update(request, work_log_id, related_entity_id):
+def work_log_update(request, work_log_id: int, related_entity_id: int):
     work_log = WorkLogService.get_work_log_detail(work_log_id)
 
     related_entity = None
@@ -178,14 +178,14 @@ def work_log_update(request, work_log_id, related_entity_id):
 
 # JSON VIEWS
 @login_required
-def get_knife_work_log_grid(request, knife_id):
+def get_knife_work_log_grid(request, knife_id: int):
     data = WorkLogService.get_knife_work_log_grid(knife_id)
 
     return JsonResponse(data, safe=False)
 
 
 @login_required
-def get_sharpener_work_log_grid(request, sharpener_id):
+def get_sharpener_work_log_grid(request, sharpener_id: int):
     data = WorkLogService.get_sharpener_work_log_grid(sharpener_id)
 
     return JsonResponse(data, safe=False)
@@ -193,7 +193,7 @@ def get_sharpener_work_log_grid(request, sharpener_id):
 
 @skip_save
 @login_required
-def work_log_delete(request, work_log_id):
+def work_log_delete(request, work_log_id: int):
     work_log = WorkLogService.get_work_log_detail(work_log_id)
 
     if request.is_collector:
