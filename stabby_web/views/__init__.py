@@ -12,7 +12,7 @@ from .dashboard_views import (
     set_last_purchase_date,
 )
 
-from .excel_views import export_knife_excel
+from .excel_views import export_knife_excel, export_sharpener_excel
 
 from .knife_views import (
     copy_knife,
@@ -48,6 +48,7 @@ __all__ = [
     "login_view",
     "logout_view",
     "export_knife_excel",
+    "export_sharpener_excel",
     "get_knife_grid",
     "index",
     "knives",

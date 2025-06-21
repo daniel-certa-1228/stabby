@@ -2,21 +2,14 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, numbers
 from openpyxl.utils import get_column_letter
 from io import BytesIO
+from contextlib import suppress
 
 
 class ExcelService:
 
     @classmethod
     def generate_knife_excel(cls, knife_queryset):
-        wb = Workbook()
-
-        ws = wb.active
-        ws.title = "Knife List"
-
-        header_font = Font(bold=True, color="FFFFFF")
-        header_fill = PatternFill(
-            fill_type="solid", start_color="000000", end_color="000000"
-        )
+        wb, ws = cls._create_workbook("Knife List")
 
         headers = [
             "Brand",
@@ -34,13 +27,7 @@ class ExcelService:
             "Date Entered",
         ]
 
-        ws.append(headers)
-
-        # Apply header styles
-        for col in range(1, len(headers) + 1):
-            cell = ws.cell(row=1, column=col)
-            cell.font = header_font
-            cell.fill = header_fill
+        cls._append_headers(ws, headers)
 
         for row_idx, knife in enumerate(knife_queryset, start=2):
             col = 1
@@ -64,25 +51,11 @@ class ExcelService:
             col += 1
             ws.cell(row=row_idx, column=col, value=knife.vendor)
             col += 1
-            # Purchased New bool column
-            purchased_new_value = "New" if knife.purchased_new else "Used"
-            pn_font = Font(color="A0A0A0") if not knife.purchased_new else None
-
-            pn_cell = ws.cell(row=row_idx, column=col, value=purchased_new_value)
-
-            if pn_font:
-                pn_cell.font = pn_font
-
+            cls._write_boolean_cell(
+                ws, row_idx, col, knife.purchased_new, "New", "Used"
+            )
             col += 1
-            # Needs Work bool column
-            needs_work_value = "Yes" if knife.needs_work else "No"
-            nw_font = Font(color="A0A0A0") if not knife.needs_work else None
-
-            nw_cell = ws.cell(row=row_idx, column=col, value=needs_work_value)
-
-            if nw_font:
-                nw_cell.font = nw_font
-
+            cls._write_boolean_cell(ws, row_idx, col, knife.needs_work)
             col += 1
             # Date col
             date_cell = ws.cell(
@@ -91,10 +64,111 @@ class ExcelService:
             date_cell.number_format = "m/d/yyyy"
             col += 1
 
-        # Auto-width hack for all columns based on content
-        num_columns = len(headers)
+        cls._auto_width_hack(ws, len(headers))
 
-        # Loop through each column index (1-based for openpyxl)
+        # Manual widths for problem columns
+        column_map = {
+            "Deployment": 13,
+            "Purchased New": 15,
+            "Needs Work": 13,
+            "Date Entered": 15,
+        }
+
+        cls._manual_width_set(ws, headers, column_map)
+
+        ws.freeze_panes = "A2"
+
+        output = BytesIO()
+        wb.save(output)
+        output.seek(0)
+
+        return output.getvalue()
+
+    @classmethod
+    def generate_sharpener_excel(cls, sharpener_queryset):
+        wb, ws = cls._create_workbook("Sharpener List")
+
+        headers = [
+            "Brand",
+            "Sharpener",
+            "Cutting Agent",
+            "Bonding Agent",
+            "Length",
+            "Width",
+            "Country",
+            "Friable",
+        ]
+
+        cls._append_headers(ws, headers)
+
+        for row_idx, sharpener in enumerate(sharpener_queryset, start=2):
+            col = 1
+            ws.cell(row=row_idx, column=col, value=sharpener.brand)
+            col += 1
+            ws.cell(row=row_idx, column=col, value=sharpener.sharpener)
+            col += 1
+            ws.cell(row=row_idx, column=col, value=sharpener.cutting_agent)
+            col += 1
+            ws.cell(row=row_idx, column=col, value=sharpener.bonding_agent)
+            col += 1
+            ws.cell(row=row_idx, column=col, value=sharpener.length)
+            col += 1
+            ws.cell(row=row_idx, column=col, value=sharpener.width)
+            col += 1
+            ws.cell(row=row_idx, column=col, value=sharpener.country)
+            col += 1
+            cls._write_boolean_cell(ws, row_idx, col, sharpener.is_friable)
+            col += 1
+
+        cls._auto_width_hack(ws, len(headers))
+
+        column_map = {
+            "Country": 9,
+        }
+
+        cls._manual_width_set(ws, headers, column_map)
+
+        output = BytesIO()
+        wb.save(output)
+        output.seek(0)
+
+        return output.getvalue()
+
+    @classmethod
+    def _create_workbook(cls, title):
+        wb = Workbook()
+        ws = wb.active
+        ws.title = title
+        return wb, ws
+
+    @classmethod
+    def _append_headers(cls, ws, headers: list[str]):
+        header_font = Font(bold=True, color="FFFFFF")
+
+        header_fill = PatternFill(
+            fill_type="solid", start_color="12387A", end_color="12387A"
+        )
+
+        ws.append(headers)
+
+        for col in range(1, len(headers) + 1):
+            cell = ws.cell(row=1, column=col)
+            cell.font = header_font
+            cell.fill = header_fill
+
+    @classmethod
+    def _write_boolean_cell(
+        cls, ws, row, col, value: bool, true_display="Yes", false_display="No"
+    ):
+        cell_value = true_display if value else false_display
+
+        cell = ws.cell(row=row, column=col, value=cell_value)
+
+        if not value:
+            cell.font = Font(color="A0A0A0")
+
+    @classmethod
+    def _auto_width_hack(cls, ws, num_columns: int):
         for col_idx in range(1, num_columns + 1):
             col_letter = get_column_letter(col_idx)
 
@@ -105,29 +179,14 @@ class ExcelService:
             ):
                 for cell in row:
                     if cell.value:
-                        try:
+                        with suppress(AttributeError, TypeError):
                             # Strip the value, convert to string, and measure its length
                             max_length = max(max_length, len(str(cell.value).strip()))
-                        except:
-                            pass
 
             ws.column_dimensions[col_letter].width = max_length
 
-        # Manual widths for problem columns
-        column_map = {
-            "Deployment": 13,
-            "Purchased New": 15,
-            "Needs Work": 13,
-            "Date Entered": 15,
-        }
+    @classmethod
+    def _manual_width_set(cls, ws, headers: list[str], column_map: dict[str, int]):
         for header_name, width in column_map.items():
             col_letter = get_column_letter(headers.index(header_name) + 1)
             ws.column_dimensions[col_letter].width = width
-
-        ws.freeze_panes = "A2"
-
-        output = BytesIO()
-        wb.save(output)
-        output.seek(0)
-
-        return output.getvalue()

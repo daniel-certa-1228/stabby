@@ -109,9 +109,7 @@ class KnifeService:
                 is_active=True, purchased_new=purchased_new_bool
             ).order_by("brand", "knife")
         else:
-            queryset = ViewKnifeGrid.objects.filter(is_active=True).order_by(
-                "brand", "knife"
-            )
+            queryset = cls.get_knife_queryset()
 
         return list(queryset.values())
 

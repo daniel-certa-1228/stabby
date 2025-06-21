@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
       break;
     case enums.ViewTypes.SharpenerGrid:
       grid_loader.loadSharpenerGrid();
+      excel_handler.setSharpenerExcelEventHandler();
       break;
     case enums.ViewTypes.KnifeDetail: {
       const knife_id: number = variables['knife_id'];

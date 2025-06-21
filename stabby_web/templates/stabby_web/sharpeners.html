@@ -6,9 +6,16 @@
     <div class="d-flex flex-row justify-content-between">
       {% include 'stabby_web/partials/_bc-sharpeners.html' %}
 
-        <a type="button" class="btn btn-light btn-sm align-self-center new-btn" href="{% url 'sharpener_create'%}">
+      <div>
+        <a type="button" class="btn btn-light btn-sm align-self-center new-btn me-1" href="{% url 'sharpener_create'%}">
           <i class="bi bi-plus-lg"></i>&nbsp;&nbsp;Add
         </a>
+
+        <button class="btn btn-light btn-sm" id="sharpener-excel-btn">
+            <i class="bi bi-file-earmark-excel"></i>&nbsp;&nbsp;Export
+        </button>
+      </div>
+      
     </div>
 
     <div id="grid" class="ag-theme-alpine mt-2 mb-4"></div>
