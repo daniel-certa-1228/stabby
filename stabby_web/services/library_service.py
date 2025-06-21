@@ -40,5 +40,5 @@ class LibraryService:
         return brand_photos_dtos
 
     @classmethod
-    def get_brand_detail(cls, brand_id):
+    def get_brand_detail(cls, brand_id: int):
         return get_object_or_404(Brand, brand_id=brand_id)

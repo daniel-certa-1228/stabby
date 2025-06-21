@@ -1,5 +1,5 @@
+import datetime
 from django.shortcuts import get_object_or_404
-from django.utils import timezone
 from django.db.models import Prefetch
 from ..models import Sharpener, ViewSharpenerGrid, Photo
 
@@ -7,13 +7,13 @@ from ..models import Sharpener, ViewSharpenerGrid, Photo
 class SharpenerService:
 
     @classmethod
-    def delete_sharpener(cls, sharpener):
+    def delete_sharpener(cls, sharpener: Sharpener):
         sharpener.is_active = False
 
         return sharpener
 
     @classmethod
-    def get_sharpener_detail(cls, sharpener_id, include_photos=False):
+    def get_sharpener_detail(cls, sharpener_id: int, include_photos: bool = False):
         if include_photos == True:
             photos_prefetch = Prefetch(
                 "photos",
@@ -40,7 +40,9 @@ class SharpenerService:
         )
 
     @classmethod
-    def map_sharpener_form_data(cls, request, form, now, sharpener=None):
+    def map_sharpener_form_data(
+        cls, request, form, now: datetime, sharpener: Sharpener = None
+    ):
         if sharpener == None:
             sharpener = Sharpener()
             sharpener.create_date = now
