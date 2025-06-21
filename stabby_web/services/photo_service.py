@@ -38,5 +38,5 @@ class PhotoService:
         return photo
 
     @classmethod
-    def save_photo(cls, photo):
+    def save_photo(cls, photo: Photo):
         return photo.save()

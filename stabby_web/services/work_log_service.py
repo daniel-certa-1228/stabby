@@ -57,7 +57,7 @@ class WorkLogService:
         return work_log
 
     @classmethod
-    def save_work_log(cls, work_log):
+    def save_work_log(cls, work_log: WorkLog):
         return work_log.save()
 
     @classmethod

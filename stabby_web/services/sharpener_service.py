@@ -64,5 +64,5 @@ class SharpenerService:
         return sharpener
 
     @classmethod
-    def save_sharpener(cls, sharpener):
+    def save_sharpener(cls, sharpener: Sharpener):
         return sharpener.save()
