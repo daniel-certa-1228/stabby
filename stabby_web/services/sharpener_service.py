@@ -29,11 +29,15 @@ class SharpenerService:
 
     @classmethod
     def get_sharpener_grid(cls):
-        queryset = ViewSharpenerGrid.objects.filter(is_active=True).order_by(
-            "brand", "sharpener", "cutting_agent"
-        )
+        queryset = cls.get_sharpener_queryset()
 
         return list(queryset.values())
+
+    @classmethod
+    def get_sharpener_queryset(cls):
+        return ViewSharpenerGrid.objects.filter(is_active=True).order_by(
+            "brand", "sharpener", "cutting_agent"
+        )
 
     @classmethod
     def map_sharpener_form_data(cls, request, form, now, sharpener=None):

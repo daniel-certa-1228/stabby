@@ -1,4 +1,3 @@
-from django.utils import timezone
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.db.models import Prefetch
@@ -110,11 +109,13 @@ class KnifeService:
                 is_active=True, purchased_new=purchased_new_bool
             ).order_by("brand", "knife")
         else:
-            queryset = ViewKnifeGrid.objects.filter(is_active=True).order_by(
-                "brand", "knife"
-            )
+            queryset = cls.get_knife_queryset()
 
         return list(queryset.values())
+
+    @classmethod
+    def get_knife_queryset(cls):
+        return ViewKnifeGrid.objects.filter(is_active=True).order_by("brand", "knife")
 
     @classmethod
     def set_knife_filter(cls, request):
