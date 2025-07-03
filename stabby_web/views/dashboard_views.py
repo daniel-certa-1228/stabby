@@ -47,6 +47,8 @@ def index(request):
 
     handle_material_breakdown = DashboardService.get_handle_material_chart_data()
 
+    knife_type_breakdown = DashboardService.get_knife_type_data()
+
     context = {
         "active": Modules.Dashboard.value,
         "template_variables": variable_dto.to_dict(),
@@ -62,6 +64,7 @@ def index(request):
         "blade_material_breakdown": blade_material_breakdown,
         "blade_shape_breakdown": blade_shape_breakdown,
         "handle_material_breakdown": handle_material_breakdown,
+        "knife_type_breakdown": knife_type_breakdown,
         "vendor_breakdown": vendor_breakdown,
     }
 

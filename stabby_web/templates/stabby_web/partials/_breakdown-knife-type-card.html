@@ -1,0 +1,27 @@
+<div class="card mt-4">
+    <div class="card-header d-flex justify-content-between">
+        Knife Type Breakdown
+    </div>
+    <div class="card-body pb-0 pt-0 dash-card-body">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col" class="right">Count</th>
+                    <th scope="col" class="right">Percentage</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for kt in knife_type_breakdown %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'knives' %}?knife_type={{ kt.query_str }}" class="link-style">{{ kt.name }}</a>
+                        </td>
+                        <td class="right">{{ kt.count }}</td>
+                        <td class="right">{{ kt.percentage }}%</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

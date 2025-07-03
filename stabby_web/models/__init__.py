@@ -25,6 +25,7 @@ from .view_country_chart import ViewCountryChart
 from .view_handle_material_chart import ViewHandleMaterialChart
 from .view_knife_blade_grid import ViewKnifeBladeGrid
 from .view_knife_grid import ViewKnifeGrid
+from .view_knife_type_chart import ViewKnifeTypeChart
 from .view_lock_type_chart import ViewLockTypeChart
 from .view_sharpener_grid import ViewSharpenerGrid
 from .view_steel_type_chart import ViewSteelTypeChart
@@ -59,6 +60,7 @@ __all__ = [
     "ViewHandleMaterialChart",
     "ViewKnifeBladeGrid",
     "ViewKnifeGrid",
+    "ViewKnifeTypeChart",
     "ViewLockTypeChart",
     "ViewSharpenerGrid",
     "ViewSteelTypeChart",

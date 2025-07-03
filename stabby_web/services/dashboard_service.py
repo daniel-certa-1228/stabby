@@ -61,6 +61,14 @@ class DashboardService:
         return cls._map_to_chart_dto(rows)
 
     @classmethod
+    def get_knife_type_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_knife_type_chart;")
+            rows = cursor.fetchall()
+
+        return cls._map_to_chart_dto(rows)
+
+    @classmethod
     def get_last_purchase_date(cls, now: datetime):
         date_row = cls.get_last_purchase_date_row()
 
