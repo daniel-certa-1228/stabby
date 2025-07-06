@@ -124,6 +124,7 @@ class KnifeService:
         vendor = request.GET.get("vendor")
         blade_material = request.GET.get("blade_material")
         handle_material = request.GET.get("handle_material")
+        knife_type = request.GET.get("knife_type")
         purchased_new = request.GET.get("purchased_new")
         blade_shape_id = request.GET.get("blade_shape_id")
 
@@ -132,6 +133,7 @@ class KnifeService:
             or vendor
             or blade_material
             or handle_material
+            or knife_type
             or blade_shape_id
             or purchased_new
         ):
@@ -143,6 +145,8 @@ class KnifeService:
                 dto = KnifeFilterDTO(blade_material=blade_material)
             elif handle_material:
                 dto = KnifeFilterDTO(handle_material=handle_material)
+            elif knife_type:
+                dto = KnifeFilterDTO(knife_type=knife_type)
             elif purchased_new:
                 dto = KnifeFilterDTO(purchased_new=purchased_new.lower() == "true")
             elif blade_shape_id:

@@ -490,6 +490,12 @@ const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter
       } else {
         gridApi.setColumnFilterModel('handle_material', { type: 'blank' })
       }
+    } else if (knife_filter.knife_type) {
+      if (knife_filter.knife_type !== 'Uncategorized') {
+        gridApi.setColumnFilterModel('knife_type', { filter: knife_filter?.knife_type, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('knife_type', { type: 'blank' })
+      }
     }
   }
 }
