@@ -21,7 +21,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Brand:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.brand %}
-                    {{ knife.brand }}
+                    <a href="{% url 'knives' %}{% querystring brand=knife.brand %}" class="link-style">{{ knife.brand.name }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
