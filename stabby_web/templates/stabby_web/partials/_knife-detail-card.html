@@ -35,7 +35,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Knife Type:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.knife_type %}
-                    {{ knife.knife_type }}
+                    <a href="{% url 'knives' %}{% querystring knife_type=knife.knife_type %}" class="link-style">{{ knife.knife_type }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
@@ -44,7 +44,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Blade Material:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.blade_material %}
-                  {{ knife.blade_material }}
+                    <a href="{% url 'knives' %}{% querystring blade_material=knife.blade_material %}" class="link-style">{{ knife.blade_material }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
@@ -53,7 +53,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Handle Material:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.handle_material %}
-                    {{ knife.handle_material }}
+                    <a href="{% url 'knives' %}{% querystring handle_material=knife.handle_material %}" class="link-style">{{ knife.handle_material }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
@@ -105,7 +105,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Vendor:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.vendor %}
-                    {{ knife.vendor }}
+                    <a href="{% url 'knives' %}{% querystring vendor=knife.vendor %}" class="link-style">{{ knife.vendor }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
