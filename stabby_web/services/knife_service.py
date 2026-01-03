@@ -127,6 +127,9 @@ class KnifeService:
         knife_type = request.GET.get("knife_type")
         purchased_new = request.GET.get("purchased_new")
         blade_shape_id = request.GET.get("blade_shape_id")
+        country = request.GET.get("country")
+        deployment_type = request.GET.get("deployment_type")
+        lock_type = request.GET.get("lock_type")
 
         if (
             brand
@@ -136,6 +139,9 @@ class KnifeService:
             or knife_type
             or blade_shape_id
             or purchased_new
+            or country
+            or deployment_type
+            or lock_type
         ):
             if brand:
                 dto = KnifeFilterDTO(brand=brand)
@@ -151,7 +157,12 @@ class KnifeService:
                 dto = KnifeFilterDTO(purchased_new=purchased_new.lower() == "true")
             elif blade_shape_id:
                 dto = KnifeFilterDTO(blade_shape_id=blade_shape_id)
-
+            elif country:
+                dto = KnifeFilterDTO(country=country)
+            elif deployment_type:
+                dto = KnifeFilterDTO(deployment_type=deployment_type)
+            elif lock_type:
+                dto = KnifeFilterDTO(lock_type=lock_type)
             return dto
         else:
             return None

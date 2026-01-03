@@ -8,6 +8,9 @@ export class knife_filter_model {
     knife_type: string;
     purchased_new: boolean;
     blade_shape_id: number;
+    country: string;
+    deployment_type: string;
+    lock_type: string;
   
     constructor(
         brand: string,
@@ -17,6 +20,9 @@ export class knife_filter_model {
         knife_type: string,
         purchased_new: boolean,
         blade_shape_id: number,
+        country: string,
+        deployment_type: string,
+        lock_type: string,
     ) {
         this.brand = brand;
         this.vendor = vendor;
@@ -25,5 +31,8 @@ export class knife_filter_model {
         this.knife_type = knife_type;
         this.purchased_new = purchased_new;
         this.blade_shape_id = blade_shape_id;
+        this.country = country;
+        this.deployment_type = deployment_type;
+        this.lock_type = lock_type;
     }
 }
