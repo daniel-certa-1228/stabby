@@ -82,7 +82,7 @@ const loadCountryChart = async (): Promise<void> => {
             listeners: {
                 nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
                     if (event) {
-                     knife_grid_redirect(event, 'country');
+                        knife_grid_redirect(event, 'country');
                     }
                 }
             }})
@@ -117,7 +117,7 @@ const loadCountryChart = async (): Promise<void> => {
             listeners: {
                 nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
                     if (event) {
-                     knife_grid_redirect(event, 'country');
+                        knife_grid_redirect(event, 'country');
                     }
                 }
             }})
@@ -182,7 +182,15 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'deployment_type');
+                        }
+                    }
+                }})
             },
             {
                 type: "donut",
@@ -209,7 +217,15 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'deployment_type');
+                        }
+                    }
+                }})
             },
         ],
     };
@@ -446,6 +462,10 @@ const knife_grid_redirect = (event: agCharts.AgNodeClickEvent<"nodeClick", any>,
 
     if (type === 'country') {
         filterParams.country = event.datum?.name;
+    }
+
+    if (type === 'deployment_type') {
+        filterParams.deployment_type = event.datum?.name;
     }
 
     redirect_handler.redirectToKnifeGridPage_rel(filterParams);
