@@ -496,6 +496,24 @@ const setKnifeFilter = (gridApi: agGrid.GridApi<any>, knife_filter: knife_filter
       } else {
         gridApi.setColumnFilterModel('knife_type', { type: 'blank' })
       }
+    } else if (knife_filter.country) {
+      if (knife_filter.country !== 'Unknown') {
+        gridApi.setColumnFilterModel('country', { filter: knife_filter?.country, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('country', { type: 'blank' })
+      }
+    } else if (knife_filter.deployment_type) {
+      if (knife_filter.deployment_type !== 'Unknown') {
+        gridApi.setColumnFilterModel('deployment_type', { filter: knife_filter?.deployment_type, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('deployment_type', { type: 'blank' })
+      }
+    } else if (knife_filter.lock_type) {
+      if (knife_filter.lock_type !== 'Unknown') {
+        gridApi.setColumnFilterModel('lock_type', { filter: knife_filter?.lock_type, type: 'equals' });
+      } else {
+        gridApi.setColumnFilterModel('lock_type', { type: 'blank' })
+      }
     }
   }
 }

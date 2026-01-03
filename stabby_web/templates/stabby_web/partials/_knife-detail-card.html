@@ -62,7 +62,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Lock Type:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.lock_type %}
-                    {{ knife.lock_type }}
+                    <a href="{% url 'knives' %}{% querystring lock_type=knife.lock_type %}" class="link-style">{{ knife.lock_type }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
@@ -73,7 +73,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Deployment Type:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.deployment_type %}
-                    {{ knife.deployment_type }}
+                    <a href="{% url 'knives' %}{% querystring deployment_type=knife.deployment_type %}" class="link-style">{{ knife.deployment_type }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
@@ -89,7 +89,7 @@
             <dt class="col-sm-4 text-sm-end text-start">Country:</dt>
             <dd class="col-sm-8 text-start">
                 {% if knife.country %}
-                    {{ knife.country }}
+                    <a href="{% url 'knives' %}{% querystring country=knife.country %}" class="link-style">{{ knife.country }}</a>
                 {% else %}
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
