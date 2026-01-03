@@ -1,6 +1,7 @@
 'use strict';
 
 import { constants } from "./index";
+import { knife_filter_model } from "./models/knife-filter-model";
 
 const redirectToBladeEditPage_abs = (blade_id: number, knife_id: number): void => {
     window.location.href = `${constants.getBaseUrl()}knives/detail/${knife_id}/blades/edit/${blade_id}`;
@@ -24,6 +25,18 @@ const redirectToKnifeGridPage_abs = (): void => {
 
 const redirectToLibraryPage_abs = (): void => {
     window.location.href = `${constants.getBaseUrl()}library`;
+}
+
+const redirectToKnifeGridPage_rel = (filterParams: knife_filter_model | null): void => {
+    let url = '/knives';
+
+    if (filterParams) {
+        if (filterParams.country) {
+            url += `?country=${filterParams.country}`;
+        }
+    }
+
+    window.location.href = url;
 }
 
 const redirectToSharpenerDetailPage_abs = (sharpener_id: number): void => {
@@ -56,6 +69,7 @@ export {
     redirectToKnifeDetailPage_rel, 
     redirectToKnifeDetailPageWlCard_abs,
     redirectToKnifeGridPage_abs,
+    redirectToKnifeGridPage_rel,
     redirectToLibraryPage_abs,
     redirectToSharpenerDetailPage_abs,
     redirectToSharpenerDetailPage_rel,
