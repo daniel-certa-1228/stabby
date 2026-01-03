@@ -34,8 +34,13 @@ const redirectToKnifeGridPage_rel = (filterParams: knife_filter_model | null): v
         if (filterParams.country) {
             url += `?country=${filterParams.country}`;
         }
+
         if (filterParams.deployment_type) {
             url += `?deployment_type=${filterParams.deployment_type}`;
+        }
+
+        if (filterParams.lock_type) {
+            url += `?lock_type=${filterParams.lock_type}`;
         }
     }
 

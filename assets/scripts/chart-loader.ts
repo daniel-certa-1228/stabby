@@ -288,7 +288,15 @@ const loadLockTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'lock_type');
+                        }
+                    }
+                }})
             },
             {
                 type: "donut",
@@ -315,7 +323,15 @@ const loadLockTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'lock_type');
+                        }
+                    }
+                }})
             },
         ],
     };
@@ -466,6 +482,10 @@ const knife_grid_redirect = (event: agCharts.AgNodeClickEvent<"nodeClick", any>,
 
     if (type === 'deployment_type') {
         filterParams.deployment_type = event.datum?.name;
+    }
+
+    if (type === 'lock_type') {
+        filterParams.lock_type = event.datum?.name;
     }
 
     redirect_handler.redirectToKnifeGridPage_rel(filterParams);
