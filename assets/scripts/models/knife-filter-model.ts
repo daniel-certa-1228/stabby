@@ -1,28 +1,28 @@
 'use strict'
 
 export class knife_filter_model {
-    brand: string;
-    vendor: string;
-    blade_material: string;
-    handle_material: string;
-    knife_type: string;
-    purchased_new: boolean;
-    blade_shape_id: number;
-    country: string;
-    deployment_type: string;
-    lock_type: string;
+    brand: string | null = null;
+    vendor: string | null = null;
+    blade_material: string | null = null;
+    handle_material: string | null = null;
+    knife_type: string | null = null;
+    purchased_new: boolean | null = null;
+    blade_shape_id: number | null = null;
+    country: string | null = null;
+    deployment_type: string | null = null;
+    lock_type: string | null = null;
   
     constructor(
-        brand: string,
-        vendor: string,
-        blade_material: string,
-        handle_material: string,
-        knife_type: string,
-        purchased_new: boolean,
-        blade_shape_id: number,
-        country: string,
-        deployment_type: string,
-        lock_type: string,
+        brand: string | null = null,
+        vendor: string | null = null,
+        blade_material: string | null = null,
+        handle_material: string | null = null,
+        knife_type: string | null = null,
+        purchased_new: boolean | null = null,
+        blade_shape_id: number | null = null,
+        country: string | null = null,
+        deployment_type: string | null = null,
+        lock_type: string | null = null,
     ) {
         this.brand = brand;
         this.vendor = vendor;

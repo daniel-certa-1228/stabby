@@ -15,6 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   constants.setBaseUrl(variables['is_production']);
 
+  constants.setIsMobile();
+
+  let resizeTimeout: number | undefined;
+
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(constants.setIsMobile, 150);
+  });
+
   const knife_filter = variables["knife_filter"] ? variables["knife_filter"] : null;
 
   switch (variables['view_type']) {

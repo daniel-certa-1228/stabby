@@ -4,8 +4,10 @@ import {
     agCharts,
     ajax_handler,
     chart_data_model,
-    constants
+    constants,
+    redirect_handler
 }  from './index';
+import { knife_filter_model } from './models/knife-filter-model';
 
 const fill_1: string[] = ["#4D4993", "#027600", "#FD7E6D", "#82438B", "#CE5482", "#FFB85D", "#C4C454", "#006676", "#E6A902"];
 const fill_2: string[] = ["#5166AF", "#444655", "#D1A617", "#7BB6B2", "#857555", "#741429", "#FF8FDB", "#853F00", "#5DE602"];
@@ -75,7 +77,15 @@ const loadCountryChart = async (): Promise<void> => {
                         </div>
                     `;
                 }
-            }
+            },
+            ...(constants.getIsMobile() ? {} : {
+            listeners: {
+                nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                    if (event) {
+                        knife_grid_redirect(event, 'country');
+                    }
+                }
+            }})
         },
         {
             type: "donut",
@@ -102,8 +112,16 @@ const loadCountryChart = async (): Promise<void> => {
                         </div>
                     `;
                 }
-            }
-        },
+            },
+            ...(constants.getIsMobile() ? {} : {
+            listeners: {
+                nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                    if (event) {
+                        knife_grid_redirect(event, 'country');
+                    }
+                }
+            }})
+        }
     ]};
    
     spinner?.remove();
@@ -164,7 +182,15 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'deployment_type');
+                        }
+                    }
+                }})
             },
             {
                 type: "donut",
@@ -191,7 +217,15 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'deployment_type');
+                        }
+                    }
+                }})
             },
         ],
     };
@@ -254,7 +288,15 @@ const loadLockTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'lock_type');
+                        }
+                    }
+                }})
             },
             {
                 type: "donut",
@@ -281,7 +323,15 @@ const loadLockTypeChart = async (): Promise<void> => {
                             </div>
                         `;
                     }
-                }
+                },
+                ...(constants.getIsMobile() ? {} : {
+                listeners: {
+                    nodeClick: (event: agCharts.AgNodeClickEvent<"nodeClick", any>) => {
+                        if (event) {
+                            knife_grid_redirect(event, 'lock_type');
+                        }
+                    }
+                }})
             },
         ],
     };
@@ -417,6 +467,28 @@ const convertToOther = (arr: chart_data_model[] | undefined): chart_data_model |
     }
 
     return null;
+}
+
+const knife_grid_redirect = (event: agCharts.AgNodeClickEvent<"nodeClick", any>, type: string): void => {
+   if (event.datum?.name === 'Other') {
+        return;
+    }
+                        
+    const filterParams = new knife_filter_model();
+
+    if (type === 'country') {
+        filterParams.country = event.datum?.name;
+    }
+
+    if (type === 'deployment_type') {
+        filterParams.deployment_type = event.datum?.name;
+    }
+
+    if (type === 'lock_type') {
+        filterParams.lock_type = event.datum?.name;
+    }
+
+    redirect_handler.redirectToKnifeGridPage_rel(filterParams);
 }
 
 export {
