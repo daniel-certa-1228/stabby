@@ -58,6 +58,7 @@ class KnifeForm(forms.ModelForm):
         self.fields["year_of_manufacture"].label = "Year Manufactured"
         self.fields["vendor"].empty_label = "Select Vendor"
         self.fields["year_of_purchase"].label = "Year Purchased"
+        self.fields["has_pocket_clip"].label = "Has Pocket Clip"
 
     def clean_blade_material_notes(self):
         blade_material_notes = self.cleaned_data.get("blade_material_notes")

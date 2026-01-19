@@ -17,6 +17,7 @@ export class view_knife_grid_model {
     is_active: boolean;
     create_date: Date | null;
     user_id: number;
+    has_pocket_clip: boolean;
 
     constructor(
         knife_id: number,
@@ -35,6 +36,7 @@ export class view_knife_grid_model {
         is_active: boolean,
         create_date: Date,
         user_id: number,
+        has_pocket_clip: boolean,
     ) {
         this.knife_id = knife_id;
         this.knife = knife;
@@ -52,5 +54,6 @@ export class view_knife_grid_model {
         this.is_active = is_active;
         this.create_date = create_date;
         this.user_id = user_id;
+        this.has_pocket_clip = has_pocket_clip;
     }
 }

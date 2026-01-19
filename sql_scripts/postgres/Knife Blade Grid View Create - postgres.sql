@@ -18,7 +18,8 @@ CREATE VIEW view_knife_blade_grid AS
 	    k.purchased_new,
 	    k.is_active,
 	    k.create_date,
-	    k.user_id
+	    k.user_id,
+	    k.has_pocket_clip
 	FROM
 		stabby_web_blade bl
 	LEFT JOIN

@@ -93,6 +93,10 @@
                     </div>
                     <div class="form-group row form-check form-switch mt-3">
                         <div class="col-6">
+                            {{ form.has_pocket_clip }}
+                            <label for="id_has_pocket_clip" class="form-label">{{ form.has_pocket_clip.label }}</label>
+                        </div>
+                        <div class="col-6">
                             {{ form.purchased_new }}
                             <label for="id_purchased_new" class="form-label">{{ form.purchased_new.label }}</label>
                         </div>

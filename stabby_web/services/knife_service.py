@@ -41,6 +41,7 @@ class KnifeService:
                     user=original_knife.user,
                     create_date=now,
                     edit_date=now,
+                    has_pocket_clip=original_knife.has_pocket_clip,
                 )
                 new_knife.save()
 
@@ -200,5 +201,6 @@ class KnifeService:
         knife.lock_type_notes = form.cleaned_data["lock_type_notes"]
         knife.deployment_type = form.cleaned_data["deployment_type"]
         knife.needs_work = form.cleaned_data["needs_work"]
+        knife.has_pocket_clip = form.cleaned_data["has_pocket_clip"]
 
         return knife

@@ -17,7 +17,8 @@ CREATE VIEW view_knife_grid AS
         k.purchased_new,
         k.is_active,
         k.create_date,
-        k.user_id
+        k.user_id,
+        k.has_pocket_clip
     FROM stabby_web_knife k
     LEFT JOIN stabby_web_brand b ON b.brand_id = k.brand_id 
     LEFT JOIN stabby_web_bladematerial bm ON bm.blade_material_id = k.blade_material_id
@@ -45,6 +46,7 @@ CREATE VIEW view_knife_grid AS
         k.purchased_new,
         k.is_active,
         k.user_id,
-        bm.steel_manufacturer_id;
+        bm.steel_manufacturer_id,
+		k.has_pocket_clip;
  
 GRANT SELECT ON view_knife_grid TO db;
