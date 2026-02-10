@@ -52,6 +52,7 @@ class Knife(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    has_pocket_clip = models.BooleanField(default=False, null=False)
 
     def number_of_blades(self):
         return self.blades.filter(is_active=1).count()

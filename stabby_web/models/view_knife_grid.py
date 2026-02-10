@@ -18,6 +18,7 @@ class ViewKnifeGrid(models.Model):
     is_active = models.BooleanField(null=False)
     create_date = models.DateTimeField(null=False)
     user_id = models.BigIntegerField(null=False)
+    has_pocket_clip = models.BooleanField(null=False)
 
     class Meta:
         db_table = "view_knife_grid"

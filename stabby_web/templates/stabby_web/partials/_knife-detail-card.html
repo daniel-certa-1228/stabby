@@ -126,6 +126,8 @@
                     <span class="text-body-tertiary">n/a</span>
                 {% endif %}
             </dd>
+            <dt class="col-sm-4 text-sm-end text-start">Has Pocket Clip:</dt>
+            <dd class="col-sm-8 text-start">{% if knife.has_pocket_clip == True %}<i class="bi bi-check-circle-fill text-primary"></i>{% else %}<i class="bi bi-x-circle-fill text-body-tertiary"></i>{% endif %}</dd>
             <dt class="col-sm-4 text-sm-end text-start">Purchased New:</dt>
             <dd class="col-sm-8 text-start">{% if knife.purchased_new == True %}<i class="bi bi-check-circle-fill text-primary"></i>{% else %}<i class="bi bi-x-circle-fill text-body-tertiary"></i>{% endif %}</dd>
             <dt class="col-sm-4 text-sm-end text-start">Needs Work:</dt>

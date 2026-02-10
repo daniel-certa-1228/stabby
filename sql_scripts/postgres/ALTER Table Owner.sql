@@ -1,0 +1,1 @@
+ALTER TABLE stabby_web_knife OWNER TO stabby_app;

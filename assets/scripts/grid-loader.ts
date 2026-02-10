@@ -129,6 +129,17 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
         } 
       },
       { 
+        headerName: 'Has Pocket Clip', 
+        field: 'has_pocket_clip', 
+        width: 160, 
+        cellStyle: { 
+          textAlign: 'center' 
+        }, 
+        filterParams: {
+          buttons: ['reset'],
+        } 
+      },
+      { 
         headerName: 'Purchased New', 
         field: 'purchased_new', 
         width: 160, 

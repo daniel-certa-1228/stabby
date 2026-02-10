@@ -22,6 +22,7 @@ class ExcelService:
             "Deployment",
             "Country",
             "Vendor",
+            "Has Pocket Clip",
             "Purchased New",
             "Needs Work",
             "Date Entered",
@@ -50,6 +51,10 @@ class ExcelService:
             ws.cell(row=row_idx, column=col, value=knife.country)
             col += 1
             ws.cell(row=row_idx, column=col, value=knife.vendor)
+            col += 1
+            cls._write_boolean_cell(
+                ws, row_idx, col, knife.has_pocket_clip, "Yes", "No"
+            )
             col += 1
             cls._write_boolean_cell(
                 ws, row_idx, col, knife.purchased_new, "New", "Used"

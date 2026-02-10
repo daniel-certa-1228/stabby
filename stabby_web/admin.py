@@ -109,6 +109,7 @@ class SteelManufacturerAdmin(admin.ModelAdmin):
 
 @admin.register(BladeMaterial)
 class BladeMaterialAdmin(admin.ModelAdmin):
+    ordering = ["name"]
     list_display = ["name", "steel_type", "steel_manufacturer", "is_active"]
 
 
