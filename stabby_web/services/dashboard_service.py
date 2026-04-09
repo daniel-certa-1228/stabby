@@ -104,6 +104,14 @@ class DashboardService:
         return diff
 
     @classmethod
+    def get_pocket_clip_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_pocket_clip_chart;")
+            rows = cursor.fetchall()
+
+        return cls._map_to_chart_dto(rows)
+
+    @classmethod
     def get_steel_type_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_steel_type_chart;")

@@ -373,6 +373,60 @@ const loadLockTypeChart = async (): Promise<void> => {
     const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
 }
 
+const loadPocketClipChart = async (): Promise<void> => {
+    const chartDiv: HTMLElement = document.querySelector('#pocket-clip-chart')!;
+
+    const spinner: HTMLElement | null = document.querySelector('#pocket-clip-spinner');
+
+    const url: string = `${constants.getBaseUrl()}api/get_pocket_clip_chart_data`;
+
+    const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
+
+    const options: agCharts.AgPolarChartOptions = {
+        container: chartDiv,
+        padding:{
+            top: 5,
+            right: 5,
+            bottom: 5,
+            left: 5
+        },
+        title: {
+            text: "Pocket Clip",
+          },
+        subtitle: {
+            text: "Clip/No Clip"
+        },
+        data: chartData,
+        series: [{
+            type: "pie",
+            fills: fill_1,
+            angleKey: "count",
+            legendItemKey: "name",
+            angleName: "U.S.A.",
+            tooltip: {
+                renderer: (params) => {
+                    const fillColor = (params as any).fill ?? '#888';
+                    
+                    return `
+                        <div style="padding: 8px;">
+                            <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                            <span style="background:${fillColor}; width:10px; height:10px; margin-right:6px;"></span>
+                            <b>${params.datum.name}</b>
+                            </div>
+                            <div><span class="text-body-secondary"><b>Count:</b></span> ${params.datum.count}</div>
+                            <div><span class="text-body-secondary"><b>Percent:</b></span> ${params.datum.percentage.toFixed(2)}%</div>
+                        </div>
+                    `;
+                }
+              }
+        }],
+    };
+    
+    spinner?.remove();
+
+    const chart: agCharts.AgChartInstance<agCharts.AgPolarChartOptions> = agCharts.AgCharts.create(options);
+}
+
 const loadSteelTypeChart = async (): Promise<void> => {
     const chartDiv: HTMLElement = document.querySelector('#steel-type-chart')!;
 
@@ -432,7 +486,7 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
     const url: string = `${constants.getBaseUrl()}api/get_usa_new_vintage_chart_data`;
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
-
+    debugger;
     const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
@@ -527,6 +581,7 @@ export {
     loadCountryChart,
     loadDeploymentTypeChart,
     loadLockTypeChart,
+    loadPocketClipChart,
     loadSteelTypeChart,
     loadUsaNewVintageChart
 }

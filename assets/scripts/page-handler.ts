@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
       chart_loader.loadSteelTypeChart();
       chart_loader.loadCountryChart();
       chart_loader.loadLockTypeChart();
+      chart_loader.loadPocketClipChart();
       chart_loader.loadDeploymentTypeChart();
       chart_loader.loadUsaNewVintageChart();
     }
