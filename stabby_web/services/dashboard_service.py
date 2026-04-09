@@ -122,6 +122,10 @@ class DashboardService:
         return Knife.objects.filter(is_active=True).count()
 
     @classmethod
+    def get_total_needs_work_knives(cls):
+        return Knife.objects.filter(is_active=True, needs_work=True).count()
+
+    @classmethod
     def get_total_new_knives(cls):
         return Knife.objects.filter(is_active=True, purchased_new=True).count()
 
