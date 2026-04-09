@@ -181,7 +181,9 @@ const loadKnifeGrid = async (knife_filter: knife_filter_model | null): Promise<v
     `?blade_shape_id=${knife_filter.blade_shape_id}`
     : knife_filter && knife_filter.purchased_new !== null && knife_filter.purchased_new !== undefined ? 
       `?purchased_new=${knife_filter.purchased_new}`
-      : '';
+      : knife_filter && knife_filter.needs_work !== null && knife_filter.needs_work !== undefined ? 
+      `?needs_work=${knife_filter.needs_work}`
+        : '';
 
   const url: string = `${constants.getBaseUrl()}api/get_knife_grid${queryStr}`;
 

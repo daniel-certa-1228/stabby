@@ -14,6 +14,7 @@ class KnifeFilterDTO:
     country: Optional[str] = None
     deployment_type: Optional[str] = None
     lock_type: Optional[str] = None
+    needs_work: Optional[bool] = None
 
     def to_dict(self):
         return asdict(self)

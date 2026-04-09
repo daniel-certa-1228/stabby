@@ -11,6 +11,7 @@ export class knife_filter_model {
     country: string | null = null;
     deployment_type: string | null = null;
     lock_type: string | null = null;
+    needs_work: boolean | null = null;
   
     constructor(
         brand: string | null = null,
@@ -23,6 +24,7 @@ export class knife_filter_model {
         country: string | null = null,
         deployment_type: string | null = null,
         lock_type: string | null = null,
+        needs_work: boolean | null = null,
     ) {
         this.brand = brand;
         this.vendor = vendor;
@@ -34,5 +36,6 @@ export class knife_filter_model {
         this.country = country;
         this.deployment_type = deployment_type;
         this.lock_type = lock_type;
+        this.needs_work = needs_work;
     }
 }
