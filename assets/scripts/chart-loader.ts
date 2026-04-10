@@ -486,7 +486,7 @@ const loadUsaNewVintageChart = async (): Promise<void> => {
     const url: string = `${constants.getBaseUrl()}api/get_usa_new_vintage_chart_data`;
 
     const chartData: chart_data_model[] | undefined = await ajax_handler.getChartData(url);
-    debugger;
+
     const options: agCharts.AgPolarChartOptions = {
         container: chartDiv,
         padding:{
