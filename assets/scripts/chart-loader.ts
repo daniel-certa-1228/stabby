@@ -254,7 +254,7 @@ const loadDeploymentTypeChart = async (): Promise<void> => {
 
 const loadEbayNewVintageChart = async (): Promise<void> => {
     const chartDiv: HTMLElement = document.querySelector('#ebay-new-vintage-chart')!;
-    // this template does not exist yet
+
     const spinner: HTMLElement | null = document.querySelector('#ebay-chart-spinner');
 
     const url: string = `${constants.getBaseUrl()}api/get_ebay_new_vintage_chart_data`;
