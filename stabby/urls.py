@@ -136,6 +136,11 @@ urlpatterns = [
         name="get_deployment_type_chart_data",
     ),
     path(
+        "api/get_ebay_new_vintage_chart_data/",
+        views.get_ebay_new_vintage_chart_data,
+        name="get_ebay_new_vintage_chart_data",
+    ),
+    path(
         "api/get_lock_type_chart_data/",
         views.get_lock_type_chart_data,
         name="get_lock_type_chart_data",

@@ -5,6 +5,7 @@ from .custom_login_views import custom_login_view
 from .dashboard_views import (
     get_country_chart_data,
     get_deployment_type_chart_data,
+    get_ebay_new_vintage_chart_data,
     get_lock_type_chart_data,
     get_pocket_clip_chart_data,
     get_steel_type_chart_data,
@@ -61,6 +62,7 @@ __all__ = [
     "library_item_create",
     "get_country_chart_data",
     "get_deployment_type_chart_data",
+    "get_ebay_new_vintage_chart_data",
     "get_lock_type_chart_data",
     "get_pocket_clip_chart_data",
     "get_sharpener_grid",

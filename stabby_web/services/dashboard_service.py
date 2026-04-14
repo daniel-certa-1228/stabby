@@ -53,6 +53,14 @@ class DashboardService:
         return cls._map_to_chart_dto(rows)
 
     @classmethod
+    def get_ebay_new_vintage_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_ebay_new_vintage_chart;")
+            rows = cursor.fetchall()
+
+        return cls._map_to_chart_dto(rows)
+
+    @classmethod
     def get_handle_material_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_handle_material_chart;")
