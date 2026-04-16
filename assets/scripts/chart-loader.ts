@@ -456,7 +456,7 @@ const loadPocketClipChart = async (): Promise<void> => {
             fills: fill_1,
             angleKey: "count",
             legendItemKey: "name",
-            angleName: "U.S.A.",
+            angleName: "Clip",
             tooltip: {
                 renderer: (params) => {
                     const fillColor = (params as any).fill ?? '#888';
