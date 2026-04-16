@@ -53,6 +53,14 @@ class DashboardService:
         return cls._map_to_chart_dto(rows)
 
     @classmethod
+    def get_ebay_new_vintage_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_ebay_new_vintage_chart;")
+            rows = cursor.fetchall()
+
+        return cls._map_to_chart_dto(rows)
+
+    @classmethod
     def get_handle_material_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_handle_material_chart;")
@@ -104,6 +112,14 @@ class DashboardService:
         return diff
 
     @classmethod
+    def get_pocket_clip_chart_data(cls):
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM view_pocket_clip_chart;")
+            rows = cursor.fetchall()
+
+        return cls._map_to_chart_dto(rows)
+
+    @classmethod
     def get_steel_type_chart_data(cls):
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM view_steel_type_chart;")
@@ -120,6 +136,10 @@ class DashboardService:
     @classmethod
     def get_total_knives(cls):
         return Knife.objects.filter(is_active=True).count()
+
+    @classmethod
+    def get_total_needs_work_knives(cls):
+        return Knife.objects.filter(is_active=True, needs_work=True).count()
 
     @classmethod
     def get_total_new_knives(cls):

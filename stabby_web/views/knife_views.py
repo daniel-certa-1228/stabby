@@ -21,6 +21,7 @@ def knives(request):
 
     blade_shape_name = None
     new_or_used = None
+    needs_work = None
 
     if (
         variable_dto
@@ -36,12 +37,18 @@ def knives(request):
         and variable_dto.knife_filter.purchased_new is not None
     ):
         new_or_used = "New" if variable_dto.knife_filter.purchased_new else "Used"
-
+    elif (
+        variable_dto
+        and variable_dto.knife_filter
+        and variable_dto.knife_filter.needs_work is not None
+    ):
+        needs_work = "Needs Work"
     context = {
         "active": Modules.Knives.value,
         "template_variables": variable_dto.to_dict(),
         "blade_shape_name": blade_shape_name,
         "new_or_used": new_or_used,
+        "needs_work": needs_work,
     }
 
     return render(request, "stabby_web/knives.html", context)

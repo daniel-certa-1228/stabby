@@ -21,6 +21,8 @@ def index(request):
 
     total_knives = DashboardService.get_total_knives()
 
+    total_needs_work_knives = DashboardService.get_total_needs_work_knives()
+
     total_new_knives = DashboardService.get_total_new_knives()
 
     total_used_knives = DashboardService.get_total_used_knives()
@@ -54,6 +56,7 @@ def index(request):
         "template_variables": variable_dto.to_dict(),
         "last_purchase_date": last_purchase_date,
         "total_knives": total_knives,
+        "total_needs_work_knives": total_needs_work_knives,
         "total_new_knives": total_new_knives,
         "total_used_knives": total_used_knives,
         "new_percentage": new_percentage,
@@ -87,8 +90,22 @@ def get_deployment_type_chart_data(request):
 
 
 @login_required
+def get_ebay_new_vintage_chart_data(request):
+    data = DashboardService.get_ebay_new_vintage_chart_data()
+
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
+
+
+@login_required
 def get_lock_type_chart_data(request):
     data = DashboardService.get_lock_type_chart_data()
+
+    return JsonResponse(data, safe=False, encoder=DecimalEncoder)
+
+
+@login_required
+def get_pocket_clip_chart_data(request):
+    data = DashboardService.get_pocket_clip_chart_data()
 
     return JsonResponse(data, safe=False, encoder=DecimalEncoder)
 

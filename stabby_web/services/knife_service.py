@@ -91,6 +91,7 @@ class KnifeService:
     def get_knife_grid(cls, request):
         blade_shape_id = request.GET.get("blade_shape_id")
         purchased_new = request.GET.get("purchased_new")
+        needs_work = request.GET.get("needs_work")
 
         try:
             blade_shape_id_int = int(blade_shape_id)
@@ -102,6 +103,9 @@ class KnifeService:
         if purchased_new:
             purchased_new_bool = purchased_new.lower() == "true"
 
+        if needs_work:
+            needs_work_bool = needs_work.lower() == "true"
+
         if blade_shape_id is not None:
             queryset = ViewKnifeBladeGrid.objects.filter(
                 is_active=True, blade_shape_id=blade_shape_id_int
@@ -109,6 +113,10 @@ class KnifeService:
         elif purchased_new is not None:
             queryset = ViewKnifeGrid.objects.filter(
                 is_active=True, purchased_new=purchased_new_bool
+            ).order_by("brand", "knife")
+        elif needs_work is not None:
+            queryset = ViewKnifeGrid.objects.filter(
+                is_active=True, needs_work=needs_work_bool
             ).order_by("brand", "knife")
         else:
             queryset = cls.get_knife_queryset()
@@ -128,6 +136,7 @@ class KnifeService:
         knife_type = request.GET.get("knife_type")
         purchased_new = request.GET.get("purchased_new")
         blade_shape_id = request.GET.get("blade_shape_id")
+        needs_work = request.GET.get("needs_work")
         country = request.GET.get("country")
         deployment_type = request.GET.get("deployment_type")
         lock_type = request.GET.get("lock_type")
@@ -143,6 +152,7 @@ class KnifeService:
             or country
             or deployment_type
             or lock_type
+            or needs_work
         ):
             if brand:
                 dto = KnifeFilterDTO(brand=brand)
@@ -164,6 +174,8 @@ class KnifeService:
                 dto = KnifeFilterDTO(deployment_type=deployment_type)
             elif lock_type:
                 dto = KnifeFilterDTO(lock_type=lock_type)
+            elif needs_work:
+                dto = KnifeFilterDTO(needs_work=needs_work)
             return dto
         else:
             return None
